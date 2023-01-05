@@ -1,0 +1,26 @@
+.btn-color{
+    background-color: #9d0200;
+    color: #fff;
+    
+  }
+    
+  .cardbody-color{
+    background-color: #ebf2fa;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+  .container{
+    display: grid;
+    place-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Open Sans', sans-serif;
+    height: 400px;
+    width: 150;
+    padding: 40px;
+    
+  }
+  h2{
+    color:  hsl(0, 0%, 40%);
+    text-align: center;
+  }
