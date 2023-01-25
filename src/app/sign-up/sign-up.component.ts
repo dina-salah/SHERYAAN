@@ -7,30 +7,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent {
-  userDisplay: boolean=true;
-  hospitalDisplay: boolean=true;
-  orgDisplay: boolean=true;
+  uDisplay:boolean =true;
+  hDisplay:boolean =true;
+  oDisplay:boolean =true;
 
-  user(){
-    this.userDisplay=false;
-    this.hospitalDisplay=true;
-    this.orgDisplay=true;
-  }
-  hospital(){
-    this.userDisplay=true;
-    this.hospitalDisplay=false;
-    this.orgDisplay=true;
-  }
-  organization(){
-    this.userDisplay=true;
-    this.hospitalDisplay=true;
-    this.orgDisplay=false;
+  hospitalDisplay(){
+    this.hDisplay =false
+    this.uDisplay=true 
+    this.oDisplay =true
   }
 
-  submit(){
-    console.log("submited")
+  userDisplay(){
+    this.uDisplay=false
+    this.hDisplay =true 
+    this.oDisplay =true
   }
-
   
-  
+  orgnizationDisplay(){
+    this.oDisplay =false
+    this.uDisplay=true
+    this.hDisplay =true 
+  }
+
+  userSubmit(signup:any){
+console.log('account is created', signup)
+  }
 }

@@ -8,6 +8,11 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { ConatinerComponent } from './conatiner/conatiner.component';
 import { Router, RouterModule } from '@angular/router';
 import { FilterComponent } from './filter/filter.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SearchComponent } from './search/search.component';
+import { SliderComponent } from './slider/slider.component';
+import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -16,7 +21,12 @@ import { FilterComponent } from './filter/filter.component';
     SignUpComponent,
     SignInComponent,
     ConatinerComponent,
-    FilterComponent
+    FilterComponent,
+    NavbarComponent,
+    SearchComponent,
+    SliderComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
