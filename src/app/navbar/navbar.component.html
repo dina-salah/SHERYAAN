@@ -1,51 +1,51 @@
-<div class="navbar navbar-default" style="height: 55px;">
-    <div class="navbar-header">
-        <p class="navbar-brand" style="margin-left: 10px;">SHERYAAN</p>
-        <!-- <img src=".\assets\logo1.jpeg"> -->
-    </div>
-    <div>
-        <a href="#" class="upper-header">Contact Us</a>
-        <a href="#" class="upper-header" routerLink="/sign-in" routerLinkActive="active">Login</a>
-        <a href="#" class="upper-header" routerLink="/sign-up" routerLinkActive="active">Sign Up</a>
-        <button (click)="clickSearch()" class="btn btn-danger" style="margin-right: 8px; margin-left: 4px;" >Search</button>
-    </div>
+<nav class="navbar navbar-expand-sm justify-content-end">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/sign-in" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/sign-up" routerLinkActive="active">Sign up</a>
+        </li>
+        <button (click)="clickSearch()" class="btn btn-danger" style="margin-right: 8px; margin-left: 4px;">Search</button>
+    </ul>
+</nav>    
     
-</div>
+    
 
-<div  class="nav-bar">
-    <div class="nav-links">
-        <div class="navbar-brand">
-        <a href="" routerLink="/home" routerLinkActive="active">Home</a>
-        <a href="">Donate</a>
-        <a href="">Blood drive</a>
-        <a href="">Learn</a>
-        <a href="">Request</a>
-        <a href="">About us</a>
+<nav  class="navbar navbar-expand-md sticky-top" style="background-color: #2e3b53;">
+    <a class="navbar-brand" href="#">SHERYAAN</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="bottomnav">  
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Donate</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Blood drives</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Learn</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Request</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+        </li>
+    </ul>
     </div>
-</div>
-</div>
+    </div>
+</nav>
 
 <app-search [display]= "displaySearch" class="navbar-brand" ></app-search>
-<!-- <div class="header">
-    <div class="header-links">
-        <a href="#" class="upper-header">Contact Us</a>
-        <a href="#" class="upper-header" routerLink="/sign-in" routerLinkActive="active">Login</a>
-        <a href="#" class="upper-header" routerLink="/sign-up" routerLinkActive="active">Sign Up</a>
-        <button (click)="clickSearch()" class="btn btn-danger">Search</button>
-    </div>
+
     
-<div class="logo"><img src=".\assets\logo1.jpeg" width="200px" height="70px"></div> 
-</div>
-<pre></pre>
-<div class="nav-bar">
-    <div class="logo"><img src=""></div>
-    <div class="nav-links">
-        <a href="#" routerLink="/slider" routerLinkActive="active">Home</a>
-        <a href="#">Donate</a>
-        <a href="#">Blood drive</a>
-        <a href="#">Learn</a>
-        <a href="#">Request</a>
-        <a href="#">About us</a>
-    </div>
-</div>
-<app-search [display]= "displaySearch" ></app-search> -->
