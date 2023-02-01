@@ -7,13 +7,12 @@
     font-size: 18px;
 }
 .bottomnav a:hover{
-    background-color: white;
-    color: #2e3b53;
+    background-color: #445575;
     border-radius: 5px;
 }
 .bottomnav a.active{
-    background-color: #445575;
-    color: white;
+    background-color: white;
+    color: #2e3b53;
     border-radius: 5px;
 }
 
