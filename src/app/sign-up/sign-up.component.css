@@ -7,26 +7,28 @@
 .sign-up-label{
   margin: 35px;
 }
-.rad-label{
-  
-  display: flex;
+.rad-label {
   padding: 10px;
   align-items: center;
   border-radius: 100px;
   margin: 10px;
   cursor: pointer;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .rad-label:hover{
-background: hsla(0, 0%, 80%, .14);
+background: rgb(204, 199, 199);
 }
+
 .rad-input{
   top: 0;
   width: 1px;
   height: 1px;
 }
 .usertype-box{
-  display: grid;
+  display: flex;
   place-content: center;
   box-sizing: border-box;
 }
@@ -34,6 +36,8 @@ background: hsla(0, 0%, 80%, .14);
   width: 250px;
   padding-top: 5px;
 }
+
+
 /* .box {
   display: grid;
   place-content: center;
