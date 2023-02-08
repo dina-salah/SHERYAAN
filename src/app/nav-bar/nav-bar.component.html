@@ -1,0 +1,20 @@
+<div class="navbar navbar-default" style="background-color:whitesmoke; margin:1px; margin-top:0px ; padding: 30px; padding-right:25px;">
+
+    <div class="navbar-brand">
+    </div>
+    
+    <div class="justify-content-end">
+        
+        <a href="#" routerLink="/home" routerLinkActive="active" class="navlink">Home</a>
+        <a href="#" routerLink="" routerLinkActive="active" class="navlink">Donate</a>
+        <a href="#" routerLink="" routerLinkActive="active" class="navlink">Blood drives</a>
+        <a href="#" routerLink="" routerLinkActive="active" class="navlink">Learn</a>
+        <a href="#" routerLink="" routerLinkActive="active" class="navlink" >Request</a>
+        <a href="#" routerLink="" routerLinkActive="active" class="navlink">Contact Us</a>
+        <a href="#" routerLink="" routerLinkActive="active" class="navlink">About us</a>
+        <button (click)="clickSearch()" class="btn btn-danger" style="margin-right: 8px; margin-left: 4px;" >Search</button>
+
+    </div>
+</div>
+
+<app-search [display]= "displaySearch" class="navbar-brand" ></app-search>

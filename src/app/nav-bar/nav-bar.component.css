@@ -1,0 +1,17 @@
+
+.navlink{
+    color: rgb(17, 17, 58);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+    font: bolder;
+    margin-right: 25px;
+    text-decoration: none;
+    padding: 10px;
+    
+}
+
+.navlink:hover{
+    color: aliceblue;
+    border-radius: 17px;
+    background-color: rgb(17, 17, 58);
+    transition: 0.5s;
+}
