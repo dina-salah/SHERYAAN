@@ -5,6 +5,8 @@ import { HomeComponent} from './home/home.component';
 import { LearnComponent } from './learn/learn.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { OPositiveComponent } from './o-positive/o-positive.component';
+import { OVeComponent } from './o-ve/o-ve.component';
 
 
 const routes: Routes = [
@@ -13,6 +15,8 @@ const routes: Routes = [
   {path: 'home', component:HomeComponent},
   {path: 'contact-us', component:ContactUsComponent},
   {path: 'learn', component:LearnComponent}
+  {path:'o-positive', component:OPositiveComponent},
+  {path: 'o-ve', component:OVeComponent}
 ];
 
 @NgModule({
