@@ -15,6 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SignNavbarComponent } from './sign-navbar/sign-navbar.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { LearnComponent } from './learn/learn.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     FooterComponent,
     HomeComponent,
     SignNavbarComponent,
-    NavBarComponent
+    NavBarComponent,
+    ContactUsComponent,
+    LearnComponent
   ],
   imports: [
     BrowserModule,

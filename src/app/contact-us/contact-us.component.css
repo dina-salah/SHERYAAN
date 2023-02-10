@@ -1,0 +1,23 @@
+
+h2{
+    text-align: left;
+    color: #d9534f;
+}
+.form-control{
+  background-color: whitesmoke;
+}
+.square{
+  list-style-type: square;
+}
+i{
+  /* width: 50px;
+  height: 50px; */
+  color: #d9534f;
+  margin-right: 10px;
+}
+.header{
+  background-color: rgb(17, 17, 58);
+  height: 250px;
+  width: 100%;
+  padding: 50px 20px 30px 60px;
+}
