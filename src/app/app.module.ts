@@ -33,7 +33,7 @@ import { OPositiveComponent } from './o-positive/o-positive.component';
     SignNavbarComponent,
     NavBarComponent,
     ContactUsComponent,
-    LearnComponent
+    LearnComponent,
     BloodTypesComponent,
     OVeComponent,
     OPositiveComponent
