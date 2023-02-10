@@ -1,0 +1,35 @@
+
+.blood_bag {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 115px 172px;
+    width: 120px ;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+.blood_one_quarter {
+    background-image: url("/assets/blood-one-quarter1.png");
+}
+.blood_critical {
+    background-image: url("/assets/blood-critical1.png");
+}
+.blood_full {
+    background-image: url("/assets/blood-full1.png");
+}
+a{  margin: 100px;
+    text-decoration: none;
+}
+h2{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    padding: 40px;
+    width: 120px ;
+    height: 180px;
+}
+h2:hover,.blood_one_quarter:hover ,.blood_full:hover ,.blood_critical:hover{
+    background-size: 120px 180px;
+    transition: 0.3s;
+    color: rgb(24, 24, 56);
+}

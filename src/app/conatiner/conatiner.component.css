@@ -3,9 +3,9 @@
     padding: 18px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
     font-size: 17px;
-    /* background-color: aliceblue; */
+    text-shadow: 1px 1px #f7f7f7;
     border-radius: 10px;
-    width: 250px;
+    width: 220px;
 }
 .button:hover{
     background-color: whitesmoke;

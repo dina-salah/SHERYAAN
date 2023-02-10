@@ -7,14 +7,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { ConatinerComponent } from './conatiner/conatiner.component';
 import { Router, RouterModule } from '@angular/router';
-// import { FilterComponent } from './filter/filter.component';
-// import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { SliderComponent } from './slider/slider.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { SignNavbarComponent } from './sign-navbar/sign-navbar.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { BloodTypesComponent } from './blood-types/blood-types.component';
+import { OVeComponent } from './o-ve/o-ve.component';
+import { OPositiveComponent } from './o-positive/o-positive.component';
 
 
 @NgModule({
@@ -23,14 +24,15 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     SignUpComponent,
     SignInComponent,
     ConatinerComponent,
-    // FilterComponent,
-    // NavbarComponent,
     SearchComponent,
     SliderComponent,
     FooterComponent,
     HomeComponent,
     SignNavbarComponent,
-    NavBarComponent
+    NavBarComponent,
+    BloodTypesComponent,
+    OVeComponent,
+    OPositiveComponent
   ],
   imports: [
     BrowserModule,
