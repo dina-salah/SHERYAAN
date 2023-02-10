@@ -18,6 +18,9 @@ import { LearnComponent } from './learn/learn.component';
 import { BloodTypesComponent } from './blood-types/blood-types.component';
 import { OVeComponent } from './o-ve/o-ve.component';
 import { OPositiveComponent } from './o-positive/o-positive.component';
+import { LearnBloodComponent } from './learn-blood/learn-blood.component';
+import { LearnBanksComponent } from './learn-banks/learn-banks.component';
+import { LearnDonationComponent } from './learn-donation/learn-donation.component';
 
 
 @NgModule({
@@ -33,10 +36,13 @@ import { OPositiveComponent } from './o-positive/o-positive.component';
     SignNavbarComponent,
     NavBarComponent,
     ContactUsComponent,
-    LearnComponent
+    LearnComponent,
     BloodTypesComponent,
     OVeComponent,
-    OPositiveComponent
+    OPositiveComponent,
+    LearnBloodComponent,
+    LearnBanksComponent,
+    LearnDonationComponent
   ],
   imports: [
     BrowserModule,
