@@ -4,3 +4,15 @@
     width: 100%;
     padding: 50px 20px 30px 60px;
   }
+
+  .nav{
+    background-color: whitesmoke;
+  }
+
+  .nav-item:hover{
+    background-color: #d9534f;
+    color: white;
+  }
+  .nav-link{
+    color: black;
+  }
