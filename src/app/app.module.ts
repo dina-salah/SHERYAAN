@@ -23,6 +23,11 @@ import { LearnBanksComponent } from './learn-banks/learn-banks.component';
 import { LearnDonationComponent } from './learn-donation/learn-donation.component';
 import { HttpClientModule } from '@angular/common/http';
 import {SignupService} from './services/signup.service';
+import { DonateComponent } from './donate/donate.component';
+import { LocationComponent } from './location/location.component';
+import { DonorRewardsComponent } from './donor-rewards/donor-rewards.component';
+import { DonateNowComponent } from './donate-now/donate-now.component';
+import { DonateSideNavComponent } from './donate-side-nav/donate-side-nav.component';
 
 
 @NgModule({
@@ -44,7 +49,12 @@ import {SignupService} from './services/signup.service';
     OPositiveComponent,
     LearnBloodComponent,
     LearnBanksComponent,
-    LearnDonationComponent
+    LearnDonationComponent,
+    DonateComponent,
+    LocationComponent,
+    DonorRewardsComponent,
+    DonateNowComponent,
+    DonateSideNavComponent
   ],
   imports: [
     BrowserModule,

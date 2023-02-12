@@ -33,3 +33,10 @@ h2:hover,.blood_one_quarter:hover ,.blood_full:hover ,.blood_critical:hover{
     transition: 0.3s;
     color: rgb(24, 24, 56);
 }
+.pragraph{
+    text-align: center;
+    margin: 5px; 
+    font-size: 25px;
+    color: darkslategrey;
+    padding:30px; font-family: 'Roboto Slab', serif;
+}
