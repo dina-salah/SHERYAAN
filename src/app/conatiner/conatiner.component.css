@@ -1,11 +1,12 @@
 .button{
     display: block;
     padding: 18px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
     font-size: 17px;
     text-shadow: 1px 1px #f7f7f7;
     border-radius: 10px;
     width: 220px;
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+
 }
 .button:hover{
     background-color: whitesmoke;

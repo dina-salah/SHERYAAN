@@ -23,6 +23,8 @@ import { LearnBanksComponent } from './learn-banks/learn-banks.component';
 import { LearnDonationComponent } from './learn-donation/learn-donation.component';
 import { RequestComponent } from './request/request.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { HttpClientModule } from '@angular/common/http';
+import {SignupService} from './services/signup.service';
 
 
 @NgModule({
@@ -53,8 +55,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
     AppRoutingModule,
     FormsModule,
     RouterModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SignupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
