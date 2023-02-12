@@ -21,6 +21,8 @@ import { OPositiveComponent } from './o-positive/o-positive.component';
 import { LearnBloodComponent } from './learn-blood/learn-blood.component';
 import { LearnBanksComponent } from './learn-banks/learn-banks.component';
 import { LearnDonationComponent } from './learn-donation/learn-donation.component';
+import { RequestComponent } from './request/request.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { LearnDonationComponent } from './learn-donation/learn-donation.componen
     OPositiveComponent,
     LearnBloodComponent,
     LearnBanksComponent,
-    LearnDonationComponent
+    LearnDonationComponent,
+    RequestComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

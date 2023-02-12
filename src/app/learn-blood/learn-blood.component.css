@@ -7,6 +7,7 @@
 
   .nav{
     background-color: whitesmoke;
+    width: 320px;
   }
 
   .nav-item:hover{
@@ -19,4 +20,8 @@
 
   p,ul{
     font-size:large;
+  }
+  .nav-item{
+    border-bottom: 2px solid grey;
+    width: 320px;
   }
