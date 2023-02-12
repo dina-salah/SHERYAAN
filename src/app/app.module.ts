@@ -21,6 +21,8 @@ import { OPositiveComponent } from './o-positive/o-positive.component';
 import { LearnBloodComponent } from './learn-blood/learn-blood.component';
 import { LearnBanksComponent } from './learn-banks/learn-banks.component';
 import { LearnDonationComponent } from './learn-donation/learn-donation.component';
+import { HttpClientModule } from '@angular/common/http';
+import {SignupService} from './services/signup.service';
 
 
 @NgModule({
@@ -49,8 +51,9 @@ import { LearnDonationComponent } from './learn-donation/learn-donation.componen
     AppRoutingModule,
     FormsModule,
     RouterModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [SignupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
