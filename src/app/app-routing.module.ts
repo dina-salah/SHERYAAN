@@ -14,6 +14,9 @@ import { OPositiveComponent } from './o-positive/o-positive.component';
 import { OVeComponent } from './o-ve/o-ve.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { RequestComponent } from './request/request.component';
+import { AboutUsComponent} from './about-us/about-us.component';
+
 
 const routes: Routes = [
   {path: 'sign-in', component: SignInComponent},
@@ -29,7 +32,9 @@ const routes: Routes = [
   {path:'donate', component:DonateComponent},
   {path:'donate-now',component:DonateNowComponent },
   {path:'donor-rewards',component:DonorRewardsComponent},
-  {path:'location',component:LocationComponent}
+  {path:'location',component:LocationComponent},
+  {path: 'request', component:RequestComponent},
+  {path: 'about-us', component: AboutUsComponent}
 ];
 
 @NgModule({
