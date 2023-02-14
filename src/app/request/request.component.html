@@ -42,6 +42,17 @@
         <p>In this request table you can donate to patients that need blood. by clicking "donate" on the request
             a message is sent to that user to acknowlage that you are a user of the system. 
         </p>
+        <br>
+        <div class="container">
+          <div></div>
+
+          <b (click)="showform()"><div class="bi bi-plus-lg" >  Add request </div></b>
+          <br>
+        </div>
+        <form class=" justify-content-center" [hidden]="display">
+            <app-req-form></app-req-form>
+        </form>
+        <br>
         <table class="table">
             <thead class="table-dark">
               <tr>
@@ -56,15 +67,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr *ngFor="let patient of patients" >
                 <td>1</td>
-                <td>Khaled Omari</td>
-                <td>12-2-2023</td>
-                <td>A+</td>
-                <td>2 bags</td>
-                <td>surgery</td>
-                <td>AlSafwa Hospital, 6 october, first district</td>
-                <td><button class="btn btn-danger">Donate</button></td>
+                <td >{{patient.pname}}</td>
+                <td>{{patient.date}}</td>
+                <td>{{patient.bloodtype}}</td>
+                <td>{{patient.quantity}}</td>
+                <td>{{patient.pcase}}</td>
+                <td>{{patient.address}}</td>
+                <td (click)="showreq()"><button class="btn btn-danger">Donate</button></td>
               </tr>
             </tbody>
           </table>

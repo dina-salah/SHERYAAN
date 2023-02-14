@@ -4,3 +4,30 @@
     width: 100%;
     padding: 50px 20px 30px 60px;
   }
+
+  b{
+    
+    background-color: rgba(230, 215, 178, 0.877);
+    /* font-weight:bolder;  */
+    border-radius: 4px;
+    padding:4px; 
+    margin:15px; 
+    width:125px;
+    height:39px;
+    float: right; 
+    text-align: center;
+  }
+  b:hover{
+    background-color: rgb(13, 34, 150);
+    color: rgb(255, 255, 255);
+  }
+  form{
+  
+    border-radius: 4px;
+    display: block;
+    background-color: rgba(245, 245, 245, 0.815); 
+    margin: 30px; 
+    padding: 30px; 
+    width: 730px;
+    margin-left: 20%;
+  }

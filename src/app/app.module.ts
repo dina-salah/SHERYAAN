@@ -30,6 +30,7 @@ import { LocationComponent } from './location/location.component';
 import { DonorRewardsComponent } from './donor-rewards/donor-rewards.component';
 import { DonateNowComponent } from './donate-now/donate-now.component';
 import { DonateSideNavComponent } from './donate-side-nav/donate-side-nav.component';
+import { ReqFormComponent } from './req-form/req-form.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { DonateSideNavComponent } from './donate-side-nav/donate-side-nav.compon
     DonateNowComponent,
     DonateSideNavComponent,
     RequestComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ReqFormComponent
   ],
   imports: [
     BrowserModule,
