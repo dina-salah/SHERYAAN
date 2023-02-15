@@ -24,7 +24,7 @@ import { LearnDonationComponent } from './learn-donation/learn-donation.componen
 import { RequestComponent } from './request/request.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HttpClientModule } from '@angular/common/http';
-import {SignupService} from './services/signup.service';
+import {signupuserService} from './services/signupuser.service';
 import { DonateComponent } from './donate/donate.component';
 import { LocationComponent } from './location/location.component';
 import { DonorRewardsComponent } from './donor-rewards/donor-rewards.component';
@@ -69,7 +69,7 @@ import { ReqFormComponent } from './req-form/req-form.component';
     RouterModule,
     HttpClientModule
   ],
-  providers: [SignupService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
