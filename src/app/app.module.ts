@@ -31,6 +31,8 @@ import { DonorRewardsComponent } from './donor-rewards/donor-rewards.component';
 import { DonateNowComponent } from './donate-now/donate-now.component';
 import { DonateSideNavComponent } from './donate-side-nav/donate-side-nav.component';
 import { ReqFormComponent } from './req-form/req-form.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileSideBarComponent } from './user-profile-side-bar/user-profile-side-bar.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { ReqFormComponent } from './req-form/req-form.component';
     DonateSideNavComponent,
     RequestComponent,
     AboutUsComponent,
-    ReqFormComponent
+    ReqFormComponent,
+    UserProfileComponent,
+    UserProfileSideBarComponent
   ],
   imports: [
     BrowserModule,
