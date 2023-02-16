@@ -59,7 +59,7 @@
 
             <input id="female" type="radio" class="custom-control-input" value="female" name="gender" ngModel>
             <label class="custom-control-label" for="female">Female</label>
-        </div>
+            </div>
         
             <pre></pre>
             <div  class="mb-3"> 
@@ -88,27 +88,28 @@
                 <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
             </div>
             <pre></pre>
-            <div  class="mb-3">
-                <label for="City">City</label><br>
-                <select name="city" ngModel>
-                <option value="" name="city" ngModel>6 October</option>
-                <option value="" name="city" ngModel>Dokki</option>
-                <option value="" name="city" ngModel>New Cairo</option>
-                <option value="" name="city" ngModel>Nasr city</option>
-                <option value="" name="city" ngModel>Madinty</option>
+            
+            <div  >
+                <label for="City" style="margin-right: 7px;">City:</label>
+                <select class="drop" name="city" ngModel>
+                <option value="6 October" name="city" ngModel>6 October</option>
+                <option value="Dokki" name="city" ngModel>Dokki</option>
+                <option value="New Cairo" name="city" ngModel>New Cairo</option>
+                <option value="Nasr city" name="city" ngModel>Nasr city</option>
+                <option value="Madinty" name="city" ngModel>Madinty</option>
                 </select>
             </div>
             <pre></pre>
 
-            <label for="bloodType">Blood type</label><br>
+            <label for="bloodType">Blood type:</label>
             <div style="display: inline;" class="mb-3">
-            <input type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" for="O+">O+</label>
-            <input type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" for="O"> O-</label>
-            <input type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" for="A+"> A+</label>
-            <input type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" for="A-">A-</label>
-            <input type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" for="B+">B+</label>
-            <input type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" for="B-">B-</label>
-            <input type="radio" name="bloodType" value="AB+" ngModel><label class="user-bloodType" for="AB+">AB+</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" for="O+">O+</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" for="O"> O-</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" for="A+"> A+</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" for="A-">A-</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" for="B+">B+</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" for="B-">B-</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="AB+" ngModel><label class="user-bloodType" for="AB+">AB+</label>
             </div>
         
             <pre></pre>
@@ -124,7 +125,7 @@
             <pre></pre>
             
             <button type="submit" class="btn btn-danger w-100" (click)="onsignup()">Sign up</button>
-            
+        
             <pre></pre>
         </div> 
         </form>
@@ -160,13 +161,13 @@
             </div>
             <pre></pre>
             <div  class="form-group">
-                <label for="City">City</label><br>
-                <select  >
-                <option value="">6 October</option>
-                <option value="">Dokki</option>
-                <option value="">New Cairo</option>
-                <option value="">Nasr city</option>
-                <option value="">Madinty</option>
+                <label for="City" style="margin-right: 7px;">City:</label>
+                <select class="drop" name="city" ngModel>
+                <option value="6 October" ngModel>6 October</option>
+                <option value="Dokki" ngModel>Dokki</option>
+                <option value="New Cairo" ngModel>New Cairo</option>
+                <option value="Nasr city" ngModel>Nasr city</option>
+                <option value="Madinty" ngModel>Madinty</option>
                 </select>
             </div>
             <pre></pre>
@@ -208,13 +209,13 @@
             </div>
             <pre></pre>
             <div  class="form-group">
-                <label for="City">City</label><br>
-                <select  >
-                <option value="">6 October</option>
-                <option value="">Dokki</option>
-                <option value="">New Cairo</option>
-                <option value="">Nasr city</option>
-                <option value="">Madinty</option>
+                <label for="City" style="margin-right: 7px;">City:</label>
+                <select  class="drop" name="city" ngModel>
+                <option value="6 October" ngModel>6 October</option>
+                <option value="Dokki" ngModel>Dokki</option>
+                <option value="New Cairo" ngModel>New Cairo</option>
+                <option value="Nasr city" ngModel>Nasr city</option>
+                <option value="Madinty" ngModel>Madinty</option>
                 </select>
             </div> 
             <pre></pre>

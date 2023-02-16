@@ -36,6 +36,13 @@ background: whitesmoke;
   width: 250px;
   padding-top: 5px;
 }
+.custom-control-input{
+  margin: 7px;
+}
+.drop{
+  width: 120px;
+  height: 30px;
+}
 
 
 /* .box {
