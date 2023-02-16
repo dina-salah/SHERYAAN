@@ -1,8 +1,10 @@
+
+<div class="container" >
 <div>
     <app-user-profile-side-bar></app-user-profile-side-bar>
 </div>
 
-<div class="container" style="float: right;">
+<div class="container m-3 p-4" style=" float: right; width: 1000px; ">
     <div class="">
         <div [hidden]='displays'>
             <ul>
@@ -21,13 +23,9 @@
             </ul>
             <button (click)="show()">Edit</button>
         </div>
-        <div [hidden]="displayd">
-            <form>
+        <div >
+            <form [hidden]='displayd'>
                 <div> 
-                    <div>
-                        <h1>Register Your Account</h1>
-                        <p>Please enter the following information so we can match to your donation records.</p>
-                    </div>
                     <div  class="mb-3">
                         <input  #fname="ngModel" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" ngModel>
                         <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div>
@@ -125,3 +123,4 @@
     </div>
 
 </div>`
+</div>
