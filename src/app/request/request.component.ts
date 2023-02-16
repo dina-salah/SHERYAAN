@@ -9,7 +9,7 @@ export class RequestComponent implements OnInit {
   display:boolean =true;
   donate:boolean =false;
 
-  patients: {pname:string , date:any ,bloodtype:string ,quantity:number,pcase:string,address:string}[]=[];
+  patients: {receiver:string, pname:string, date:any ,bloodtype:string ,quantity:number,pcase:string,address:string}[]=[];
   constructor(private newReq:addRequestService){}
 
   ngOnInit(){

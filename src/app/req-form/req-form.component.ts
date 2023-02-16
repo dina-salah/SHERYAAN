@@ -6,8 +6,10 @@ import { addRequestService } from '../services/addRequest.service';
   styleUrls: ['./req-form.component.css']
 })
 export class ReqFormComponent {
+  
+  receiver:string = '';
   pname:string= '';
-  date:Date= new Date()
+  date:Date= new Date();
   bloodtype:string= '';
   quantity:number = 0 ;
   pcase:string ='';
@@ -18,7 +20,7 @@ export class ReqFormComponent {
   }
 
   addrequest(){
-    this.newReq.addR( this.pname,this.date, this.bloodtype,this.quantity, this.pcase, this.address)
-    console.log(this.newReq.patient)
+    this.newReq.addR(this.receiver, this.pname, this.date, this.bloodtype,this.quantity, this.pcase, this.address);
+    console.log(this.newReq.patient);
   }
 }

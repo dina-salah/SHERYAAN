@@ -31,6 +31,7 @@ import { DonorRewardsComponent } from './donor-rewards/donor-rewards.component';
 import { DonateNowComponent } from './donate-now/donate-now.component';
 import { DonateSideNavComponent } from './donate-side-nav/donate-side-nav.component';
 import { ReqFormComponent } from './req-form/req-form.component';
+import { BloodDrivesComponent } from './blood-drives/blood-drives.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { ReqFormComponent } from './req-form/req-form.component';
     DonateSideNavComponent,
     RequestComponent,
     AboutUsComponent,
-    ReqFormComponent
+    ReqFormComponent,
+    BloodDrivesComponent
   ],
   imports: [
     BrowserModule,

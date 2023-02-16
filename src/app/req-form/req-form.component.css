@@ -1,4 +1,8 @@
-input{
+.form-control{
     margin: 10px;
     width: 630px;
+}
+.custom-control-input{
+    margin-left: 7px;
+    margin-right: 7px;
 }

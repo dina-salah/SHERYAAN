@@ -1,5 +1,13 @@
     
     <div style="font-weight:bold; margin: 13px; font-size: 20px;">Make sure that all information request is correct to avoid any problem</div>
+    <label style="margin-right: 7px;">receiver: </label>
+    <div style="display: inline;">
+        <input id="hospital" type="radio" class="custom-control-input" value="hospital" name="receiver" [(ngModel)]="receiver">
+        <label class="custom-control-label" for="hospital">Hospital</label>
+        
+        <input id="patient" type="radio" class="custom-control-input" value="patient" name="receiver" [(ngModel)]="receiver">
+        <label class="custom-control-label" for="female">Patient</label>
+    </div> 
     <input class="form-control" type="text" placeholder="Name" id="name" [(ngModel)]="pname">
     <input class="form-control" type="date" placeholder="Date" id="date" [(ngModel)]="date">
     <input class="form-control" type="text" placeholder="Blood type" id="bloodtype" [(ngModel)]="bloodtype">
