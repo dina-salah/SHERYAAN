@@ -24,7 +24,7 @@ import { LearnDonationComponent } from './learn-donation/learn-donation.componen
 import { RequestComponent } from './request/request.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HttpClientModule } from '@angular/common/http';
-import {signupuserService} from './services/signupuser.service';
+import { signupService } from './services/signup.service';
 import { DonateComponent } from './donate/donate.component';
 import { LocationComponent } from './location/location.component';
 import { DonorRewardsComponent } from './donor-rewards/donor-rewards.component';
@@ -34,6 +34,9 @@ import { ReqFormComponent } from './req-form/req-form.component';
 import { BloodDrivesComponent } from './blood-drives/blood-drives.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileSideBarComponent } from './user-profile-side-bar/user-profile-side-bar.component';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -66,14 +69,17 @@ import { UserProfileSideBarComponent } from './user-profile-side-bar/user-profil
     ReqFormComponent,
     BloodDrivesComponent,
     UserProfileComponent,
-    UserProfileSideBarComponent
+    UserProfileSideBarComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

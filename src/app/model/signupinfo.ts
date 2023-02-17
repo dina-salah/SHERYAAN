@@ -13,3 +13,19 @@ export class User{
     password!: string;
     id?: string;
 }
+
+export class Hospital{
+    hospitalName!: string;
+    address!: string;
+    phone!: string;
+    email!: string;
+    city!: string;
+}
+
+export class Organization{
+    orgnizationName!: string;
+    address!: string;
+    phone!: string;
+    email!: string;
+    city!: string;
+}

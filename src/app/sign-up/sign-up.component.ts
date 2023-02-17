@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user';
-import { signupuserService } from '../services/signupuser.service';
+import { User } from '../model/signupinfo';
+import { Hospital } from '../model/signupinfo';
+import { Organization } from '../model/signupinfo';
+import { signupService } from '../services/signup.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -8,14 +12,16 @@ import { signupuserService } from '../services/signupuser.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent{
-  allproducts: User[] = [];
+  allusers: User[] = [];
+  allhospitals: Hospital[] = [];
   // isfetching: boolean = false;
 
   uDisplay:boolean =true;
   hDisplay:boolean =true;
   oDisplay:boolean =true;
 
-  constructor(private userservice: signupuserService){}
+  constructor(private signupservice: signupService, private toastr: ToastrService){}
+
 
   onUserCreate(users: {fname: string;
     lname: string;
@@ -29,8 +35,24 @@ export class SignUpComponent{
     bloodType: string;
     healthstatus: string;
     password: string;}){
-    this.userservice.createUser(users);
+    this.signupservice.createUser(users);
   }
+
+  onHospitalCreate(hospitals: {hospitalName: string;
+    address: string;
+    phone: string;
+    email: string;
+    city: string;}){
+      this.signupservice.createHospital(hospitals);
+    }
+
+  onOrganizationCreate(organizations: {orgnizationName: string;
+    address: string;
+    phone: string;
+    email: string;
+    city: string;}){
+      this.signupservice.createOrganization(organizations);
+    }
 
   hospitalDisplay(){
     this.hDisplay =false
@@ -54,8 +76,8 @@ export class SignUpComponent{
 console.log('account is created', signup)
   }
 
-  onsignup(){
-    alert('account created!');
+  onsignup() {
+    this.toastr.success('account created!');
   }
 
 

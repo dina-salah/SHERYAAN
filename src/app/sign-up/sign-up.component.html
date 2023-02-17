@@ -130,14 +130,14 @@
         </div> 
         </form>
     
-        <form class="Hospital" #signup='ngForm'(ngSubmit)="userSubmit(signup)" [hidden]="hDisplay"> 
+        <form class="Hospital" #hospitalForm = "ngForm" (ngSubmit)="onHospitalCreate(hospitalForm.value)" [hidden]="hDisplay"> 
             <div> 
             <div>
                 <h1>Register Your Account</h1>
-                <p>Please enter the following information so we can match to your donation records.</p>
+                <p>Please enter the following information so we can match to your records.</p>
             </div>
             <div  class="form-group">
-                <input  #hname="ngModel" required minlength="2" maxlength="15" type="text" name="Hospital-Name" placeholder="Hospital Name" class="form-control" ngModel>
+                <input  #hname="ngModel" required minlength="2" maxlength="15" type="text" name="hospitalName" placeholder="Hospital Name" class="form-control" ngModel>
                 <div *ngIf="hname.invalid && hname.touched  " class="warning"> required!!</div>
             </div>
             <pre></pre>
@@ -172,13 +172,13 @@
             </div>
             <pre></pre>
             
-            <button type="submit" class="btn btn-danger w-100">Sign up</button>
+            <button type="submit" class="btn btn-danger w-100" (click)="onsignup()">Sign up</button>
     
             <pre></pre> 
         </div> 
         </form>
     
-        <form class="Orgnization" #signup='ngForm'(ngSubmit)="userSubmit(signup)" [hidden]="oDisplay"> 
+        <form class="Orgnization" #organizationForm = "ngForm" (ngSubmit)="onOrganizationCreate(organizationForm.value)" [hidden]="oDisplay"> 
             <div> 
             <div>
                 <h1>Register Your Account</h1>
@@ -186,7 +186,7 @@
             </div>
             <div  class="form-group">
                 
-                <input  #oname="ngModel" required minlength="2" maxlength="15" type="text" name="Orgnization-Name" placeholder="Organization Name" class="form-control" ngModel>
+                <input  #oname="ngModel" required minlength="2" maxlength="15" type="text" name="orgnizationName" placeholder="Organization Name" class="form-control" ngModel>
                 <div *ngIf="oname.invalid && oname.touched  " class="warning"> required!!</div>
             </div>
             <pre></pre>
@@ -220,7 +220,7 @@
             </div> 
             <pre></pre>
             
-            <button type="submit" class="btn btn-danger w-100">Sign up</button>
+            <button type="submit" class="btn btn-danger w-100" (click)="onsignup()">Sign up</button>
             <pre></pre> 
             </div> 
         </form>
