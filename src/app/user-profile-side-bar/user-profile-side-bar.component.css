@@ -15,8 +15,10 @@ li{
     margin-right:0px ;
 }
 li:hover{
+    transition: 3s;
     border-bottom: 1px solid aliceblue;
     border-radius: 2px;
+    
 }
 .profile{
     margin: 10px;
