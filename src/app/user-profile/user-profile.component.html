@@ -1,10 +1,10 @@
-
-<div class="container" >
-<div>
+<div class="container   justify-content-center" style="margin: 8px; padding: 3px;">
+<div class="row " >
+<div class="col-sm-4" style="width: 300px; float: left; margin: 2px;  background-color: #a32b2b;">
     <app-user-profile-side-bar></app-user-profile-side-bar>
 </div>
 
-<div class="container m-3 p-4" style=" float: right; width: 1000px; ">
+<div class="col-sm-4" style=" float: right; margin: 3px; width: 900px; ">
     <div class="">
         <div [hidden]='displays'>
             <ul>
@@ -23,99 +23,97 @@
             </ul>
             <button (click)="show()">Edit</button>
         </div>
-        <div >
-            <form [hidden]='displayd'>
-                <div> 
-                    <div  class="mb-3">
-                        <input  #fname="ngModel" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" ngModel>
-                        <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div>
-                    </div>
-                    <pre></pre>
-            
-                    <div  class="mb-3">
-                        
-                        <input type="text" #lname="ngModel" required minlength="2" maxlength="15" placeholder="last name" name="lname" class="form-control" ngModel>
-                        <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p>
-                    </div>
-                    <pre></pre>
-            
-                    <div  class="mb-3">
-                        
-                        <input type="text" #ssn="ngModel" placeholder="SNN" required minlength="9" maxlength="14" name="snn" class="form-control" ngModel>
-                        <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p>
-                    </div>
-                    <pre></pre>
-                    <div style="display: inline;">
-                    <input id="male" type="radio" class="custom-control-input" value="male" name="gender" ngModel>
-                    <label class="custom-control-label" for="male">Male</label>
-        
-                    <input id="female" type="radio" class="custom-control-input" value="female" name="gender" ngModel>
-                    <label class="custom-control-label" for="female">Female</label>
-                </div>
+        <div  [hidden]='displayd'>
+            <form>
                 
-                    <pre></pre>
-                    <div  class="mb-3"> 
-                        
-                        <!-- /the value must be bet 18 &60/ -->
-                        <input type="text" #age="ngModel" required length="2" placeholder="Age" name="age" class="form-control" value="age" ngModel> 
-                        <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p>
-                    </div>
-                    <pre></pre>
-            
-                    <div  class="mb-3">
-                        
-                        <input type="text" placeholder="Address" name="address" class="form-control" ngModel>
-                    </div>
-                    <pre></pre>
-            
-                    <div  class="mb-3"> 
-                    
-                        <!-- why validation is not working -->
-                        <input type="text" #phone="ngModel" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" ngModel>
-                        <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p>
-                    </div>
-                    <pre></pre>
-                    <div  class="mb-3">
-                        
-                        <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
-                    </div>
-                    <pre></pre>
-                    
-                        <label for="City">City</label><br>
-                        <select name="city" ngModel>
-                        <option value="" name="city" ngModel>6 October</option>
-                        <option value="" name="city" ngModel>Dokki</option>
-                        <option value="" name="city" ngModel>New Cairo</option>
-                        <option value="" name="city" ngModel>Nasr city</option>
-                        <option value="" name="city" ngModel>Madinty</option>
-                        </select>
-                    
-                    <pre></pre>
-        
-                    <label for="bloodType">Blood type</label><br>
-                    <div style="display: inline;" class="mb-3">
-                    <input type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" for="O+">O+</label>
-                    <input type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" for="O"> O-</label>
-                    <input type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" for="A+"> A+</label>
-                    <input type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" for="A-">A-</label>
-                    <input type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" for="B+">B+</label>
-                    <input type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" for="B-">B-</label>
-                    <input type="radio" name="bloodType" value="AB+" ngModel><label class="user-bloodType" for="AB+">AB+</label>
-                    </div>
+                <div  class="mb-3">
+                <input  #fname="ngModel" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" ngModel>
+                <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div>
+            </div>
+            <pre></pre>
+    
+            <div  class="mb-3">
                 
-                    <pre></pre>
-                    <div  class="mb-3"> 
-                    <input type="text" placeholder="health status" name="healthstatus" class="form-control" ngModel>
-                    </div>
-                    <pre></pre>
-                    <div  class="mb-3"> 
-                        <!-- check validity -->
-                    <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" class="form-control" ngModel>
-                        <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p>
-                    </div>
-                    
-                    <pre></pre>
-                </div>
+                <input type="text" #lname="ngModel" required minlength="2" maxlength="15" placeholder="last name" name="lname" class="form-control" ngModel>
+                <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p>
+            </div>
+            <pre></pre>
+    
+            <div  class="mb-3">
+                
+                <input type="text" #ssn="ngModel" placeholder="SNN" required minlength="9" maxlength="14" name="snn" class="form-control" ngModel>
+                <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p>
+            </div>
+            <pre></pre>
+            <div style="display: inline;">
+            <input id="male" type="radio" class="custom-control-input" value="male" name="gender" ngModel>
+            <label class="custom-control-label" for="male">Male</label>
+
+            <input id="female" type="radio" class="custom-control-input" value="female" name="gender" ngModel>
+            <label class="custom-control-label" for="female">Female</label>
+            </div>
+        
+            <pre></pre>
+            <div  class="mb-3"> 
+                
+                <!-- /the value must be bet 18 &60/ -->
+                <input type="text" #age="ngModel" required length="2" placeholder="Age" name="age" class="form-control" value="age" ngModel> 
+                <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p>
+            </div>
+            <pre></pre>
+    
+            <div  class="mb-3">
+                
+                <input type="text" placeholder="Address" name="address" class="form-control" ngModel>
+            </div>
+            <pre></pre>
+    
+            <div  class="mb-3"> 
+            
+                <!-- why validation is not working -->
+                <input type="text" #phone="ngModel" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" ngModel>
+                <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p>
+            </div>
+            <pre></pre>
+            <div  class="mb-3">
+                
+                <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
+            </div>
+            <pre></pre>
+            
+            <div >
+                <label for="City" style="margin-right: 7px;">City:</label>
+                <select class="drop" name="city" ngModel>
+                <option value="6 October" name="city" ngModel>6 October</option>
+                <option value="Dokki" name="city" ngModel>Dokki</option>
+                <option value="New Cairo" name="city" ngModel>New Cairo</option>
+                <option value="Nasr city" name="city" ngModel>Nasr city</option>
+                <option value="Madinty" name="city" ngModel>Madinty</option>
+                </select>
+            </div>
+            <pre></pre>
+
+            <label for="bloodType">Blood type:</label>
+            <div style="display: inline;" class="mb-3">
+            <input class="custom-control-input" type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" for="O+">O+</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" for="O"> O-</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" for="A+"> A+</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" for="A-">A-</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" for="B+">B+</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" for="B-">B-</label>
+            <input class="custom-control-input" type="radio" name="bloodType" value="AB+" ngModel><label class="user-bloodType" for="AB+">AB+</label>
+            </div>
+        
+            <pre></pre>
+            <div  class="mb-3"> 
+            <input type="text" placeholder="health status" name="healthstatus" class="form-control" ngModel>
+            </div>
+            <pre></pre>
+            <div  class="mb-3"> 
+                <!-- check validity -->
+            <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" class="form-control" ngModel>
+                <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p>
+            </div>
                 <button (click)="show()">Done</button>
             </form>
         </div>
@@ -123,4 +121,5 @@
     </div>
 
 </div>`
+</div>
 </div>

@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit{
 
   
     show(){
-      if(this.displays==false ||this.displayd==true){
+      if(this.displays==false && this.displayd==true){
         this.displays=true
         this.displayd=false
       }else{
