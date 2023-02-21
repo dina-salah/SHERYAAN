@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
+
+
 @Component({
   selector: 'app-req-form',
   templateUrl: './req-form.component.html',
   styleUrls: ['./req-form.component.css']
 })
-export class ReqFormComponent {
+export class ReqFormComponent implements OnInit {
   
   receiver:string = '';
   pname:string= '';
@@ -15,12 +19,27 @@ export class ReqFormComponent {
   pcase:string ='';
   address:string= '';
 
-  constructor(private newReq: addRequestService){
+  constructor(private newReq: addRequestService, private http : HttpClient){
 
   }
+
+  ngOnInit(){
+  
+
+  }
+
 
   addrequest(){
     this.newReq.addR(this.receiver, this.pname, this.date, this.bloodtype,this.quantity, this.pcase, this.address);
     console.log(this.newReq.patient);
   }
+
+  onReqAdd(req:{receiver:string, name:string, date:Date, bloodtype:string, quantity:string, pcase:string, address:string }){
+    this.http.post('https://sheryaanang-default-rtdb.firebaseio.com/products.json',req)
+    .subscribe((res)=>{
+      console.log(res)
+    });
+    
+  }
+
 }

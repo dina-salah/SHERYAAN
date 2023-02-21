@@ -1,4 +1,4 @@
-    
+    <form #reqForm="ngForm" (ngSubmit)="onReqAdd(reqForm.value)">
     <div style="font-weight:bold; margin: 13px; font-size: 20px;">Make sure that all information request is correct to avoid any problem</div>
     <label style="margin-right: 7px;">receiver: </label>
     <div style="display: inline;">
@@ -6,12 +6,14 @@
         <label class="custom-control-label" for="hospital">Hospital</label>
         
         <input id="patient" type="radio" class="custom-control-input" value="patient" name="receiver" [(ngModel)]="receiver">
-        <label class="custom-control-label" for="female">Patient</label>
+        <label class="custom-control-label" for="patient">Patient</label>
+        
     </div> 
-    <input class="form-control" type="text" placeholder="Name" id="name" [(ngModel)]="pname">
-    <input class="form-control" type="date" placeholder="Date" id="date" [(ngModel)]="date">
-    <input class="form-control" type="text" placeholder="Blood type" id="bloodtype" [(ngModel)]="bloodtype">
-    <input class="form-control" type="text" placeholder="Quantity" id="quantity" [(ngModel)]="quantity">
-    <input class="form-control" type="text" placeholder="Case" id="pcase" [(ngModel)]="pcase">
-    <input class="form-control" type="text" placeholder="Address" id="address" [(ngModel)]="address">
-    <button class="btn btn-success" style="margin: 10px;" (click)="addrequest()">Add</button>
+    <input class="form-control" type="text" placeholder="Name"       name="pname"  [(ngModel)]="pname">
+    <input class="form-control" type="date" placeholder="Date"       name="date" [(ngModel)]="date">
+    <input class="form-control" type="text" placeholder="Blood type" name="bloodtype" [(ngModel)]="bloodtype">
+    <input class="form-control" type="text" placeholder="Quantity"   name="quantity" [(ngModel)]="quantity">
+    <input class="form-control" type="text" placeholder="Case"       name="pcase" [(ngModel)]="pcase">
+    <input class="form-control" type="text" placeholder="Address"    name="address" [(ngModel)]="address">
+    <button class="btn btn-success" type="submit" value="" style="margin: 10px;" (click)="addrequest()">Add</button>
+</form>
