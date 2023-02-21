@@ -8,6 +8,14 @@
             a message is sent to that hospital or patient to acknowlage that you are a user of the system. after donation you will
             get points that will be added to your account, later you can use it for gifts.
         </p>
+        <br>
+        <b (click)="showform()"><div class="bi bi-plus-lg" >  Add request </div></b>
+        <br>
+      
+      <form class=" justify-content-center" [hidden]="display">
+          <app-req-form></app-req-form>
+      </form>
+      <br>
         <table class="table">
             <thead class="table-dark">
               <tr>
@@ -38,16 +46,6 @@
           </table>
 
           <br><br>
-        <div class="container">
-          <div></div>
-
-          <b (click)="showform()"><div class="bi bi-plus-lg" >  Add request </div></b>
-          <br>
-        </div>
-        <form class=" justify-content-center" [hidden]="display">
-            <app-req-form></app-req-form>
-        </form>
-        <br>
     </div>
 
 </div>
