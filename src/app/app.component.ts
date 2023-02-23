@@ -7,5 +7,5 @@ import { addRequestService } from './services/addRequest.service';
   providers:[addRequestService]
 })
 export class AppComponent {
-  title = 'Bloodprj';
+  title = 'SHERYAAN';
 }
