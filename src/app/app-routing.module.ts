@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DonateComponent } from './donate/donate.component';
@@ -17,9 +18,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { RequestComponent } from './request/request.component';
 import { AboutUsComponent} from './about-us/about-us.component';
 import { BloodDrivesComponent } from './blood-drives/blood-drives.component';
+import { ErrorComponent } from './error/error.component';
 
 
 const routes: Routes = [
+  {path: '', component:HomeComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-up', component:SignUpComponent},
   {path: 'home', component:HomeComponent},
@@ -36,11 +39,14 @@ const routes: Routes = [
   {path:'location',component:LocationComponent},
   {path: 'request', component:RequestComponent},
   {path: 'about-us', component: AboutUsComponent},
-  {path:'blood-drives',component:BloodDrivesComponent}
+  {path:'blood-drives',component:BloodDrivesComponent},
+  {path:'++',component:ErrorComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
