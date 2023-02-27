@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-profile-side-bar.component.css']
 })
 export class UserProfileSideBarComponent {
-  profilePic = '/src/assets/user-icon.png';
-  name: string=''
+ 
 }
