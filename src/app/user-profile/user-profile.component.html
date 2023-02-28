@@ -1,125 +1,95 @@
-<div class="container   justify-content-center" style="margin: 8px; padding: 3px;">
-<div class="row " >
-<div class="col-sm-4" style="width: 300px; float: left; margin: 2px;  background-color: #a32b2b;">
-    <app-user-profile-side-bar></app-user-profile-side-bar>
-</div>
-
-<div class="col-sm-4" style=" float: right; margin: 3px; width: 900px; ">
-    <div class="">
-        <div [hidden]='displays'>
-            <ul>
-                <li>FIRST NAME: {{user.fname}} </li>
-                <li>LAST NAME: {{user.lname}} </li>
-                <li>SSN: {{user.ssn}} </li>
-                <li>GENDER: {{user.gender}} </li>
-                <li>AGE: {{user.age}} </li>
-                <li>ADDRESS: {{user.address}} </li>
-                <li>PHONE: {{user.phone}} </li>
-                <li>EMAIL: {{user.email}} </li>
-                <li>CITY: {{user.city}} </li>
-                <li>BLOOD TYPE: {{user.bloodType}} </li>
-                <li>HEALTH STATUS: {{user.healthstatus}} </li>
-                <li>PASSWORD: {{user.password}} </li>
-            </ul>
-            <button (click)="show()">Edit</button>
-        </div>
-        <div  [hidden]='displayd'>
-            <form>
-                
-                <div  class="mb-3">
-                <input  #fname="ngModel" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" ngModel>
-                <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div>
-            </div>
-            <pre></pre>
     
-            <div  class="mb-3">
-                
-                <input type="text" #lname="ngModel" required minlength="2" maxlength="15" placeholder="last name" name="lname" class="form-control" ngModel>
-                <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p>
-            </div>
-            <pre></pre>
-    
-            <div  class="mb-3">
-                
-                <input type="text" #ssn="ngModel" placeholder="SNN" required minlength="9" maxlength="14" name="snn" class="form-control" ngModel>
-                <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p>
-            </div>
-            <pre></pre>
-            <div style="display: inline;">
-            <input id="male" type="radio" class="custom-control-input" value="male" name="gender" ngModel>
-            <label class="custom-control-label" for="male">Male</label>
 
-            <input id="female" type="radio" class="custom-control-input" value="female" name="gender" ngModel>
-            <label class="custom-control-label" for="female">Female</label>
-            </div>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block" src="" alt="">
+                        
+                        <ul class="meta list list-unstyled">
+                            <li class="name">Rebecca Sanders</li>
+                        </ul>
+                    </div>
+            		<nav class="side-menu">
+        				<ul class="nav">
+        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="fa fa-user"></span> Profile</a></li>
+        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
+        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+        					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
+        				
+        				</ul>
+        			</nav>
+                </div>
+                <div class="content-panel">
+                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2>
+                    <form class="form-horizontal">
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Personal Info</h3>
+                            <div class="form-group avatar">
+                                <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                    <img class="img-rounded img-responsive" src="" alt="">
+                                </figure>
+                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+                                    <input type="file" class="file-uploader pull-left">
+                                    <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
         
-            <pre></pre>
-            <div  class="mb-3"> 
-                
-                <!-- /the value must be bet 18 &60/ -->
-                <input type="text" #age="ngModel" required length="2" placeholder="Age" name="age" class="form-control" value="age" ngModel> 
-                <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Contact Info</h3>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="email" class="form-control" value="">
+                                    <p class="help-block">This is the email </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Twitter</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value="">
+                                    <p class="help-block">Your twitter username</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Linkedin</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="url" class="form-control" value="">
+                                    <p class="help-block">eg. https://www.linkedin.com/in/yourname</p>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                <input class="btn btn-primary" type="submit" value="Update Profile">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <pre></pre>
-    
-            <div  class="mb-3">
-                
-                <input type="text" placeholder="Address" name="address" class="form-control" ngModel>
-            </div>
-            <pre></pre>
-    
-            <div  class="mb-3"> 
-            
-                <!-- why validation is not working -->
-                <input type="text" #phone="ngModel" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" ngModel>
-                <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p>
-            </div>
-            <pre></pre>
-            <div  class="mb-3">
-                
-                <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
-            </div>
-            <pre></pre>
-            
-            <div >
-                <label for="City" style="margin-right: 7px;">City:</label>
-                <select class="drop" name="city" ngModel>
-                <option value="6 October" name="city" ngModel>6 October</option>
-                <option value="Dokki" name="city" ngModel>Dokki</option>
-                <option value="New Cairo" name="city" ngModel>New Cairo</option>
-                <option value="Nasr city" name="city" ngModel>Nasr city</option>
-                <option value="Madinty" name="city" ngModel>Madinty</option>
-                </select>
-            </div>
-            <pre></pre>
-
-            <label for="bloodType">Blood type:</label>
-            <div style="display: inline;" class="mb-3">
-            <input class="custom-control-input" type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" for="O+">O+</label>
-            <input class="custom-control-input" type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" for="O"> O-</label>
-            <input class="custom-control-input" type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" for="A+"> A+</label>
-            <input class="custom-control-input" type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" for="A-">A-</label>
-            <input class="custom-control-input" type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" for="B+">B+</label>
-            <input class="custom-control-input" type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" for="B-">B-</label>
-            <input class="custom-control-input" type="radio" name="bloodType" value="AB+" ngModel><label class="user-bloodType" for="AB+">AB+</label>
-            </div>
-        
-            <pre></pre>
-            <div  class="mb-3"> 
-            <input type="text" placeholder="health status" name="healthstatus" class="form-control" ngModel>
-            </div>
-            <pre></pre>
-            <div  class="mb-3"> 
-                <!-- check validity -->
-            <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" class="form-control" ngModel>
-                <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p>
-            </div>
-                <button (click)="show()">Done</button>
-            </form>
-        </div>
-
+        </section>
     </div>
-
-</div>`
-</div>
 </div>
