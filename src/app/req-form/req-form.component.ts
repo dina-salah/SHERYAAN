@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class ReqFormComponent implements OnInit {
   pcase:string ='';
   address:string= '';
 
-  constructor(private newReq: addRequestService, private http : HttpClient){
+  constructor(private newReq: addRequestService, private http : HttpClient,private toastr: ToastrService, private _router: Router){
 
   }
 
@@ -39,6 +41,10 @@ export class ReqFormComponent implements OnInit {
     .subscribe((res)=>{
       console.log(res)
     });
+
+    this.toastr.success('Your request has been added!');
+
+    this._router.navigate(['/request']);
     
   }
 

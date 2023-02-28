@@ -1,5 +1,9 @@
-    <form #reqForm="ngForm" (ngSubmit)="onReqAdd(reqForm.value)">
-    <div style="font-weight:bold; margin: 13px; font-size: 20px;">Make sure that all information request is correct to avoid any problem</div>
+<div class="container">
+    
+<form #reqForm="ngForm" (ngSubmit)="onReqAdd(reqForm.value)">
+    <div style="font-weight:bolder; margin: 13px; font-size: 20px;">
+        Make sure that all information request is correct to avoid any problem
+    </div>
     <label style="margin-right: 7px;">receiver: </label>
     <div style="display: inline;">
         <input id="hospital" type="radio" class="custom-control-input" value="hospital" name="receiver" [(ngModel)]="receiver">
@@ -15,5 +19,6 @@
     <input class="form-control" type="text" placeholder="Quantity"   name="quantity" [(ngModel)]="quantity">
     <input class="form-control" type="text" placeholder="Case"       name="pcase" [(ngModel)]="pcase">
     <input class="form-control" type="text" placeholder="Address"    name="address" [(ngModel)]="address">
-    <button class="btn btn-success" type="submit" value="" style="margin: 10px;" (click)="addrequest()">Add</button>
+    <button class="btn btn-danger" type="submit" value="" style="margin: 10px;" (click)="addrequest()">Add</button>
 </form>
+</div>

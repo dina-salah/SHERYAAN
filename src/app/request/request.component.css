@@ -21,13 +21,4 @@
     background-color: rgb(13, 34, 150);
     color: rgb(255, 255, 255);
   }
-  form{
   
-    border-radius: 4px;
-    display: block;
-    background-color: rgba(245, 245, 245, 0.815); 
-    margin: 30px; 
-    padding: 30px; 
-    width: 730px;
-    margin-left: 20%;
-  }
