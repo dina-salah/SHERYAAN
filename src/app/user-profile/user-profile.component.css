@@ -1,3 +1,9 @@
+.form-control{
+    background-color: whitesmoke;
+}
+.warning{
+    color: red;
+}
 body{
     background:#f9f9fb;    
     }
