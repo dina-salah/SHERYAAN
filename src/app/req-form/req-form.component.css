@@ -6,3 +6,13 @@
     margin-left: 7px;
     margin-right: 7px;
 }
+form{
+  
+    border-radius: 4px;
+    display: block;
+    background-color: rgba(245, 245, 245, 0.815); 
+    margin: 30px; 
+    padding: 30px; 
+    width: 730px;
+    margin-left: 20%;
+  }

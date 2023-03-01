@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { User } from '../model/signupinfo';
+import { signupService } from '../services/signup.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,8 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit{
   
+  allusers: User[] = [];
+
   displays:boolean=false;
   displayd:boolean=true;
+
+  constructor(private toastr: ToastrService){}
 
   user!:  {fname: string;
     lname: string;
@@ -27,16 +36,16 @@ export class UserProfileComponent implements OnInit{
 
     }
     
-
   
-    show(){
-      if(this.displays==false && this.displayd==true){
-        this.displays=true
-        this.displayd=false
-      }else{
-        this.displays=false
-        this.displayd=true
-      }
+    showform(){
+      this.displays = true;
+      this.displayd = false;
+    }
+    showinfo(){
+      this.displays = false;
+      this.displayd = true;
+
+      this.toastr.success('profile updated successfully!');
     }
 
 }

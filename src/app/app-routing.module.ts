@@ -19,7 +19,7 @@ import { RequestComponent } from './request/request.component';
 import { AboutUsComponent} from './about-us/about-us.component';
 import { BloodDrivesComponent } from './blood-drives/blood-drives.component';
 import { ErrorComponent } from './error/error.component';
-
+import { ReqFormComponent } from './req-form/req-form.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -40,7 +40,8 @@ const routes: Routes = [
   {path: 'request', component:RequestComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path:'blood-drives',component:BloodDrivesComponent},
-  {path:'++',component:ErrorComponent}
+  {path:'req-form', component:ReqFormComponent}
+  // {path:'++',component:ErrorComponent}
 ];
 
 @NgModule({

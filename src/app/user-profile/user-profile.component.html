@@ -26,8 +26,42 @@
         				</ul>
         			</nav>
                 </div>
-                <div class="content-panel">
-                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2>
+                <!--static profile info-->
+                <div class="content-panel" [hidden]="displays">
+                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2><br>
+                    <fieldset class="fieldset">
+                        <h3 class="fieldset-title">Personal Info</h3>
+                        <div class="mb-3">
+                            <label>Name:</label><br>
+                            <label>SSN:</label><br>
+                            <label>Gender:</label><br>
+                            <label>Age:</label><br>
+                            <label>Address:</label><br>
+                            <label>City:</label><br>
+                            <label>Blood type:</label><br>
+                            <label>health status:</label><br>
+                            <label>Password:</label><br>
+                        </div>
+                    </fieldset><br>
+                    <fieldset class="fieldset">
+                        <h3 class="fieldset-title">Contact Info</h3>
+                        <div class="mb-3">
+                            <label>Email:</label><br>
+                            <label>Phone number:</label>
+                        </div>
+                    </fieldset>
+                    <hr><br>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                            <button class="btn btn-primary" type="submit" (click)="showform()">Update Profile</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--editable profile info-->
+                <div class="content-panel" [hidden]="displayd">
+                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2><br>
                     <form class="form-horizontal">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
@@ -37,60 +71,87 @@
                                 </figure>
                                 <div class="form-inline col-md-10 col-sm-9 col-xs-12">
                                     <input type="file" class="file-uploader pull-left">
-                                    <button type="submit" class="btn btn-sm btn-default-alt pull-left">Update Image</button>
-                                </div>
+                                    <button type="submit" class="btn btn-sm btn-primary pull-left">Update Image</button>
+                                </div><br><br>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-                                </div>
-                            </div>
+                            <div  class="mb-3">
+                                <input  #fname="ngModel" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" ngModel>
+                                <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div>
+                            </div><pre></pre>
         
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-                                </div>
+                            <div  class="mb-3">
+                                <input type="text" #lname="ngModel" required minlength="2" maxlength="15" placeholder="last name" name="lname" class="form-control" ngModel>
+                                <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p>
+                            </div><pre></pre>
+
+                            <div  class="mb-3">
+                                <input type="text" #ssn="ngModel" placeholder="SNN" required minlength="9" maxlength="14" name="snn" class="form-control" ngModel>
+                                <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p>
+                            </div><pre></pre>
+
+                            <div  class="mb-3"> 
+                                <!-- /the value must be bet 18 &60/ -->
+                                <input type="text" #age="ngModel" required length="2" placeholder="Age" name="age" class="form-control" value="age" ngModel> 
+                                <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p>
+                            </div><pre></pre>
+
+                            <div  class="mb-3">
+                                <input type="text" placeholder="Address" name="address" class="form-control" ngModel>
+                            </div><pre></pre>
+
+                            <div>
+                                <label for="City" style="margin-right: 7px;">City:</label>
+                                <select class="drop" name="city" ngModel>
+                                <option value="6 October" name="city" ngModel>6 October</option>
+                                <option value="Dokki" name="city" ngModel>Dokki</option>
+                                <option value="New Cairo" name="city" ngModel>New Cairo</option>
+                                <option value="Nasr city" name="city" ngModel>Nasr city</option>
+                                <option value="Madinty" name="city" ngModel>Madinty</option>
+                                </select>
+                            </div><pre></pre>
+
+                            <label for="bloodType" style="margin-right: 7px;">Blood type:</label>
+                            <div style="display: inline;" class="mb-3">
+                            <input class="custom-control-input" type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="O+">O+</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" style="margin-right: 7px;" for="O"> O-</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" style="margin-right: 7px;" for="A+"> A+</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="A-">A-</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="B+">B+</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="B-">B-</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="AB+" ngModel><label class="user-bloodType" for="AB+">AB+</label>
+                            </div><pre></pre>
+
+                            <div  class="mb-3"> 
+                                <input type="text" placeholder="health status" name="healthstatus" class="form-control" ngModel>
+                            </div><pre></pre>
+
+                            <div  class="mb-3"> 
+                                <!-- check validity -->
+                                <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" class="form-control" ngModel>
+                                <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-                                </div>
-                            </div>
+
+                            <br>
                         </fieldset>
                         <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Contact Info</h3>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="email" class="form-control" value="">
-                                    <p class="help-block">This is the email </p>
-                                </div>
+                            <h3 class="fieldset-title">Contact Info</h3><br>
+                            <div  class="mb-3"> 
+                                <!-- why validation is not working -->
+                                <input type="text" #phone="ngModel" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" ngModel>
+                                <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p>
                             </div>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Twitter</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="">
-                                    <p class="help-block">Your twitter username</p>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2  col-sm-3 col-xs-12 control-label">Linkedin</label>
-                                <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="url" class="form-control" value="">
-                                    <p class="help-block">eg. https://www.linkedin.com/in/yourname</p>
-                                </div>
+                            <pre></pre>
+                            <div  class="mb-3">
+                                <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
                             </div>
                         </fieldset>
                         <hr>
-                        <div class="form-group">
-                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                <input class="btn btn-primary" type="submit" value="Update Profile">
-                            </div>
-                        </div>
                     </form>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                            <button class="btn btn-primary" type="submit" (click)="showinfo()">save</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

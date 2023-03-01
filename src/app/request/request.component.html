@@ -9,12 +9,9 @@
             get points that will be added to your account, later you can use it for gifts.
         </p>
         <br>
-        <b (click)="showform()"><div class="bi bi-plus-lg" >  Add request </div></b>
+        <b><div class="bi bi-plus-lg" routerLink="/req-form" routerLinkActive="active">  Add request </div></b>
         <br>
-      
-      <form class=" justify-content-center" [hidden]="display">
-          <app-req-form></app-req-form>
-      </form>
+
       <br>
         <table class="table">
             <thead class="table-dark">
