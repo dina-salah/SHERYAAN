@@ -48,4 +48,7 @@ export class UserProfileComponent implements OnInit{
       this.toastr.success('profile updated successfully!');
     }
 
+    onDelete(){
+
+    }
 }

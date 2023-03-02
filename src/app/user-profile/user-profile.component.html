@@ -1,9 +1,4 @@
 
-
-
-
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="view-account">
         <section class="module">
@@ -13,12 +8,12 @@
                         <img class="img-profile img-circle img-responsive center-block" src="" alt="">
                         
                         <ul class="meta list list-unstyled">
-                            <li class="name">Rebecca Sanders</li>
+                            <!-- <li class="name">{{user.fname}} {{user.lname}}</li> -->
                         </ul>
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
-        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="fa fa-user"></span> Profile</a></li>
+        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> Profile</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
@@ -28,7 +23,6 @@
                 </div>
                 <!--static profile info-->
                 <div class="content-panel" [hidden]="displays">
-                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2><br>
                     <fieldset class="fieldset">
                         <h3 class="fieldset-title">Personal Info</h3>
                         <div class="mb-3">
@@ -55,25 +49,20 @@
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                             <button class="btn btn-primary" type="submit" (click)="showform()">Update Profile</button>
                         </div>
+                        <br>
+                        <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                            <button class="btn btn-danger" type="submit" (click)="onDelete()">Delete account</button>
+                        </div>
                     </div>
                 </div>
 
 
                 <!--editable profile info-->
                 <div class="content-panel" [hidden]="displayd">
-                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2><br>
                     <form class="form-horizontal">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
-                            <div class="form-group avatar">
-                                <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                                    <img class="img-rounded img-responsive" src="" alt="">
-                                </figure>
-                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                    <input type="file" class="file-uploader pull-left">
-                                    <button type="submit" class="btn btn-sm btn-primary pull-left">Update Image</button>
-                                </div><br><br>
-                            </div>
+                            
                             <div  class="mb-3">
                                 <input  #fname="ngModel" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" ngModel>
                                 <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div>
@@ -124,8 +113,15 @@
                             <div  class="mb-3"> 
                                 <input type="text" placeholder="health status" name="healthstatus" class="form-control" ngModel>
                             </div><pre></pre>
-
+                            <div class="form-group avatar">
+                            
+                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+                                    
+                                    <button type="submit" class="btn btn-danger">Update Image</button>
+                                </div>
+                            </div><pre></pre>
                             <div  class="mb-3"> 
+                                
                                 <!-- check validity -->
                                 <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" class="form-control" ngModel>
                                 <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p>
@@ -145,11 +141,12 @@
                                 <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
                             </div>
                         </fieldset>
+                        
                         <hr>
                     </form>
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                            <button class="btn btn-primary" type="submit" (click)="showinfo()">save</button>
+                            <button class="btn btn-success" type="submit" (click)="showinfo()">save</button>
                         </div>
                     </div>
                 </div>
