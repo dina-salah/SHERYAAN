@@ -13,7 +13,7 @@
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
-        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> Profile</a></li>
+        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
@@ -49,13 +49,36 @@
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                             <div class="d-flex">
                             <button class="btn btn-primary m-1" type="submit" (click)="showform()">Update Profile</button>
-                            <button class="btn btn-danger m-1" type="submit" (click)="onDelete()">Delete account</button>
+                            <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
+              
+                <div class="modal fade" id="deleteModal">
+                    <div class="modal-dialog" >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">DELETE!!</h4>
+                          <button class="btn-close" data-bs-dismiss="modal" ></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>you sure you want to delete your account?</h5> 
 
+                           <div  class="mb-3"> 
+                                <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" class="form-control" ngModel>
+                                <!-- <p ngIf="password.invalid " class="warning"> invalid password!!</p> -->
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                 <!--editable profile info-->
                 <div class="content-panel" [hidden]="displayd">
