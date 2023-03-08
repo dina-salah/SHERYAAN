@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { User } from '../model/signupinfo';
 import { signupService } from '../services/signup.service';
 import {ToastrService} from 'ngx-toastr';
-
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -17,7 +17,7 @@ export class UserProfileComponent implements OnInit{
   displays:boolean=false;
   displayd:boolean=true;
 
-  constructor(private toastr: ToastrService){}
+  constructor(private toastr: ToastrService, private http: HttpClient){}
 
   user!:  {fname: string;
     lname: string;
@@ -30,7 +30,7 @@ export class UserProfileComponent implements OnInit{
     city: string;
     bloodType: string;
     healthstatus: string;
-    password: string;}
+    password: string}
 
     ngOnInit(): void {
 
@@ -48,7 +48,8 @@ export class UserProfileComponent implements OnInit{
       this.toastr.success('profile updated successfully!');
     }
 
-    onDelete(){
-
+    onDelete(id:any){
+      id = this.user.ssn
+      this.http.delete('https://sheryaanang-default-rtdb.firebaseio.com/products.json')
     }
 }
