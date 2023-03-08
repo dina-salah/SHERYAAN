@@ -21,27 +21,39 @@
         				</ul>
         			</nav>
                 </div>
+
                 <!--static profile info-->
                 <div class="content-panel" [hidden]="displays">
                     <fieldset class="fieldset">
+                        <div class="row ">
+                            <div class="col col-lg-2">
                         <h3 class="fieldset-title">Personal Info</h3>
+                    </div>
+                    <div class="col ">
                         <div class="mb-3">
-                            <label>Name:</label><br>
-                            <label>SSN:</label><br>
-                            <label>Gender:</label><br>
-                            <label>Age:</label><br>
-                            <label>Address:</label><br>
-                            <label>City:</label><br>
-                            <label>Blood type:</label><br>
-                            <label>health status:</label><br>
-                            <label>Password:</label><br>
+                            <label>Name: {{user.fname}} {{user.lname}}</label><br>
+                            <label>SSN: {{user.ssn}}</label><br>
+                            <label>Gender: {{user.gender}}</label><br>
+                            <label>Age: {{user.age}}</label><br>
+                            <label>Address: {{user.address}}</label><br>
+                            <label>City: {{user.city}}</label><br>
+                            <label>Blood type: {{user.bloodType}}</label><br>
+                            <label>health status: {{user.healthstatus}}</label><br>
                         </div>
+                    </div>
+                    </div>
                     </fieldset><br>
                     <fieldset class="fieldset">
+                        <div class="row ">
+                            <div class="col col-lg-2">
                         <h3 class="fieldset-title">Contact Info</h3>
+                        </div>
+                        <div class="col col-lg-2">
                         <div class="mb-3">
-                            <label>Email:</label><br>
-                            <label>Phone number:</label>
+                            <label>Email: {{user.email}}</label><br>
+                            <label>Phone number: {{user.phone}}</label>
+                        </div>
+                        </div>
                         </div>
                     </fieldset>
                     <hr><br>
@@ -55,7 +67,8 @@
 
                     </div>
                 </div>
-              
+                
+              <!-- modal -->
                 <div class="modal fade" id="deleteModal">
                     <div class="modal-dialog" >
                       <div class="modal-content">
@@ -67,14 +80,14 @@
                             <h5>you sure you want to delete your account?</h5> 
 
                            <div  class="mb-3"> 
-                                <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" class="form-control" ngModel>
+                                <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" style="width:250px ;" class="form-control" ngModel>
                                 <!-- <p ngIf="password.invalid " class="warning"> invalid password!!</p> -->
                             </div>
                         </div>
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+                          <button type="button" class="btn btn-danger" (click)="onDelete(user.ssn)">Delete</button>
                         </div>
                       </div>
                     </div>

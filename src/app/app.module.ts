@@ -33,7 +33,6 @@ import { DonateSideNavComponent } from './donate-side-nav/donate-side-nav.compon
 import { ReqFormComponent } from './req-form/req-form.component';
 import { BloodDrivesComponent } from './blood-drives/blood-drives.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserProfileSideBarComponent } from './user-profile-side-bar/user-profile-side-bar.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -72,7 +71,6 @@ import { LoggedInBarComponent } from './logged-in-bar/logged-in-bar.component';
     ReqFormComponent,
     BloodDrivesComponent,
     UserProfileComponent,
-    UserProfileSideBarComponent,
     ErrorComponent,
     LoggedInBarComponent,
 

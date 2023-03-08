@@ -1,3 +1,6 @@
+.side-bar{
+    background-color: whitesmoke;
+}
 .form-control{
     background-color: whitesmoke;
 }
@@ -126,4 +129,7 @@
     }}
     a{
         text-decoration: none;
+    }
+    label{
+        border-bottom: 2px solid rgba(255, 68, 0, 0.597);
     }
