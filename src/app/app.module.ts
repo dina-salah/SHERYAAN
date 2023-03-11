@@ -38,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorComponent } from './error/error.component';
 import { LoggedInBarComponent } from './logged-in-bar/logged-in-bar.component';
+import { MyrequestUserComponent } from './myrequest-user/myrequest-user.component';
 
 
 
@@ -73,6 +74,7 @@ import { LoggedInBarComponent } from './logged-in-bar/logged-in-bar.component';
     UserProfileComponent,
     ErrorComponent,
     LoggedInBarComponent,
+    MyrequestUserComponent,
 
     
   ],

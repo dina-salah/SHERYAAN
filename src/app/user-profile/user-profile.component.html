@@ -14,7 +14,7 @@
             		<nav class="side-menu">
         				<ul class="nav">
         					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
-        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
+        					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
         				
@@ -94,8 +94,8 @@
                   </div>
 
                 <!--editable profile info-->
-                <div class="content-panel" [hidden]="displayd">
-                    <form class="form-horizontal">
+                <div class="content-panel" [hidden]="displays">
+                    <form class="form-horizontal" >
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
                             
@@ -124,7 +124,7 @@
                                 <input type="text" placeholder="Address" name="address" class="form-control" ngModel>
                             </div><pre></pre>
 
-                            <div>
+                            <div  >
                                 <label for="City" style="margin-right: 7px;">City:</label>
                                 <select class="drop" name="city" ngModel>
                                 <option value="6 October" name="city" ngModel>6 October</option>
@@ -133,18 +133,20 @@
                                 <option value="Nasr city" name="city" ngModel>Nasr city</option>
                                 <option value="Madinty" name="city" ngModel>Madinty</option>
                                 </select>
-                            </div><pre></pre>
-
-                            <label for="bloodType" style="margin-right: 7px;">Blood type:</label>
+                            </div>
+                            <pre></pre>
+                
+                            <label for="bloodType">Blood type:</label>
                             <div style="display: inline;" class="mb-3">
-                            <input class="custom-control-input" type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="O+">O+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" style="margin-right: 7px;" for="O"> O-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" style="margin-right: 7px;" for="A+"> A+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="A-">A-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="B+">B+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" style="margin-right: 7px;" for="B-">B-</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="O+" ngModel><label class="user-bloodType" for="O+">O+</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="O" ngModel ><label class="user-bloodType" for="O"> O-</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="A+"  ngModel><label class="user-bloodType" for="A+"> A+</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="A-" ngModel><label class="user-bloodType" for="A-">A-</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="B+" ngModel><label class="user-bloodType" for="B+">B+</label>
+                            <input class="custom-control-input" type="radio" name="bloodType" value="B-" ngModel><label class="user-bloodType" for="B-">B-</label>
                             <input class="custom-control-input" type="radio" name="bloodType" value="AB+" ngModel><label class="user-bloodType" for="AB+">AB+</label>
-                            </div><pre></pre>
+                            </div>
+                            <pre></pre>
 
                             <div  class="mb-3"> 
                                 <input type="text" placeholder="health status" name="healthstatus" class="form-control" ngModel>

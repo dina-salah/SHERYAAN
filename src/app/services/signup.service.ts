@@ -25,7 +25,7 @@ export class signupService{
         console.log(users);
     const headers = new HttpHeaders({'myheader' : 'sheryaan'});
     this.http.post(
-    'https://angularlearning-b3938-default-rtdb.firebaseio.com/users.json', users, {headers: headers})
+    'localhost:5000/user', users, {headers: headers})
     .subscribe((res) => {
       console.log(res);
     });
