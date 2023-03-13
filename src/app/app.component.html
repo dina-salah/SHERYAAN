@@ -4,7 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <div class="" style="font-family: 'Roboto Slab', serif;">
-<app-sign-navbar></app-sign-navbar> 
+
+    <div>
+        <app-sign-navbar  *ngIf="displayBar == true"></app-sign-navbar> 
+        <app-logged-in-bar  *ngIf="displayBar == false"></app-logged-in-bar>
+    </div>
+
 <app-nav-bar ></app-nav-bar>
 
 <router-outlet></router-outlet>

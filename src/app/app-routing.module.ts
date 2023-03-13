@@ -18,6 +18,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { RequestComponent } from './request/request.component';
 import { AboutUsComponent} from './about-us/about-us.component';
 import { BloodDrivesComponent } from './blood-drives/blood-drives.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ErrorComponent } from './error/error.component';
 import { ReqFormComponent } from './req-form/req-form.component';
 import { MyrequestUserComponent } from './myrequest-user/myrequest-user.component';
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'request', component:RequestComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path:'blood-drives',component:BloodDrivesComponent},
+  {path:'user-profile', component:UserProfileComponent},
   {path:'req-form', component:ReqFormComponent},
   {path:'myrequest-user', component:MyrequestUserComponent}
   // {path:'++',component:ErrorComponent}

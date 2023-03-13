@@ -8,4 +8,16 @@ import { addRequestService } from './services/addRequest.service';
 })
 export class AppComponent {
   title = 'SHERYAAN | شريان';
+  displayBar:boolean = true;
+
+  display(){
+    if (this.displayBar == true) {
+      this.displayBar = false;
+    }else{
+      this.displayBar=true;
+    }
+
+  }
+
+  
 }
