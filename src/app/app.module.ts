@@ -39,6 +39,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ErrorComponent } from './error/error.component';
 import { LoggedInBarComponent } from './logged-in-bar/logged-in-bar.component';
 import { MyrequestUserComponent } from './myrequest-user/myrequest-user.component';
+import { BloodDrivesHomeComponent } from './blood-drives-home/blood-drives-home.component';
 
 
 
@@ -75,6 +76,7 @@ import { MyrequestUserComponent } from './myrequest-user/myrequest-user.componen
     ErrorComponent,
     LoggedInBarComponent,
     MyrequestUserComponent,
+    BloodDrivesHomeComponent,
     
 
     
