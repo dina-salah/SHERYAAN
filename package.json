@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ng serve --proxy-config proxy.config.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
