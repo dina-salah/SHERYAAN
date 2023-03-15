@@ -5,7 +5,7 @@
     text-shadow: 1px 1px #f7f7f7;
     border-radius: 10px;
     width: 220px;
-    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+    box-shadow: 0 4px 8px 0 rgb(40, 33, 33);
 
 }
 .button:hover{
@@ -16,13 +16,14 @@
     transition: 0.3s;
 
 }
-.b{
+.b{ 
     width: 300px;
     height: 80px;
     background-color: rgb(238, 25, 25);
     color: white;
     font-size: larger;
-    box-shadow: 0 4px 8px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+    box-shadow: 0 4px 8px 0 rgb(39, 31, 31);
+    border-radius: 7px;
 }
 .b:hover{
     background-color: red;
