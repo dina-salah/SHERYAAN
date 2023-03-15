@@ -25,7 +25,7 @@ export class signupService{
         console.log(users);
     const headers = new HttpHeaders({'myheader' : 'sheryaan'});
     this.http.post(
-    'localhost:5000/user', users, {headers: headers})
+    'http://localhost:5000/user', users, {headers: headers})
     .subscribe((res) => {
       console.log(res);
     });
