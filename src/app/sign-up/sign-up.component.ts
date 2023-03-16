@@ -25,9 +25,9 @@ export class SignUpComponent{
 
   onUserCreate(users: {fname: string;
     lname: string;
-    ssn: string;
+    ssn: number;
     gender: string;
-    age: string;
+    age: number;
     address: string;
     phone: string;
     email: string;

@@ -10,18 +10,7 @@ export class signupService{
     constructor(private http: HttpClient){}
 
     //create product in database
-    createUser(users: {fname: string;
-        lname: string;
-        ssn: string;
-        gender: string;
-        age: string;
-        address: string;
-        phone: string;
-        email: string;
-        city: string;
-        bloodType: string;
-        healthstatus: string;
-        password: string;}){
+    createUser(users: User){
         console.log(users);
     const headers = new HttpHeaders({'myheader' : 'sheryaan'});
     this.http.post(
