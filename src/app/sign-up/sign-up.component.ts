@@ -4,6 +4,7 @@ import { Hospital } from '../model/signupinfo';
 import { Organization } from '../model/signupinfo';
 import { signupService } from '../services/signup.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -82,3 +83,4 @@ console.log('account is created', signup)
 
 
 }
+
