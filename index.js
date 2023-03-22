@@ -20,7 +20,7 @@ var dbConn = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
-  password: "menna182000",
+  password: "dina",
   database: "blooddb2",
 });
 // connect to database
@@ -55,6 +55,8 @@ app.get("/user/:id", function (req, res) {
     }
   );
 });
+
+////////////////////////////////////////////////////
 
 // Add a new user
 app.post("/user", function (req, res) {
@@ -99,6 +101,9 @@ app.post("/user", function (req, res) {
   );
 });
 
+
+
+////////////////////////////////////////////////
 //  Update user with id
 app.put(`/user/:id`, function (req, res) {
   let user_ssn = req.params.id;
@@ -129,6 +134,8 @@ app.put(`/user/:id`, function (req, res) {
     }
   );
 });
+
+
 
 //  Delete user
 app.delete("/user/:id", function (req, res) {
