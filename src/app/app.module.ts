@@ -77,15 +77,14 @@ import { BloodDrivesHomeComponent } from './blood-drives-home/blood-drives-home.
     LoggedInBarComponent,
     MyrequestUserComponent,
     BloodDrivesHomeComponent,
-    
 
     
   ],
   imports: [
-    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
     BrowserAnimationsModule,

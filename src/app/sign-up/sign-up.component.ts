@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -160,3 +161,4 @@ this.signupservice.createUser(this.addUserForm.value)
 
 
 }
+
