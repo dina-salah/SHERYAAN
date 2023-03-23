@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from '../model/signupinfo';
 import { signupService } from '../services/signup.service';
 import {ToastrService} from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent implements OnInit{
+export class UserProfileComponent {
   
-  allusers: User[] = [];
-
   displays:boolean=false;
   displayd:boolean=true;
 
   constructor(private toastr: ToastrService, private http: HttpClient){}
 
-  user!:  {fname: string;
+  user:  {fname: string;
     lname: string;
     ssn: string;
     gender: string;
@@ -32,10 +32,20 @@ export class UserProfileComponent implements OnInit{
     healthstatus: string;
     password: string}
 
-    ngOnInit(): void {
-
-    }
-    
+    addUserForm =  new FormGroup({
+      fname: new FormControl(null, Validators.required),
+      lname: new FormControl(null, Validators.required),
+      ssn: new FormControl(null,  Validators.required),
+      age: new FormControl(null, Validators.required),
+      address: new FormControl(null, Validators.required),
+      phone: new FormControl(null, Validators.required),
+      email: new FormControl(null, Validators.required),
+      city: new FormControl(null, Validators.required),
+      bloodType: new FormControl(null, Validators.required),
+      healthstatus: new FormControl(null, Validators.required),
+      password: new FormControl(null, Validators.required),
+    })
+  
   
     showform(){
       this.displays = true;
@@ -50,6 +60,6 @@ export class UserProfileComponent implements OnInit{
 
     onDelete(id:any){
       id = this.user.ssn
-      this.http.delete('https://sheryaanang-default-rtdb.firebaseio.com/products.json')
+      this.http.delete('')
     }
 }

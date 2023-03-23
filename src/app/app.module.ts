@@ -40,6 +40,8 @@ import { ErrorComponent } from './error/error.component';
 import { LoggedInBarComponent } from './logged-in-bar/logged-in-bar.component';
 import { MyrequestUserComponent } from './myrequest-user/myrequest-user.component';
 import { BloodDrivesHomeComponent } from './blood-drives-home/blood-drives-home.component';
+import { HospitalProfileComponent } from './hospital-profile/hospital-profile.component';
+import { OrgnizationProfileComponent } from './orgnization-profile/orgnization-profile.component';
 
 
 
@@ -77,6 +79,8 @@ import { BloodDrivesHomeComponent } from './blood-drives-home/blood-drives-home.
     LoggedInBarComponent,
     MyrequestUserComponent,
     BloodDrivesHomeComponent,
+    HospitalProfileComponent,
+    OrgnizationProfileComponent,
 
     
   ],

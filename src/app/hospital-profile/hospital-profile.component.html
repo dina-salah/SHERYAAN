@@ -8,7 +8,7 @@
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
                         <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{user.fname}} {{user.lname}}</li> -->
+                            <!-- <li class="name">{{hospital.name}}</li> -->
                         </ul>
                     </div>
             		<nav class="side-menu">
@@ -32,13 +32,8 @@
                     <div class="col ">
                         <div class="mb-3"><br>
                             <label>Name: </label><br>
-                            <label>SSN:  </label><br>
-                            <label>Gender:</label><br>
-                            <label>Age: </label><br>
                             <label>Address:</label><br>
                             <label>City: </label><br>
-                            <label>Blood type: </label><br>
-                            <label>health status: </label><br>
                         </div>
                     </div>
                     </div>
@@ -50,7 +45,7 @@
                         </div>
                         <div class="col col-lg-2">
                         <div class="mb-3">
-                            <label>Email:</label><br>
+                            <label>Email: </label><br>
                             <label>Phone number:</label>
                         </div>
                         </div>
@@ -87,7 +82,7 @@
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger" (click)="onDelete(user.ssn)">Delete</button>
+                          <button type="button" class="btn btn-danger" (click)="onDelete(hospital.id)">Delete</button>
                         </div>
                       </div>
                     </div>
@@ -95,62 +90,31 @@
 
                 <!--editable profile info-->
                 <div class="content-panel" [hidden]="displayd">
-                    <form class="form-horizontal" [formGroup]="addUserForm">
+                    <form class="form-horizontal" [formGroup]="addHospitalForm" >
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
                             
                             <div  class="mb-3">
-                                <input  required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" formControlName="fname">
+                                <input required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control"  formControlName="name">
                                 <!-- <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div> -->
                             </div><pre></pre>
-        
-                            <div  class="mb-3">
-                                <input type="text"  required minlength="2" maxlength="15" placeholder="last name" name="lname" class="form-control" formControlName="lname">
-                                <!-- <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p> -->
-                            </div><pre></pre>
 
                             <div  class="mb-3">
-                                <input type="text"  placeholder="SNN" required minlength="9" maxlength="14" name="snn" class="form-control" formControlName="ssn">
-                                <!-- <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p> -->
-                            </div><pre></pre>
-
-                            <div  class="mb-3"> 
-                                <!-- /the value must be bet 18 &60/ -->
-                                <input type="text"  required length="2" placeholder="Age" name="age" class="form-control" value="age" formControlName="age"> 
-                                <!-- <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p> -->
-                            </div><pre></pre>
-
-                            <div  class="mb-3">
-                                <input type="text" placeholder="Address" name="address" class="form-control" formControlName="address">
+                                <input type="text" placeholder="Address" name="address" class="form-control"  formControlName="address">
                             </div><pre></pre>
 
                             <div  >
-                                <label  style="margin-right: 7px;">City:</label>
-                                <select class="drop" formControlName="city" >
-                                <option value="6 October"  >6 October</option>
-                                <option value="Dokki"  >Dokki</option>
-                                <option value="New Cairo"  >New Cairo</option>
-                                <option value="Nasr city"  >Nasr city</option>
-                                <option value="Madinty"  >Madinty</option>
+                                <label for="City" style="margin-right: 7px;">City:</label>
+                                <select class="drop" name="city"  formControlName="city">
+                                <option value="6 October" name="city" >6 October</option>
+                                <option value="Dokki" name="city" >Dokki</option>
+                                <option value="New Cairo" name="city" >New Cairo</option>
+                                <option value="Nasr city" name="city" >Nasr city</option>
+                                <option value="Madinty" name="city" >Madinty</option>
                                 </select>
                             </div>
                             <pre></pre>
-                
-                            <label for="bloodType">Blood type:</label>
-                            <div style="display: inline;" class="mb-3">
-                            <input class="custom-control-input" type="radio" name="bloodType" value="O+" formControlName="bloodType" ><label class="user-bloodType" for="O+">O+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="O"  formControlName="bloodType" ><label class="user-bloodType" for="O"> O-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="A+" formControlName="bloodType"  ><label class="user-bloodType" for="A+"> A+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="A-" formControlName="bloodType"  ><label class="user-bloodType" for="A-">A-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="B+" formControlName="bloodType" ><label class="user-bloodType" for="B+">B+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="B-" formControlName="bloodType" ><label class="user-bloodType" for="B-">B-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="AB+"formControlName="bloodType"  ><label class="user-bloodType" for="AB+">AB+</label>
-                            </div>
-                            <pre></pre>
 
-                            <div  class="mb-3"> 
-                                <input type="text" placeholder="health status" name="healthstatus" class="form-control" formControlName="healthstatus" >
-                            </div><pre></pre>
                             <div class="form-group avatar">
                             
                                 <div class="form-inline col-md-10 col-sm-9 col-xs-12">
@@ -161,30 +125,32 @@
                             <div  class="mb-3"> 
                                 
                                 <!-- check validity -->
-                                <input type="password"  placeholder="Password" required minlength="8" name="password" class="form-control" formControlName="password" >
+                                <input type="password"  placeholder="Password" required minlength="8" name="password" class="form-control"  formControlName="password">
                                 <!-- <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p> -->
                             </div>
 
                             <br>
                         </fieldset>
+
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Contact Info</h3><br>
                             <div  class="mb-3"> 
                                 <!-- why validation is not working -->
-                                <input type="text"  placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" formControlName="phone" >
+                                <input type="text" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control"  formControlName="phone">
                                 <!-- <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p> -->
                             </div>
                             <pre></pre>
                             <div  class="mb-3">
-                                <input type="email" placeholder="Email" name="email" class="form-control" formControlName="email" >
+                                <input type="email" placeholder="Email" name="email" class="form-control"  formControlName="email">
                             </div>
                         </fieldset>
                         
                         <hr>
                     </form>
+
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                            <button class="btn btn-success" type="submit" (click)="showinfo()">save</button>
+                            <button class="btn btn-success" (click)="showinfo()">save</button>
                         </div>
                     </div>
                 </div>
