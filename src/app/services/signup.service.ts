@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class signupService{
 
-
+  API: string = 'http://localhost:5000';
   userAPI: string        ='http://localhost:5000/user';
   hospitalAPI:string     =''; 
   orgnizationAPI: string ='';
@@ -25,6 +25,22 @@ export class signupService{
         return this.http.post<any>(this.orgnizationAPI, Orgnizationdata);
       }
             
+      IsloggedInUser(){
+        return sessionStorage.getItem('email')!=null;
+      }
+      GetUserRole(){
+        return sessionStorage.getItem('userrole')!=null?sessionStorage.getItem('userrole')?.toString():'';
+      }
+      GetUserbyId(id:any){
+        return this.http.get(this.API+'/user/:'+id);
+      }
+      GetallUsers(){
+        return this.http.get(this.API + '/users');
+      }
+      updateuser(id:any,inputdata:any){
+        return this.http.put(this.API+'/:'+id,inputdata);
+      }
+  
 
 
 

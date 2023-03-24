@@ -22,6 +22,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ErrorComponent } from './error/error.component';
 import { ReqFormComponent } from './req-form/req-form.component';
 import { MyrequestUserComponent } from './myrequest-user/myrequest-user.component';
+import { LoggedInBarComponent } from './logged-in-bar/logged-in-bar.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
   {path:'blood-drives',component:BloodDrivesComponent},
   {path:'user-profile', component:UserProfileComponent},
   {path:'req-form', component:ReqFormComponent},
-  {path:'myrequest-user', component:MyrequestUserComponent}
+  {path:'myrequest-user', component:MyrequestUserComponent},
+  {path: 'logged-in-bar', component:LoggedInBarComponent}
   // {path:'++',component:ErrorComponent}
 ];
 

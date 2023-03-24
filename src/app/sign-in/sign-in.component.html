@@ -3,20 +3,20 @@
       <div class="col-md-6 offset-md-3">
         <h1>LOGIN</h1>
         <div class="card my-5">
-          <form class="card-body cardbody-color p-lg-5">
+          <form class="card-body cardbody-color p-lg-5" [formGroup]="loginform" (ngSubmit)="proceedlogin()">
             <label for="login" style="margin-right: 7px;">login as:</label>
             <div style="display: inline;" class="mb-3">
-            <input class="custom-control-input" type="radio" name="login" value="user" ngModel><label for="user" style="margin-right: 7px;">User</label>
-            <input class="custom-control-input" type="radio" name="login" value="hospital" ngModel ><label for="hospital" style="margin-right: 7px;">Hospital</label>
-            <input class="custom-control-input" type="radio" name="login" value="organization"  ngModel><label for="organization" style="margin-right: 7px;">Organization</label>
-            <input class="custom-control-input" type="radio" name="login" value="admin" ngModel><label for="admin">Admin</label>
+            <input class="custom-control-input" type="radio" name="login" value="user" formControlName="usertype"><label for="user" style="margin-right: 7px;">User</label>
+            <input class="custom-control-input" type="radio" name="login" value="hospital" formControlName="usertype" ><label for="hospital" style="margin-right: 7px;">Hospital</label>
+            <input class="custom-control-input" type="radio" name="login" value="organization"  formControlName="usertype"><label for="organization" style="margin-right: 7px;">Organization</label>
+            <input class="custom-control-input" type="radio" name="login" value="admin" formControlName="usertype"><label for="admin">Admin</label>
             </div><pre></pre>
             <div class="mb-3">
-              <input type="text" class="form-control" id="Email" aria-describedby="emailHelp"
-                placeholder="Email">
+              <input type="text" class="form-control" aria-describedby="emailHelp"
+                placeholder="ssn" formControlName="ssn">
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" id="password" placeholder="password">
+              <input type="password" class="form-control" placeholder="password" formControlName="password">
             </div>
             <div class="text-center"><button type="submit" class="btn btn-danger px-5 mb-5 w-100">Login</button></div>
             <div id="emailHelp" class="form-text text-center mb-5 text-dark">Not
