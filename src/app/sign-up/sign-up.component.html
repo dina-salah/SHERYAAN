@@ -37,29 +37,29 @@
             </div>
 
             <div  class="mb-3">
-                <input  placeholder="First Name" class="form-control"  formControlName="fname" >
+                <input  placeholder="First Name" class="form-control"  formControlName="user_Fname" >
                 <!-- <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div> -->
             </div>
 
             <pre></pre>
             <div  class="mb-3">
                 
-                <input type="text"  placeholder="Last name"class="form-control"  formControlName="lname" >
+                <input type="text"  placeholder="Last name"class="form-control"  formControlName="user_Lname" >
                 <!-- <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p> -->
             </div>
 
             <pre></pre>
             <div  class="mb-3">
                 
-                <input type="text"  placeholder="SNN"  class="form-control"  formControlName="ssn" >
+                <input type="text"  placeholder="SNN"  class="form-control"  formControlName="user_national_ID" >
                 <!-- <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p> -->
             </div>
 
             <pre></pre>
             <div style="display: inline;">
-            <input type="radio" class="custom-control-input" name="gender" value="Male" formControlName="gender" >
+            <input type="radio" class="custom-control-input"  value="Male" formControlName="user_gender" >
             <label class="custom-control-label" >Male</label>
-            <input  type="radio" class="custom-control-input"  name="gender" value="Female"   formControlName="gender" >
+            <input  type="radio" class="custom-control-input"  value="Female"   formControlName="user_gender" >
             <label class="custom-control-label" >Female</label>
             <!-- <input type="text" class="custom-control-input" name="gender"  formControlName="gender" > -->
             </div>
@@ -67,33 +67,33 @@
             <pre></pre>
             <div  class="mb-3"> 
                 
-                <input type="text"   placeholder="Age"  class="form-control"   formControlName="age" > 
+                <input type="text"   placeholder="Age"  class="form-control"   formControlName="user_age" > 
                 <!-- <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p> -->
             </div>
 
             <pre></pre>
             <div  class="mb-3">
                 
-                <input type="text" placeholder="Address"  class="form-control"  formControlName="address" >
+                <input type="text" placeholder="Address"  class="form-control"  formControlName="user_address" >
             </div>
 
             <pre></pre>
             <div  class="mb-3"> 
             
-                <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="phone" >
+                <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="user_phoneNo" >
                 <!-- <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p> -->
             </div>
             <pre></pre>
 
             <div  class="mb-3">
                 
-                <input type="email" placeholder="Email" class="form-control"  formControlName="email" >
+                <input type="email" placeholder="Email" class="form-control"  formControlName="user_Email" >
             </div>
             <pre></pre>
             
             <div  >
                 <label  style="margin-right: 7px;">City:</label>
-                <select class="drop" formControlName="city">
+                <select class="drop" formControlName="user_city">
                 <option value="6 October">  6 October</option>
                 <option value="Dokki">      Dokki</option>
                 <option value="New Cairo">  New Cairo</option>
@@ -105,23 +105,23 @@
 
             <label  >Blood type:</label>
             <div style="display: inline;" class="mb-3">
-            <input class="custom-control-input" type="radio"  name="bloodType"  value="O+"  formControlName="bloodType" ><label class="user-bloodType">O+</label>
-            <input class="custom-control-input" type="radio"  name="bloodType"  value="O-"  formControlName="bloodType" ><label class="user-bloodType">O-</label>
-            <input class="custom-control-input" type="radio"  name="bloodType"  value="A+"  formControlName="bloodType" ><label class="user-bloodType">A+</label>
-            <input class="custom-control-input" type="radio"  name="bloodType"  value="A-"  formControlName="bloodType" ><label class="user-bloodType">A-</label>
-            <input class="custom-control-input" type="radio"  name="bloodType"  value="B+"  formControlName="bloodType" ><label class="user-bloodType">B+</label>
-            <input class="custom-control-input" type="radio"  name="bloodType"  value="B-"  formControlName="bloodType" ><label class="user-bloodType">B-</label>
-            <input class="custom-control-input" type="radio"  name="bloodType"  value="AB+" formControlName="bloodType" ><label class="user-bloodType">AB+</label>
+            <input class="custom-control-input" type="radio"  value="O+"  formControlName="user_blood_type" ><label class="user-bloodType">O+</label>
+            <input class="custom-control-input" type="radio"  value="O-"  formControlName="user_blood_type" ><label class="user-bloodType">O-</label>
+            <input class="custom-control-input" type="radio"  value="A+"  formControlName="user_blood_type" ><label class="user-bloodType">A+</label>
+            <input class="custom-control-input" type="radio"  value="A-"  formControlName="user_blood_type" ><label class="user-bloodType">A-</label>
+            <input class="custom-control-input" type="radio"  value="B+"  formControlName="user_blood_type" ><label class="user-bloodType">B+</label>
+            <input class="custom-control-input" type="radio"  value="B-"  formControlName="user_blood_type" ><label class="user-bloodType">B-</label>
+            <input class="custom-control-input" type="radio"  value="AB+" formControlName="user_blood_type" ><label class="user-bloodType">AB+</label>
 
         </div>
         
             <pre></pre>
             <div  class="mb-3"> 
-            <input type="text" placeholder="health status"   class="form-control"  formControlName="healthstatus" >
+            <input type="text" placeholder="health status"   class="form-control"  formControlName="user_health_status" >
             </div>
             <pre></pre>
             <div  class="mb-3"> 
-            <input type="password"placeholder="Password"    class="form-control"  formControlName="password" >
+            <input type="password"placeholder="Password"    class="form-control"  formControlName="user_password" >
                 <!-- <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p> -->
             </div>
             <pre></pre>
