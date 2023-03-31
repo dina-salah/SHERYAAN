@@ -42,6 +42,12 @@ import { MyrequestUserComponent } from './myrequest-user/myrequest-user.componen
 import { BloodDrivesHomeComponent } from './blood-drives-home/blood-drives-home.component';
 import { HospitalProfileComponent } from './hospital-profile/hospital-profile.component';
 import { OrgnizationProfileComponent } from './orgnization-profile/orgnization-profile.component';
+import { APositiveComponent } from './a-positive/a-positive.component';
+import { AVeComponent } from './a-ve/a-ve.component';
+import { BPositiveComponent } from './b-positive/b-positive.component';
+import { BVeComponent } from './b-ve/b-ve.component';
+import { ABPositiveComponent } from './ab-positive/ab-positive.component';
+import { ABVeComponent } from './ab-ve/ab-ve.component';
 
 
 
@@ -81,6 +87,12 @@ import { OrgnizationProfileComponent } from './orgnization-profile/orgnization-p
     BloodDrivesHomeComponent,
     HospitalProfileComponent,
     OrgnizationProfileComponent,
+    APositiveComponent,
+    AVeComponent,
+    BPositiveComponent,
+    BVeComponent,
+    ABPositiveComponent,
+    ABVeComponent,
 
     
   ],

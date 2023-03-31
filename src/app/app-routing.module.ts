@@ -23,9 +23,20 @@ import { ErrorComponent } from './error/error.component';
 import { ReqFormComponent } from './req-form/req-form.component';
 import { MyrequestUserComponent } from './myrequest-user/myrequest-user.component';
 import { LoggedInBarComponent } from './logged-in-bar/logged-in-bar.component';
-
+import { APositiveComponent } from './a-positive/a-positive.component';
+import { AVeComponent } from './a-ve/a-ve.component';
+import { BPositiveComponent } from './b-positive/b-positive.component';
+import { BVeComponent } from './b-ve/b-ve.component';
+import { ABPositiveComponent } from './ab-positive/ab-positive.component';
+import { ABVeComponent } from './ab-ve/ab-ve.component';
 const routes: Routes = [
   {path: '', component:HomeComponent},
+  {path:'a-positive',component:APositiveComponent},
+  {path:'a-ve',component:AVeComponent},
+  {path:'b-positive', component:BPositiveComponent},
+  {path:'b-ve', component:BVeComponent},
+  {path:'ab-positive',component:ABPositiveComponent},
+  {path:'ab-ve',component:ABVeComponent},
   {path: 'sign-in', component: SignInComponent},
   {path: 'sign-up', component:SignUpComponent},
   {path: 'home', component:HomeComponent},
