@@ -15,29 +15,102 @@ export class SignInComponent {
   constructor(private builder: FormBuilder, private service: signupService, private toastr: ToastrService,
     private router: Router){}
 
+  uDisplay:boolean =true;
+  hDisplay:boolean =true;
+  oDisplay:boolean =true;
+  aDisplay:boolean =true;
   userdata: any;
+
+  hospitalDisplay(){
+    this.hDisplay =false
+    this.uDisplay=true 
+    this.oDisplay =true
+    this.aDisplay =true
+  }
+
+  userDisplay(){
+    this.uDisplay=false
+    this.hDisplay =true 
+    this.oDisplay =true
+    this.aDisplay =true
+  }
+  
+  orgnizationDisplay(){
+    this.oDisplay =false
+    this.uDisplay=true
+    this.hDisplay =true 
+    this.aDisplay =true
+  }
+  adminDisplay(){
+    this.aDisplay =false
+    this.uDisplay=true
+    this.hDisplay =true 
+    this.oDisplay =true
+  }
     
-  loginform=this.builder.group({
-    login: this.builder.control('', Validators.required),
-    ssn: this.builder.control('', Validators.required),
-    password: this.builder.control('', Validators.required)
+  userloginform=this.builder.group({
+    user_national_ID: this.builder.control('', Validators.required),
+    user_password: this.builder.control('', Validators.required)
   })
 
-  proceedlogin(){
-    if(this.loginform.valid && this.loginform.value.login == 'user'){
-      this.service.GetUserbyId(this.loginform.value.ssn).subscribe(res => {
-        this.userdata = res;
-        console.log(this.userdata);
-        if(this.userdata.password === this.loginform.value.password){
-          sessionStorage.setItem('ssn', this.userdata.id);
-          sessionStorage.setItem('userrole', this.userdata.role);
-          this.router.navigate(['logged-in-bar']);
-        } else {
-          this.toastr.error('Invalid credentials');
-        }
-      });
-    }
+  hospitalloginform=this.builder.group({
+    hospital_Email: this.builder.control('', Validators.required),
+    hospital_password: this.builder.control('', Validators.required)
+  })
+
+  orgloginform=this.builder.group({
+    organization_email: this.builder.control('', Validators.required),
+    organization_password: this.builder.control('', Validators.required)
+  })
+
+  proceedloginuser(){
+    console.log(this.userloginform.value)
+
+  this.service.userlogin(this.userloginform.value)
+  .subscribe({
+  next: (data) => {
+  console.log(data)
+  this.toastr.success('logged in successfully!');
+
+  },
+  error: (error) => {
+    console.log(error)
   }
+  });
+  }
+
+  proceedloginhospital(){
+    console.log(this.hospitalloginform.value)
+
+  this.service.hospitallogin(this.hospitalloginform.value)
+  .subscribe({
+  next: (data) => {
+  console.log(data)
+  this.toastr.success('logged in successfully!');
+
+  },
+  error: (error) => {
+    console.log(error)
+  }
+  });
+  }
+
+  proceedloginorg(){
+    console.log(this.orgloginform.value)
+
+  this.service.orglogin(this.orgloginform.value)
+  .subscribe({
+  next: (data) => {
+  console.log(data)
+  this.toastr.success('logged in successfully!');
+
+  },
+  error: (error) => {
+    console.log(error)
+  }
+  });
+  }
+      
 
 }
 

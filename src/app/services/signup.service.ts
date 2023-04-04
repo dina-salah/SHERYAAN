@@ -11,8 +11,8 @@ export class signupService{
 
   API: string = 'http://localhost:5000';
   userAPI: string        ='http://localhost:5000/user';
-  hospitalAPI:string     =''; 
-  orgnizationAPI: string ='';
+  hospitalAPI:string     ='http://localhost:7000/hospital'; 
+  orgnizationAPI: string ='http://localhost:6000/org';
     constructor(private http: HttpClient){}
 
       createUser(userdata:any): Observable<any>{
@@ -23,6 +23,15 @@ export class signupService{
       }
       createOrgnization(Orgnizationdata:any): Observable<any>{
         return this.http.post<any>(this.orgnizationAPI, Orgnizationdata);
+      }
+      userlogin(userlogindata: any){
+        return this.http.post<any>('http://localhost:5000/login', userlogindata);
+      }
+      hospitallogin(hospitllogindata: any){
+        return this.http.post<any>('http://localhost:7000/login', hospitllogindata);
+      }
+      orglogin(orglogindata: any){
+        return this.http.post<any>('http://localhost:6000/login', orglogindata);
       }
             
       IsloggedInUser(){
