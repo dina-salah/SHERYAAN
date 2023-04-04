@@ -72,21 +72,20 @@ export class SignUpComponent{
   })
 
   addHospitalForm =  new FormGroup({
-    name: new FormControl(null, Validators.required),
-    address: new FormControl(null, Validators.required),
-    phone: new FormControl(null, Validators.required),
-    email: new FormControl(null, Validators.required),
-    city: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required),
+    hospital_name: new FormControl(null, Validators.required),
+    hospital_address: new FormControl(null, Validators.required),
+    hospital_phoneNo: new FormControl(null, Validators.required),
+    hospital_Email: new FormControl(null, Validators.required),
+    hospital_city: new FormControl(null, Validators.required),
+    hospital_password: new FormControl(null, Validators.required),
   })
 
   addOrgnizationForm = new FormGroup({
-    name: new FormControl(null, Validators.required),
-    address: new FormControl(null, Validators.required),
-    phone: new FormControl(null, Validators.required),
-    email: new FormControl(null, Validators.required),
-    city: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required),
+    organization_name: new FormControl(null, Validators.required),
+    organization_city: new FormControl(null, Validators.required),
+    organization_phoneNo: new FormControl(null, Validators.required),
+    organization_email: new FormControl(null, Validators.required),
+    organization_password: new FormControl(null, Validators.required)
   })
 
   hospitalDisplay(){

@@ -3,3 +3,24 @@ h1{
   color: black;
   text-align: center;
 }
+.usertype-box{
+  display: flex;
+  place-content: center;
+  box-sizing: border-box;
+}
+.rad-label {
+  padding: 7px;
+  align-items: center;
+  border-radius: 80px;
+  margin: 10px;
+  cursor: pointer;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.rad-label:hover{
+background: whitesmoke;
+}
+
+
