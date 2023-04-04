@@ -12,7 +12,7 @@ export class signupService{
   API: string = 'http://localhost:5000';
   userAPI: string        ='http://localhost:5000/user';
   hospitalAPI:string     ='http://localhost:7000/hospital'; 
-  orgnizationAPI: string ='http://localhost:6000/org';
+  orgnizationAPI:string  ='http://localhost:6000/org';
     constructor(private http: HttpClient){}
 
       createUser(userdata:any): Observable<any>{

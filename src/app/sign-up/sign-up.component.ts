@@ -52,7 +52,6 @@ export class SignUpComponent{
   uDisplay:boolean =true;
   hDisplay:boolean =true;
   oDisplay:boolean =true;
-  localapi: string = 'http://localhost:5000/user';
 
   constructor(private signupservice: signupService, private toastr: ToastrService ){}
 
