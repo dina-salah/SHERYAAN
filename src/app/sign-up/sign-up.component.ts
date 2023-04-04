@@ -57,18 +57,18 @@ export class SignUpComponent{
   constructor(private signupservice: signupService, private toastr: ToastrService ){}
 
   addUserForm =  new FormGroup({
-    fname: new FormControl(null, Validators.required),
-    lname: new FormControl(null, Validators.required),
-    ssn: new FormControl(null,  Validators.required),
-    gender: new FormControl(null, Validators.required),
-    age: new FormControl(null, Validators.required),
-    address: new FormControl(null, Validators.required),
-    phone: new FormControl(null, Validators.required),
-    email: new FormControl(null, Validators.required),
-    city: new FormControl(null, Validators.required),
-    bloodType: new FormControl(null, Validators.required),
-    healthstatus: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required),
+    user_Fname: new FormControl(null, Validators.required),
+    user_Lname: new FormControl(null, Validators.required),
+    user_national_ID: new FormControl(null, Validators.required),
+    user_gender: new FormControl(null, Validators.required),
+    user_age: new FormControl(null, Validators.required),
+    user_address: new FormControl(null, Validators.required),
+    user_phoneNo: new FormControl(null, Validators.required),
+    user_Email: new FormControl(null, Validators.required),
+    user_city: new FormControl(null, Validators.required),
+    user_blood_type: new FormControl(null, Validators.required),
+    user_health_status: new FormControl(null, Validators.required),
+    user_password: new FormControl(null, Validators.required),
   })
 
   addHospitalForm =  new FormGroup({
