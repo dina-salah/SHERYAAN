@@ -18,12 +18,13 @@ export class SignInComponent {
   userdata: any;
     
   loginform=this.builder.group({
+    login: this.builder.control('', Validators.required),
     ssn: this.builder.control('', Validators.required),
     password: this.builder.control('', Validators.required)
   })
 
   proceedlogin(){
-    if(this.loginform.valid){
+    if(this.loginform.valid && this.loginform.value.login == 'user'){
       this.service.GetUserbyId(this.loginform.value.ssn).subscribe(res => {
         this.userdata = res;
         console.log(this.userdata);
