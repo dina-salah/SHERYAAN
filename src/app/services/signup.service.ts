@@ -15,6 +15,7 @@ export class signupService{
   orgnizationAPI:string  ='http://localhost:6000/org';
     constructor(private http: HttpClient){}
 
+
       createUser(userdata:any): Observable<any>{
         return this.http.post<any>(this.userAPI, userdata);
       }
@@ -24,6 +25,8 @@ export class signupService{
       createOrgnization(Orgnizationdata:any): Observable<any>{
         return this.http.post<any>(this.orgnizationAPI, Orgnizationdata);
       }
+
+
       userlogin(userlogindata: any){
         return this.http.post<any>('http://localhost:5000/login', userlogindata);
       }
@@ -34,6 +37,7 @@ export class signupService{
         return this.http.post<any>('http://localhost:6000/login', orglogindata);
       }
             
+      
       IsloggedInUser(){
         return sessionStorage.getItem('email')!=null;
       }
