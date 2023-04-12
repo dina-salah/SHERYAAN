@@ -14,12 +14,12 @@ export class AppComponent {
 
   constructor(public _signupService:signupService){}
   // displayFunc(displayBar:boolean){
-  //   // if (displayBar == true) {
-  //   //     displayBar = false;
+  //   // if (displayBar == false) {
+  //   //     displayBar = true;
   //   // }else{
-  //   //     displayBar=true;
+  //   //     displayBar=false;
   //   // }
-  //   this.display =displayBar;
+  //   return this.display =displayBar;
   // }
 
   

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent {
   // @Output() displaynavbar = new EventEmitter<boolean>();
-
+  // display:boolean
   constructor(private http: HttpClient, private builder: FormBuilder, private service: signupService, private toastr: ToastrService,
     private router: Router){}
 
@@ -77,11 +77,11 @@ export class SignInComponent {
   .subscribe({
   next: (data) => {
   console.log(data)
-  this.toastr.success('logged in successfully!');
-  // (display:boolean) => { 
-  //   display = true;
-  //   this.displaynavbar.emit(display);
-  // }
+    // this.display = true;
+    // this.displaynavbar.emit(this.display);
+  
+  this.toastr.success('logged in successfully!')
+  
  }, 
   error: (error) => {
     console.log(error)

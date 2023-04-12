@@ -10,12 +10,14 @@
         
             <app-sign-navbar *ngIf="!_signupService.IsloggedInUser()"></app-sign-navbar> 
             <app-logged-in-bar *ngIf="_signupService.IsloggedInUser()"  ></app-logged-in-bar>
-
-        <!-- <app-logged-in-bar  (displaynavbar)=displayFunc($event) *ngIf="display == true" ></app-logged-in-bar> -->
+<!-- 
+        <app-sign-in (displaynavbar)=displayFunc($event) hidden></app-sign-in>
+        <app-sign-navbar *ngIf="display == false"></app-sign-navbar> 
+        <app-logged-in-bar  (displaynavbar)=displayFunc($event) *ngIf="display == true" ></app-logged-in-bar> -->
     </div>
 
 <app-nav-bar ></app-nav-bar>
-<!-- <app-sign-in (displaynavbar)=displayFunc($event) hidden></app-sign-in> -->
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 </div>
