@@ -1,14 +1,26 @@
+const cors = require('cors'); //added cors
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
+
 
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-);
+  );
+  
+app.use(cors()); //cors
+//added cors
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 
 // default route
 app.get("/", function (req, res) {
@@ -59,11 +71,12 @@ app.get("/org/:id", function (req, res) {
 // Add a new organization
 app.post("/org", function (req, res) {
   //let org = req.body.organization_id;
-  let event_code = req.body.event_code;
+  //let event_code = req.body.event_code;
   let name = req.body.organization_name;
   let phoneNo = req.body.organization_phoneNo;
   let email = req.body.organization_email;
   let password = req.body.organization_password;
+  let city = req.body.organization_city;
 
   /*if (!org) {
     return res
@@ -74,11 +87,12 @@ app.post("/org", function (req, res) {
     "INSERT INTO organization SET ? ",
     {
       //organization_id: org,
-      event_code: event_code,
+      //event_code: event_code,
       organization_name: name,
       organization_password: password,
       organization_phoneNo: phoneNo,
-      organization_email: email
+      organization_email: email,
+      organization_city: city
     },
     function (error, results, fields) {
       if (error) throw error;
@@ -94,7 +108,7 @@ app.post("/org", function (req, res) {
 //  Update organization data with id
 app.put(`/org/:id`, function (req, res) {
   let org = req.params.id;
-  let event_code = req.body.event_code;
+  //let event_code = req.body.event_code;
   let name = req.body.organization_name;
   let phoneNo = req.body.organization_phoneNo;
   let email = req.body.organization_email;
@@ -105,8 +119,8 @@ app.put(`/org/:id`, function (req, res) {
       .send({ error: true, message: "Please provide the user ssn" });
   }
   dbConn.query(
-    `UPDATE organization SET event_code = ? , organization_name = ? , organization_phoneNo = ? , organization_email = ? , organization_password = ? WHERE organization_id = ${org} ;`,
-    [event_code, name, phoneNo, email, password],
+    `UPDATE organization SET organization_name = ? , organization_phoneNo = ? , organization_email = ? , organization_password = ? WHERE organization_id = ${org} ;`,
+    [name, phoneNo, email, password],
     function (error, results, fields) {
       if (error) throw error;
       return res.send({
@@ -149,27 +163,22 @@ app.post("/login", function (req, res) {
       .send({ error: true, message: "Please provide your email and password" });
   }
   dbConn.query(
-    "SELECT organization_email , organization_password FROM organization WHERE organization_email = ?",
-    email,
+    "SELECT organization_email , organization_password FROM organization WHERE organization_email = ? AND organization_password = ? ",
+    [email, password],
+    
     function (error, results, fields) {
       if (error) throw error;
-      //console.log(typeof results[0].user_password);
-      if (results.length === 0 ||results[0].organization_password !== password ){
+      if (results.length == 0 ) {
         return res.send({
-          error: false,
-          //data: results,
-          message: "email or password are not accepted",
-        });
-      }
-      else if (
-        results[0].organization_email === email &&
-        results[0].organization_password === password
-      ) {
+          error : true,
+          message: "email or password are not correct"
+        })
+      } 
+      else {
         return res.send({
-          error: false,
-          //data: results,
-          message: "login accepted",
-        });
+          error : false,
+          message: "loging accepted"
+        })
       }
     }
   );

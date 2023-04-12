@@ -1,3 +1,4 @@
+const cors = require('cors'); //added cors
 var express = require("express");
 var app = express();
 var cookieParser = require("cookie-parser");
@@ -19,6 +20,14 @@ app.use(
     extended: true,
   })
 );
+
+app.use(cors()); //cors
+//added cors
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // connection configurations
 var dbConn = mysql.createConnection({
@@ -189,40 +198,31 @@ app.delete("/user/:id", function (req, res) {
 
 //verify user information
 app.post("/login", function (req, res) {
-  session=req.session;
-  console.log(session)
-  
-  let id = req.body.user_national_ID;
+  let ID = req.body.user_national_ID;
   let password = req.body.user_password;
-  if (!id || !password) {
+  if (!ID || !password) {
     return res
       .status(400)
-      .send({ error: true, message: "Please provide your SSN and password" });
+      .send({ error: true, message: "Please provide your National ID and password" });
   }
   dbConn.query(
-    "SELECT user_national_ID , user_password FROM user WHERE user_national_ID = ?",
-    id,
+    "SELECT user_national_ID , user_password FROM user WHERE user_national_ID = ? AND user_password = ? ",
+    [ID, password],
+    
     function (error, results, fields) {
       if (error) throw error;
-      //console.log(results.length)
-      //console.log(typeof results[0].user_password);
-      if (results.length === 0 ||results[0].user_password !== password ){
+      if (results.length == 0 ) {
         return res.send({
-          error: false,
-          //data: results,
-          message: "your national Id or password is not correct",
-        });
-      }
-      else if (
-        results[0].user_national_ID === id &&
-        results[0].user_password === password
-      ) {
-        return res.send({
-          error: false,
-          //data: results,
-          message: "login accepted",
-        });
+          error : true,
+          message: "national id or password are not correct"
+        })
       } 
+      else {
+        return res.send({
+          error : false,
+          message: "loging accepted"
+        })
+      }
     }
   );
 });
