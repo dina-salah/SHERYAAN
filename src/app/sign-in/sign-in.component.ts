@@ -13,8 +13,6 @@ import { Router } from '@angular/router';
 export class SignInComponent {
   // @Output() displaynavbar = new EventEmitter<boolean>();
 
-  
-
   constructor(private http: HttpClient, private builder: FormBuilder, private service: signupService, private toastr: ToastrService,
     private router: Router){}
 
@@ -66,6 +64,11 @@ export class SignInComponent {
     organization_password: this.builder.control('', Validators.required)
   })
 
+  adminloginform=this.builder.group({
+    admin_email: this.builder.control('', Validators.required),
+    admin_password: this.builder.control('', Validators.required)
+  })
+
   //user  
   proceedloginuser(){
     console.log(this.userloginform.value)
@@ -87,26 +90,7 @@ export class SignInComponent {
   }
   });
   }
-  // proceedloginuser(){
-  //   this.http.get<any>("http://localhost:5000/user")
-    
-
-  //   .subscribe(res=>{
-  //     const user = res.find((a:any)=>{
-  //       return a.email === this.userloginform.value.user_national_ID && a.password === this.userloginform.value.user_password 
-  //     });
-  //     if(user){
-  //       this.toastr.success('logged in successfully!');
-  //       this.userloginform.reset()
-  //     // this.router.navigate(["home"])
-  //     }else{
-  //       alert("user not found")
-  //     }
-  //   },err=>{
-      
-  //     this.toastr.warning('check your password!');
-  //   })
-  // }
+  
   //hospital  
   proceedloginhospital(){
     console.log(this.hospitalloginform.value)
@@ -120,6 +104,7 @@ export class SignInComponent {
   },
   error: (error) => {
     console.log(error)
+    this.toastr.warning('check your password!');
   }
   });
   }
@@ -137,6 +122,7 @@ export class SignInComponent {
   },
   error: (error) => {
     console.log(error)
+    this.toastr.warning('check your password!');
   }
   });
   }

@@ -11,11 +11,11 @@
               <label class="rad-label" ><input type="radio" name="filter" (input)="hospitalDisplay()" class="rad-input"><p class="rad-text">Hospital</p></label><pre></pre>
               <label class="rad-label" ><input type="radio" name="filter" (input)="orgnizationDisplay()" class="rad-input"><p class="rad-text">Orgnization</p></label>
               <label class="rad-label" ><input type="radio" name="filter" (input)="adminDisplay()" class="rad-input"><p class="rad-text">Admin</p></label>
-              
+               
           </div>
-          <form [formGroup]="userloginform">
+          <form [formGroup]="userloginform" [hidden]="uDisplay">
           <!-- user login -->
-          <div [hidden]="uDisplay">
+          
             <div class="mb-3">
               <input type="text" class="form-control" aria-describedby="emailHelp"
                  placeholder="ssn" formControlName="user_national_ID">
@@ -24,11 +24,10 @@
               <input type="password" class="form-control" placeholder="password" formControlName="user_password">
             </div>
             <div class="text-center" ><button type="submit" class="btn btn-danger px-5 mb-5 w-100" (click)="proceedloginuser()">Login</button></div>
-          </div>
+          
         </form>
           <!-- hospital login -->
-          <form  [formGroup]="hospitalloginform">
-          <div [hidden]="hDisplay">
+          <form  [formGroup]="hospitalloginform" [hidden]="hDisplay">
             <div class="mb-3">
               <input type="text" class="form-control" aria-describedby="emailHelp"
                  placeholder="email" formControlName="hospital_Email">
@@ -37,11 +36,11 @@
               <input type="password" class="form-control" placeholder="password" formControlName="hospital_password">
             </div>
             <div class="text-center"><button type="submit" class="btn btn-danger px-5 mb-5 w-100" (click)="proceedloginhospital()">Login</button></div>
-          </div>
         </form>
+
           <!-- org login -->
-          <form [formGroup]="orgloginform">
-          <div [hidden]="oDisplay">
+          <form [formGroup]="orgloginform" [hidden]="oDisplay">
+          
             <div class="mb-3">
               <input type="text" class="form-control" aria-describedby="emailHelp"
                  placeholder="email" formControlName="organization_email">
@@ -50,19 +49,18 @@
               <input type="password" class="form-control" placeholder="password" formControlName="organization_password">
             </div>
             <div class="text-center"><button type="submit" class="btn btn-danger px-5 mb-5 w-100" (click)="proceedloginorg()">Login</button></div>
-          </div>
+         
         </form>
           <!-- admin login -->
-          <div [hidden]="aDisplay">
+          <form [formGroup]="adminloginform" [hidden]="aDisplay">
             <div class="mb-3">
-              <input type="text" class="form-control" aria-describedby="emailHelp"
-                 placeholder="email" formControlName="email">
+              <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="email" formControlName="admin_email">
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" placeholder="password" formControlName="password">
+              <input type="password" class="form-control" placeholder="password" formControlName="admin_password">
             </div>
             <div class="text-center"><button type="submit" class="btn btn-danger px-5 mb-5 w-100">Login</button></div>
-          </div>
+          </form>
 
 
             <div id="emailHelp" class="form-text text-center mb-5 text-dark">Not
