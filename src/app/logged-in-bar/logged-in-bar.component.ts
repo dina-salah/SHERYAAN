@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-logged-in-bar',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./logged-in-bar.component.css']
 })
 export class LoggedInBarComponent {
+  @Output() displaynavbar = new EventEmitter<boolean>();
 
+  changeNavBar(display:boolean) {  
+    this.displaynavbar.emit(display);
+  }
 }
