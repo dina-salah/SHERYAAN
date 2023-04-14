@@ -1,3 +1,4 @@
+const cors = require('cors'); //added cors
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
@@ -8,7 +9,15 @@ app.use(
   bodyParser.urlencoded({
     extended: true,
   })
-);
+  );
+  
+app.use(cors()); //cors
+//added cors
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // default route
 app.get("/", function (req, res) {
@@ -162,31 +171,27 @@ app.post("/login", function (req, res) {
       .send({ error: true, message: "Please provide your email and password" });
   }
   dbConn.query(
-    "SELECT hospital_Email , hospital_password FROM hospital WHERE hospital_Email = ?",
-    email,
+    "SELECT hospital_Email , hospital_password FROM hospital WHERE hospital_Email = ? AND hospital_password = ? ",
+    [email, password],
+    
     function (error, results, fields) {
       if (error) throw error;
-      //console.log(typeof results[0].user_password);
-      if (results.length === 0 ||results[0].hospital_password !== password ){
+      if (results.length == 0 ) {
         return res.send({
-          error: false,
-          //data: results,
-          message: "email or password are not accepted",
-        });
-      }
-      else if (
-        results[0].hospital_Email === email &&
-        results[0].hospital_password === password
-      ) {
+          error : true,
+          message: "email or password are not correct"
+        })
+      } 
+      else {
         return res.send({
-          error: false,
-          //data: results,
-          message: "login accepted",
-        });
+          error : false,
+          message: "loging accepted"
+        })
       }
     }
   );
 });
+
 
 // set port
 app.listen(7000, function () {

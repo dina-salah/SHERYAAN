@@ -5,9 +5,15 @@
 </head>
 <div class="" style="font-family: 'Roboto Slab', serif;">
 
+
     <div>
-        <app-sign-navbar  *ngIf="displayBar == true"></app-sign-navbar> 
-        <app-logged-in-bar  *ngIf="displayBar == false"></app-logged-in-bar>
+        
+            <app-sign-navbar *ngIf="!_signupService.IsloggedInUser()"></app-sign-navbar> 
+            <app-logged-in-bar *ngIf="_signupService.IsloggedInUser()"  ></app-logged-in-bar>
+<!-- 
+        <app-sign-in (displaynavbar)=displayFunc($event) hidden></app-sign-in>
+        <app-sign-navbar *ngIf="display == false"></app-sign-navbar> 
+        <app-logged-in-bar  (displaynavbar)=displayFunc($event) *ngIf="display == true" ></app-logged-in-bar> -->
     </div>
 
 <app-nav-bar ></app-nav-bar>

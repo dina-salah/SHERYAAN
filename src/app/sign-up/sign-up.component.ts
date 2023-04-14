@@ -117,6 +117,7 @@ this.signupservice.createUser(this.addUserForm.value)
   },
   error: (error) => {
     console.log(error)
+    this.toastr.warning('check your info!');
   }
 });
   }
@@ -133,6 +134,7 @@ this.signupservice.createUser(this.addUserForm.value)
       },
       error: (error) => {
         console.log(error)
+        this.toastr.warning('check your info!');
       }
     });
   }
@@ -149,6 +151,7 @@ this.signupservice.createUser(this.addUserForm.value)
       },
       error: (error) => {
         console.log(error)
+        this.toastr.warning('check your info!');
       }
     });
   }

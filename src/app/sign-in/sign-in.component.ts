@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter  } from '@angular/core';
 import { signupService } from '../services/signup.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
-  
-  constructor(private builder: FormBuilder, private service: signupService, private toastr: ToastrService,
+  // @Output() displaynavbar = new EventEmitter<boolean>();
+  // display:boolean
+  constructor(private http: HttpClient, private builder: FormBuilder, private service: signupService, private toastr: ToastrService,
     private router: Router){}
 
   uDisplay:boolean =true;
@@ -53,7 +54,7 @@ export class SignInComponent {
     user_password: this.builder.control('', Validators.required)
   })
 
-  hospitalloginform=this.builder.group({
+    hospitalloginform=this.builder.group({
     hospital_Email: this.builder.control('', Validators.required),
     hospital_password: this.builder.control('', Validators.required)
   })
@@ -63,6 +64,12 @@ export class SignInComponent {
     organization_password: this.builder.control('', Validators.required)
   })
 
+  adminloginform=this.builder.group({
+    admin_email: this.builder.control('', Validators.required),
+    admin_password: this.builder.control('', Validators.required)
+  })
+
+  //user  
   proceedloginuser(){
     console.log(this.userloginform.value)
 
@@ -70,15 +77,21 @@ export class SignInComponent {
   .subscribe({
   next: (data) => {
   console.log(data)
-  this.toastr.success('logged in successfully!');
-
-  },
+    // this.display = true;
+    // this.displaynavbar.emit(this.display);
+  
+  this.toastr.success('logged in successfully!')
+  
+ }, 
   error: (error) => {
     console.log(error)
+    this.toastr.warning('check your password!');
+
   }
   });
   }
-
+  
+  //hospital  
   proceedloginhospital(){
     console.log(this.hospitalloginform.value)
 
@@ -91,10 +104,12 @@ export class SignInComponent {
   },
   error: (error) => {
     console.log(error)
+    this.toastr.warning('check your password!');
   }
   });
   }
 
+  //orgnization
   proceedloginorg(){
     console.log(this.orgloginform.value)
 
@@ -107,9 +122,11 @@ export class SignInComponent {
   },
   error: (error) => {
     console.log(error)
+    this.toastr.warning('check your password!');
   }
   });
   }
+
       
 
 }
