@@ -8,8 +8,8 @@
 
     <div>
         
-            <app-sign-navbar *ngIf="!_signupService.IsloggedInUser()"></app-sign-navbar> 
-            <app-logged-in-bar *ngIf="_signupService.IsloggedInUser()"  ></app-logged-in-bar>
+            <app-sign-navbar *ngIf="_signupService.IsloggedInUser()"></app-sign-navbar> 
+            <app-logged-in-bar *ngIf="!_signupService.IsloggedInUser()"  ></app-logged-in-bar>
 <!-- 
         <app-sign-in (displaynavbar)=displayFunc($event) hidden></app-sign-in>
         <app-sign-navbar *ngIf="display == false"></app-sign-navbar> 

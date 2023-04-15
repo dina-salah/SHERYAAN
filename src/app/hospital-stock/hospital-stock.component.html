@@ -1,0 +1,36 @@
+<div class="body">
+    <div class="header">
+        <p style="color: whitesmoke; font-size: 60px;">MY STOCK</p>
+    </div>
+    <br><br>
+    <div class="container">
+        <!-- <h1>MY STOCK</h1> -->
+      <br>
+        <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th>#</th>
+                <th>Blood Type</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>Address</th>
+                <th>Respond</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of patients; index as i">
+                <td>{{i+1}}</td>
+                <td>{{p.bloodtype}}</td>
+                <td>{{p.date}}</td>
+                <td>{{p.quantity}}</td>
+                <td>{{p.address}}</td>
+                <td><button class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button></td>
+                <td><button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br><br>
+    </div>
+
+</div>

@@ -29,8 +29,15 @@ import { BPositiveComponent } from './b-positive/b-positive.component';
 import { BVeComponent } from './b-ve/b-ve.component';
 import { ABPositiveComponent } from './ab-positive/ab-positive.component';
 import { ABVeComponent } from './ab-ve/ab-ve.component';
+import { HospitalProfileComponent } from './hospital-profile/hospital-profile.component';
+import { OrgnizationProfileComponent } from './orgnization-profile/orgnization-profile.component';
+import { HospitalStockComponent } from './hospital-stock/hospital-stock.component';
+
 const routes: Routes = [
   {path: '', component:HomeComponent},
+  {path: 'hospital-stock', component:HospitalStockComponent},
+  {path: 'hospital-profile', component:HospitalProfileComponent},
+  {path: 'orgnization-profile', component:OrgnizationProfileComponent},
   {path:'a-positive',component:APositiveComponent},
   {path:'a-ve',component:AVeComponent},
   {path:'b-positive', component:BPositiveComponent},

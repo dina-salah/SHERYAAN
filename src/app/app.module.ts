@@ -48,6 +48,7 @@ import { BPositiveComponent } from './b-positive/b-positive.component';
 import { BVeComponent } from './b-ve/b-ve.component';
 import { ABPositiveComponent } from './ab-positive/ab-positive.component';
 import { ABVeComponent } from './ab-ve/ab-ve.component';
+import { HospitalStockComponent } from './hospital-stock/hospital-stock.component';
 
 
 
@@ -93,6 +94,7 @@ import { ABVeComponent } from './ab-ve/ab-ve.component';
     BVeComponent,
     ABPositiveComponent,
     ABVeComponent,
+    HospitalStockComponent,
 
     
   ],
