@@ -26,19 +26,21 @@
                 <div class="content-panel" [hidden]="displays">
                     <fieldset class="fieldset">
                         <div class="row ">
+                            <label *ngIf="errormessage">{{errormessage}}</label>
+                            <label *ngIf="isfetching && !errormessage">loading....</label>
                             <div class="col col-lg-2">
                         <h3 class="fieldset-title">Personal Info</h3>
                     </div>
                     <div class="col ">
-                        <div class="mb-3"><br>
-                            <label>Name: </label><br>
-                            <label>SSN:  </label><br>
-                            <label>Gender:</label><br>
-                            <label>Age: </label><br>
-                            <label>Address:</label><br>
-                            <label>City: </label><br>
-                            <label>Blood type: </label><br>
-                            <label>health status: </label><br>
+                        <div class="mb-3" *ngFor="let u of userdata; index as i"><br>
+                            <label>Name: </label> <label>{{u.user_Fname + u.user_Lname}}</label> <br>
+                            <label>SSN:  </label> <label>{{u.user_national_ID}}</label> <br>
+                            <label>Gender:</label> <label>{{u.user_gender}}</label><br>
+                            <label>Age: </label> <label>{{u.user_age}}</label><br>
+                            <label>Address:</label> <label>{{u.user_address}}</label><br>
+                            <label>City: </label> <label>{{u.user_city}}</label><br>
+                            <label>Blood type: </label> <label>{{u.user_blood_type}}</label><br>
+                            <label>health status: </label> <label>{{u.user_health_status}}</label><br>
                         </div>
                     </div>
                     </div>
@@ -87,7 +89,7 @@
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger" (click)="onDelete(user.ssn)">Delete</button>
+                          <button type="button" class="btn btn-danger" (click)="onDelete(user.user_national_ID)">Delete</button>
                         </div>
                       </div>
                     </div>
