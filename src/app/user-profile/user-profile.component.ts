@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { signupService } from '../services/signup.service';
+import { loginService } from '../services/login.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,21 +18,21 @@ export class UserProfileComponent {
   displays:boolean=false;
   displayd:boolean=true;
   isfetching: boolean = false;
-  userdata: {user_Fname,
-    user_Lname,
-    user_national_ID,
-    user_gender,
-    user_age,
-    user_address,
-    user_phoneNo,
-    user_Email,
-    user_city,
-    user_blood_type,
-    user_health_status,
-    user_password } [] = [];
+  userdata: {user_Fname: any,
+    user_Lname: any,
+    user_national_ID: any,
+    user_gender: any,
+    user_age: any,
+    user_address: any,
+    user_phoneNo: any,
+    user_Email: any,
+    user_city: any,
+    user_blood_type: any,
+    user_health_status: any,
+    user_password: any } [] = [];
   errormessage: string = null;  
 
-  constructor(private toastr: ToastrService, private http: HttpClient, private service: signupService){}
+  constructor(private toastr: ToastrService, private http: HttpClient, private service: loginService){}
 
   user:  {user_Fname: string,
     user_Lname: string,
@@ -80,7 +81,7 @@ export class UserProfileComponent {
     getUser(){
       this.isfetching = true;
       this.service.getUser().subscribe((user) =>{
-        this.userdata = user;
+        // this.userdata = user;
         this.isfetching = false;
       }, (err) => {
         this.errormessage = err.message;

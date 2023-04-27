@@ -24,58 +24,6 @@ export class signupService{
       createOrgnization(Orgnizationdata:any): Observable<any>{
         return this.http.post<any>(this.orgnizationAPI, Orgnizationdata);
       }
-
-      userlogin(userlogindata: any){
-        return this.http.post<any>('http://localhost:5000/login', userlogindata);
-      }
-      hospitallogin(hospitllogindata: any){
-        return this.http.post<any>('http://localhost:7000/login', hospitllogindata);
-      }
-      orglogin(orglogindata: any){
-        return this.http.post<any>('http://localhost:8000/login', orglogindata);
-      }
-
-      getUser(){
-          return this.http.get<{[key: string]: {user_Fname,
-            user_Lname,
-            user_national_ID,
-            user_gender,
-            user_age,
-            user_address,
-            user_phoneNo,
-            user_Email,
-            user_city,
-            user_blood_type,
-            user_health_status,
-            user_password }; }>(
-            this.API+'/user/:'
-          ).pipe(map((res) =>{
-            const user = [];
-            for(const key in res){
-              if(res.hasOwnProperty(key)){
-                user.push({...res[key], id: key})
-              }
-            }
-            return user;
-          }), catchError((err) =>{
-            //write the logic for logging error
-            return throwError(err);
-          }))
-      }
-      
-    
-      IsloggedInUser(){
-        return sessionStorage.getItem('email')!=null;
-      }
-      GetUserRole(){
-        return sessionStorage.getItem('userrole')!=null?sessionStorage.getItem('userrole')?.toString():'';
-      }
-      GetUserbyId(id:any){
-        return this.http.get(this.API+'/user/:'+id);
-      }
-      GetallUsers(){
-        return this.http.get(this.API + '/users');
-      }
       
       updateuser(id:any,inputdata:any){
         return this.http.put(this.API+'/:'+id,inputdata);

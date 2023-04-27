@@ -5,7 +5,10 @@
     </div>
 
     <div class="justify-content-end">
-        <a href="#" routerLink="/sign-up"  routerLinkActive="active"  class="bi bi-person-fill-add"> Sign Up</a>
-        <a href="#" routerLink="/sign-in" routerLinkActive="active" class="bi bi-box-arrow-in-right"> Login</a>
+        <a href="#"  routerLink="/sign-up"  routerLinkActive="active"  class="bi bi-person-fill-add"> Sign Up</a>
+        <a href="#"  routerLink="/sign-in"  routerLinkActive="active" class="bi bi-box-arrow-in-right"> Login</a>
+        <!-- <a href="#" *ngIf="isLoggedIn$ | async" routerLink=""  routerLinkActive="active"  class="bi bi-door-open" (click)="onLogout()"> Log out</a>
+        <a href="#" *ngIf="isLoggedIn$ | async" routerLink="/hospital-profile" routerLinkActive="active" class=""><img src="assets/user-icon.png" size="" class="rounded" height="21" width="21">  </a> -->
+
     </div>
 </div>

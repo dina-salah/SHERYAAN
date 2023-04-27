@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { loginService } from '../services/login.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class SignInComponent {
   // @Output() displaynavbar = new EventEmitter<boolean>();
   // display:boolean
-  constructor(private http: HttpClient, private builder: FormBuilder, private service: signupService, private toastr: ToastrService,
+  constructor(private http: HttpClient, private builder: FormBuilder, private service: loginService, private toastr: ToastrService,
     private router: Router){}
 
   uDisplay:boolean =true;
@@ -69,6 +70,10 @@ export class SignInComponent {
     admin_password: this.builder.control('', Validators.required)
   })
 
+  navigateToLogin() {
+    this.router.navigateByUrl('/');
+ }
+
   //user  
   proceedloginuser(){
     console.log(this.userloginform.value)
@@ -79,7 +84,8 @@ export class SignInComponent {
   console.log(data)
     // this.display = true;
     // this.displaynavbar.emit(this.display);
-  
+  this.navigateToLogin();
+  this.service.loggedIn.next(true);
   this.toastr.success('logged in successfully!')
   
  }, 
