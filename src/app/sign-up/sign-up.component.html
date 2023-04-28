@@ -29,7 +29,7 @@
         <!-- patient form -->
     <div class="card-body cardbody-color mp-10 p-lg-5">
         
-        <form class="Patient"   [formGroup]="addUserForm" [hidden]="uDisplay">  
+        <form class="Patient" #localForm="ngForm"  [formGroup]="addUserForm" [hidden]="uDisplay">  
             
             <div>
                 <h1>Register Your Account</h1>
@@ -37,22 +37,28 @@
             </div>
 
             <div  class="mb-3">
-                <input  placeholder="First Name" class="form-control"  formControlName="user_Fname" >
-                <!-- <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div> -->
+                <input placeholder="First Name" class="form-control" [minlength]="3" [maxlength]="20" formControlName="user_Fname" [class.is-invalid]="localForm.submitted && addUserForm.get('user_Fname')?.invalid">
+                <div class="invalid-feedback">
+                    First name is required
+                </div>
             </div>
 
             <pre></pre>
             <div  class="mb-3">
                 
-                <input type="text"  placeholder="Last name"class="form-control"  formControlName="user_Lname" >
-                <!-- <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p> -->
+                <input type="text"  placeholder="Last name"class="form-control" [minlength]="3" [maxlength]="20" formControlName="user_Lname" [class.is-invalid]="localForm.submitted && addUserForm.get('user_Lname')?.invalid" >
+                <div class="invalid-feedback">
+                    Last name is required
+                </div>
             </div>
 
             <pre></pre>
             <div  class="mb-3">
                 
-                <input type="text"  placeholder="SNN"  class="form-control"  formControlName="user_national_ID" >
-                <!-- <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p> -->
+                <input type="text"  placeholder="SNN"  class="form-control" [minlength]="14" [maxlength]="20" formControlName="user_national_ID" [class.is-invalid]="localForm.submitted && addUserForm.get('user_national_ID')?.invalid">
+                <div class="invalid-feedback">
+                    SNN is required
+                </div>
             </div>
 
             <pre></pre>
@@ -66,28 +72,38 @@
         
             <pre></pre>
             <div  class="mb-3"> 
-                
-                <input type="text"   placeholder="Age"  class="form-control"   formControlName="user_age" > 
-                <!-- <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p> -->
+                <!--  min="18" max="60" -->
+                <input type="text"   placeholder="Age"  class="form-control" [minlength]="1" [maxlength]="2" formControlName="user_age"  [class.is-invalid]="localForm.submitted && addUserForm.get('user_age')?.invalid"> 
+                <div class="invalid-feedback">
+                    Age is required
+                </div>
             </div>
 
             <pre></pre>
             <div  class="mb-3">
                 
-                <input type="text" placeholder="Address"  class="form-control"  formControlName="user_address" >
+                <input type="text" placeholder="Address"  class="form-control" [minlength]="8" [maxlength]="50"  formControlName="user_address" [class.is-invalid]="localForm.submitted && addUserForm.get('user_address')?.invalid">
+                <div class="invalid-feedback">
+                    Address is required
+                </div>
             </div>
 
             <pre></pre>
             <div  class="mb-3"> 
             
-                <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="user_phoneNo" >
-                <!-- <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p> -->
+                <input type="text" placeholder="PhoneNumber"  class="form-control" [minlength]="11" [maxlength]="11" formControlName="user_phoneNo"  [class.is-invalid]="localForm.submitted && addUserForm.get('user_phoneNo')?.invalid">
+                <div class="invalid-feedback">
+                    phone number is required
+                </div>
             </div>
             <pre></pre>
 
             <div  class="mb-3">
                 
-                <input type="email" placeholder="Email" class="form-control"  formControlName="user_Email" >
+                <input type="email" placeholder="Email" class="form-control" [minlength]="11" [maxlength]="11"  formControlName="user_Email" [class.is-invalid]="localForm.submitted && addUserForm.get('user_Email')?.invalid">
+                <div class="invalid-feedback">
+                    Email is required
+                </div>
             </div>
             <pre></pre>
             
@@ -117,12 +133,18 @@
         
             <pre></pre>
             <div  class="mb-3"> 
-            <input type="text" placeholder="health status"   class="form-control"  formControlName="user_health_status" >
+            <input type="text" placeholder="health status" [maxlength]="50" class="form-control"  formControlName="user_health_status" >
+            <!--[class.is-invalid]="localForm.submitted && addUserForm.get('user_health_status')?.invalid" 
+                <div class="invalid-feedback">
+                Email is required
+            </div> -->
             </div>
             <pre></pre>
             <div  class="mb-3"> 
-            <input type="password"placeholder="Password"    class="form-control"  formControlName="user_password" >
-                <!-- <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p> -->
+            <input type="password" placeholder="Password" [minLength]="8" [maxlength]="30" class="form-control"  formControlName="user_password" [class.is-invalid]="localForm.submitted && addUserForm.get('user_password')?.invalid">
+            <div class="invalid-feedback">
+                Password is required!!
+            </div>
             </div>
             <pre></pre>
             
@@ -131,32 +153,42 @@
         </form>
 
         <!-- hospital form -->
-<form class="Hospital"    [formGroup]="addHospitalForm" [hidden]="hDisplay">  
+<form class="Hospital"  #HlocalForm="ngForm" [formGroup]="addHospitalForm" [hidden]="hDisplay">  
     <div>
         <h1>Register Your Account</h1>
         <p>Please enter the following information so we can match to your donation records.</p>
     </div>
 
     <div  class="mb-3">
-        <input  placeholder="Name" class="form-control"  formControlName="hospital_name" >
-        <!-- <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div> -->
+        <input  placeholder="Name" class="form-control" formControlName="hospital_name" [minLength]="8" [maxlength]="20" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_name')?.invalid">
+        <div class="invalid-feedback">
+            Hospital name is required
+        </div>
     </div>
     <pre></pre>
 
     <div  class="mb-3">
         
-        <input type="text" placeholder="Address"  class="form-control"  formControlName="hospital_address" >
+        <input type="text" placeholder="Address"  class="form-control"  formControlName="hospital_address"  [minLength]="10" [maxlength]="50" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_address')?.invalid">
+        <div class="invalid-feedback">
+            Hospital address is required
+        </div>
     </div>
     <pre></pre>
 
     <div  class="mb-3"> 
-        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="hospital_phoneNo" >
-        <!-- <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p> -->
+        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="hospital_phoneNo"  [minLength]="5" [maxlength]="11" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_phoneNo')?.invalid">
+        <div class="invalid-feedback">
+            Hospital phone number is required
+        </div>
     </div>
     <pre></pre>
     <div  class="mb-3">
         
-        <input type="email" placeholder="Email" class="form-control"  formControlName="hospital_Email" >
+        <input type="email" placeholder="Email" class="form-control"  formControlName="hospital_Email"  [minLength]="11"  [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_Email')?.invalid">
+        <div class="invalid-feedback">
+            Hospital email is required
+        </div>
     </div>
     <pre></pre>
     
@@ -174,8 +206,10 @@
     <pre></pre>
 
     <div  class="mb-3"> 
-    <input type="password"placeholder="Password"    class="form-control"  formControlName="hospital_password" >
-        <!-- <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p> -->
+    <input type="password" placeholder="Password"  class="form-control" formControlName="hospital_password" [minLength]="8" [maxlength]="30" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_password')?.invalid">
+    <div class="invalid-feedback">
+        Password is required
+    </div>
     </div>
     <pre></pre>
     
@@ -184,26 +218,33 @@
 </form>
 
 <!-- orgnization form -->
-<form class="Orgnization"    [formGroup]="addOrgnizationForm" [hidden]="oDisplay">  
+<form class="Orgnization"  #OlocalForm="ngForm" [formGroup]="addOrgnizationForm" [hidden]="oDisplay">  
     <div>
         <h1>Register Your Account</h1>
         <p>Please enter the following information so we can match to your donation records.</p>
     </div>
     <div  class="mb-3">
-        <input  placeholder="Name" class="form-control"  formControlName="organization_name" >
-        <!-- <div *ngIf="name.invalid && name.touched  " class="warning"> required!!</div> -->
+        <input  placeholder="Name" class="form-control"  formControlName="organization_name" [minLength]="8" [maxlength]="30" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_name')?.invalid">
+        <div class="invalid-feedback">
+            Organization name is required
+        </div>
     </div>
     <pre></pre>
 
     <div  class="mb-3"> 
     
-        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="organization_phoneNo" >
-        <!-- <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p> -->
+        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="organization_phoneNo" [minLength]="11" [maxlength]="11" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_phoneNo')?.invalid">
+        <div class="invalid-feedback">
+            Organization phone number is required
+        </div>
     </div>
     <pre></pre>
     <div  class="mb-3">
         
-        <input type="email" placeholder="Email" class="form-control"  formControlName="organization_email" >
+        <input type="email" placeholder="Email" class="form-control"  formControlName="organization_email" [minLength]="11" [maxlength]="30" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_email')?.invalid">
+        <div class="invalid-feedback">
+            Organization email is required
+        </div>
     </div>
     <pre></pre>
     
@@ -221,8 +262,10 @@
 
     <pre></pre>
     <div  class="mb-3"> 
-    <input type="password"placeholder="Password"    class="form-control"  formControlName="organization_password" >
-        <!-- <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p> -->
+    <input type="password"placeholder="Password"    class="form-control"  formControlName="organization_password" [minLength]="8" [maxlength]="30" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_password')?.invalid">
+    <div class="invalid-feedback">
+        Password is required
+    </div>
     </div>
     <pre></pre>
     
