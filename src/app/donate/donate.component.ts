@@ -8,4 +8,7 @@ import { Router } from '@angular/router';
 })
 export class DonateComponent {
 
+  constructor(private router: Router){}
+
+ 
 }

@@ -38,26 +38,14 @@ export class loginService{
     this.router.navigate(['/sign-in']);
   }
 
+ 
   getUser(){
-    return this.http.get< {user_id, user_Fname,
-      user_Lname,
-      user_national_ID,
-      user_gender,
-      user_age,
-      user_address,
-      user_phoneNo,
-      user_Email,
-      user_city,
-      user_blood_type,
-      user_health_status,
-      user_password } >(
-      this.API+'/user/:10'
-    )
+    return this.http.get(this.API+'/user/:10');
 }
   
-  IsloggedInUser(){
-    return sessionStorage.getItem('user_national_ID')!=null;
-  }
+  // IsloggedInUser(){
+  //   return sessionStorage.getItem('user_national_ID')!=null;
+  // }
 //   GetUserRole(){
 //     return sessionStorage.getItem('userrole')!=null?sessionStorage.getItem('userrole')?.toString():'';
 //   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from '../model/signupinfo';
@@ -13,23 +13,13 @@ import { loginService } from '../services/login.service';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit{
   
   displays:boolean=false;
   displayd:boolean=true;
   isfetching: boolean = false;
-  userdata: {user_Fname: any,
-    user_Lname: any,
-    user_national_ID: any,
-    user_gender: any,
-    user_age: any,
-    user_address: any,
-    user_phoneNo: any,
-    user_Email: any,
-    user_city: any,
-    user_blood_type: any,
-    user_health_status: any,
-    user_password: any } [] = [];
+  u: any;
+  userdata = [];
   errormessage: string = null;  
 
   constructor(private toastr: ToastrService, private http: HttpClient, private service: loginService){}
@@ -78,11 +68,13 @@ export class UserProfileComponent {
       this.http.delete('')
     }
 
-    getUser(){
+    ngOnInit(){
       this.isfetching = true;
-      this.service.getUser().subscribe((user) =>{
-        // this.userdata = user;
+      this.service.getUser().subscribe((res) =>{
         this.isfetching = false;
+        console.log(res);
+        this.u=res;
+        this.userdata=this.u;
       }, (err) => {
         this.errormessage = err.message;
       })

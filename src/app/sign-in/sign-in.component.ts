@@ -11,7 +11,7 @@ import { loginService } from '../services/login.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent {
+export class SignInComponent{
   // @Output() displaynavbar = new EventEmitter<boolean>();
   // display:boolean
   constructor(private http: HttpClient, private builder: FormBuilder, private service: loginService, private toastr: ToastrService,
@@ -82,12 +82,9 @@ export class SignInComponent {
   .subscribe({
   next: (data) => {
   console.log(data)
-    // this.display = true;
-    // this.displaynavbar.emit(this.display);
   this.navigateToLogin();
   this.service.loggedIn.next(true);
-  this.toastr.success('logged in successfully!')
-  
+  this.toastr.success('logged in successfully!');
  }, 
   error: (error) => {
     console.log(error)
@@ -105,6 +102,8 @@ export class SignInComponent {
   .subscribe({
   next: (data) => {
   console.log(data)
+  this.navigateToLogin();
+  this.service.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 
   },
@@ -123,6 +122,8 @@ export class SignInComponent {
   .subscribe({
   next: (data) => {
   console.log(data)
+  this.navigateToLogin();
+  this.service.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 
   },
@@ -132,8 +133,7 @@ export class SignInComponent {
   }
   });
   }
-
-      
+  
 
 }
 
