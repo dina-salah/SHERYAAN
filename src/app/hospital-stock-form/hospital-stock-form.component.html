@@ -1,0 +1,16 @@
+<div class="container">
+    
+    <form #stockform="ngForm" (ngSubmit)="onStockadd(stockform.value)">
+        <div style="font-weight:bolder; margin: 13px; margin-left: 0px; font-size: 20px;">
+        Make sure that all information is correct to avoid any problem
+        </div>
+        <label style="margin-right: 7px;">STOCK: </label>
+        <div style="display: inline;">
+        </div> 
+        <input class="form-control" type="text" placeholder="Blood type"       name="bloodtype"  [(ngModel)]="bloodtype">
+        <input class="form-control" type="date" placeholder="Date"       name="date" [(ngModel)]="date">
+        <input class="form-control" type="text" placeholder="Quantity"   name="quantity" [(ngModel)]="quantity">
+        <input class="form-control" type="text" placeholder="Address"    name="address" [(ngModel)]="address">
+        <button class="btn btn-danger" type="submit" value="" style="margin: 10px;" (click)="addToStock()">Add</button>
+    </form>
+    </div>

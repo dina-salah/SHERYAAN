@@ -32,9 +32,11 @@ import { ABVeComponent } from './ab-ve/ab-ve.component';
 import { HospitalProfileComponent } from './hospital-profile/hospital-profile.component';
 import { OrgnizationProfileComponent } from './orgnization-profile/orgnization-profile.component';
 import { HospitalStockComponent } from './hospital-stock/hospital-stock.component';
+import { HospitalStockFormComponent } from './hospital-stock-form/hospital-stock-form.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
+  {path: 'hospital-stock-form', component:HospitalStockFormComponent},
   {path: 'hospital-stock', component:HospitalStockComponent},
   {path: 'hospital-profile', component:HospitalProfileComponent},
   {path: 'orgnization-profile', component:OrgnizationProfileComponent},
