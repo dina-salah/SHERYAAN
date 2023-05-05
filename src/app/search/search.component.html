@@ -1,3 +1,32 @@
 <div [hidden]="display" class="search-cont">
-    <input type="text" placeholder="search" class="form-control">
+    <div class="row">
+        <div class="col">
+            <div class="col">
+
+                <!-- search bar -->
+                <form [formGroup]="searchform">
+                <input type="text" #search placeholder="search" class="form-control" formControlName="search">
+                </form>
+                <!-- display hospital stock tables grid -->
+
+
+                <!-- check hospital list -->
+                <div *ngIf="search.value !='' ">
+                    <ng-container *ngIf="hospitalList.length;else notfound"> 
+                        <div *ngFor="let name of hospitalList">
+                            <div class="row">
+                                <!-- hospital stock -->
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <ng-template #notfound>
+                        <div class="text-center" style="color: red; font-size: 20px; margin:15px;">
+                            Not found!
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
