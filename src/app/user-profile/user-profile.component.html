@@ -32,9 +32,9 @@
                         <h3 class="fieldset-title">Personal Info</h3>
                     </div>
                     <div class="col ">
-                        <div class="mb-3" *ngFor="let u of userdata; index as i"><br>
+                        <div class="mb-3" *ngFor="let u of user; index as i"><br>
                             <label>Name: </label> <label>{{u.user_Fname + u.user_Lname}}</label> <br>
-                            <label>SSN:  </label> <label>{{u.user_national_ID}}</label> <br>
+                            <label>{{u.user_national_ID}}</label> <br>
                             <label>Gender:</label> <label>{{u.user_gender}}</label><br>
                             <label>Age: </label> <label>{{u.user_age}}</label><br>
                             <label>Address:</label> <label>{{u.user_address}}</label><br>
@@ -51,9 +51,9 @@
                         <h3 class="fieldset-title">Contact Info</h3>
                         </div>
                         <div class="col col-lg-2">
-                        <div class="mb-3">
-                            <label>Email:</label><br>
-                            <label>Phone number:</label>
+                        <div class="mb-3" *ngFor="let u of user; index as i">
+                            <label>Email: {{u.user_Email}}</label><br>
+                            <label>Phone number: {{u.user_phoneNo}}</label>
                         </div>
                         </div>
                         </div>
@@ -89,7 +89,7 @@
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger" (click)="onDelete(user.user_national_ID)">Delete</button>
+                          <button type="button" class="btn btn-danger" > Delete</button>
                         </div>
                       </div>
                     </div>

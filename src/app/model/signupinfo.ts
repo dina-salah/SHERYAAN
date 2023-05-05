@@ -1,16 +1,15 @@
-export class User{
-    fname: string;
-    lname: string;
-    ssn: number;
-    gender: string;
-    age: number;
-    address: string;
-    phone: string;
-    email: string;
-    city: string;
-    bloodType: string;
-    healthstatus: string;
-    password: string;
+export class User{user_Fname: string;
+    user_Lname: string;
+    user_national_ID: string;
+    user_gender: string;
+    user_age: number;
+    user_address: string;
+    user_phoneNo: string;
+    user_Email: string;
+    user_city: string;
+    user_blood_type: string;
+    user_health_status: string;
+    user_password: string;
 }
 
 export class Hospital{
