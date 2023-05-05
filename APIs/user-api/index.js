@@ -43,15 +43,6 @@ dbConn.connect();
 // to store sessions in database 
 const sessionStore = new MySQLStore({},dbConn);
 
-// session middleware
-app.use(sessions({
-  secret: "thisismysecrctekeyformenna8654",
-  saveUninitialized:true,
-  cookie: { maxAge: oneDay },
-  resave: false,
-  store: sessionStore,
-}));
-
 // cookie parser middleware
 app.use(cookieParser());
 
@@ -73,15 +64,15 @@ app.get("/users", function (req, res) {
 
 // Retrieve user with id
 app.get("/user/:id", function (req, res) {
-  let user_national_ID = req.params.id;
-  if (!user_national_ID) {
+  let user_id = req.params.id;
+  if (!user_id) {
     return res
       .status(400)
       .send({ error: true, message: "Please provide user_id" });
   }
   dbConn.query(
-    "SELECT * FROM user where user_national_ID=?",
-    user_national_ID,
+    "SELECT * FROM user where user_id=?",
+    user_id,
     function (error, results, fields) {
       if (error) throw error;
       return res.send({
@@ -145,7 +136,7 @@ app.post("/user", function (req, res) {
 
 //  Update user with id
 app.put(`/user/:id`, function (req, res) {
-  let user_national_ID = req.params.id;
+  let user_id = req.params.id;
   let lcode = req.body.location_code;
   let name = req.body.user_name;
   let age = req.body.user_age;
@@ -155,7 +146,7 @@ app.put(`/user/:id`, function (req, res) {
   let healthsts = req.body.user_health_status;
   let gender = req.body.user_gender;
   let password = req.body.user_password;
-  if (!user_national_ID) {
+  if (!user_id) {
     return res
       .status(400)
       .send({ error: true, message: "Please provide the user ssn" });
