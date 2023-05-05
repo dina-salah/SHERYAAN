@@ -1,17 +1,9 @@
 const cors = require('cors'); //added cors
 var express = require("express");
 var app = express();
-var cookieParser = require("cookie-parser");
-var sessions = require('express-session');
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
-var MySQLStore = require('express-mysql-session')(sessions);
 
-
-
-
-// 24 hours from milliseconds
-const oneDay = 1000 * 60 * 60 * 24 ;
 
 
 app.use(bodyParser.json());
@@ -39,9 +31,6 @@ var dbConn = mysql.createConnection({
 });
 // connect to database
 dbConn.connect();
-
-// to store sessions in database 
-const sessionStore = new MySQLStore({},dbConn);
 
 // cookie parser middleware
 app.use(cookieParser());
@@ -86,7 +75,6 @@ app.get("/user/:id", function (req, res) {
 
 // Add a new user
 app.post("/user", function (req, res) {
-  //let user = req.body.user_national_ID;
   let user_national_ID = req.body.user_national_ID;
   let user_Lname = req.body.user_Lname;
   let user_Fname = req.body.user_Fname;
@@ -101,11 +89,11 @@ app.post("/user", function (req, res) {
   let password = req.body.user_password;
   let user_phoneNo = req.body.user_phoneNo;
 
-  /*if (!user) {
+  if (!user_national_ID) {
     return res
       .status(400)
       .send({ error: true, message: "Please provide user" });
-  }*/
+  }
   dbConn.query(
     "INSERT INTO user SET ? ",
     {
@@ -138,7 +126,8 @@ app.post("/user", function (req, res) {
 app.put(`/user/:id`, function (req, res) {
   let user_id = req.params.id;
   let lcode = req.body.location_code;
-  let name = req.body.user_name;
+  let Fname = req.body.user_Fname;
+  let Lname = req.body.user_Lname;
   let age = req.body.user_age;
   let city = req.body.user_city;
   let bloodt = req.body.user_blood_type;
@@ -146,23 +135,33 @@ app.put(`/user/:id`, function (req, res) {
   let healthsts = req.body.user_health_status;
   let gender = req.body.user_gender;
   let password = req.body.user_password;
+  let phoneNo = req.body.user_phoneNo;
+  let address = req.body.user_address;
   if (!user_id) {
     return res
       .status(400)
       .send({ error: true, message: "Please provide the user ssn" });
   }
   dbConn.query(
-    `UPDATE user SET user_name = ? , user_age = ? , user_city = ? , user_blood_type = ? , user_Email = ?, user_health_status = ?  ,user_gender = ?  ,user_password = ? , location_code = ?  WHERE user_national_ID = ${user_national_ID} ;`,
-    [name, age, city, bloodt, email, healthsts, gender, password, lcode],
+    `UPDATE user SET user_Fname = ? , user_Lname= ?, user_age = ? , user_city = ? , user_blood_type = ? , user_Email = ?, user_health_status = ?  ,user_gender = ?  ,user_password = ? , location_code = ? , user_phoneNo = ? , user_address = ?  WHERE user_id = ${user_id} ;`,
+    [Fname, Lname, age, city, bloodt, email, healthsts, gender, password, lcode, phoneNo, address],
     function (error, results, fields) {
       if (error) throw error;
+      if (results.affectedRows == 0){
+        return res.send({
+          error: true,
+          data: results,
+          message: "there is no matched id",
+        });
+      }
       return res.send({
         error: false,
         data: results,
         message: "user has been updated successfully.",
       });
+      
     }
-  );
+    );
 });
 
 //  Delete user
@@ -174,7 +173,7 @@ app.delete("/user/:id", function (req, res) {
       .send({ error: true, message: "Please provide user_id" });
   }
   dbConn.query(
-    "DELETE FROM user WHERE user_national_ID = ?",
+    "DELETE FROM user WHERE user_id = ?",
     user_id,
     function (error, results, fields) {
       if (error) throw error;
@@ -197,7 +196,7 @@ app.post("/login", function (req, res) {
       .send({ error: true, message: "Please provide your National ID and password" });
   }
   dbConn.query(
-    "SELECT user_national_ID , user_password FROM user WHERE user_national_ID = ? AND user_password = ? ",
+    "SELECT user_id , user_national_ID , user_password FROM user WHERE user_national_ID = ? AND user_password = ? ",
     [ID, password],
     
     function (error, results, fields) {
@@ -211,6 +210,7 @@ app.post("/login", function (req, res) {
       else {
         return res.send({
           error : false,
+          data: results,
           message: "loging accepted"
         })
       }
