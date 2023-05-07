@@ -18,24 +18,18 @@ export class UserProfileComponent implements OnInit{
   displays:boolean=false;
   displayd:boolean=true;
   isfetching: boolean = false;
-  u: any;
-  userdata = [];
   errormessage: string = null;  
+  user:  User[] = [];
 
   constructor(private toastr: ToastrService, private http: HttpClient, private service: loginService){}
 
-  user:  {user_Fname: string,
-    user_Lname: string,
-    user_national_ID: string,
-    user_gender: string,
-    user_age: number,
-    user_address: string,
-    user_phoneNo: string,
-    user_Email: string,
-    user_city: string,
-    user_blood_type: string,
-    user_health_status: string,
-    user_password: string}
+  ngOnInit(){
+     this.getuser(); 
+  }
+
+  ongetuser(){
+    this.getuser;
+  }
 
     addUserForm =  new FormGroup({
       fname: new FormControl(null, Validators.required),
@@ -63,20 +57,17 @@ export class UserProfileComponent implements OnInit{
       this.toastr.success('profile updated successfully!');
     }
 
-    onDelete(id:any){
-      id = this.user.user_national_ID;
-      this.http.delete('')
-    }
-
-    ngOnInit(){
+    getuser(){
       this.isfetching = true;
-      this.service.getUser().subscribe((res) =>{
+      this.service.getUser().subscribe((users) =>{
+        this.user = users;
+        localStorage.setItem('userdata', JSON.stringify(users));
+        localStorage.getItem('userdata');
         this.isfetching = false;
-        console.log(res);
-        this.u=res;
-        this.userdata=this.u;
+        console.log(users);
       }, (err) => {
         this.errormessage = err.message;
       })
     }
+
 }

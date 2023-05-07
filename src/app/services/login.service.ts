@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map, catchError, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../model/signupinfo';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ export class loginService{
 
  
   getUser(){
-    return this.http.get(this.API+'/user/:10');
+    return this.http.get<any>('http://localhost:5000/user/12');
 }
   
   // IsloggedInUser(){
