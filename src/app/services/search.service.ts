@@ -9,14 +9,14 @@ import { Observable, map, catchError, throwError } from 'rxjs';
 
 export class search{
 
-private url:string='http://localhost:1000/stock-search';
+private url:string='http://localhost:1000/stocksearch/';
 
 constructor(private http:HttpClient){
 
 }
 
 getStock(name:any): Observable<any>{
-    return this.http.post<any>(this.url,name);
+    return this.http.get<any>(`${this.url}${name}`);
 }
 
 }
