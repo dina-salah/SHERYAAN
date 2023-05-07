@@ -65,9 +65,11 @@ export class UserProfileComponent implements OnInit{
         localStorage.getItem('userdata');
         this.isfetching = false;
         console.log(users);
+        console.log(this.user);
       }, (err) => {
         this.errormessage = err.message;
       })
     }
+    
 
 }
