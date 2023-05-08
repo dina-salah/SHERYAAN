@@ -14,38 +14,20 @@ import { switchMap, catchError, tap } from 'rxjs/operators';
 
 export class SearchComponent implements OnInit{
 @Input() display:any;
+hospitalList :any[]
 
 constructor(private searchservice:search ){
-  this.searchservice.getStock('search')
-  .subscribe((v)=>{
-    console.log(v)
-  }
-  )
 }
+
 ngOnInit(): void {
 }
 
-searchform : FormGroup = new FormGroup ({
-  search : new FormControl('')
-})
 
-
-
-public hospitalList : Array<any> =[]
-
-// constructor(private searchservice:search ){
-//   this.searchform.get('search').valueChanges
-//   .pipe(
-//     debounceTime(1000),
-//     distinctUntilChanged(),
-//     switchMap((v)=>this.searchservice.getStock(v)),
-//   )
-//   .subscribe(
-//     (v)=>{
-//       // hospital stock that value must be passed from html file
-//       this.hospitalList= v?.hospitalstock;
-//     }
-//   )
-// }
-
+searchFunc(searchValue: string) {
+this.searchservice.getStock(searchValue)
+  .subscribe((res)=>{
+    this.hospitalList = res.data;
+    console.log(res)
+  })
+}
 }
