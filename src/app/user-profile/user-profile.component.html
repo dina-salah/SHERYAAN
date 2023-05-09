@@ -24,45 +24,55 @@
 
                 <!--static profile info-->
                 <div class="content-panel" [hidden]="displays">
-                    <fieldset class="fieldset">
                         <div class="row ">
                             <label *ngIf="errormessage">{{errormessage}}</label>
                             <label *ngIf="isfetching && !errormessage">loading....</label>
-                            <div class="col col-lg-2">
+                            <!-- <div class="col col-lg-2">
                         <h3 class="fieldset-title">Personal Info</h3>
-                    </div>
+                        </div> -->
                     <div class="col ">
-                        <div class="mb-3" *ngFor="let u of user; index as i"><br>
-                            <label>Name: </label> <label>{{u.user_Fname + u.user_Lname}}</label> <br>
-                            <label>{{u.user_national_ID}}</label> <br>
-                            <label>Gender:</label> <label>{{u.user_gender}}</label><br>
-                            <label>Age: </label> <label>{{u.user_age}}</label><br>
-                            <label>Address:</label> <label>{{u.user_address}}</label><br>
-                            <label>City: </label> <label>{{u.user_city}}</label><br>
-                            <label>Blood type: </label> <label>{{u.user_blood_type}}</label><br>
-                            <label>health status: </label> <label>{{u.user_health_status}}</label><br>
-                        </div>
+                        <table class="table table-hover table-bordered">
+                            <thead class="table-active">
+                              <tr>
+                                <th>first name</th>
+                                <th>last name</th>
+                                <th>user ssn</th>
+                                <th>gender</th>
+                                <th>age</th>
+                                <th>address</th>
+                                <th>city</th>
+                                <th>Blood type</th>
+                                <th>health status</th>
+                                <th>Email</th>
+                                <th>phone no</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let u of user">
+                                <td>{{u.user_Fname}}</td>
+                                <td>{{u.user_Lname}}</td>
+                                <td>{{u.user_national_ID}}</td>
+                                <td>{{u.user_gender}}</td>
+                                <td>{{u.user_age}}</td>
+                                <td>{{u.user_address}}</td>
+                                <td>{{u.user_city}}</td>
+                                <td>{{u.user_blood_type}}</td>
+                                <td>{{u.user_health_status}}</td>
+                                <td>{{u.user_Email}}</td>
+                                <td>{{u.user_phoneNo}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
                     </div>
                     </div>
-                    </fieldset><br>
-                    <fieldset class="fieldset">
-                        <div class="row ">
-                            <div class="col col-lg-2">
-                        <h3 class="fieldset-title">Contact Info</h3>
-                        </div>
-                        <div class="col col-lg-2">
-                        <div class="mb-3" *ngFor="let u of user; index as i">
-                            <label>Email: {{u.user_Email}}</label><br>
-                            <label>Phone number: {{u.user_phoneNo}}</label>
-                        </div>
-                        </div>
-                        </div>
-                    </fieldset>
+                    <br>
+                
                     <hr><br>
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                             <div class="d-flex">
-                            <button class="btn btn-primary m-1" type="submit" (click)="ongetuser()">fetch</button>    
+                              
                             <button class="btn btn-primary m-1" type="submit" (click)="showform()">Update Profile</button>
                             <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
                             </div>
