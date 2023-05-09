@@ -95,27 +95,50 @@ app.delete("/hospital-stock", function (req, res) {
 
 
 //search by hospital name or blood type
-app.post("/stock-search", function (req, res) {
-    h_name= req.body.h_name;
-    b_type = req.body.b_type;
+// app.post("/stock-search", function (req, res) {
+//     h_name= req.body.h_name;
+//     b_type = req.body.b_type;
 
-    dbConn.query("select hospital_name, blood_type , blood_quantity from hospital_blood_stock as hs join blood as bld on hs.blood_id = bld.blood_id JOIN hospital AS h ON hs.hospital_id = h.hospital_id where hospital_name = ? or bld.blood_type = ? " , [ h_name, b_type] 
-    , function (error, results, fields) {
-      if (error) throw error;
-      if (!h_name&&!b_type){
-        return res
-            .status (400)
-            .send(
-            { error: true,
-              message: "provide a hospital name or blood type" });
+//     dbConn.query("select hospital_name, blood_type , blood_quantity from hospital_blood_stock as hs join blood as bld on hs.blood_id = bld.blood_id JOIN hospital AS h ON hs.hospital_id = h.hospital_id where hospital_name = ? or bld.blood_type = ? " , [ h_name, b_type] 
+//     , function (error, results, fields) {
+//       if (error) throw error;
+//       if (!h_name&&!b_type){
+//         return res
+//             .status (400)
+//             .send(
+//             { error: true,
+//               message: "provide a hospital name or blood type" });
+//       }
+//       return res.send(
+//         { error: false,
+//           data: results,
+//           message: "search results: " });
+//     });
+//   });
+app.get("/stocksearch/:value", function (req, res) {
+  const param = req.params.value;
+
+  let sql = "SELECT hospital_name, blood_type, blood_quantity FROM hospital_blood_stock AS hs JOIN blood AS bld ON hs.blood_id = bld.blood_id JOIN hospital AS h ON hs.hospital_id = h.hospital_id WHERE hospital_name = ? OR bld.blood_type = ?";
+
+  dbConn.query(
+    sql,
+    [param, param],
+    function (error, results, fields) {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({
+          error: true,
+          message: "provide a hospital name or blood type",
+        });
       }
-      return res.send(
-        { error: false,
-          data: results,
-          message: "search results: " });
-    });
-  });
-
+      return res.json({
+        error: false,
+        data: results,
+        message: "search results: ",
+      });
+    }
+  );
+});
 
 
 //create a new stock 

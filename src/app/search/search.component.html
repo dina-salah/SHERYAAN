@@ -4,20 +4,31 @@
             <div class="col">
 
                 <!-- search bar -->
-                <form [formGroup]="searchform">
-                <input type="text" #search placeholder="search" class="form-control" formControlName="search">
+                <form >
+                <input type="text" #search placeholder="search" class="form-control" (keyup)="searchFunc(search.value)">
                 </form>
-                <!-- display hospital stock tables grid -->
 
 
                 <!-- check hospital list -->
                 <div *ngIf="search.value !='' ">
-                    <ng-container *ngIf="hospitalList.length;else notfound"> 
-                        <div *ngFor="let name of hospitalList">
-                            <div class="row">
-                                <!-- hospital stock -->
-                            </div>
-                        </div>
+                    <ng-container *ngIf="hospitalList.length;else notfound">
+                        <br> 
+                        <table  class="table table-striped" *ngIf="hospitalList">
+                            <thead>
+                              <tr>
+                                <th>Hospital Name</th>
+                                <th>Blood Type</th>
+                                <th>Blood Quantity</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let result of hospitalList">
+                                <td>{{ result.hospital_name }}</td>
+                                <td>{{ result.blood_type }}</td>
+                                <td>{{ result.blood_quantity }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
                     </ng-container>
 
                     <ng-template #notfound>
