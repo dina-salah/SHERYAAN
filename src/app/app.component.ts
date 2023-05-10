@@ -21,33 +21,20 @@ export class AppComponent implements OnInit{
     private router: Router,
     private hospitalservice: loginHospitalService,
     private orgservice: loginOrgService){}
-
+  showBar:Observable<boolean>;  
   isLoggedIn$: Observable<boolean>; 
   isLoggedInHospital: Observable<boolean>; 
   isLoggedInOrg: Observable<boolean>; 
-
+  
   ngOnInit() {
     this.isLoggedIn$ = this.service.isLoggedIn;
     this.isLoggedInHospital =this.hospitalservice.isLoggedIn;
     this.isLoggedInOrg =this.orgservice.isLoggedIn;
 
-
   };
 
-  
+
   onLogout() {
     this.service.logout();                      
   };
-
-
-  // displayFunc(displayBar:boolean){
-  //   // if (displayBar == false) {
-  //   //     displayBar = true;
-  //   // }else{
-  //   //     displayBar=false;
-  //   // }
-  //   return this.display =displayBar;
-  // }
-
-  
 }

@@ -7,7 +7,7 @@
 
 
     <div>
-        <app-sign-navbar [hidden]="isLoggedInOrg || isLoggedInHospital || isLoggedIn$ | async"></app-sign-navbar>
+        <app-sign-navbar [hidden]="(isLoggedIn$  | async) || (isLoggedInHospital | async) || (isLoggedInOrg  | async) "></app-sign-navbar>
         <app-logged-in-bar *ngIf="isLoggedIn$ | async"></app-logged-in-bar>
         <app-logged-in-bar-hospital  *ngIf="isLoggedInHospital | async"></app-logged-in-bar-hospital>
         <app-logged-in-bar-orgnization  *ngIf="isLoggedInOrg | async"></app-logged-in-bar-orgnization>
