@@ -1,6 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { loginService } from '../services/login.service';
-
+import { Component, Output, EventEmitter } from '@angular/core'; 
+import { loginHospitalService } from '../services/loginHospital.service';
 
 @Component({
   selector: 'app-logged-in-bar-hospital',
@@ -8,7 +7,7 @@ import { loginService } from '../services/login.service';
   styleUrls: ['./logged-in-bar-hospital.component.css']
 })
 export class LoggedInBarHospitalComponent {
-  constructor(public service: loginService){}
+  constructor(public hospitalservice: loginHospitalService){}
 
   @Output() displaynavbar = new EventEmitter<boolean>();
 
@@ -17,7 +16,7 @@ export class LoggedInBarHospitalComponent {
   }
 
   onLogout() {
-    this.service.logout();                      
+    this.hospitalservice.logout();                      
   };
 
 }

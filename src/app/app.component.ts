@@ -3,6 +3,9 @@ import { addRequestService } from './services/addRequest.service';
 import { loginService } from './services/login.service';
 import {Router} from '@angular/router';
 import { Observable, map, catchError, throwError } from 'rxjs';
+import { loginHospitalService } from './services/loginHospital.service';
+import { loginOrgService } from './services/loginOrg.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,14 +15,23 @@ import { Observable, map, catchError, throwError } from 'rxjs';
 })
 export class AppComponent implements OnInit{
   title = 'SHERYAAN | شريان';
-  // display:boolean = true;
 
-  constructor(public service: loginService, private router: Router){}
+
+  constructor(public service: loginService, 
+    private router: Router,
+    private hospitalservice: loginHospitalService,
+    private orgservice: loginOrgService){}
 
   isLoggedIn$: Observable<boolean>; 
+  isLoggedInHospital: Observable<boolean>; 
+  isLoggedInOrg: Observable<boolean>; 
 
   ngOnInit() {
     this.isLoggedIn$ = this.service.isLoggedIn;
+    this.isLoggedInHospital =this.hospitalservice.isLoggedIn;
+    this.isLoggedInOrg =this.orgservice.isLoggedIn;
+
+
   };
 
   

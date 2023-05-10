@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { loginService } from '../services/login.service';
+import { loginHospitalService } from '../services/loginHospital.service';
+import { loginOrgService } from '../services/loginOrg.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,10 +14,15 @@ import { loginService } from '../services/login.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent{
-  // @Output() displaynavbar = new EventEmitter<boolean>();
-  // display:boolean
-  constructor(private http: HttpClient, private builder: FormBuilder, private service: loginService, private toastr: ToastrService,
-    private router: Router){}
+  
+  
+  constructor(private http: HttpClient, 
+    private builder: FormBuilder,
+    private service: loginService, 
+    private toastr: ToastrService,
+    private router: Router,
+    private hospitalservice: loginHospitalService,
+    private orgservice: loginOrgService){}
 
   uDisplay:boolean =true;
   hDisplay:boolean =true;
@@ -72,7 +79,7 @@ export class SignInComponent{
 
   navigateToLogin() {
     this.router.navigateByUrl('/');
- }
+}
 
   //user  
   proceedloginuser(){
@@ -98,12 +105,12 @@ export class SignInComponent{
   proceedloginhospital(){
     console.log(this.hospitalloginform.value)
 
-  this.service.hospitallogin(this.hospitalloginform.value)
+  this.hospitalservice.hospitallogin(this.hospitalloginform.value)
   .subscribe({
   next: (data) => {
   console.log(data)
   this.navigateToLogin();
-  this.service.loggedIn.next(true);
+  this.hospitalservice.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 
   },
@@ -118,12 +125,12 @@ export class SignInComponent{
   proceedloginorg(){
     console.log(this.orgloginform.value)
 
-  this.service.orglogin(this.orgloginform.value)
+  this.orgservice.orglogin(this.orgloginform.value)
   .subscribe({
   next: (data) => {
   console.log(data)
   this.navigateToLogin();
-  this.service.loggedIn.next(true);
+  this.orgservice.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 
   },

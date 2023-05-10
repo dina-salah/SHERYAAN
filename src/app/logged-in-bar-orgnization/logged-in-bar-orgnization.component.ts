@@ -1,5 +1,5 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { loginService } from '../services/login.service';
+import { Component, Output, EventEmitter } from '@angular/core'; 
+import { loginOrgService } from '../services/loginOrg.service';
 
 @Component({
   selector: 'app-logged-in-bar-orgnization',
@@ -7,7 +7,7 @@ import { loginService } from '../services/login.service';
   styleUrls: ['./logged-in-bar-orgnization.component.css']
 })
 export class LoggedInBarOrgnizationComponent {
-  constructor(public service: loginService){}
+  constructor(public orgService: loginOrgService){}
 
   @Output() displaynavbar = new EventEmitter<boolean>();
 
@@ -16,6 +16,6 @@ export class LoggedInBarOrgnizationComponent {
   }
 
   onLogout() {
-    this.service.logout();                      
+    this.orgService.logout();                      
   };
 }
