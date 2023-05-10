@@ -50,6 +50,8 @@ import { ABPositiveComponent } from './ab-positive/ab-positive.component';
 import { ABVeComponent } from './ab-ve/ab-ve.component';
 import { HospitalStockComponent } from './hospital-stock/hospital-stock.component';
 import { HospitalStockFormComponent } from './hospital-stock-form/hospital-stock-form.component';
+import { LoggedInBarHospitalComponent } from './logged-in-bar-hospital/logged-in-bar-hospital.component';
+import { LoggedInBarOrgnizationComponent } from './logged-in-bar-orgnization/logged-in-bar-orgnization.component';
 
 
 
@@ -97,6 +99,8 @@ import { HospitalStockFormComponent } from './hospital-stock-form/hospital-stock
     ABVeComponent,
     HospitalStockComponent,
     HospitalStockFormComponent,
+    LoggedInBarHospitalComponent,
+    LoggedInBarOrgnizationComponent,
 
     
   ],

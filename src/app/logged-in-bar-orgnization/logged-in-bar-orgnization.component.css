@@ -1,0 +1,12 @@
+a{
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+    margin-right: 25px;
+    text-decoration: none;
+    padding: 3px;
+}
+
+a:hover{
+    border-bottom: 1px solid aliceblue;
+    border-radius: 2px;
+}
