@@ -18,17 +18,15 @@ export class UserProfileComponent implements OnInit{
   displays:boolean=false;
   displayd:boolean=true;
   isfetching: boolean = false;
-  errormessage: string = null;  
-  user: any;
+  errormessage: string = "error!";  
+  user?: User[];
+  dataFromLocalStorage?: string | null;
 
   constructor(private toastr: ToastrService, private http: HttpClient, private service: loginService){}
 
-  ngOnInit(){
-    //  this.service.getUser().subscribe(res => {
-    //   this.user = res;
-    //   console.log(res);
-    //  }) 
+  ngOnInit(){ 
     this.getuser();
+    this.dataFromLocalStorage = localStorage.getItem('userdata');
   }
 
   ongetuser(){
@@ -63,20 +61,21 @@ export class UserProfileComponent implements OnInit{
 
     getuser(){
       this.isfetching = true;
-      this.service.getUser(localStorage.getItem('user_id')).subscribe((users) =>{
-        this.user = users;
-        localStorage.setItem('userdata', JSON.stringify(users));
-        this.isfetching = false;
-        console.log(this.user);
-      }, (err) => {
-        this.errormessage = err.message;
-      });
-
-      const users = JSON.parse(localStorage.getItem('userdata'));
-        if (users){
-          this.user = users;
-        }
-    }
-
+      this.service.getUser().subscribe({
+        next: (data) => {
+          this.user = data;
+          const userdata = this.user[0]?.user_national_ID;
+          if (userdata) {
+            localStorage.setItem('userdata', userdata);
+          }
+          console.log(data);
+        }});
+        }      
+      // this.service.getUser(localStorage.getItem('user_id')).subscribe((users) =>{
+      //   this.user = users;
+      //   localStorage.setItem('userdata', JSON.stringify(users));
+      //   this.isfetching = false;
+      //   console.log(this.user);
 
 }
+

@@ -39,9 +39,12 @@ export class loginService{
     this.router.navigate(['/sign-in']);
   }
 
-  getUser(id: any){
-    return this.http.get<any>(`${this.userAPI}/${id}`);
+  getUser(){
+    return this.http.get<any>(this.userAPI+'/12');
   }
+  // getUser(id: any){
+  //   return this.http.get<any>(`${this.userAPI}/${id}`);
+  // }
   
 
 }
