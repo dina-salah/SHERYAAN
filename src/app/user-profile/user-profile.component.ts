@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { signupService } from '../services/signup.service';
 import { loginService } from '../services/login.service';
+import { updateService } from '../services/update.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,7 +23,7 @@ export class UserProfileComponent implements OnInit{
   user?: User[];
   dataFromLocalStorage?: any;
 
-  constructor(private toastr: ToastrService, private http: HttpClient, private service: loginService){}
+  constructor(private toastr: ToastrService, private http: HttpClient, private service: loginService, private updateservice: updateService){}
 
   ngOnInit(){ 
     this.getuser();
@@ -71,11 +72,11 @@ export class UserProfileComponent implements OnInit{
           this.isfetching = false;
       });
         }     
-      // this.service.getUser(localStorage.getItem('user_id')).subscribe((users) =>{
-      //   this.user = users;
-      //   localStorage.setItem('userdata', JSON.stringify(users));
-      //   this.isfetching = false;
-      //   console.log(this.user);
+      
+      updateuser(id: any){
+        id = JSON.parse(localStorage.getItem('user_national_ID'))
+        this.updateservice.updateuser(id, this.user)
+      }
 
 }
 

@@ -24,48 +24,41 @@
 
                 <!--static profile info-->
                 <div class="content-panel" [hidden]="displays">
-                        <div class="row ">
-                            <!-- <label *ngIf="errormessage">{{errormessage}}</label> -->
-                            <label *ngIf="isfetching && !errormessage">loading....</label>
-                            <!-- <div class="col col-lg-2">
-                        <h3 class="fieldset-title">Personal Info</h3>
-                        </div> -->
-                    <div class="col ">
-                        <table class="table table-hover table-bordered">
-                            <thead class="table-active">
-                              <tr>
-                                <th>first name</th>
-                                <th>last name</th>
-                                <th>user ssn</th>
-                                <th>gender</th>
-                                <th>age</th>
-                                <th>address</th>
-                                <th>city</th>
-                                <th>Blood type</th>
-                                <th>health status</th>
-                                <th>Email</th>
-                                <th>phone no</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let u of user">
-                                <td>{{u.user_Fname}}</td>
-                                <td>{{u.user_Lname}}</td>
-                                <td>{{u.user_national_ID}}</td>
-                                <td>{{u.user_gender}}</td>
-                                <td>{{u.user_age}}</td>
-                                <td>{{u.user_address}}</td>
-                                <td>{{u.user_city}}</td>
-                                <td>{{u.user_blood_type}}</td>
-                                <td>{{u.user_health_status}}</td>
-                                <td>{{u.user_Email}}</td>
-                                <td>{{u.user_phoneNo}}</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                    </div>
-                    </div>
-                    <br>
+        
+                            <fieldset class="fieldset">
+                                <div class="row ">
+                                    <label *ngIf="isfetching && !errormessage">loading....</label>
+                                    <div class="col col-lg-2">
+                                <h3 class="fieldset-title">Personal Info</h3>
+                            </div>
+                            <div class="col ">
+                                <div class="mb-3" *ngFor="let u of user"><br>
+                                    <label><b>First name:</b> {{u.user_Fname}}</label><br>
+                                    <label><b>Last name:</b> {{u.user_Lname}}</label><br>
+                                    <label><b>National ID:</b> {{u.user_national_ID}}</label><br>
+                                    <label><b>Gender:</b> {{u.user_gender}}</label><br>
+                                    <label><b>Age:</b> {{u.user_age}}</label><br>
+                                    <label><b>Address:</b> {{u.user_address}}</label><br>
+                                    <label><b>City:</b> {{u.user_city}}</label><br>
+                                    <label><b>Blood type:</b> {{u.user_blood_type}}</label><br>
+                                    <label><b>Health status:</b> {{u.user_health_status}}</label><br>
+                                </div>
+                            </div>
+                            </div>
+                            </fieldset><br>
+                            <fieldset class="fieldset">
+                                <div class="row ">
+                                    <div class="col col-lg-2">
+                                <h3 class="fieldset-title">Contact Info</h3>
+                                </div>
+                                <div class="col col-lg-2">
+                                <div class="mb-3" *ngFor="let u of user">
+                                    <label><b>Email:</b> {{u.user_Email}}</label><br>
+                                    <label><b>Phone number:</b> {{u.user_phoneNo}}</label>
+                                </div>
+                                </div>
+                                </div>
+                            </fieldset> 
                 
                     <hr><br>
                     <div class="form-group">
@@ -204,3 +197,38 @@
         </section>
     </div>
 </div>
+
+<!-- <div class="col ">
+                        <table class="table table-hover table-bordered">
+                            <thead class="table-active">
+                              <tr>
+                                <th>first name</th>
+                                <th>last name</th>
+                                <th>user ssn</th>
+                                <th>gender</th>
+                                <th>age</th>
+                                <th>address</th>
+                                <th>city</th>
+                                <th>Blood type</th>
+                                <th>health status</th>
+                                <th>Email</th>
+                                <th>phone no</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let u of user">
+                                <td>{{u.user_Fname}}</td>
+                                <td>{{u.user_Lname}}</td>
+                                <td>{{u.user_national_ID}}</td>
+                                <td>{{u.user_gender}}</td>
+                                <td>{{u.user_age}}</td>
+                                <td>{{u.user_address}}</td>
+                                <td>{{u.user_city}}</td>
+                                <td>{{u.user_blood_type}}</td>
+                                <td>{{u.user_health_status}}</td>
+                                <td>{{u.user_Email}}</td>
+                                <td>{{u.user_phoneNo}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div> -->

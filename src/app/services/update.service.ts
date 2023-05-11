@@ -4,7 +4,6 @@ import { Observable, map, catchError, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-const userurl = 'http://localhost:5000/user/';
 
 @Injectable({
     providedIn: 'root'
@@ -12,10 +11,13 @@ const userurl = 'http://localhost:5000/user/';
   
   export class updateService{
 
+    userurl = 'http://localhost:5000/user/';
+
+
     constructor(private http: HttpClient){}
 
     updateuser(id: any, data: any){
-        return this.http.put<any>(`${userurl}/${id}`, data);
+        return this.http.put<any>(this.userurl+ id, data);
     }
 
     updatehospital(){}

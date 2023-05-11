@@ -56,13 +56,13 @@ export class SignUpComponent{
   constructor(private signupservice: signupService, private toastr: ToastrService ){}
 
   addUserForm =  new FormGroup({
-    user_Fname: new FormControl(null, Validators.required),
-    user_Lname: new FormControl(null, Validators.required),
-    user_national_ID: new FormControl(null, Validators.required),
+    user_Fname: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    user_Lname: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    user_national_ID: new FormControl(null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]),
     user_gender: new FormControl(null, Validators.required),
     user_age: new FormControl(null, Validators.required),
     user_address: new FormControl(null, Validators.required),
-    user_phoneNo: new FormControl(null, Validators.required),
+    user_phoneNo: new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
     user_Email: new FormControl(null, Validators.required),
     user_city: new FormControl(null, Validators.required),
     user_blood_type: new FormControl(null, Validators.required),
