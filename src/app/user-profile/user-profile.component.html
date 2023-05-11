@@ -25,7 +25,7 @@
                 <!--static profile info-->
                 <div class="content-panel" [hidden]="displays">
                         <div class="row ">
-                            <label *ngIf="errormessage">{{errormessage}}</label>
+                            <!-- <label *ngIf="errormessage">{{errormessage}}</label> -->
                             <label *ngIf="isfetching && !errormessage">loading....</label>
                             <!-- <div class="col col-lg-2">
                         <h3 class="fieldset-title">Personal Info</h3>
@@ -48,10 +48,10 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>{{dataFromLocalStorage}}</td>
-                                <!-- <td>{{user_Lname}}</td>
-                                <td>{{user_national_ID}}</td>
+                              <tr *ngFor="let u of user">
+                                <td>{{u.user_Fname}}</td>
+                                <td>{{u.user_Lname}}</td>
+                                <td>{{u.user_national_ID}}</td>
                                 <td>{{u.user_gender}}</td>
                                 <td>{{u.user_age}}</td>
                                 <td>{{u.user_address}}</td>
@@ -59,11 +59,10 @@
                                 <td>{{u.user_blood_type}}</td>
                                 <td>{{u.user_health_status}}</td>
                                 <td>{{u.user_Email}}</td>
-                                <td>{{u.user_phoneNo}}</td> -->
+                                <td>{{u.user_phoneNo}}</td>
                               </tr>
                             </tbody>
                           </table>
-
                     </div>
                     </div>
                     <br>

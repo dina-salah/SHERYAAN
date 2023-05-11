@@ -37,6 +37,7 @@ export class loginService{
   logout() {
     this.loggedIn.next(false);
     this.router.navigate(['/sign-in']);
+    localStorage.clear();
   }
 
   getUser(){
