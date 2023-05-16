@@ -27,7 +27,7 @@
         
                             <fieldset class="fieldset">
                                 <div class="row ">
-                                    <label *ngIf="isfetching && !errormessage">loading....</label>
+                                    <label *ngIf="isfetching">loading....</label>
                                     <div class="col col-lg-2">
                                 <h3 class="fieldset-title">Personal Info</h3>
                             </div>
@@ -98,14 +98,21 @@
                     </div>
                   </div>
 
+                  <form *ngFor="let u of user">
+                    <div class="mb-3" >
+                    <input name="user_Fname" value={{u.user_Fname}}>
+                </div>
+                <button type="submit" (click)="updateuser(u.user_Fname)">submt</button>
+                  </form>
+
                 <!--editable profile info-->
-                <div class="content-panel" [hidden]="displayd">
-                    <form class="form-horizontal" [formGroup]="addUserForm">
+                <div class="content-panel" >
+                    <form class="form-horizontal" [formGroup]="addUserForm" *ngFor="let u of user">
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
                             
                             <div  class="mb-3">
-                                <input  required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" formControlName="fname">
+                                <input value="{{u.user_Fname}}" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" formControlName="fname">
                                 <!-- <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div> -->
                             </div><pre></pre>
         

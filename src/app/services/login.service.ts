@@ -41,7 +41,7 @@ export class loginService{
   }
 
   getUser(){
-    return this.http.get<any>(this.userAPI+'/12');
+    return this.http.get<any>(this.userAPI+'/2');
   }
   // getUser(id: any){
   //   return this.http.get<any>(`${this.userAPI}/${id}`);

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, map, catchError, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../model/signupinfo';
 
 
 @Injectable({
@@ -16,9 +17,12 @@ import { Router } from '@angular/router';
 
     constructor(private http: HttpClient){}
 
-    updateuser(id: any, data: any){
-        return this.http.put<any>(this.userurl+ id, data);
-    }
+    // updateuser(user: any){
+    //     return this.http.patch<any>(`${this.userurl}/${user.user_id}`, user);
+    // }
+    updateuser(user: any){
+      return this.http.put<any>(this.userurl+'2', user);
+  }
 
     updatehospital(){}
 

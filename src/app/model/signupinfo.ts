@@ -1,4 +1,5 @@
 export class User{user_Fname: string;
+    user_id: any;
     user_Lname: string;
     user_national_ID: string;
     user_gender: string;
