@@ -15,39 +15,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent{
-  // allusers: User[] = [];
-  // allhospitals: Hospital[] = [];
-  // isfetching: boolean = false;
-
-  // onUserCreate(users: {fname: string;
-  //   lname: string;
-  //   ssn: number;
-  //   gender: string;
-  //   age: number;
-  //   address: string;
-  //   phone: string;
-  //   email: string;
-  //   city: string;
-  //   bloodType: string;
-  //   healthstatus: string;
-  //   password: string;}){
-  //   this.signupservice.createUser(users);
-  // }
-    // onHospitalCreate(hospitals: {hospitalName: string;
-  //   address: string;
-  //   phone: string;
-  //   email: string;
-  //   city: string;}){
-  //     this.signupservice.createHospital(hospitals);
-  //   }
-
-  // onOrganizationCreate(organizations: {orgnizationName: string;
-  //   address: string;
-  //   phone: string;
-  //   email: string;
-  //   city: string;}){
-  //     this.signupservice.createOrganization(organizations);
-  //   }
 
   uDisplay:boolean =true;
   hDisplay:boolean =true;
@@ -60,15 +27,23 @@ export class SignUpComponent{
     user_Lname: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
     user_national_ID: new FormControl(null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]),
     user_gender: new FormControl(null, Validators.required),
-    user_age: new FormControl(null, Validators.required),
+    user_age: new FormControl(null, [Validators.required, Validators.min(18), Validators.max(60), Validators.pattern('^[0-9]+$')]),
     user_address: new FormControl(null, Validators.required),
     user_phoneNo: new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
     user_Email: new FormControl(null, Validators.required),
     user_city: new FormControl(null, Validators.required),
     user_blood_type: new FormControl(null, Validators.required),
     user_health_status: new FormControl(null, Validators.required),
-    user_password: new FormControl(null, Validators.required),
+    user_password: new FormControl('', [Validators.required,Validators.minLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$')]),
   })
+
+get user_password() {
+  return this.addUserForm.get('user_password');
+}
+
+get user_age() {
+  return this.addUserForm.get('user_age');
+}
 
   addHospitalForm =  new FormGroup({
     hospital_name: new FormControl(null, Validators.required),
@@ -76,16 +51,26 @@ export class SignUpComponent{
     hospital_phoneNo: new FormControl(null, Validators.required),
     hospital_Email: new FormControl(null, Validators.required),
     hospital_city: new FormControl(null, Validators.required),
-    hospital_password: new FormControl(null, Validators.required),
+    hospital_password: new FormControl(null,  [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$')]),
   })
+
+  get hospital_password() {
+    return this.addUserForm.get('hospital_password');
+  }
+
 
   addOrgnizationForm = new FormGroup({
     organization_name: new FormControl(null, Validators.required),
     organization_city: new FormControl(null, Validators.required),
     organization_phoneNo: new FormControl(null, Validators.required),
     organization_email: new FormControl(null, Validators.required),
-    organization_password: new FormControl(null, Validators.required)
+    organization_password: new FormControl(null, [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$')])
   })
+
+  get organization_password() {
+    return this.addUserForm.get('organization_password');
+  }
+
 
   hospitalDisplay(){
     this.hDisplay =false
