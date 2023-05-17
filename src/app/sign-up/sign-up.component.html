@@ -82,7 +82,7 @@
             <pre></pre>
             <div  class="mb-3">
                 
-                <input type="text" placeholder="Address"  class="form-control" [minlength]="8" [maxlength]="50"  formControlName="user_address" [class.is-invalid]="localForm.submitted && addUserForm.get('user_address')?.invalid">
+                <input type="text" placeholder="Address"  class="form-control" [minlength]="3" [maxlength]="50"  formControlName="user_address" [class.is-invalid]="localForm.submitted && addUserForm.get('user_address')?.invalid">
                 <div class="invalid-feedback">
                     Address is required
                 </div>
@@ -100,7 +100,7 @@
 
             <div  class="mb-3">
                 
-                <input type="email" placeholder="Email" class="form-control" [minlength]="11" [maxlength]="11"  formControlName="user_Email" [class.is-invalid]="localForm.submitted && addUserForm.get('user_Email')?.invalid">
+                <input type="email" placeholder="Email" class="form-control"   formControlName="user_Email" [class.is-invalid]="localForm.submitted && addUserForm.get('user_Email')?.invalid">
                 <div class="invalid-feedback">
                     Email is required
                 </div>
@@ -134,16 +134,15 @@
             <pre></pre>
             <div  class="mb-3"> 
             <input type="text" placeholder="health status" [maxlength]="50" class="form-control"  formControlName="user_health_status" >
-            <!--[class.is-invalid]="localForm.submitted && addUserForm.get('user_health_status')?.invalid" 
-                <div class="invalid-feedback">
-                Email is required
-            </div> -->
             </div>
             <pre></pre>
             <div  class="mb-3"> 
-            <input type="password" placeholder="Password" [minLength]="8" [maxlength]="30" class="form-control"  formControlName="user_password" [class.is-invalid]="localForm.submitted && addUserForm.get('user_password')?.invalid">
-            <div class="invalid-feedback">
-                Password is required!!
+                
+            <input type="password" placeholder="Password" class="form-control"  formControlName="user_password">
+                
+            <div class="warning" *ngIf="user_password && (user_password.invalid && (user_password.dirty || user_password.touched))">
+                <div *ngIf="user_password.errors?.['required']">Password is required.</div>
+                <div *ngIf="user_password.errors?.['pattern']">Password must contain at least one capital letter, one number, and one special character.</div>
             </div>
             </div>
             <pre></pre>
