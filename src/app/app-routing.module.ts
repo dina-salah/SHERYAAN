@@ -33,6 +33,7 @@ import { HospitalProfileComponent } from './hospital-profile/hospital-profile.co
 import { OrgnizationProfileComponent } from './orgnization-profile/orgnization-profile.component';
 import { HospitalStockComponent } from './hospital-stock/hospital-stock.component';
 import { HospitalStockFormComponent } from './hospital-stock-form/hospital-stock-form.component';
+import { UserProfileUpdateComponent } from './user-profile-update/user-profile-update.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -66,7 +67,9 @@ const routes: Routes = [
   {path:'user-profile', component:UserProfileComponent},
   {path:'req-form', component:ReqFormComponent},
   {path:'myrequest-user', component:MyrequestUserComponent},
-  {path: 'logged-in-bar', component:LoggedInBarComponent}
+  {path: 'logged-in-bar', component:LoggedInBarComponent},
+  {path: 'user-profile/:user_id/-update', component: UserProfileUpdateComponent},
+  { path: 'user', redirectTo: 'user-profile', pathMatch: 'full'}
   // {path:'++',component:ErrorComponent}
 ];
 

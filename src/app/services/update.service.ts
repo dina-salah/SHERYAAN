@@ -14,15 +14,41 @@ import { User } from '../model/signupinfo';
 
     userurl = 'http://localhost:5000/user/';
 
+    httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
 
     constructor(private http: HttpClient){}
 
-    // updateuser(user: any){
-    //     return this.http.patch<any>(`${this.userurl}/${user.user_id}`, user);
-    // }
-    updateuser(user: any){
-      return this.http.put<any>(this.userurl+'2', user);
-  }
+    errorHandler(error:any) {
+      let errorMessage = 'error';
+      if(error.error instanceof ErrorEvent) {
+        errorMessage = error.error.message;
+      } else {
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      }
+      return throwError(errorMessage);
+    }
+
+    find(id:number): Observable<any> {
+  
+      return this.http.get(this.userurl + id)
+    
+      .pipe(
+        catchError(this.errorHandler)
+      )
+    }
+
+    updateuser(id:number, user:User): Observable<any> {
+  
+      return this.http.put(this.userurl + id, JSON.stringify(user), this.httpOptions)
+   
+      .pipe( 
+        catchError(this.errorHandler)
+      )
+    }
 
     updatehospital(){}
 

@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { signupService } from '../services/signup.service';
 import { loginService } from '../services/login.service';
 import { updateService } from '../services/update.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,37 +19,38 @@ export class UserProfileComponent implements OnInit{
   
   displays:boolean=false;
   displayd:boolean=true;
-  isfetching: boolean = false;
-  errormessage: string = "error!";  
+  isfetching: boolean = false; 
   user?: User[];
+  id!: number;
 
-  constructor(private toastr: ToastrService, private http: HttpClient, private service: loginService, private updateservice: updateService, private router: ActivatedRoute){}
+  constructor(private toastr: ToastrService, private service: loginService, private updateservice: updateService, private router: Router){}
 
   ngOnInit(){ 
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
   }
 
-  ongetuser(){
-    this.getuser;
-  }
-
-    dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));
+  dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));
     
     addUserForm =  new FormGroup({
-      fname: new FormControl('', Validators.required),
-      lname: new FormControl('', Validators.required),
-      ssn: new FormControl('',  Validators.required),
-      age: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      bloodType: new FormControl('', Validators.required),
-      healthstatus: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      user_id: new FormControl('', Validators.required),
+      user_Fname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      user_Lname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      user_national_ID: new FormControl('', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]),
+      user_gender: new FormControl('', Validators.required),
+      user_age: new FormControl('', Validators.required),
+      user_address: new FormControl('', Validators.required),
+      user_phoneNo: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
+      user_Email: new FormControl('', Validators.required),
+      user_city: new FormControl('', Validators.required),
+      user_blood_type: new FormControl('', Validators.required),
+      user_health_status: new FormControl('', Validators.required),
+      user_password: new FormControl('', Validators.required),
     })
   
+    get f(){
+      return this.addUserForm.controls;
+    }
   
     showform(){
       this.displays = true;
@@ -76,12 +77,5 @@ export class UserProfileComponent implements OnInit{
       });
         }     
       
-      updateuser(userdata: any){
-        this.updateservice.updateuser(userdata).subscribe((res) => {console.log(res);})
-      }
-      
-      updatedata(){
-
-      }
 }
 

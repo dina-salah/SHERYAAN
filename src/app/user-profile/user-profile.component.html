@@ -59,13 +59,14 @@
                                 </div>
                                 </div>
                             </fieldset> 
+    
                 
                     <hr><br>
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                            <div class="d-flex">
-                              
-                            <button class="btn btn-primary m-1" type="submit" (click)="showform()">Update Profile</button>
+                            <div class="d-flex" *ngFor="let u of user">
+                            <a href="#" [routerLink]="['/user-profile/', u.user_id, '-update']" class="btn btn-danger m-1">Update</a>
+                            <!-- <button class="btn btn-primary m-1" type="submit" (click)="showform()">Update Profile</button> -->
                             <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
                             </div>
                         </div>
@@ -97,145 +98,8 @@
                       </div>
                     </div>
                   </div>
-
-                  <form *ngFor="let u of user">
-                    <div class="mb-3" >
-                    <input name="user_Fname" value={{u.user_Fname}}>
-                </div>
-                <button type="submit" (click)="updateuser(u.user_Fname)">submt</button>
-                  </form>
-
-                <!--editable profile info-->
-                <div class="content-panel" >
-                    <form class="form-horizontal" [formGroup]="addUserForm" *ngFor="let u of user">
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Personal Info</h3>
-                            
-                            <div  class="mb-3">
-                                <input value="{{u.user_Fname}}" required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control" formControlName="fname">
-                                <!-- <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div> -->
-                            </div><pre></pre>
-        
-                            <div  class="mb-3">
-                                <input type="text"  required minlength="2" maxlength="15" placeholder="last name" name="lname" class="form-control" formControlName="lname">
-                                <!-- <p *ngIf="lname.invalid && lname.touched " class="warning"> required!!</p> -->
-                            </div><pre></pre>
-
-                            <div  class="mb-3">
-                                <input type="text"  placeholder="SNN" required minlength="9" maxlength="14" name="snn" class="form-control" formControlName="ssn">
-                                <!-- <p *ngIf="ssn.invalid && ssn.touched " class="warning"> required!!</p> -->
-                            </div><pre></pre>
-
-                            <div  class="mb-3"> 
-                                <!-- /the value must be bet 18 &60/ -->
-                                <input type="text"  required length="2" placeholder="Age" name="age" class="form-control" value="age" formControlName="age"> 
-                                <!-- <p *ngIf="age.invalid && age.touched " class="warning"> enter a vaild age!!</p> -->
-                            </div><pre></pre>
-
-                            <div  class="mb-3">
-                                <input type="text" placeholder="Address" name="address" class="form-control" formControlName="address">
-                            </div><pre></pre>
-
-                            <div  >
-                                <label  style="margin-right: 7px;">City:</label>
-                                <select class="drop" formControlName="city" >
-                                <option value="6 October"  >6 October</option>
-                                <option value="Dokki"  >Dokki</option>
-                                <option value="New Cairo"  >New Cairo</option>
-                                <option value="Nasr city"  >Nasr city</option>
-                                <option value="Madinty"  >Madinty</option>
-                                </select>
-                            </div>
-                            <pre></pre>
-                
-                            <label for="bloodType">Blood type:</label>
-                            <div style="display: inline;" class="mb-3">
-                            <input class="custom-control-input" type="radio" name="bloodType" value="O+" formControlName="bloodType" ><label class="user-bloodType" for="O+">O+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="O"  formControlName="bloodType" ><label class="user-bloodType" for="O"> O-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="A+" formControlName="bloodType"  ><label class="user-bloodType" for="A+"> A+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="A-" formControlName="bloodType"  ><label class="user-bloodType" for="A-">A-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="B+" formControlName="bloodType" ><label class="user-bloodType" for="B+">B+</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="B-" formControlName="bloodType" ><label class="user-bloodType" for="B-">B-</label>
-                            <input class="custom-control-input" type="radio" name="bloodType" value="AB+"formControlName="bloodType"  ><label class="user-bloodType" for="AB+">AB+</label>
-                            </div>
-                            <pre></pre>
-
-                            <div  class="mb-3"> 
-                                <input type="text" placeholder="health status" name="healthstatus" class="form-control" formControlName="healthstatus" >
-                            </div><pre></pre>
-                            <div class="form-group avatar">
-                            
-                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                    
-                                    <button type="submit" class="btn btn-danger">Update Image</button>
-                                </div>
-                            </div><pre></pre>
-                            <div  class="mb-3"> 
-                                
-                                <!-- check validity -->
-                                <input type="password"  placeholder="Password" required minlength="8" name="password" class="form-control" formControlName="password" >
-                                <!-- <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p> -->
-                            </div>
-
-                            <br>
-                        </fieldset>
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Contact Info</h3><br>
-                            <div  class="mb-3"> 
-                                <!-- why validation is not working -->
-                                <input type="text"  placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" formControlName="phone" >
-                                <!-- <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p> -->
-                            </div>
-                            <pre></pre>
-                            <div  class="mb-3">
-                                <input type="email" placeholder="Email" name="email" class="form-control" formControlName="email" >
-                            </div>
-                        </fieldset>
-                        
-                        <hr>
-                    </form>
-                    <div class="form-group">
-                        <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                            <button class="btn btn-success" type="submit" (click)="showinfo()">save</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     </div>
 </div>
 
-<!-- <div class="col ">
-                        <table class="table table-hover table-bordered">
-                            <thead class="table-active">
-                              <tr>
-                                <th>first name</th>
-                                <th>last name</th>
-                                <th>user ssn</th>
-                                <th>gender</th>
-                                <th>age</th>
-                                <th>address</th>
-                                <th>city</th>
-                                <th>Blood type</th>
-                                <th>health status</th>
-                                <th>Email</th>
-                                <th>phone no</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let u of user">
-                                <td>{{u.user_Fname}}</td>
-                                <td>{{u.user_Lname}}</td>
-                                <td>{{u.user_national_ID}}</td>
-                                <td>{{u.user_gender}}</td>
-                                <td>{{u.user_age}}</td>
-                                <td>{{u.user_address}}</td>
-                                <td>{{u.user_city}}</td>
-                                <td>{{u.user_blood_type}}</td>
-                                <td>{{u.user_health_status}}</td>
-                                <td>{{u.user_Email}}</td>
-                                <td>{{u.user_phoneNo}}</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                    </div> -->

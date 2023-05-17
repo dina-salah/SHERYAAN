@@ -52,6 +52,7 @@ import { HospitalStockComponent } from './hospital-stock/hospital-stock.componen
 import { HospitalStockFormComponent } from './hospital-stock-form/hospital-stock-form.component';
 import { LoggedInBarHospitalComponent } from './logged-in-bar-hospital/logged-in-bar-hospital.component';
 import { LoggedInBarOrgnizationComponent } from './logged-in-bar-orgnization/logged-in-bar-orgnization.component';
+import { UserProfileUpdateComponent } from './user-profile-update/user-profile-update.component';
 
 
 
@@ -101,6 +102,7 @@ import { LoggedInBarOrgnizationComponent } from './logged-in-bar-orgnization/log
     HospitalStockFormComponent,
     LoggedInBarHospitalComponent,
     LoggedInBarOrgnizationComponent,
+    UserProfileUpdateComponent,
 
     
   ],
