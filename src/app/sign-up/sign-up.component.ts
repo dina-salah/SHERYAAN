@@ -15,7 +15,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent{
-
+  // pattern = '^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$'
   uDisplay:boolean =true;
   hDisplay:boolean =true;
   oDisplay:boolean =true;
@@ -34,7 +34,7 @@ export class SignUpComponent{
     user_city: new FormControl(null, Validators.required),
     user_blood_type: new FormControl(null, Validators.required),
     user_health_status: new FormControl(null, Validators.required),
-    user_password: new FormControl('', [Validators.required,Validators.minLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$')]),
+    user_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 
 get user_password() {
@@ -51,7 +51,7 @@ get user_age() {
     hospital_phoneNo: new FormControl(null, Validators.required),
     hospital_Email: new FormControl(null, Validators.required),
     hospital_city: new FormControl(null, Validators.required),
-    hospital_password: new FormControl(null,  [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$')]),
+    hospital_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 
   get hospital_password() {
@@ -64,7 +64,7 @@ get user_age() {
     organization_city: new FormControl(null, Validators.required),
     organization_phoneNo: new FormControl(null, Validators.required),
     organization_email: new FormControl(null, Validators.required),
-    organization_password: new FormControl(null, [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$')])
+    organization_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 
   get organization_password() {
