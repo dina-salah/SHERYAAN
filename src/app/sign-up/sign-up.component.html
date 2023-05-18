@@ -73,10 +73,13 @@
             <pre></pre>
             <div  class="mb-3"> 
                 <!--  min="18" max="60" -->
-                <input type="text"   placeholder="Age"  class="form-control" [minlength]="1" [maxlength]="2" formControlName="user_age"  [class.is-invalid]="localForm.submitted && addUserForm.get('user_age')?.invalid"> 
-                <div class="invalid-feedback">
-                    Age is required
-                </div>
+                <input type="text"   placeholder="Age"  class="form-control" [minlength]="1" [maxlength]="2" formControlName="user_age" > 
+                
+                <div class="warning" *ngIf="user_age && (user_age.invalid && (user_age.dirty || user_age.touched))">
+                    <div *ngIf="user_age.errors?.['required']">Age is required.</div>
+                    <div *ngIf="user_age.errors?.['min'] || user_age.errors?.['max']">Age must be between 18 and 60.</div>
+                    <div *ngIf="user_age.errors?.['pattern']">Age must contain only numbers.</div>
+                  </div>
             </div>
 
             <pre></pre>
@@ -141,10 +144,10 @@
             <input type="password" placeholder="Password" class="form-control"  formControlName="user_password">
                 
             <div class="warning" *ngIf="user_password && (user_password.invalid && (user_password.dirty || user_password.touched))">
-                <div *ngIf="user_password.errors?.['required']">Password is required.</div>
-                <div *ngIf="user_password.errors?.['pattern']">Password must contain at least one capital letter, one number, and one special character.</div>
+                <div *ngIf="user_password.errors?.['required']">Password is required.</div></div>
+                <div class="warning" *ngIf="user_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
+            
             </div>
-            </div> 
             <pre></pre>
             
             <button  class="btn btn-danger w-100" (click)="userSubmit()" >Sign up</button>
@@ -204,12 +207,16 @@
     </div>
     <pre></pre>
 
-    <div  class="mb-3"> 
-    <input type="password" placeholder="Password"  class="form-control" formControlName="hospital_password" [minLength]="8" [maxlength]="30" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_password')?.invalid">
-    <div class="invalid-feedback">
-        Password is required
+    <!-- <div  class="mb-3"> 
+    <input type="password" placeholder="Password"  class="form-control" formControlName="hospital_password">
+        
+    <div class="warning" *ngIf="hospital_password && (hospital_password.invalid && (hospital_password.dirty || hospital_password.touched))">
+        <div *ngIf="hospital_password.errors?.['required']">Password is required.</div>
+        <div class="warning" *ngIf="hospital_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
     </div>
-    </div>
+    </div> -->
+
+    
     <pre></pre>
     
     <button  class="btn btn-danger w-100" (click)="HospitalSubmit()" >Sign up</button>
@@ -260,114 +267,18 @@
     </div>
 
     <pre></pre>
-    <div  class="mb-3"> 
-    <input type="password"placeholder="Password"    class="form-control"  formControlName="organization_password" [minLength]="8" [maxlength]="30" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_password')?.invalid">
-    <div class="invalid-feedback">
-        Password is required
-    </div>
-    </div>
+    <!-- <div  class="mb-3"> 
+
+    <input type="password" placeholder="Password" class="form-control" formControlName="organization_password">
+    
+    <div class="warning" *ngIf="organization_password && (organization_password.invalid && (organization_password.dirty || organization_password.touched))">
+        <div *ngIf="organization_password.errors?.['required']">Password is required.</div>
+        <div class="warning" *ngIf="organization_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
+        </div>
+   
+    </div> -->
     <pre></pre>
     
     <button  class="btn btn-danger w-100" (click)="OrgnizationSubmit()" >Sign up</button>
     <pre></pre>
 </form>
-
-        <!-- <form class="Hospital" #hospitalForm = "ngForm" (ngSubmit)="onHospitalCreate(hospitalForm.value)" [hidden]="hDisplay"> 
-            <div> 
-            <div>
-                <h1>Register Your Account</h1>
-                <p>Please enter the following information so we can match to your records.</p>
-            </div>
-            <div  class="form-group">
-                <input  #hname="ngModel" required minlength="2" maxlength="15" type="text" name="hospitalName" placeholder="Hospital Name" class="form-control" ngModel>
-                <div *ngIf="hname.invalid && hname.touched  " class="warning"> required!!</div>
-            </div>
-            <pre></pre>
-            <div  class="form-group">
-                
-                <input type="text"  #addr="ngModel" required minlength="2" maxlength="15" placeholder="Address" name="address" class="form-control" ngModel>
-                <div *ngIf="addr.invalid && addr.touched  " class="warning"> required!!</div>
-            </div>
-            <pre></pre>
-    
-            <div  class="form-group"> 
-                
-                <input type="number" #phone="ngModel" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" ngModel>
-                <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p>
-            </div>
-            <pre></pre>
-            <div  class="form-group">
-                
-                <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
-            </div>
-            <pre></pre>
-            <div  class="form-group">
-                <label for="City" style="margin-right: 7px;">City:</label>
-                <select class="drop" name="city" ngModel>
-                <option value="6 October" ngModel>6 October</option>
-                <option value="Dokki" ngModel>Dokki</option>
-                <option value="New Cairo" ngModel>New Cairo</option>
-                <option value="Nasr city" ngModel>Nasr city</option>
-                <option value="Madinty" ngModel>Madinty</option>
-                </select>
-            </div>
-            <pre></pre>
-            
-            <button type="submit" class="btn btn-danger w-100" (click)="onsignup()">Sign up</button>
-    
-            <pre></pre> 
-        </div> 
-        </form>
-    
-        <form class="Orgnization" #organizationForm = "ngForm" (ngSubmit)="onOrganizationCreate(organizationForm.value)" [hidden]="oDisplay"> 
-            <div> 
-            <div>
-                <h1>Register Your Account</h1>
-                <p>Please enter the following information so we can match to your donation records.</p>
-            </div>
-            <div  class="form-group">
-                
-                <input  #oname="ngModel" required minlength="2" maxlength="15" type="text" name="orgnizationName" placeholder="Organization Name" class="form-control" ngModel>
-                <div *ngIf="oname.invalid && oname.touched  " class="warning"> required!!</div>
-            </div>
-            <pre></pre>
-            <div  class="form-group">
-                
-                <input type="text"  #addr="ngModel" required minlength="2" maxlength="15" placeholder="Address" name="address" class="form-control" ngModel>
-                <div *ngIf="addr.invalid && addr.touched  " class="warning"> required!!</div>
-            </div>
-            <pre></pre>
-    
-            <div  class="form-group"> 
-               
-                <input type="number" #phone="ngModel" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control" ngModel>
-                <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p>
-            </div>
-            <pre></pre>
-            <div  class="form-group">
-                <input type="email" placeholder="Email" name="email" class="form-control" ngModel>
-            </div>
-            <pre></pre>
-            <div  class="form-group">
-                <label for="City" style="margin-right: 7px;">City:</label>
-                <select  class="drop" name="city" ngModel>
-                <option value="6 October" ngModel>6 October</option>
-                <option value="Dokki" ngModel>Dokki</option>
-                <option value="New Cairo" ngModel>New Cairo</option>
-                <option value="Nasr city" ngModel>Nasr city</option>
-                <option value="Madinty" ngModel>Madinty</option>
-                </select>
-            </div> 
-            <pre></pre>
-            
-            <button type="submit" class="btn btn-danger w-100" (click)="onsignup()">Sign up</button>
-            <pre></pre> 
-            </div> 
-        </form>
-    </div>
-    
-    </div>
-    </div>
-    <div class="form-text text-center mb-5 text-dark">Already have an account? <a href="#" routerLink="/sign-in" routerLinkActive="active" class="text-dark fw-bold">sign in</a></div>
-    </div>
-    </div> -->
