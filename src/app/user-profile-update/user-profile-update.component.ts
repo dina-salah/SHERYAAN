@@ -30,23 +30,23 @@ export class UserProfileUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['user_id'];
-    this.userService.find(this.id).subscribe((data: User)=>{
+    this.userService.find(this.id).subscribe((data:User)=>{
       this.user = data;
-      console.log(this.user); 
+      console.log(this.user[0]); 
 
       this.form.patchValue({
-        user_Fname: this.user.user_Fname,
-        user_Lname: this.user.user_Lname,
-        user_national_ID: this.user.user_national_ID,
-        user_gender: this.user.user_gender,
-        user_age: this.user.user_age,
-        user_address: this.user.user_address,
-        user_phoneNo: this.user.user_phoneNo,
-        user_Email: this.user.user_Email, 
-        user_city: this.user.user_city,
-        user_blood_type: this.user.user_blood_type,
-        user_health_status: this.user.user_health_status,
-        user_password: this.user.user_password
+        user_Fname: this.user[0].user_Fname,
+        user_Lname: this.user[0].user_Lname,
+        user_national_ID: this.user[0].user_national_ID,
+        user_gender: this.user[0].user_gender,
+        user_age: this.user[0].user_age,
+        user_address: this.user[0].user_address,
+        user_phoneNo: this.user[0].user_phoneNo,
+        user_Email: this.user[0].user_Email, 
+        user_city: this.user[0].user_city,
+        user_blood_type: this.user[0].user_blood_type,
+        user_health_status: this.user[0].user_health_status,
+        user_password: this.user[0].user_password
       });
     }); 
 
@@ -72,10 +72,10 @@ export class UserProfileUpdateComponent implements OnInit{
 
   submit(){
     console.log(this.form.value);
-    this.userService.updateuser(this.id, this.form.value).subscribe((res:any) => {
+    this.userService.updateuser(this.id, this.form.value).subscribe((res: any) => {
          console.log('User updated successfully!');
          this.toastr.success('profile updated successfully!');
-         this.router.navigateByUrl('/home');
+         
     })
   }
 

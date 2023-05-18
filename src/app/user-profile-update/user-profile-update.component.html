@@ -29,7 +29,7 @@
             <h3 class="fieldset-title">Personal Info</h3>
             
             <div  class="mb-3">
-                <input required placeholder="first name" type="text"  class="form-control" formControlName="user_Fname" value="user_Fname">
+                <input required placeholder="first name" type="text" class="form-control" formControlName="user_Fname" value="user_Fname">
                 <div *ngIf="f['user_Fname'].touched && f['user_Fname'].invalid" >
                     <div *ngIf="f['user_Fname'].errors && f['user_Fname'].errors['required']">User name is required.</div>
                   </div>

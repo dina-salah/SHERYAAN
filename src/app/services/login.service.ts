@@ -12,7 +12,7 @@ import { User } from '../model/signupinfo';
 export class loginService{
 
   API: string = 'http://localhost:5000';
-  userAPI: string        ='http://localhost:5000/user';
+  userAPI: string        ='http://localhost:5000/user/';
   hospitalAPI:string     ='http://localhost:7000/hospital'; 
   orgnizationAPI:string  ='http://localhost:8000/org';
 
@@ -40,12 +40,22 @@ export class loginService{
     localStorage.clear();
   }
 
-  getUser(){
-    return this.http.get<any>(this.userAPI+'/2');
+  getUser(id: number): Observable<any>{
+    return this.http.get<any>(this.userAPI+ id)
+    .pipe(
+      catchError(this.errorHandler)
+    )
   }
-  // getUser(id: any){
-  //   return this.http.get<any>(`${this.userAPI}/${id}`);
-  // }
+  
+  errorHandler(error:any) {
+    let errorMessage = 'error';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
   
 
 }

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { loginService } from '../services/login.service';
 import { loginHospitalService } from '../services/loginHospital.service';
 import { loginOrgService } from '../services/loginOrg.service';
+import { Observable, map, catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
@@ -77,8 +78,8 @@ export class SignInComponent{
     admin_password: this.builder.control('', Validators.required)
   })
 
-  navigateToLogin() {
-    this.router.navigateByUrl('/');
+  navigateToLogin(id: number) {
+    this.router.navigate(['/user/', id]); 
 }
 
   //user  
@@ -88,8 +89,8 @@ export class SignInComponent{
   this.service.userlogin(this.userloginform.value)
   .subscribe({
   next: (data) => {
-  console.log(data)
-  this.navigateToLogin();
+  console.log(data.data[0].user_id);
+  this.navigateToLogin(data.data[0].user_id);
   this.service.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
  }, 
@@ -109,7 +110,7 @@ export class SignInComponent{
   .subscribe({
   next: (data) => {
   console.log(data)
-  this.navigateToLogin();
+  
   this.hospitalservice.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 
@@ -129,7 +130,7 @@ export class SignInComponent{
   .subscribe({
   next: (data) => {
   console.log(data)
-  this.navigateToLogin();
+  
   this.orgservice.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 

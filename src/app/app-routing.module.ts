@@ -69,7 +69,8 @@ const routes: Routes = [
   {path:'myrequest-user', component:MyrequestUserComponent},
   {path: 'logged-in-bar', component:LoggedInBarComponent},
   {path: 'user-profile/:user_id/-update', component: UserProfileUpdateComponent},
-  { path: 'user', redirectTo: 'user-profile', pathMatch: 'full'}
+  { path: 'user', redirectTo: 'user-profile', pathMatch: 'full'},
+  {path: 'user/:user_id', component: UserProfileComponent}
   // {path:'++',component:ErrorComponent}
 ];
 

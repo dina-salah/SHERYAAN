@@ -23,9 +23,14 @@ export class UserProfileComponent implements OnInit{
   user?: User[];
   id!: number;
 
-  constructor(private toastr: ToastrService, private service: loginService, private updateservice: updateService, private router: Router){}
+  constructor(private toastr: ToastrService,
+    private service: loginService,
+    private updateservice: updateService, 
+    private router: Router,
+    private route: ActivatedRoute){}
 
   ngOnInit(){ 
+    this.id = this.route.snapshot.params['user_id'];
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
   }
@@ -65,7 +70,7 @@ export class UserProfileComponent implements OnInit{
 
     getuser(){
       this.isfetching = true;
-      this.service.getUser().subscribe((res) => {
+      this.service.getUser(this.id).subscribe((res) => {
           this.user = res;
           const userdata = res.data;
           if (userdata) {
