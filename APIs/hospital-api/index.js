@@ -171,7 +171,7 @@ app.post("/login", function (req, res) {
       .send({ error: true, message: "Please provide your email and password" });
   }
   dbConn.query(
-    "SELECT hospital_Email , hospital_password FROM hospital WHERE hospital_Email = ? AND hospital_password = ? ",
+    "SELECT hospital_id, hospital_Email , hospital_password FROM hospital WHERE hospital_Email = ? AND hospital_password = ? ",
     [email, password],
     
     function (error, results, fields) {
@@ -185,6 +185,7 @@ app.post("/login", function (req, res) {
       else {
         return res.send({
           error : false,
+          data: results,
           message: "loging accepted"
         })
       }

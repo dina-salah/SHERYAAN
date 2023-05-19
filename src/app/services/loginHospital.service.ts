@@ -39,8 +39,21 @@ export class loginHospitalService{
     this.router.navigate(['/sign-in']);
   }
 
-  getUser(id: any){
-    return this.http.get<any>(`${this.userAPI}/${id}`);
+  getHospital(id: number): Observable<any>{
+    return this.http.get<any>(this.hospitalAPI+ id)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  
+  errorHandler(error:any) {
+    let errorMessage = 'error';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
   }
   
 

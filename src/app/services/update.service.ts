@@ -4,6 +4,8 @@ import { Observable, map, catchError, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../model/signupinfo';
+import { Hospital } from '../model/signupinfo';
+import { Organization } from '../model/signupinfo';
 
 
 @Injectable({
@@ -13,6 +15,8 @@ import { User } from '../model/signupinfo';
   export class updateService{
 
     userurl = 'http://localhost:5000/user/';
+    hospitalurl = 'http://localhost:7000/hospital/';
+    orgurl = 'http://localhost:/8000/org/';
 
     httpOptions = {
       headers: new HttpHeaders({
@@ -50,7 +54,40 @@ import { User } from '../model/signupinfo';
       )
     }
 
-    updatehospital(){}
+    findhos(id:number): Observable<any> {
+  
+      return this.http.get(this.hospitalurl + id)
+    
+      .pipe(
+        catchError(this.errorHandler)
+      )
+    }
 
-    updateorg(){}
+    updatehospital(id: number, hospital: Hospital): Observable<any> {
+
+      return this.http.put(this.hospitalurl + id, JSON.stringify(hospital), this.httpOptions)
+
+      .pipe( 
+        catchError(this.errorHandler)
+      )
+    }
+
+    findorg(id:number): Observable<any> {
+  
+      return this.http.get(this.orgurl + id)
+    
+      .pipe(
+        catchError(this.errorHandler)
+      )
+    }
+
+    updateorg(id: number, org: Organization): Observable<any> {
+
+      return this.http.put(this.orgurl + id, JSON.stringify(org), this.httpOptions)
+      
+      .pipe( 
+        catchError(this.errorHandler)
+      )
+    }
+
   }

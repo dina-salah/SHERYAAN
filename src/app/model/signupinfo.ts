@@ -14,17 +14,20 @@ export class User{user_Fname: string;
 }
 
 export class Hospital{
-    hospitalName!: string;
-    address!: string;
-    phone!: string;
-    email!: string;
-    city!: string;
+    hospital_id: any;
+    hospital_name!: string;
+    hospital_address!: string;
+    hospital_phoneNo!: string;
+    hospital_Email!: string;
+    hospital_city!: string;
+    hospital_password!: string;
 }
 
 export class Organization{
-    orgnizationName!: string;
-    address!: string;
-    phone!: string;
-    email!: string;
-    city!: string;
+    organization_id!: number;
+    organization_name!: string;
+    organization_password!: string;
+    organization_phoneNo!: string;
+    organization_email!: string;
+    organization_city!: string;
 }

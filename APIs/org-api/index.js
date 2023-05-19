@@ -163,7 +163,7 @@ app.post("/login", function (req, res) {
       .send({ error: true, message: "Please provide your email and password" });
   }
   dbConn.query(
-    "SELECT organization_email , organization_password FROM organization WHERE organization_email = ? AND organization_password = ? ",
+    "SELECT organization_id, organization_email , organization_password FROM organization WHERE organization_email = ? AND organization_password = ? ",
     [email, password],
     
     function (error, results, fields) {
@@ -177,6 +177,7 @@ app.post("/login", function (req, res) {
       else {
         return res.send({
           error : false,
+          data: results,
           message: "loging accepted"
         })
       }
@@ -185,7 +186,7 @@ app.post("/login", function (req, res) {
 });
 
 // set port
-app.listen(6000, function () {
-  console.log("Node app is running on port 6000");
+app.listen(8000, function () {
+  console.log("Node app is running on port 8000");
 });
 module.exports = app;

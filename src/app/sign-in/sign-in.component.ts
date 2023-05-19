@@ -101,6 +101,10 @@ export class SignInComponent{
   }
   });
   }
+
+  navigateToLoginh(id: number) {
+    this.router.navigate(['/hospital/', id]); 
+}
   
   //hospital  
   proceedloginhospital(){
@@ -109,8 +113,8 @@ export class SignInComponent{
   this.hospitalservice.hospitallogin(this.hospitalloginform.value)
   .subscribe({
   next: (data) => {
-  console.log(data)
-  
+  console.log(data.data[0].hospital_id);
+  this.navigateToLoginh(data.data[0].hospital_id);
   this.hospitalservice.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 
@@ -122,6 +126,10 @@ export class SignInComponent{
   });
   }
 
+  navigateToLogino(id: number) {
+    this.router.navigate(['/organization/', id]); 
+}
+
   //orgnization
   proceedloginorg(){
     console.log(this.orgloginform.value)
@@ -129,8 +137,8 @@ export class SignInComponent{
   this.orgservice.orglogin(this.orgloginform.value)
   .subscribe({
   next: (data) => {
-  console.log(data)
-  
+  console.log(data.data[0].organization_id);
+  this.navigateToLogino(data.data[0].organization_id);
   this.orgservice.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
 
