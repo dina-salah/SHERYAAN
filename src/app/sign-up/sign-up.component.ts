@@ -15,7 +15,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent{
-  // pattern = '^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$'
   uDisplay:boolean =true;
   hDisplay:boolean =true;
   oDisplay:boolean =true;
@@ -55,7 +54,7 @@ get user_age() {
   })
 
   get hospital_password() {
-    return this.addUserForm.get('hospital_password');
+    return this.addHospitalForm.get('hospital_password');
   }
 
 
@@ -68,7 +67,7 @@ get user_age() {
   })
 
   get organization_password() {
-    return this.addUserForm.get('organization_password');
+    return this.addOrgnizationForm.get('organization_password');
   }
 
 

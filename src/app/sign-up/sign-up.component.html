@@ -207,14 +207,14 @@
     </div>
     <pre></pre>
 
-    <!-- <div  class="mb-3"> 
+    <div  class="mb-3"> 
     <input type="password" placeholder="Password"  class="form-control" formControlName="hospital_password">
         
     <div class="warning" *ngIf="hospital_password && (hospital_password.invalid && (hospital_password.dirty || hospital_password.touched))">
         <div *ngIf="hospital_password.errors?.['required']">Password is required.</div>
         <div class="warning" *ngIf="hospital_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
     </div>
-    </div> -->
+    </div>
 
     
     <pre></pre>
@@ -267,7 +267,7 @@
     </div>
 
     <pre></pre>
-    <!-- <div  class="mb-3"> 
+    <div  class="mb-3"> 
 
     <input type="password" placeholder="Password" class="form-control" formControlName="organization_password">
     
@@ -276,7 +276,7 @@
         <div class="warning" *ngIf="organization_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
         </div>
    
-    </div> -->
+    </div>
     <pre></pre>
     
     <button  class="btn btn-danger w-100" (click)="OrgnizationSubmit()" >Sign up</button>

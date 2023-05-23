@@ -56,7 +56,6 @@ import { UserProfileUpdateComponent } from './user-profile-update/user-profile-u
 import { HospitalProfileUpdateComponent } from './hospital-profile-update/hospital-profile-update.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,8 +104,7 @@ import { HospitalProfileUpdateComponent } from './hospital-profile-update/hospit
     LoggedInBarOrgnizationComponent,
     UserProfileUpdateComponent,
     HospitalProfileUpdateComponent,
-
-    
+ 
   ],
   imports: [
     BrowserModule,
