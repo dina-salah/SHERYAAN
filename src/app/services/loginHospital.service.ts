@@ -13,7 +13,7 @@ export class loginHospitalService{
 
   API: string = 'http://localhost:5000';
   userAPI: string        ='http://localhost:5000/user';
-  hospitalAPI:string     ='http://localhost:7000/hospital'; 
+  hospitalAPI:string     ='http://localhost:7000/hospital/'; 
   orgnizationAPI:string  ='http://localhost:8000/org';
 
   constructor(private http: HttpClient, private router: Router){}
@@ -40,7 +40,7 @@ export class loginHospitalService{
   }
 
   getHospital(id: number): Observable<any>{
-    return this.http.get<any>(this.hospitalAPI+ id)
+    return this.http.get<any>(this.hospitalAPI + id)
     .pipe(
       catchError(this.errorHandler)
     )
