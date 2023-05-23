@@ -86,14 +86,20 @@
                             <h5>you sure you want to delete your account?</h5> 
 
                            <div  class="mb-3"> 
-                                <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" style="width:250px ;" class="form-control" ngModel>
+                            <div>
+                              </div>
+                              <h2>Send Email</h2>
+                                <input [(ngModel)]="verificationCode" placeholder="Enter Verification Code">
+                                <p>{{ message }}</p>
+                                <!-- <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" style="width:250px ;" class="form-control" ngModel> -->
                                 <!-- <p ngIf="password.invalid " class="warning"> invalid password!!</p> -->
                             </div>
                         </div>
-
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger" > Delete</button>
+                          <button type="button" class="btn btn-success" (click)="sendEmail()">Send</button>
+                          <button type="button" class="btn btn-danger" (click)="verifyCode()">Verify Code</button>
+                          <!-- <button type="button" class="btn btn-danger" (click)="deleteFunc()">delete</button> -->
                         </div>
                       </div>
                     </div>
