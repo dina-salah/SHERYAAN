@@ -32,9 +32,6 @@ var dbConn = mysql.createConnection({
 // connect to database
 dbConn.connect();
 
-// cookie parser middleware
-app.use(cookieParser());
-
 
 
 /////////////////////////////////////////////////////////////////////
