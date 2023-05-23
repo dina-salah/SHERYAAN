@@ -22,12 +22,16 @@ export class UserProfileComponent implements OnInit{
   isfetching: boolean = false; 
   user?: User[];
   id!: number;
+  // user = { name: 'AAA', email: 'abdelrahmanali.mohamed@outlook.com' };
+  verificationCode?: string;
+  message = '';
 
   constructor(private toastr: ToastrService,
     private service: loginService,
     private updateservice: updateService, 
     private router: Router,
-    private route: ActivatedRoute){}
+    private route: ActivatedRoute,
+    private http: HttpClient){}
 
   ngOnInit(){ 
     this.id = this.route.snapshot.params['user_id'];
@@ -81,6 +85,52 @@ export class UserProfileComponent implements OnInit{
 
       });
         }     
+
+//functions for deleting account with code verification
+sendEmail() {
+  this.http.post<any>('http://localhost:3000/sendemail', this.user)
+    .subscribe(
+      (response) => {
+        if (response.success) {
+          this.message = 'Email sent!';
+        } else {
+          this.message = 'Failed to send email.';
+        }
+      },
+      (error) => {
+        this.message = 'Failed to send email.';
+        console.error(error);
+      }
+    );
+}
+
+verifyCode() {
+  if (this.verificationCode) {
+    const data = {
+      user: this.user,
+      verificationCode: this.verificationCode
+    };
+    
+    this.http.post<any>('http://localhost:3000/verify-code', data)
+      .subscribe(
+        (response) => {
+          if (response.success) {
+            this.message = 'Code verification successful! Delete API called.';
+            // Call your delete API or perform other actions here
+          } else {
+            this.message = 'Code verification failed. Please enter the correct code.';
+          }
+        },
+        (error) => {
+          this.message = 'Code verification failed. Please enter the correct code.';
+          console.error(error);
+        }
+      );
+  } else {
+    this.message = 'Please enter the verification code.';
+  }
+}
+
       
 }
 
