@@ -1,7 +1,6 @@
 const cors = require('cors'); //added cors
 var express = require("express");
 var app = express();
-var bodyParser = require("body-parser");
 var mysql = require("mysql");
 
 
