@@ -59,12 +59,11 @@ app.get("/user/:id", function (req, res) {
     "SELECT * FROM user where user_id=?",
     user_id,
     function (error, results, fields) {
-      if (error) throw error;
-      return res.send({
-        error: false,
-        data: results,
-        message: "users list.",
-      });
+      if (error) {
+        return res.status(500).send({ error: true, message: "Internal server error" });
+      } else {
+        return res.send(results);
+      }
     }
   );
 });
