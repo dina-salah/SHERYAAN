@@ -1,8 +1,8 @@
 const cors = require('cors'); //added cors
 var express = require("express");
 var app = express();
-var bodyParser = require("body-parser");
 var mysql = require("mysql");
+var bodyParser = require ("body-parser")
 
 
 
@@ -31,9 +31,6 @@ var dbConn = mysql.createConnection({
 });
 // connect to database
 dbConn.connect();
-
-// cookie parser middleware
-app.use(cookieParser());
 
 
 
