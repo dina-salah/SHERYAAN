@@ -27,14 +27,15 @@
                 <div class="content-panel" [hidden]="displays">
                     <fieldset class="fieldset">
                         <div class="row ">
+                            <label *ngIf="isfetching">loading....</label>
                             <div class="col col-lg-2">
                         <h3 class="fieldset-title">Personal Info</h3>
                     </div>
                     <div class="col ">
-                        <div class="mb-3"><br>
-                            <label>Name: </label><br>
-                            <label>Address:</label><br>
-                            <label>City: </label><br>
+                        <div class="mb-3" *ngFor="let h of hospital"><br>
+                            <label><b>Hospital Name:</b>{{h.hospital_name}} </label><br>
+                            <label><b>Hospital Address:</b>{{h.hospital_address}} </label><br>
+                            <label><b>Hospital City:</b>{{h.hospital_city}} </label><br>
                         </div>
                     </div>
                     </div>
@@ -45,9 +46,9 @@
                         <h3 class="fieldset-title">Contact Info</h3>
                         </div>
                         <div class="col col-lg-2">
-                        <div class="mb-3">
-                            <label>Email: </label><br>
-                            <label>Phone number:</label>
+                        <div class="mb-3" *ngFor="let h of hospital">
+                            <label><b>Hospital Email:</b>{{h.hospital_Email}} </label><br>
+                            <label><b>Phone number:</b>{{h.hospital_phoneNo}}</label>
                         </div>
                         </div>
                         </div>
@@ -55,8 +56,9 @@
                     <hr><br>
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                            <div class="d-flex">
-                            <button class="btn btn-primary m-1" type="submit" (click)="showform()">Update Profile</button>
+                            <div class="d-flex" *ngFor="let h of hospital">
+                            <a href="#" [routerLink]="['/hospital-profile/', h.hospital_id, 'update']" class="btn btn-danger m-1">Update</a>    
+                            <!-- <button class="btn btn-primary m-1" type="submit" >Update</button> -->
                             <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
                             </div>
                         </div>
@@ -83,79 +85,10 @@
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger" (click)="onDelete(hospital.id)">Delete</button>
+                          <button type="button" class="btn btn-danger" >Delete</button>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                <!--editable profile info-->
-                <div class="content-panel" [hidden]="displayd">
-                    <form class="form-horizontal" [formGroup]="addHospitalForm" >
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Personal Info</h3>
-                            
-                            <div  class="mb-3">
-                                <input required minlength="2" maxlength="15" type="text" name="fname" placeholder="First Name" class="form-control"  formControlName="name">
-                                <!-- <div *ngIf="fname.invalid && fname.touched  " class="warning"> required!!</div> -->
-                            </div><pre></pre>
-
-                            <div  class="mb-3">
-                                <input type="text" placeholder="Address" name="address" class="form-control"  formControlName="address">
-                            </div><pre></pre>
-
-                            <div  >
-                                <label for="City" style="margin-right: 7px;">City:</label>
-                                <select class="drop" name="city"  formControlName="city">
-                                <option value="6 October" name="city" >6 October</option>
-                                <option value="Dokki" name="city" >Dokki</option>
-                                <option value="New Cairo" name="city" >New Cairo</option>
-                                <option value="Nasr city" name="city" >Nasr city</option>
-                                <option value="Madinty" name="city" >Madinty</option>
-                                </select>
-                            </div>
-                            <pre></pre>
-
-                            <div class="form-group avatar">
-                            
-                                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                    
-                                    <button type="submit" class="btn btn-danger">Update Image</button>
-                                </div>
-                            </div><pre></pre>
-                            <div  class="mb-3"> 
-                                
-                                <!-- check validity -->
-                                <input type="password"  placeholder="Password" required minlength="8" name="password" class="form-control"  formControlName="password">
-                                <!-- <p *ngIf="password.invalid && password.touched " class="warning"> invalid password!!</p> -->
-                            </div>
-
-                            <br>
-                        </fieldset>
-
-                        <fieldset class="fieldset">
-                            <h3 class="fieldset-title">Contact Info</h3><br>
-                            <div  class="mb-3"> 
-                                <!-- why validation is not working -->
-                                <input type="text" placeholder="phoneNumber" required minlength="11" maxlength="11" name="phone" class="form-control"  formControlName="phone">
-                                <!-- <p *ngIf="phone.invalid && phone.touched " class="warning"> invalid!!</p> -->
-                            </div>
-                            <pre></pre>
-                            <div  class="mb-3">
-                                <input type="email" placeholder="Email" name="email" class="form-control"  formControlName="email">
-                            </div>
-                        </fieldset>
-                        
-                        <hr>
-                    </form>
-
-                    <div class="form-group">
-                        <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                            <button class="btn btn-success" (click)="showinfo()">save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</div>
+                

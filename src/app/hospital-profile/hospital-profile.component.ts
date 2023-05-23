@@ -33,34 +33,16 @@ export class HospitalProfileComponent implements OnInit{
     this.id = this.route.snapshot.params['hospital_id'];
     this.gethospital();
     this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
-  }
-  
+  }  
+
   addHospitalForm =  new FormGroup({
-    hospital_name: new FormControl(null, Validators.required),
-    hospital_address: new FormControl(null, Validators.required),
-    hospital_PhoneNo: new FormControl(null, Validators.required),
-    hospital_Email: new FormControl(null, Validators.required),
-    hospital_city: new FormControl(null, Validators.required),
-    hospital_password: new FormControl(null, Validators.required),
+    hospitral_name: new FormControl('', Validators.required),
+    hospitral_address: new FormControl('', Validators.required),
+    hospitral_PhoneNo: new FormControl('', Validators.required),
+    hospitral_Email: new FormControl('', Validators.required),
+    hospitral_city: new FormControl('', Validators.required),
+    hospitral_password: new FormControl('', Validators.required),
   })
-  
-  get f(){
-    return this.addHospitalForm.controls;
-  }
-
-  gethospital(){
-    this.isfetching = true;
-    this.service.getHospital(this.id).subscribe((res) => {
-        this.hospital = res;
-        const hospitaldata = res.data;
-        if (hospitaldata) {
-          localStorage.setItem('userdata', JSON.stringify(hospitaldata));
-        }
-        console.log(res);
-        this.isfetching = false;
-
-    });
-      }
 
   showform(){
     this.displays = true;
@@ -73,8 +55,25 @@ export class HospitalProfileComponent implements OnInit{
     this.toastr.success('profile updated successfully!');
   }
 
+  gethospital(){
+    this.isfetching = true;
+    this.service.getHospital(this.id).subscribe((res) => {
+        this.hospital = res;
+        const hospitaldata = res.data;
+        if (hospitaldata) {
+          localStorage.setItem('hospitaldata', JSON.stringify(hospitaldata));
+        }
+        console.log(res);
+        this.isfetching = false;
 
-    
+    });
+      }   
   
    
+
+    // onDelete(id:any){
+    //   id = this.hospital.hospital_id
+    //   this.http.delete('')
+    // }
+
 }
