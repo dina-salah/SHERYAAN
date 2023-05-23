@@ -10,19 +10,21 @@ import { loginService } from '../services/login.service';
 import { updateService } from '../services/update.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+const userAPI= 'http://localhost:5000//user/';
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit{
-  
+
   displays:boolean=false;
   displayd:boolean=true;
   isfetching: boolean = false; 
   user?: User[];
   id!: number;
-  // user = { name: 'AAA', email: 'abdelrahmanali.mohamed@outlook.com' };
+  userE = { name: '', email: '' };
   verificationCode?: string;
   message = '';
 
@@ -37,6 +39,14 @@ export class UserProfileComponent implements OnInit{
     this.id = this.route.snapshot.params['user_id'];
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
+    this.updateservice.find(this.id).subscribe((data:User)=>{
+        console.log(this.user[0]); 
+  
+        this.userE.name  = this.user[0].user_Fname,
+        this.userE.email = this.user[0].user_Email 
+        this.id = this.user[0].user_id
+       
+      });
   }
 
   dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));
@@ -88,7 +98,7 @@ export class UserProfileComponent implements OnInit{
 
 //functions for deleting account with code verification
 sendEmail() {
-  this.http.post<any>('http://localhost:3000/sendemail', this.user)
+  this.http.post<any>('http://localhost:3000/sendemail', this.userE)
     .subscribe(
       (response) => {
         if (response.success) {
@@ -107,7 +117,7 @@ sendEmail() {
 verifyCode() {
   if (this.verificationCode) {
     const data = {
-      user: this.user,
+      user: this.userE,
       verificationCode: this.verificationCode
     };
     
@@ -115,8 +125,12 @@ verifyCode() {
       .subscribe(
         (response) => {
           if (response.success) {
-            this.message = 'Code verification successful! Delete API called.';
+            
+            this.message = 'Code verification successful!';
             // Call your delete API or perform other actions here
+
+            this.http.delete(`${userAPI}/${this.id}`)
+            
           } else {
             this.message = 'Code verification failed. Please enter the correct code.';
           }
@@ -133,4 +147,3 @@ verifyCode() {
 
       
 }
-

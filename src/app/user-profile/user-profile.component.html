@@ -90,7 +90,7 @@
                               </div>
                               <h5> Code is sent to your email</h5>
                                 <input [(ngModel)]="verificationCode" placeholder="Enter Verification Code" class="form-control">
-                                <p style="color: rgba(180, 6, 6, 0.849);" class="d-flex justify-content-center">{{ message }}</p>
+                                <p style="color: rgba(6, 55, 180, 0.849);" class="d-flex justify-content-center">{{ message }}</p>
                                 
                             </div>
                         </div>
@@ -98,7 +98,6 @@
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                           <button type="button" class="btn btn-warning" (click)="sendEmail()">Send</button>
                           <button type="button" class="btn btn-danger" (click)="verifyCode()">Verify Code</button>
-                          <!-- <button type="button" class="btn btn-danger" (click)="deleteFunc()">delete</button> -->
                         </div>
                       </div>
                     </div>
