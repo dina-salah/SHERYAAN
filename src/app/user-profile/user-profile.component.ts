@@ -42,12 +42,6 @@ export class UserProfileComponent implements OnInit{
     this.id = this.route.snapshot.params['user_id'];
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
-<<<<<<< HEAD
-    if (!this.service.loggedIn){
-      this.user = null;
-      console.log(this.user);
-    }
-=======
     this.updateservice.find(this.id).subscribe((data:User)=>{
         console.log(this.user[0]); 
   
@@ -56,7 +50,6 @@ export class UserProfileComponent implements OnInit{
         this.id = this.user[0].user_id
        
       });
->>>>>>> 62b7ba9e9221f285601397f0a272414e499bde6b
   }
 
   dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));
@@ -141,7 +134,7 @@ verifyCode() {
             this.delet.delete(this.id)
             .subscribe(
               (data) => {
-                // this.router.navigate(['/home'])
+                // this.router.navigate(['/src/app/home'])
                 console.log('account deleted');
                 },
                (error) => {
