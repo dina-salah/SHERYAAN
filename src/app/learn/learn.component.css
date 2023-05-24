@@ -1,8 +1,10 @@
 .header{
-    background-color: rgb(17, 17, 58);
+    background-color: black;
     height: 200px;
     width: 100%;
     padding: 50px 20px 30px 60px;
+    text-shadow: 4px 6px rgba(110, 110, 110, 0.555); 
+    color: aliceblue;
   }
 
 .card{
@@ -10,6 +12,7 @@
 } 
 
 .card:hover{
+  transition: 0.5s;
   width: 330px;
 }  
 div.card{

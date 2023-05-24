@@ -11,6 +11,7 @@ import { updateService } from '../services/update.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { deleteService } from '../services/delete.service';
 
+
 const userAPI= 'http://localhost:5000//user/';
 
 @Component({
@@ -140,7 +141,7 @@ verifyCode() {
             this.delet.delete(this.id)
             .subscribe(
               (data) => {
-                console.log(data)
+                // this.router.navigate(['/home'])
                 console.log('account deleted');
                 },
                (error) => {
