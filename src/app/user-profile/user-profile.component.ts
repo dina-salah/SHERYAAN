@@ -9,6 +9,7 @@ import { signupService } from '../services/signup.service';
 import { loginService } from '../services/login.service';
 import { updateService } from '../services/update.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { deleteService } from '../services/delete.service';
 
 const userAPI= 'http://localhost:5000//user/';
 
@@ -33,7 +34,8 @@ export class UserProfileComponent implements OnInit{
     private updateservice: updateService, 
     private router: Router,
     private route: ActivatedRoute,
-    private http: HttpClient){}
+    private http: HttpClient,
+    private delet: deleteService){}
 
   ngOnInit(){ 
     this.id = this.route.snapshot.params['user_id'];
@@ -127,9 +129,31 @@ verifyCode() {
           if (response.success) {
             
             this.message = 'Code verification successful!';
+
+            this.delet.delete(this.id)
+            .subscribe(
+              (data) => {
+                console.log(data)
+                console.log('account deleted');
+                },
+               (error) => {
+                  console.log(error)
+                  console.log('could not delete account');
+              });
+            
+
+
             // Call your delete API or perform other actions here
 
-            this.http.delete(`${userAPI}/${this.id}`)
+            // this.http.delete(`${userAPI}/${this.id}`).subscribe(
+            //   (res)=>{
+            //     console.log(res)
+            //   },(error)=>{
+            //     console.error(error);
+            //     console.log('could not delete account');
+            //   }
+            // );
+
             
           } else {
             this.message = 'Code verification failed. Please enter the correct code.';
