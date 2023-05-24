@@ -140,19 +140,7 @@ verifyCode() {
                   console.log(error)
                   console.log('could not delete account');
               });
-            
-
-
-            // Call your delete API or perform other actions here
-
-            // this.http.delete(`${userAPI}/${this.id}`).subscribe(
-            //   (res)=>{
-            //     console.log(res)
-            //   },(error)=>{
-            //     console.error(error);
-            //     console.log('could not delete account');
-            //   }
-            // );
+          
 
             
           } else {
