@@ -9,6 +9,9 @@ import { signupService } from '../services/signup.service';
 import { loginService } from '../services/login.service';
 import { updateService } from '../services/update.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { deleteService } from '../services/delete.service';
+
+const userAPI= 'http://localhost:5000//user/';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,13 +19,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit{
-  
+
   displays:boolean=false;
   displayd:boolean=true;
   isfetching: boolean = false; 
   user?: User[];
   id!: number;
-  // user = { name: 'AAA', email: 'abdelrahmanali.mohamed@outlook.com' };
+  userE = { name: '', email: '' };
   verificationCode?: string;
   message = '';
 
@@ -31,16 +34,28 @@ export class UserProfileComponent implements OnInit{
     private updateservice: updateService, 
     private router: Router,
     private route: ActivatedRoute,
-    private http: HttpClient){}
+    private http: HttpClient,
+    private delet: deleteService){}
 
   ngOnInit(){ 
     this.id = this.route.snapshot.params['user_id'];
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
+<<<<<<< HEAD
     if (!this.service.loggedIn){
       this.user = null;
       console.log(this.user);
     }
+=======
+    this.updateservice.find(this.id).subscribe((data:User)=>{
+        console.log(this.user[0]); 
+  
+        this.userE.name  = this.user[0].user_Fname,
+        this.userE.email = this.user[0].user_Email 
+        this.id = this.user[0].user_id
+       
+      });
+>>>>>>> 62b7ba9e9221f285601397f0a272414e499bde6b
   }
 
   dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));
@@ -92,7 +107,7 @@ export class UserProfileComponent implements OnInit{
 
 //functions for deleting account with code verification
 sendEmail() {
-  this.http.post<any>('http://localhost:3000/sendemail', this.user)
+  this.http.post<any>('http://localhost:3000/sendemail', this.userE)
     .subscribe(
       (response) => {
         if (response.success) {
@@ -111,7 +126,7 @@ sendEmail() {
 verifyCode() {
   if (this.verificationCode) {
     const data = {
-      user: this.user,
+      user: this.userE,
       verificationCode: this.verificationCode
     };
     
@@ -119,8 +134,22 @@ verifyCode() {
       .subscribe(
         (response) => {
           if (response.success) {
-            this.message = 'Code verification successful! Delete API called.';
-            // Call your delete API or perform other actions here
+            
+            this.message = 'Code verification successful!';
+
+            this.delet.delete(this.id)
+            .subscribe(
+              (data) => {
+                console.log(data)
+                console.log('account deleted');
+                },
+               (error) => {
+                  console.log(error)
+                  console.log('could not delete account');
+              });
+          
+
+            
           } else {
             this.message = 'Code verification failed. Please enter the correct code.';
           }
@@ -137,4 +166,3 @@ verifyCode() {
 
       
 }
-
