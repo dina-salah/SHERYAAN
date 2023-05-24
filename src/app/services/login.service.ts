@@ -36,8 +36,8 @@ export class loginService{
 
   logout() {
     this.loggedIn.next(false);
-    this.router.navigate(['/sign-in']);
     localStorage.clear();
+    this.router.navigate(['/sign-in']);
   }
 
   getUser(id: number): Observable<any>{

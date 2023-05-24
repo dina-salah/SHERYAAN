@@ -12,7 +12,7 @@
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
-        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li class="active"><a href="#" routerLink="/organization-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
@@ -29,31 +29,24 @@
             <h3 class="fieldset-title">Personal Info</h3>
 
             <div  class="mb-3">
-                <input required placeholder="hospital name" type="text" class="form-control" formControlName="hospital_name" value="hospital_name">
-                <div *ngIf="f['hospital_name'].touched && f['hospital_name'].invalid" >
-                    <div *ngIf="f['hospital_name'].errors && f['hospital_name'].errors['required']">hospital name is required.</div>
+                <input required placeholder="organization name" type="text" class="form-control" formControlName="organization_name" value="organization_name">
+                <div *ngIf="f['organization_name'].touched && f['organization_name'].invalid" >
+                    <div *ngIf="f['organization_name'].errors && f['organization_name'].errors['required']">organization name is required.</div>
                   </div>
             </div><pre></pre>
             
 
-            <div  class="mb-3">
-                <input required placeholder="hospital address" type="text" class="form-control" formControlName="hospital_address" value="hospital_address">
-                <div *ngIf="f['hospital_address'].touched && f['hospital_address'].invalid" >
-                    <div *ngIf="f['hospital_address'].errors && f['hospital_address'].errors['required']">hospital address is required.</div>
-                  </div>
-            </div><pre></pre>
-
             <div >
                 <label for="City" style="margin-right: 7px;">City:  </label>
-                <select class="drop" name="city"  formControlName="hospital_city" value="hospital_city">
+                <select class="drop" name="city"  formControlName="orgaization_city" value="orgaization_city">
                 <option value="6 October" name="city" >6 October</option>
                 <option value="Dokki" name="city" >Dokki</option>
                 <option value="New Cairo" name="city" >New Cairo</option>
                 <option value="Nasr city" name="city" >Nasr city</option>
                 <option value="Madinty" name="city" >Madinty</option>
                 </select>
-                <div *ngIf="f['hospital_city'].touched && f['hospital_city'].invalid" >
-                    <div *ngIf="f['hospital_city'].errors && f['hospital_city'].errors['required']">hospital city is required.</div>
+                <div *ngIf="f['orgaization_city'].touched && f['orgaization_city'].invalid" >
+                    <div *ngIf="f['orgaization_city'].errors && f['orgaization_city'].errors['required']"> city is required.</div>
                   </div>
             </div>
             <pre></pre>
@@ -67,29 +60,29 @@
             </div><pre></pre>
 
             <div  class="mb-3">
-                <input required placeholder="password" type="text" class="form-control" formControlName="hospital_password" value="hospital_password">
-                <div *ngIf="f['hospital_password'].touched && f['hospital_password'].invalid" >
-                    <div *ngIf="f['hospital_password'].errors && f['hospital_password'].errors['required']">password is required.</div>
+                <input required placeholder="password" type="text" class="form-control" formControlName="organization_password" value="organization_password">
+                <div *ngIf="f['organization_password'].touched && f['organization_password'].invalid" >
+                    <div *ngIf="f['organization_password'].errors && f['organization_password'].errors['required']">password is required.</div>
                   </div>
             </div><pre></pre>
 
             <br>
-        </fieldset>
+        </fieldset> 
 
         <fieldset class="fieldset">
             <h3 class="fieldset-title">Contact Info</h3><br>
 
             <div  class="mb-3">
-                <input required placeholder="phone number" type="text" class="form-control" formControlName="hospital_phoneNo" value="hospital_phoneNo">
-                <div *ngIf="f['hospital_phoneNo'].touched && f['hospital_phoneNo'].invalid" >
-                    <div *ngIf="f['hospital_phoneNo'].errors && f['hospital_phoneNo'].errors['required']">phone number is required.</div>
+                <input required placeholder="phone number" type="text" class="form-control" formControlName="organization_phoneNo" value="organization_phoneNo">
+                <div *ngIf="f['organization_phoneNo'].touched && f['organization_phoneNo'].invalid" >
+                    <div *ngIf="f['organization_phoneNo'].errors && f['organization_phoneNo'].errors['required']">phone number is required.</div>
                   </div>
             </div><pre></pre>
 
             <div  class="mb-3">
-                <input required placeholder="Email" type="text" class="form-control" formControlName="hospital_Email" value="hospital_Email">
-                <div *ngIf="f['hospital_Email'].touched && f['hospital_Email'].invalid" >
-                    <div *ngIf="f['hospital_Email'].errors && f['hospital_Email'].errors['required']">Email is required.</div>
+                <input required placeholder="Email" type="text" class="form-control" formControlName="organization_email" value="organization_email">
+                <div *ngIf="f['organization_email'].touched && f['organization_email'].invalid" >
+                    <div *ngIf="f['organization_email'].errors && f['organization_email'].errors['required']">Email is required.</div>
                   </div>
             </div><pre></pre>
         </fieldset>
@@ -107,4 +100,5 @@
 </section>
 </div>
 </div>
+
 

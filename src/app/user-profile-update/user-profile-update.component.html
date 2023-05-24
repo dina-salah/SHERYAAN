@@ -45,7 +45,7 @@
             <div  class="mb-3">
                 <input type="text"  placeholder="SNN"  class="form-control" formControlName="user_national_ID">
                 <div *ngIf="f['user_national_ID'].touched && f['user_national_ID'].invalid" >
-                    <div *ngIf="f['user_national_ID'].errors && f['user_national_ID'].errors['required']">user name is required.</div>
+                    <div *ngIf="f['user_national_ID'].errors && f['user_national_ID'].errors['required']">user ssn is required.</div>
                   </div>
             </div><pre></pre>
 
@@ -74,7 +74,7 @@
 
             <div  >
                 <label  style="margin-right: 7px;">City:</label>
-                <select class="drop" formControlName="user_city" >
+                <select class="drop" formControlName="user_city" value="user_city">
                 <option value="6 October"  >6 October</option>
                 <option value="Dokki"  >Dokki</option>
                 <option value="New Cairo"  >New Cairo</option>
@@ -142,7 +142,7 @@
     </form>
     <div class="form-group">
         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-            <button class="btn btn-danger" type="submit" (click)="submit()">update</button>
+            <button class="btn btn-success" type="submit" (click)="submit()">update</button>
         </div>
     </div>
 </div>

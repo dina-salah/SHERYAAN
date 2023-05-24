@@ -24,10 +24,28 @@ li{ list-style: none;
     transition: 0.3s;
     border-radius: 6px;
 }  
+
 .justify{
-    margin: 50px;
-    margin-left: 15%;
+    margin-left: 44px;
+    /* margin-left: 15%; */
 }
 a{
     text-decoration: none;
+}
+.pragraph{
+    display: inline;
+    text-align: center;
+    /* margin: 3px;  */
+    font-size: 25px;
+    color: darkslategrey;
+    /* padding:30px;  */
+    font-family: 'Roboto Slab', serif;
+}
+.Q{
+    text-decoration: none; 
+    font-size: 20px; 
+    color:rgb(211, 11, 11);
+}
+.Q:hover{
+    color: rgb(255, 153, 0);
 }

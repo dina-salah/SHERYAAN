@@ -54,6 +54,8 @@ import { LoggedInBarHospitalComponent } from './logged-in-bar-hospital/logged-in
 import { LoggedInBarOrgnizationComponent } from './logged-in-bar-orgnization/logged-in-bar-orgnization.component';
 import { UserProfileUpdateComponent } from './user-profile-update/user-profile-update.component';
 import { HospitalProfileUpdateComponent } from './hospital-profile-update/hospital-profile-update.component';
+import { OrganizationProfileUpdateComponent } from './organization-profile-update/organization-profile-update.component';
+import { DonationPowerComponent } from './donation-power/donation-power.component';
 
 
 @NgModule({
@@ -104,6 +106,8 @@ import { HospitalProfileUpdateComponent } from './hospital-profile-update/hospit
     LoggedInBarOrgnizationComponent,
     UserProfileUpdateComponent,
     HospitalProfileUpdateComponent,
+    OrganizationProfileUpdateComponent,
+    DonationPowerComponent,
  
   ],
   imports: [

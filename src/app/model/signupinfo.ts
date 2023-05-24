@@ -29,5 +29,5 @@ export class Organization{
     organization_password!: string;
     organization_phoneNo!: string;
     organization_email!: string;
-    organization_city!: string;
+    orgaization_city!: string;
 }

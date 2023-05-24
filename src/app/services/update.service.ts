@@ -16,7 +16,7 @@ import { Organization } from '../model/signupinfo';
 
     userurl = 'http://localhost:5000/user/';
     hospitalurl = 'http://localhost:7000/hospital/';
-    orgurl = 'http://localhost:/8000/org/';
+    orgurl = 'http://localhost:8000/org/';
 
     httpOptions = {
       headers: new HttpHeaders({

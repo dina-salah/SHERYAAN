@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
 })
 export class ContactUsComponent {
 
-  contactNumber1: string = "01111999";
-  contactNumber2: string = "01111888";
-  contactNumber3: string = "01111777";
-  contactNumber4: string = "011116666";
+  contactNumber1: string = "01221412259";
+  contactNumber2: string = "01115572425";
+  contactNumber3: string = "01091413645";
 
 }

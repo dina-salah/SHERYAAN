@@ -49,7 +49,7 @@ app.get("/users", function (req, res) {
 });
 
 // Retrieve user with id
-app.get("/user/:id", function (req, res) {
+pp.get("/user/:id", function (req, res) {
   let user_id = req.params.id;
   if (!user_id) {
     return res
@@ -68,6 +68,26 @@ app.get("/user/:id", function (req, res) {
     }
   );
 });
+// app.get("/user/:id", function (req, res) {
+//   let user_id = req.params.id;
+//   if (!user_id) {
+//     return res
+//       .status(400)
+//       .send({ error: true, message: "Please provide user_id" });
+//   }
+//   dbConn.query(
+//     "SELECT * FROM user where user_id=?",
+//     user_id,
+//     function (error, results, fields) {
+//       if (error) throw error;
+//       return res.send({
+//         error: false,
+//         data: results,
+//         message: "users list.",
+//       });
+//     }
+//   );
+// });
 
 // Add a new user
 app.post("/user", function (req, res) {

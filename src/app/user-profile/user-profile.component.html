@@ -59,13 +59,13 @@
                                 </div>
                                 </div>
                             </fieldset> 
-    
+     
                 
-                    <hr><br>
+                    <hr style="width: 500px; padding: 1px; margin: 2px;"><br>
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                             <div class="d-flex" *ngFor="let u of user">
-                            <a href="#" [routerLink]="['/user-profile/', u.user_id, '-update']" class="btn btn-danger m-1">Update</a>
+                            <a href="#" [routerLink]="['/user-profile/', u.user_id, '-update']" class="btn btn-primary m-1">Update</a>
                             <!-- <button class="btn btn-primary m-1" type="submit" (click)="showform()">Update Profile</button> -->
                             <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
                             </div>
@@ -83,23 +83,21 @@
                           <button class="btn-close" data-bs-dismiss="modal" ></button>
                         </div>
                         <div class="modal-body">
-                            <h5>you sure you want to delete your account?</h5> 
+                            <h2>Sure want to delete your account?</h2> 
 
                            <div  class="mb-3"> 
                             <div>
                               </div>
-                              <h2>Send Email</h2>
-                                <input [(ngModel)]="verificationCode" placeholder="Enter Verification Code">
-                                <p>{{ message }}</p>
-                                <!-- <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" style="width:250px ;" class="form-control" ngModel> -->
-                                <!-- <p ngIf="password.invalid " class="warning"> invalid password!!</p> -->
+                              <h5> Code is sent to your email</h5>
+                                <input [(ngModel)]="verificationCode" placeholder="Enter Verification Code" class="form-control">
+                                <p style="color: rgba(6, 55, 180, 0.849);" class="d-flex justify-content-center">{{ message }}</p>
+                                
                             </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-success" (click)="sendEmail()">Send</button>
+                          <button type="button" class="btn btn-warning" (click)="sendEmail()">Send</button>
                           <button type="button" class="btn btn-danger" (click)="verifyCode()">Verify Code</button>
-                          <!-- <button type="button" class="btn btn-danger" (click)="deleteFunc()">delete</button> -->
                         </div>
                       </div>
                     </div>
