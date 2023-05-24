@@ -37,6 +37,10 @@ export class UserProfileComponent implements OnInit{
     this.id = this.route.snapshot.params['user_id'];
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
+    if (!this.service.loggedIn){
+      this.user = null;
+      console.log(this.user);
+    }
   }
 
   dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));

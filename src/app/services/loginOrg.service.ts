@@ -14,7 +14,7 @@ export class loginOrgService{
   API: string = 'http://localhost:5000';
   userAPI: string        ='http://localhost:5000/user';
   hospitalAPI:string     ='http://localhost:7000/hospital'; 
-  orgnizationAPI:string  ='http://localhost:8000/org';
+  organizationAPI:string  ='http://localhost:8000/org/';
 
   constructor(private http: HttpClient, private router: Router){}
 
@@ -36,11 +36,25 @@ export class loginOrgService{
 
   logout() {
     this.loggedIn.next(false);
+    localStorage.clear();
     this.router.navigate(['/sign-in']);
   }
 
-  getUser(id: any){
-    return this.http.get<any>(`${this.userAPI}/${id}`);
+  getOrganization(id: number): Observable<any>{
+    return this.http.get<any>(this.organizationAPI + id)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+  
+  errorHandler(error:any) {
+    let errorMessage = 'error';
+    if(error.error instanceof ErrorEvent) {
+      errorMessage = error.error.message;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
   }
   
 

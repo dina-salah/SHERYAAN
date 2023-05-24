@@ -37,6 +37,7 @@ export class loginHospitalService{
   logout() {
     this.loggedIn.next(false);
     this.router.navigate(['/sign-in']);
+    localStorage.clear();
   }
 
   getHospital(id: number): Observable<any>{

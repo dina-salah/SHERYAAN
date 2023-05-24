@@ -36,6 +36,7 @@ import { HospitalStockFormComponent } from './hospital-stock-form/hospital-stock
 import { UserProfileUpdateComponent } from './user-profile-update/user-profile-update.component';
 import { Organization } from './model/signupinfo';
 import { HospitalProfileUpdateComponent } from './hospital-profile-update/hospital-profile-update.component';
+import { OrganizationProfileUpdateComponent } from './organization-profile-update/organization-profile-update.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -72,7 +73,7 @@ const routes: Routes = [
   {path: 'logged-in-bar', component:LoggedInBarComponent},
   {path: 'user-profile/:user_id/-update', component: UserProfileUpdateComponent},
   {path: 'hospital-profile/:hospital_id/update', component: HospitalProfileUpdateComponent},
-  // {path: 'organization-profile/:organization_id/update'},
+  {path: 'organization-profile/:organization_id/update', component: OrganizationProfileUpdateComponent},
   {path: 'user', redirectTo: 'user-profile', pathMatch: 'full'},
   {path: 'user/:user_id', component: UserProfileComponent},
   {path: 'hospital/:hospital_id', component: HospitalProfileComponent},

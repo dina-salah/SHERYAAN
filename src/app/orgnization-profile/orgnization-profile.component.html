@@ -1,0 +1,93 @@
+ 
+<div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
+                        
+                        <ul class="meta list list-unstyled">
+                            <!-- <li class="name">{{hospital.name}}</li> -->
+                        </ul>
+                    </div>
+            		<nav class="side-menu">
+        				<ul class="nav">
+        					<li class="active"><a href="#" routerLink="/organization-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
+        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+        					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
+                            <li><a href="#" routerLink="/hospital-stock" routerLinkActive="active"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
+    
+        				</ul>
+        			</nav>
+                </div>
+
+                <!--static profile info-->
+                <div class="content-panel">
+                    <fieldset class="fieldset">
+                        <div class="row ">
+                            <label *ngIf="isfetching">loading....</label>
+                            <div class="col col-lg-2">
+                        <h3 class="fieldset-title">Personal Info</h3>
+                    </div>
+                    <div class="col ">
+                        <div class="mb-3" *ngFor="let o of org"><br>
+                            <label><b>Organization Name:  </b>{{o.organization_name}} </label><br>
+                            <label><b>Organization City:  </b>{{o.orgaization_city}} </label><br>
+                        </div>
+                    </div>
+                    </div>
+                    </fieldset><br>
+                    <fieldset class="fieldset">
+                        <div class="row ">
+                            <div class="col col-lg-2">
+                        <h3 class="fieldset-title">Contact Info</h3>
+                        </div>
+                        <div class="col col-lg-2">
+                        <div class="mb-3" *ngFor="let o of org">
+                            <label><b>Email:  </b>{{o.organization_email}} </label><br>
+                            <label><b>Phone number:  </b>{{o.organization_phoneNo}}</label>
+                        </div>
+                        </div>
+                        </div>
+                    </fieldset>
+                    <hr><br>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                            <div class="d-flex" *ngFor="let o of org">
+                            <a href="#" [routerLink]="['/organization-profile/', o.organization_id, 'update']" class="btn btn-danger m-1">Update</a>    
+                            <!-- <button class="btn btn-primary m-1" type="submit" >Update</button> -->
+                            <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+              <!-- modal -->
+                <div class="modal fade" id="deleteModal">
+                    <div class="modal-dialog" >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">DELETE!!</h4>
+                          <button class="btn-close" data-bs-dismiss="modal" ></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>you sure you want to delete your account?</h5> 
+
+                           <div  class="mb-3"> 
+                                <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" style="width:250px ;" class="form-control" ngModel>
+                                <!-- <p ngIf="password.invalid " class="warning"> invalid password!!</p> -->
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-danger" >Delete</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                

@@ -38,7 +38,7 @@ export class HospitalProfileComponent implements OnInit{
   addHospitalForm =  new FormGroup({
     hospitral_name: new FormControl('', Validators.required),
     hospitral_address: new FormControl('', Validators.required),
-    hospitral_PhoneNo: new FormControl('', Validators.required),
+    hospitral_phoneNo: new FormControl('', Validators.required),
     hospitral_Email: new FormControl('', Validators.required),
     hospitral_city: new FormControl('', Validators.required),
     hospitral_password: new FormControl('', Validators.required),

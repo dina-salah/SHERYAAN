@@ -31,7 +31,7 @@ export class HospitalProfileUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['hospital_id'];
-    this.hospitalService.find(this.id).subscribe((data:Hospital)=>{
+    this.hospitalService.findhos(this.id).subscribe((data:Hospital)=>{
       this.hospital = data;
       console.log(this.hospital[0]); 
 
@@ -40,7 +40,7 @@ export class HospitalProfileUpdateComponent implements OnInit{
         hospital_address: this.hospital[0].hospital_address,
         hospital_city: this.hospital[0].hospital_city,
         hospital_Email: this.hospital[0].hospital_Email,
-        hospital_PhoneNo: this.hospital[0].hospital_PhoneNo,
+        hospital_phoneNo: this.hospital[0].hospital_phoneNo,
         hospital_password: this.hospital[0].hospital_password
       });
     }); 
@@ -50,7 +50,7 @@ export class HospitalProfileUpdateComponent implements OnInit{
       hospital_address: new FormControl('', Validators.required),
       hospital_city: new FormControl('', Validators.required),
       hospital_Email: new FormControl('', Validators.required),
-      hospital_PhoneNo: new FormControl('', Validators.required),
+      hospital_phoneNo: new FormControl('', Validators.required),
       hospital_password: new FormControl('', Validators.required),
     });
   }
@@ -61,8 +61,8 @@ export class HospitalProfileUpdateComponent implements OnInit{
 
   submit(){
     console.log(this.form.value);
-    this.hospitalService.updateuser(this.id, this.form.value).subscribe((res: any) => {
-         console.log('User updated successfully!');
+    this.hospitalService.updatehospital(this.id, this.form.value).subscribe((res: any) => {
+         console.log('hospital updated successfully!');
          this.toastr.success('profile updated successfully!');
          
     })
