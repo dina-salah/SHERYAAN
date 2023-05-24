@@ -4,7 +4,7 @@ import { Observable, map, catchError, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-const userurl = 'http://localhost:5000/user/';
+const userurl = 'http://localhost:5000/user';
 
 @Injectable({
     providedIn: 'root'

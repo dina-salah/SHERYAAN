@@ -25,9 +25,18 @@ li{ list-style: none;
     border-radius: 6px;
 }  
 .justify{
-    margin: 50px;
-    margin-left: 15%;
+    margin-left: 44px;
+    /* margin-left: 15%; */
 }
 a{
     text-decoration: none;
+}
+.pragraph{
+    display: inline;
+    text-align: center;
+    /* margin: 3px;  */
+    font-size: 25px;
+    color: darkslategrey;
+    /* padding:30px;  */
+    font-family: 'Roboto Slab', serif;
 }
