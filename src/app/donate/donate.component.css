@@ -1,3 +1,12 @@
+
+  .header{
+    background-color: rgb(114, 4, 4);
+    height: 200px;
+    width: 100%;
+    padding: 35px 20px 30px 60px;
+    text-shadow: 6px 8px rgba(0, 0, 0, 0.555); 
+  }
+
 li{ list-style: none;
     font-size: 22px;
 }
@@ -24,6 +33,7 @@ li{ list-style: none;
     transition: 0.3s;
     border-radius: 6px;
 }  
+
 .justify{
     margin-left: 44px;
     /* margin-left: 15%; */
@@ -39,4 +49,12 @@ a{
     color: darkslategrey;
     /* padding:30px;  */
     font-family: 'Roboto Slab', serif;
+}
+.Q{
+    text-decoration: none; 
+    font-size: 20px; 
+    color:rgb(211, 11, 11);
+}
+.Q:hover{
+    color: rgb(255, 153, 0);
 }

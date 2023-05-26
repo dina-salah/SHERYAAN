@@ -55,6 +55,7 @@ import { LoggedInBarOrgnizationComponent } from './logged-in-bar-orgnization/log
 import { UserProfileUpdateComponent } from './user-profile-update/user-profile-update.component';
 import { HospitalProfileUpdateComponent } from './hospital-profile-update/hospital-profile-update.component';
 import { OrganizationProfileUpdateComponent } from './organization-profile-update/organization-profile-update.component';
+import { DonationPowerComponent } from './donation-power/donation-power.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { OrganizationProfileUpdateComponent } from './organization-profile-updat
     UserProfileUpdateComponent,
     HospitalProfileUpdateComponent,
     OrganizationProfileUpdateComponent,
+    DonationPowerComponent,
  
   ],
   imports: [
