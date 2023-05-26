@@ -12,12 +12,12 @@
                         </ul>
                     </div>
             		<nav class="side-menu">
-        				<ul class="nav">
+        				<ul class="nav" *ngFor="let h of hospital">
         					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
-                            <li><a href="#" routerLink="/hospital-stock" routerLinkActive="active"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
+                            <li><a href="#" [routerLink]="['/hospital-stock/', h.hospital_id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
     
         				</ul>
         			</nav>

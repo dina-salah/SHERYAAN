@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import {Observable, map } from 'rxjs';
 import { reqAdd } from '../model/request'
+import { Stock } from '../model/hospitalstock';
+import { stockService } from '../services/stock.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-hospital-stock',
@@ -12,12 +15,21 @@ import { reqAdd } from '../model/request'
 export class HospitalStockComponent {
   display:boolean =true;
   donate:boolean =false;
-
+  stock?: Stock[];
+  id!: number;
+  onupdate: boolean = false;
   patients: reqAdd[]=[];
-  constructor(private http : HttpClient){}
+
+  constructor(private http : HttpClient,
+    private service: stockService,
+    private router: Router,
+    private route: ActivatedRoute
+    ){}
 
   ngOnInit(){
-  this. fetch();
+    this.id = this.route.snapshot.params['hospital_id'];
+    this. fetch();
+    this.stock = JSON.parse(localStorage.getItem('stockdata'));
   }
 
   showform(){
@@ -32,21 +44,27 @@ export class HospitalStockComponent {
     this.donate=true
   }
 
-  private fetch(){
-    this.http.get('https://sheryaanang-default-rtdb.firebaseio.com/products.json')
-    .pipe(map((res: {[key:string]:reqAdd})=>{
-      const requestTable =[];
-      for(const key in res){
-        if(res.hasOwnProperty(key)){
-        requestTable.push({...res[key],id:key})}
+  fetch(){
+    this.service.fetch(this.id).subscribe((res) => {
+      this.stock = res.data;
+      const stockdata = res.data[0];
+      if (stockdata) {
+        localStorage.setItem('stockdata', JSON.stringify(stockdata));
       }
-    
-    return requestTable;
+      console.log(res.data[0]);
+  });
+
   }
-  )).subscribe((requestTable)=>
-  {
-    console.log(requestTable)
-    this.patients=requestTable;
-  })
+
+  update(){
+    this.onupdate = true;
   }
+
+  onupdatestock(){
+    console.log(this.stock[0]);
+    this.service.updatestock(this.id, this.stock[0].blood_quantity).subscribe((res: any) => {
+      console.log('updated successfully!');
+      console.log(res);
+    }) }
+
 }

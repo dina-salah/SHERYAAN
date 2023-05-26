@@ -13,21 +13,20 @@
               <tr>
                 <th>#</th>
                 <th>Blood Type</th>
-                <th>Date</th>
                 <th>Quantity</th>
-                <th>Address</th>
                 <th>Respond</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let p of patients; index as i">
+              <tr *ngFor="let s of stock; index as i">
                 <td>{{i+1}}</td>
-                <td>{{p.bloodtype}}</td>
-                <td>{{p.date}}</td>
-                <td>{{p.quantity}}</td>
-                <td>{{p.address}}</td>
-                <td><button class="btn btn-primary"><i class="bi bi-pencil-fill"></i></button></td>
-                <td><button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+                <td>{{s.blood_type}}</td>
+                <td [hidden]="onupdate">{{s.blood_quantity}}</td>
+                <td [hidden]="!onupdate" contentEditable="true" >{{s.blood_quantity}}</td>
+                <td><button class="btn btn-primary" (click)="update()" ><i class="bi bi-pencil-fill"></i></button>
+                  &nbsp; <button [hidden]="!onupdate" class="btn btn-primary" (click)="onupdatestock()">save</button>
+                    <button [hidden]="onupdate" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+                
               </tr>
             </tbody>
           </table>
