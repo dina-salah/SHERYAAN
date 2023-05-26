@@ -2,7 +2,8 @@
     background-color: rgb(114, 4, 4);
     height: 200px;
     width: 100%;
-    padding: 50px 20px 30px 60px;
+    padding: 35px 20px 30px 60px;
+    /* padding: 30px 13px 30px 20px; */
     text-shadow: 6px 8px rgba(0, 0, 0, 0.555); 
   }
 
