@@ -20,12 +20,12 @@
             <tbody>
               <tr *ngFor="let s of stock; index as i">
                 <td>{{i+1}}</td>
-                <td>{{s.blood_type}}</td>
+                <td>{{s.blood_type}} </td>
                 <td [hidden]="onupdate">{{s.blood_quantity}}</td>
                 <td [hidden]="!onupdate" contentEditable="true" >{{s.blood_quantity}}</td>
                 <td><button class="btn btn-primary" (click)="update()" ><i class="bi bi-pencil-fill"></i></button>
-                  &nbsp; <button [hidden]="!onupdate" class="btn btn-primary" (click)="onupdatestock()">save</button>
-                <button [hidden]="onupdate" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+                  &nbsp; <button [hidden]="!onupdate" class="btn btn-primary" (click)="onupdatestock(s.blood_id)">save</button>
+                <button [hidden]="onupdate" class="btn btn-danger" value={{s.blood_id}} (click)="delete(s.blood_id)"><i class="bi bi-trash-fill"></i></button></td>
                 
               </tr>
             </tbody>

@@ -36,9 +36,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
         )
       }
 
-      updatestock(id:number, stock:Stock): Observable<any> {
+      updatestock(data: any): Observable<any> {
   
-        return this.http.put('http://localhost:1000/hospital-stock/' + id, JSON.stringify(stock), this.httpOptions)
+        return this.http.put('http://localhost:1000/hospital-stock', data)
      
         .pipe( 
           catchError(this.errorHandler)
@@ -54,8 +54,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
         )
       }
 
-      delete(id:number){
-        return this.http.delete('http://localhost:1000/hospital-stock' + id, this.httpOptions)
+      delete(data: any){
+        return this.http.delete('http://localhost:1000/hospital-stock', data)
       
         .pipe(
           catchError(this.errorHandler)
