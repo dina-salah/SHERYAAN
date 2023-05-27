@@ -19,7 +19,7 @@ export class HospitalStockFormComponent {
  
   blood: Blood[];
   id: any;
-  stock = {bid: '', bquantity: '', hid: ''};
+  stock = {bid: '', qty: '', hid: ''};
 
   constructor(private service: stockService, private http : HttpClient,private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
@@ -44,9 +44,9 @@ export class HospitalStockFormComponent {
 
   addstock(){
     this.stock.bid = this.form.value.blood_type;
-    this.stock.bquantity = this.form.value.blood_quantity;
+    this.stock.qty = this.form.value.blood_quantity;
     this.stock.hid = this.id;
-
+    console.log(this.stock);
     this.service.addstock(this.stock).subscribe(res => {
       console.log(res);
     })
