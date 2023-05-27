@@ -10,6 +10,7 @@ import { loginService } from '../services/login.service';
 import { updateService } from '../services/update.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { deleteService } from '../services/delete.service';
+import { pointsService } from '../services/points.service';
 
 
 const userAPI= 'http://localhost:5000//user/';
@@ -29,6 +30,7 @@ export class UserProfileComponent implements OnInit{
   userE = { name: '', email: '' };
   verificationCode?: string;
   message = '';
+  points_Amount:any;
 
   constructor(private toastr: ToastrService,
     private service: loginService,
@@ -36,20 +38,33 @@ export class UserProfileComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private delet: deleteService){}
+    private delet: deleteService,
+    private point: pointsService){}
 
   ngOnInit(){ 
+
     this.id = this.route.snapshot.params['user_id'];
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
     this.updateservice.find(this.id).subscribe((data:User)=>{
-        console.log(this.user[0]); 
-  
-        this.userE.name  = this.user[0].user_Fname,
-        this.userE.email = this.user[0].user_Email 
-        this.id = this.user[0].user_id
+        
+      console.log(this.user[0]); 
+      this.userE.name  = this.user[0].user_Fname,
+      this.userE.email = this.user[0].user_Email 
+      this.id = this.user[0].user_id
        
       });
+
+  //func to retrive points amount
+  this.point.points(this.id)
+  .subscribe(
+    (res)=>{
+        this.points_Amount = res.data[0].TotalPoints
+        console.log( res.data[0].TotalPoints)
+    },(error)=>{
+        console.log(error)
+    }
+  )    
   }
 
   dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));
@@ -157,6 +172,7 @@ verifyCode() {
     this.message = 'Please enter the verification code.';
   }
 }
+
 
       
 }
