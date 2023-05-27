@@ -24,118 +24,136 @@
 
 <!--editable profile info-->
 <div class="content-panel" >
-    <form class="form-horizontal" [formGroup]="form"  >
+<form class="Patient" #localForm="ngForm"  [formGroup]="form">
         <fieldset class="fieldset">
             <h3 class="fieldset-title">Personal Info</h3>
             
-            <div  class="mb-3">
-                <input required placeholder="first name" type="text" class="form-control" formControlName="user_Fname" value="user_Fname">
-                <div *ngIf="f['user_Fname'].touched && f['user_Fname'].invalid" >
-                    <div *ngIf="f['user_Fname'].errors && f['user_Fname'].errors['required']">User name is required.</div>
-                  </div>
-            </div><pre></pre>
+        <div  class="mb-3">
+        <input placeholder="First Name" class="form-control" [minlength]="3" [maxlength]="20" formControlName="user_Fname" [class.is-invalid]="localForm.submitted && form.get('user_Fname')?.invalid">
+        <div class="invalid-feedback">
+            First name is required
+        </div>
+    </div>
+
+    <pre></pre>
 
             <div  class="mb-3">
-                <input type="text" placeholder="last name" class="form-control" formControlName="user_Lname">
-                <div *ngIf="f['user_Lname'].touched && f['user_Lname'].invalid" >
-                    <div *ngIf="f['user_Lname'].errors && f['user_Lname'].errors['required']">user name is required.</div>
-                  </div>
-            </div><pre></pre>
+        
+        <input type="text"  placeholder="Last name"class="form-control" [minlength]="3" [maxlength]="20" formControlName="user_Lname" [class.is-invalid]="localForm.submitted && form.get('user_Lname')?.invalid" >
+        <div class="invalid-feedback">
+            Last name is required
+        </div>
+    </div>
+
+    <pre></pre>
 
             <div  class="mb-3">
-                <input type="text"  placeholder="SNN"  class="form-control" formControlName="user_national_ID">
-                <div *ngIf="f['user_national_ID'].touched && f['user_national_ID'].invalid" >
-                    <div *ngIf="f['user_national_ID'].errors && f['user_national_ID'].errors['required']">user ssn is required.</div>
-                  </div>
-            </div><pre></pre>
+        
+        <input type="text"  placeholder="SNN"  class="form-control" [minlength]="14" [maxlength]="14" formControlName="user_national_ID" [class.is-invalid]="localForm.submitted && form.get('user_national_ID')?.invalid">
+        <div class="invalid-feedback">
+            SNN is required
+        </div>
+    </div>
 
-            <div  class="mb-3"> 
-                <!-- /the value must be bet 18 &60/ -->
-                <input type="text"   placeholder="Age" class="form-control"  formControlName="user_age"> 
-                <div *ngIf="f['user_age'].touched && f['user_age'].invalid" >
-                    <div *ngIf="f['user_age'].errors && f['user_age'].errors['required']">required.</div>
-                  </div>
-            </div><pre></pre>
+    <pre></pre>
 
-            <div  class="mb-3">
-                <input type="text" placeholder="Address" class="form-control" formControlName="user_address">
-                <div *ngIf="f['user_address'].touched && f['user_address'].invalid" >
-                    <div *ngIf="f['user_address'].errors && f['user_address'].errors['required']">required.</div>
-                  </div>
-            </div><pre></pre>
+                <div  class="mb-3"> 
+         <!-- min="18" max="60"  -->
+        <input type="text"   placeholder="Age"  class="form-control" [minlength]="1" [maxlength]="2" formControlName="user_age" > 
+        
+        <div class="warning" *ngIf="user_age && (user_age.invalid && (user_age.dirty || user_age.touched))">
+            <div *ngIf="user_age.errors?.['required']">Age is required.</div>
+            <div *ngIf="user_age.errors?.['min'] || user_age.errors?.['max']">Age must be between 18 and 60.</div>
+            <div *ngIf="user_age.errors?.['pattern']">Age must contain only numbers.</div>
+        </div>
+    </div>
+
+    <pre></pre>
+
+        <div  class="mb-3">
+        
+        <input type="text" placeholder="Address"  class="form-control" [minlength]="3" [maxlength]="50"  formControlName="user_address" [class.is-invalid]="localForm.submitted && form.get('user_address')?.invalid">
+        <div class="invalid-feedback">
+            Address is required
+        </div>
+    </div>
+
+    <pre></pre>
 
 
-            <label >Gender:</label>
-            <div style="display: inline;" class="mb-3">
-                <input class="custom-control-input" type="radio" value="male" formControlName="user_gender"><label for="male">Male</label>
-                <input class="custom-control-input" type="radio" value="female" formControlName="user_gender"><label for="female">Female</label>
-            </div>
-            <pre></pre>
+    <label >Gender:</label>
+    <div style="display: inline;">
+    <input type="radio" class="custom-control-input"  value="Male" formControlName="user_gender" >
+    <label class="custom-control-label" >Male</label>
+    <input  type="radio" class="custom-control-input"  value="Female"   formControlName="user_gender" >
+    <label class="custom-control-label" >Female</label>
+    </div>
+    <pre></pre>
 
-            <div  >
-                <label  style="margin-right: 7px;">City:</label>
-                <select class="drop" formControlName="user_city" value="user_city">
-                <option value="6 October"  >6 October</option>
-                <option value="Dokki"  >Dokki</option>
-                <option value="New Cairo"  >New Cairo</option>
-                <option value="Nasr city"  >Nasr city</option>
-                <option value="Madinty"  >Madinty</option>
-                </select>
-            </div>
-            <pre></pre>
+        <div>
+        <label  style="margin-right: 7px;">City:</label>
+        <select class="drop" formControlName="user_city">
+        <option value="6 October">  6 October</option>
+        <option value="Dokki">      Dokki</option>
+        <option value="New Cairo">  New Cairo</option>
+        <option value="Nasr city">  Nasr city</option>
+        <option value="Madinty">    Madinty</option>
+        </select>
+    </div>
+    <pre></pre>
+    <label  >Blood type:</label>
+    <div style="display: inline;" class="mb-3">
+    <input class="custom-control-input" type="radio"  value="O+"  formControlName="user_blood_type" ><label class="user-bloodType">O+</label>
+    <input class="custom-control-input" type="radio"  value="O-"  formControlName="user_blood_type" ><label class="user-bloodType">O-</label>
+    <input class="custom-control-input" type="radio"  value="A+"  formControlName="user_blood_type" ><label class="user-bloodType">A+</label>
+    <input class="custom-control-input" type="radio"  value="A-"  formControlName="user_blood_type" ><label class="user-bloodType">A-</label>
+    <input class="custom-control-input" type="radio"  value="B+"  formControlName="user_blood_type" ><label class="user-bloodType">B+</label>
+    <input class="custom-control-input" type="radio"  value="B-"  formControlName="user_blood_type" ><label class="user-bloodType">B-</label>
+    <input class="custom-control-input" type="radio"  value="AB+" formControlName="user_blood_type" ><label class="user-bloodType">AB+</label>
 
-            <label for="bloodType">Blood type:</label>
-            <div style="display: inline;" class="mb-3">
-            <input class="custom-control-input" type="radio"  value="O+" formControlName="user_blood_type" ><label class="user-bloodType" for="O+">O+</label>
-            <input class="custom-control-input" type="radio"  value="O"  formControlName="user_blood_type" ><label class="user-bloodType" for="O"> O-</label>
-            <input class="custom-control-input" type="radio"  value="A+" formControlName="user_blood_type"  ><label class="user-bloodType" for="A+"> A+</label>
-            <input class="custom-control-input" type="radio"  value="A-" formControlName="user_blood_type"  ><label class="user-bloodType" for="A-">A-</label>
-            <input class="custom-control-input" type="radio"  value="B+" formControlName="user_blood_type" ><label class="user-bloodType" for="B+">B+</label>
-            <input class="custom-control-input" type="radio"  value="B-" formControlName="user_blood_type" ><label class="user-bloodType" for="B-">B-</label>
-            <input class="custom-control-input" type="radio"  value="AB+"formControlName="user_blood_type"  ><label class="user-bloodType" for="AB+">AB+</label>
-            </div>
-            <pre></pre>
-
-            <div  class="mb-3"> 
-                <input type="text" placeholder="health status" class="form-control" formControlName="user_health_status" >
-                <div *ngIf="f['user_health_status'].touched && f['user_health_status'].invalid" >
-                    <div *ngIf="f['user_health_status'].errors && f['user_health_status'].errors['required']">required.</div>
-                  </div>
-            </div><pre></pre>
+</div>
+<pre></pre>
+        <div  class="mb-3"> 
+        <textarea type="text" placeholder="health status" [maxlength]="100" class="form-control"  formControlName="user_health_status">
+        </textarea>
+    </div>
+    <pre></pre>
             <div class="form-group avatar">
-            
-                <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+            <div class="form-inline col-md-10 col-sm-9 col-xs-12">
                     
                     <button type="submit" class="btn btn-danger">Update Image</button>
                 </div>
-            </div><pre></pre>
-            <div  class="mb-3"> 
-                
-                <!-- check validity -->
-                <input type="password"  placeholder="Password"  class="form-control" formControlName="user_password" >
-                <div *ngIf="f['user_password'].touched && f['user_password'].invalid" >
-                    <div *ngIf="f['user_password'].errors && f['user_password'].errors['required']">required.</div>
-                  </div>
             </div>
-
             <br>
+            <div  class="mb-3"> 
+        
+    <input type="password" placeholder="Password" class="form-control"  formControlName="user_password">
+        
+    <div class="warning" *ngIf="user_password && (user_password.invalid && (user_password.dirty || user_password.touched))">
+        <div class="warning" *ngIf="user_password.errors?.['required']">Password is required.</div></div>
+        <div class="warning" *ngIf="user_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
+    
+    </div>
+    <br>
         </fieldset>
         <fieldset class="fieldset">
             <h3 class="fieldset-title">Contact Info</h3><br>
             <div  class="mb-3"> 
-                <!-- why validation is not working -->
-                <input type="text"  placeholder="phoneNumber"  class="form-control" formControlName="user_phoneNo" >
-                <div *ngIf="f['user_phoneNo'].touched && f['user_phoneNo'].invalid" >
-                    <div *ngIf="f['user_phoneNo'].errors && f['user_phoneNo'].errors['required']">required.</div>
-                  </div>
-            </div>
-            <pre></pre>
-            <div  class="mb-3">
-                <input type="email" placeholder="Email"  class="form-control" formControlName="user_Email" >
-                <div *ngIf="f['user_Email'].touched && f['user_Email'].invalid" >
-                    <div *ngIf="f['user_Email'].errors && f['user_Email'].errors['required']">required.</div>
-                  </div>
-            </div>
+    
+        <input type="text" placeholder="PhoneNumber"  class="form-control" [minlength]="11" [maxlength]="11" formControlName="user_phoneNo"  [class.is-invalid]="localForm.submitted && form.get('user_phoneNo')?.invalid">
+        <div class="invalid-feedback">
+            phone number is required
+        </div>
+    </div>
+    <pre></pre>
+        <div  class="mb-3">
+        
+        <input type="email" placeholder="Email" class="form-control"   formControlName="user_Email" [class.is-invalid]="localForm.submitted && form.get('user_Email')?.invalid">
+        <div class="invalid-feedback">
+            Email is required
+        </div>
+    </div>
+    <pre></pre>
         </fieldset>
         
         <hr>
