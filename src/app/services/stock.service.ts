@@ -62,5 +62,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
         )
       }
 
+      getblood(): Observable<any>{
+        return this.http.get('http://localhost:1000/blood-types')
+      
+        .pipe(
+          catchError(this.errorHandler)
+        )
+
+      }
+
+      addstock(data: any): Observable<any>{
+        return this.http.post('http://localhost:1000/add-stock', data)
+        
+        .pipe(
+          catchError(this.errorHandler)
+        )
+      }
+
 
   }

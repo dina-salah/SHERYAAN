@@ -3,7 +3,11 @@ import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { stockService } from '../services/stock.service';
+import { Stock } from '../model/hospitalstock';
+import { Blood } from '../model/hospitalstock';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,42 +16,43 @@ import { Router } from '@angular/router';
   styleUrls: ['./hospital-stock-form.component.css']
 })
 export class HospitalStockFormComponent {
-  // receiver:string = '';
-  // pname:string= '';
-  // pcase:string ='';
+ 
+  blood: Blood[];
+  id: any;
+  stock = {bid: '', bquantity: '', hid: ''};
 
-  date:Date= new Date();
-  bloodtype:string= '';
-  quantity:number = 0 ;
-  address:string= '';
-
-  constructor(private newReq: addRequestService, private http : HttpClient,private toastr: ToastrService, private _router: Router){
+  constructor(private service: stockService, private http : HttpClient,private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
   }
 
   ngOnInit(){
+    this.id = this.route.snapshot.params['hospital_id'];
+    this.service.getblood().subscribe((res) => {
+      this.blood = res.data;
+      console.log(res);
+    })
+
+  }
+
+
+  form = new FormGroup({
+    blood_type: new FormControl(null, Validators.required),
+    blood_quantity: new FormControl(null, Validators.required),
+  });
+
+ 
+
+  addstock(){
+    this.stock.bid = this.form.value.blood_type;
+    this.stock.bquantity = this.form.value.blood_quantity;
+    this.stock.hid = this.id;
+
+    this.service.addstock(this.stock).subscribe(res => {
+      console.log(res);
+    })
+
+  }
   
 
-  }
-addToStock(){
-
-}
-
-  // addrequest(){
-  //   this.newReq.addR(this.receiver, this.pname, this.date, this.bloodtype,this.quantity, this.pcase, this.address);
-  //   console.log(this.newReq.patient);
-  // }
-
-  onStockadd(stock:{ date:Date, bloodtype:string, quantity:string, address:string }){
-    this.http.post('https://sheryaanang-default-rtdb.firebaseio.com/products.json',stock)
-    .subscribe((res)=>{
-      console.log(res)
-    });
-
-    this.toastr.success('Product has been added!');
-
-    this._router.navigate(['/hospital-stock']);
-    
-  }
 
 }

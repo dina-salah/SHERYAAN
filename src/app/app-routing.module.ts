@@ -80,7 +80,8 @@ const routes: Routes = [
   {path: 'user/:user_id', component: UserProfileComponent},
   {path: 'hospital/:hospital_id', component: HospitalProfileComponent},
   {path: 'organization/:organization_id', component: OrgnizationProfileComponent},
-  {path: 'hospital-stock/:hospital_id', component: HospitalStockComponent}
+  {path: 'hospital-stock/:hospital_id', component: HospitalStockComponent},
+  {path: 'hospital-stock-form/:hospital_id', component: HospitalStockFormComponent}
   // {path:'++',component:ErrorComponent}
 ];
 

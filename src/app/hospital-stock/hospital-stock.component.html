@@ -5,7 +5,7 @@
     <br><br>
     <div class="container">
         <!-- <h1>MY STOCK</h1> -->
-        <b><div class="bi bi-plus-lg" routerLink="/hospital-stock-form" routerLinkActive="active">  Add </div></b>
+        <b><div class="bi bi-plus-lg" [routerLink]="['/hospital-stock-form/', id]">  Add </div></b>
 
       <br>
         <table class="table">
@@ -25,7 +25,7 @@
                 <td [hidden]="!onupdate" contentEditable="true" >{{s.blood_quantity}}</td>
                 <td><button class="btn btn-primary" (click)="update()" ><i class="bi bi-pencil-fill"></i></button>
                   &nbsp; <button [hidden]="!onupdate" class="btn btn-primary" (click)="onupdatestock()">save</button>
-                    <button [hidden]="onupdate" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
+                <button [hidden]="onupdate" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button></td>
                 
               </tr>
             </tbody>

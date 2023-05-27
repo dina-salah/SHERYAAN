@@ -36,7 +36,7 @@ export class loginService{
 
   logout() {
     this.loggedIn.next(false);
-    localStorage.clear();
+    localStorage.removeItem('userdata');
     this.router.navigate(['/sign-in']);
   }
 
