@@ -65,8 +65,8 @@
                     </div>
                 </div>
                 
-              <!-- modal -->
-                <div class="modal fade" id="deleteModal">
+                <!-- modal -->
+                  <div class="modal fade" id="deleteModal">
                     <div class="modal-dialog" >
                       <div class="modal-content">
                         <div class="modal-header">
@@ -74,20 +74,29 @@
                           <button class="btn-close" data-bs-dismiss="modal" ></button>
                         </div>
                         <div class="modal-body">
-                            <h5>you sure you want to delete your account?</h5> 
+                            <h2>Sure want to delete your account?</h2> 
 
                            <div  class="mb-3"> 
-                                <input type="password" #password="ngModel" placeholder="Password" required minlength="8" name="password" style="width:250px ;" class="form-control" ngModel>
-                                <!-- <p ngIf="password.invalid " class="warning"> invalid password!!</p> -->
+                            <div>
+                              </div>
+                              <h5> Code is sent to your email</h5>
+                                <input [(ngModel)]="verificationCode" placeholder="Enter Verification Code" class="form-control">
+                                <p style="color: rgba(6, 55, 180, 0.849);" class="d-flex justify-content-center">{{ message }}</p>
+                                
                             </div>
                         </div>
-
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-danger" >Delete</button>
+                          <button type="button" class="btn btn-warning" (click)="sendEmail()">Send</button>
+                          <button type="button" class="btn btn-danger" (click)="verifyCode()">Verify Code</button>
                         </div>
                       </div>
                     </div>
                   </div>
+            </div>
+        </section>
+    </div>
+</div>
+
 
                 
