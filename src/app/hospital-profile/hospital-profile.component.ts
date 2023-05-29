@@ -33,6 +33,8 @@ export class HospitalProfileComponent implements OnInit{
     this.id = this.route.snapshot.params['hospital_id'];
     this.gethospital();
     this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
+    localStorage.setItem('hospital_id', JSON.stringify(this.id));
+    JSON.parse(localStorage.getItem('hospital_id'));
   }  
 
   addHospitalForm =  new FormGroup({

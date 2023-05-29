@@ -8,6 +8,7 @@
         <b><div class="bi bi-plus-lg" [routerLink]="['/hospital-stock-form/', id]">  Add </div></b>
 
       <br>
+      <form [formGroup]="form">
         <table class="table">
             <thead class="table-dark">
               <tr>
@@ -18,19 +19,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let s of stock; index as i">
+              <ng-container *ngFor="let s of stock; index as i"> 
+              <tr *ngIf="stockselected != s" (click)="selectStock(s)">
                 <td>{{i+1}}</td>
                 <td>{{s.blood_type}} </td>
-                <td [hidden]="onupdate">{{s.blood_quantity}}</td>
-                <td [hidden]="!onupdate" contentEditable="true" >{{s.blood_quantity}}</td>
-                <td><button class="btn btn-primary" (click)="update()" ><i class="bi bi-pencil-fill"></i></button>
-                  &nbsp; <button [hidden]="!onupdate" class="btn btn-primary" (click)="onupdatestock(s.blood_id)">save</button>
-                <button [hidden]="onupdate" class="btn btn-danger" value={{s.blood_id}} (click)="delete(s.blood_id)"><i class="bi bi-trash-fill"></i></button></td>
-                
+                <td>{{s.blood_quantity}}</td>
+                <td>
+                  <button class="btn btn-primary" [hidden]="enableEdit" (click)="enableEditMethod($event, i)"><i class="bi bi-pencil-fill"></i></button>
+                  &nbsp;
+                  <button [hidden]="enableEdit" class="btn btn-danger" value={{s.blood_id}} (click)="delete(s.blood_id)"><i class="bi bi-trash-fill"></i></button></td>
               </tr>
+
+              <tr *ngIf="stockselected == s">
+                <td>{{i+1}}</td>
+                <td>{{s.blood_type}}</td>
+                <td><input type="text" formControlName="blood_quantity" [value]="s.blood_quantity"></td>
+                <td><button  class="btn btn-primary btn-sm" *ngIf="enableEdit && enableEditIndex == i" type="submit" (click)="onupdatestock()">save</button></td>
+              </tr>
+              </ng-container>
             </tbody>
           </table>
-
+        </form>
           <br><br>
     </div>
 

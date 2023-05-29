@@ -36,7 +36,8 @@ export class loginOrgService{
 
   logout() {
     this.loggedIn.next(false);
-    localStorage.clear();
+    localStorage.removeItem('organizationdata');
+    localStorage.removeItem('organization_id');
     this.router.navigate(['/sign-in']);
   }
 

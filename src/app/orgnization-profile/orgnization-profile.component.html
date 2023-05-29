@@ -12,8 +12,8 @@
                         </ul>
                     </div>
             		<nav class="side-menu">
-        				<ul class="nav">
-        					<li class="active"><a href="#" routerLink="/organization-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        				<ul class="nav"*ngFor="let o of org">
+        					<li class="active"><a href="#" [routerLink]="['/organization/', o.organization_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>

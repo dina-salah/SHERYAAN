@@ -38,6 +38,7 @@ export class loginHospitalService{
     this.loggedIn.next(false);
     localStorage.removeItem('hospitaldata');
     localStorage.removeItem('stockdata');
+    localStorage.removeItem('hospital_id');
     this.router.navigate(['/sign-in']);
   }
 

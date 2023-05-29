@@ -37,6 +37,8 @@ export class OrgnizationProfileComponent implements OnInit{
       this.id = this.route.snapshot.params['organization_id'];
       this.getorg();
       this.org = JSON.parse(localStorage.getItem('organizationdata'));
+      localStorage.setItem('organization_id', JSON.stringify(this.id));
+      JSON.parse(localStorage.getItem('organization_id'));
       this.updateservice.find(this.id).subscribe((data:Organization)=>{
         
         console.log(this.org[0]); 

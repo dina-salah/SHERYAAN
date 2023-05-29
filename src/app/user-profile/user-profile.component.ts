@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from '../model/signupinfo';
@@ -46,6 +46,8 @@ export class UserProfileComponent implements OnInit{
     this.id = this.route.snapshot.params['user_id'];
     this.getuser();
     this.user = JSON.parse(localStorage.getItem('userdata'));
+    localStorage.setItem('user_id', JSON.stringify(this.id));
+    JSON.parse(localStorage.getItem('user_id'));
     this.updateservice.find(this.id).subscribe((data:User)=>{
         
       console.log(this.user[0]); 
@@ -66,6 +68,7 @@ export class UserProfileComponent implements OnInit{
     }
   )    
   }
+
 
   dataFromLocalStorage = JSON.parse(localStorage.getItem('userdata'));
     
