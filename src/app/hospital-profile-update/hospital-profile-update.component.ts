@@ -51,20 +51,24 @@ export class HospitalProfileUpdateComponent implements OnInit{
       hospital_city: new FormControl('', Validators.required),
       hospital_Email: new FormControl('', Validators.required),
       hospital_phoneNo: new FormControl('', Validators.required),
-      hospital_password: new FormControl('', Validators.required),
+      hospital_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
     });
   }
 
-  get f(){
-    return this.form.controls;
+  get hospital_password() {
+    return this.form.get('hospital_password');
   }
 
   submit(){
     console.log(this.form.value);
-    this.hospitalService.updatehospital(this.id, this.form.value).subscribe((res: any) => {
+    this.hospitalService.updatehospital(this.id, this.form.value).subscribe({
+      next:(res: any) => {
          console.log('hospital updated successfully!');
          this.toastr.success('profile updated successfully!');
          
-    })
+    },error(err) {
+      console.log(err)
+      this.toastr.warning('check your info!');
+    }})
   }
 }

@@ -8,7 +8,7 @@
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
                         <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{user.fname}} {{user.lname}}</li> -->
+                            <!-- <li class="name">{{user.user_Fname}} {{user.user_Lname}}</li> -->
                         </ul>
                     </div>
             		<nav class="side-menu">
@@ -160,7 +160,7 @@
     </form>
     <div class="form-group">
         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-            <button class="btn btn-success" type="submit" (click)="submit()">update</button>
+            <button class="btn btn-success" type="submit" [disabled]="form.invalid" (click)="submit()">update</button>
         </div>
     </div>
 </div>

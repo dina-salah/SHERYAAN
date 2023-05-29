@@ -80,11 +80,16 @@ get user_age() {
 
   submit(){
     console.log(this.form.value);
-    this.userService.updateuser(this.id, this.form.value).subscribe((res: any) => {
+    this.userService.updateuser(this.id, this.form.value)
+    .subscribe({
+      next:(res: any) => {
          console.log('User updated successfully!');
          this.toastr.success('profile updated successfully!');
          
-    })
+    },error(err) {
+      console.log(err)
+      this.toastr.warning('check your info!');
+    }})
   }
 
 

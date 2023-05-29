@@ -149,7 +149,7 @@ verifyCode() {
             this.delet.delete(this.id)
             .subscribe(
               (data) => {
-                // this.router.navigate(['/src/app/home'])
+                this.service.logout();  
                 console.log('account deleted');
                 },
                (error) => {

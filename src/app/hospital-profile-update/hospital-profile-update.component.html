@@ -7,7 +7,7 @@
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
                         <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{hospital.name}}</li> -->
+                            <!-- <li class="name">{{hospital.name}}</li> --> 
                         </ul>
                     </div>
             		<nav class="side-menu">
@@ -24,37 +24,37 @@
 
 <!--editable profile info-->
 <div class="content-panel" >
-    <form class="form-horizontal" [formGroup]="form">
+    <form class="form-horizontal" #HlocalForm="ngForm"  [formGroup]="form">
         <fieldset class="fieldset">
             <h3 class="fieldset-title">Personal Info</h3>
 
             <div  class="mb-3">
-                <input required placeholder="hospital name" type="text" class="form-control" formControlName="hospital_name" value="hospital_name">
-                <div *ngIf="f['hospital_name'].touched && f['hospital_name'].invalid" >
-                    <div *ngIf="f['hospital_name'].errors && f['hospital_name'].errors['required']">hospital name is required.</div>
-                  </div>
-            </div><pre></pre>
+                <input  placeholder="Name" class="form-control" formControlName="hospital_name" [minLength]="8" [maxlength]="20" [class.is-invalid]="HlocalForm.submitted && form.get('hospital_name')?.invalid">
+                <div class="invalid-feedback">
+                    Hospital name is required
+                </div>
+            </div>
+            <pre></pre>
             
 
             <div  class="mb-3">
-                <input required placeholder="hospital address" type="text" class="form-control" formControlName="hospital_address" value="hospital_address">
-                <div *ngIf="f['hospital_address'].touched && f['hospital_address'].invalid" >
-                    <div *ngIf="f['hospital_address'].errors && f['hospital_address'].errors['required']">hospital address is required.</div>
-                  </div>
-            </div><pre></pre>
+                <input type="text" placeholder="Address"  class="form-control"  formControlName="hospital_address"  [minLength]="10" [maxlength]="50" [class.is-invalid]="HlocalForm.submitted && form.get('hospital_address')?.invalid">
+                <div class="invalid-feedback">
+                    Hospital address is required
+                </div>
+            </div>
+            <pre></pre>
 
-            <div >
-                <label for="City" style="margin-right: 7px;">City:  </label>
-                <select class="drop" name="city"  formControlName="hospital_city" value="hospital_city">
-                <option value="6 October" name="city" >6 October</option>
-                <option value="Dokki" name="city" >Dokki</option>
-                <option value="New Cairo" name="city" >New Cairo</option>
-                <option value="Nasr city" name="city" >Nasr city</option>
-                <option value="Madinty" name="city" >Madinty</option>
+            <div  >
+                <label  style="margin-right: 7px;">City:</label>
+                <select class="drop" formControlName="hospital_city">
+                <option value="6 October"   >6 October</option>
+                <option value="Dokki" >Dokki</option>
+                <option value="New Cairo"  >New Cairo</option>
+                <option value="Nasr city" >Nasr city</option>
+                <option value="Madinty"   >Madinty</option>
                 </select>
-                <div *ngIf="f['hospital_city'].touched && f['hospital_city'].invalid" >
-                    <div *ngIf="f['hospital_city'].errors && f['hospital_city'].errors['required']">hospital city is required.</div>
-                  </div>
+                <!-- <input type="text" class="custom-control-input"  formControlName="city" > -->
             </div>
             <pre></pre>
 
@@ -66,12 +66,15 @@
                 </div>
             </div><pre></pre>
 
-            <div  class="mb-3">
-                <input required placeholder="password" type="text" class="form-control" formControlName="hospital_password" value="hospital_password">
-                <div *ngIf="f['hospital_password'].touched && f['hospital_password'].invalid" >
-                    <div *ngIf="f['hospital_password'].errors && f['hospital_password'].errors['required']">password is required.</div>
-                  </div>
-            </div><pre></pre>
+            <div  class="mb-3"> 
+                <input type="password" placeholder="Password"  class="form-control" formControlName="hospital_password">
+                    
+                <div class="warning" *ngIf="hospital_password && (hospital_password.invalid && (hospital_password.dirty || hospital_password.touched))">
+                    <div *ngIf="hospital_password.errors?.['required']">Password is required.</div>
+                    <div class="warning" *ngIf="hospital_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
+                </div>
+                </div>
+                <pre></pre>
 
             <br>
         </fieldset>
@@ -79,27 +82,32 @@
         <fieldset class="fieldset">
             <h3 class="fieldset-title">Contact Info</h3><br>
 
-            <div  class="mb-3">
-                <input required placeholder="phone number" type="text" class="form-control" formControlName="hospital_phoneNo" value="hospital_phoneNo">
-                <div *ngIf="f['hospital_phoneNo'].touched && f['hospital_phoneNo'].invalid" >
-                    <div *ngIf="f['hospital_phoneNo'].errors && f['hospital_phoneNo'].errors['required']">phone number is required.</div>
-                  </div>
-            </div><pre></pre>
+            <div  class="mb-3"> 
+                <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="hospital_phoneNo"  [minLength]="5" [maxlength]="11" [class.is-invalid]="HlocalForm.submitted && form.get('hospital_phoneNo')?.invalid">
+                <div class="invalid-feedback">
+                    Hospital phone number is required
+                </div>
+            </div>
+            <pre></pre>
 
             <div  class="mb-3">
-                <input required placeholder="Email" type="text" class="form-control" formControlName="hospital_Email" value="hospital_Email">
-                <div *ngIf="f['hospital_Email'].touched && f['hospital_Email'].invalid" >
-                    <div *ngIf="f['hospital_Email'].errors && f['hospital_Email'].errors['required']">Email is required.</div>
-                  </div>
-            </div><pre></pre>
+                <input type="email" placeholder="Email" class="form-control"  formControlName="hospital_Email"  [minLength]="11"  [class.is-invalid]="HlocalForm.submitted && form.get('hospital_Email')?.invalid">
+                <div class="invalid-feedback">
+                    Hospital email is required
+                </div>
+            </div>
+            <pre></pre>
         </fieldset>
         
         <hr>
     </form>
+    
+
+    
 
     <div class="form-group">
         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-            <button class="btn btn-danger" (click)="submit()">update</button>
+            <button class="btn btn-success" [disabled]="form.invalid" (click)="submit()">Save</button>
         </div>
     </div>
 </div>

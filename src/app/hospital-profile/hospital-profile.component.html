@@ -7,8 +7,8 @@
                     <div class="user-info">
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
-                        <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{hospital.name}}</li> -->
+                        <ul class="meta list list-unstyled" *ngFor="let h of hospital">
+                            <li class="name">{{h.hospital_name}}</li>
                         </ul>
                     </div>
             		<nav class="side-menu">
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                             <div class="d-flex" *ngFor="let h of hospital">
-                            <a href="#" [routerLink]="['/hospital-profile/', h.hospital_id, 'update']" class="btn btn-danger m-1">Update</a>    
+                            <a href="#" [routerLink]="['/hospital-profile/', h.hospital_id, 'update']" class="btn btn-primary m-1">Update</a>    
                             <!-- <button class="btn btn-primary m-1" type="submit" >Update</button> -->
                             <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
                             </div>
