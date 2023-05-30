@@ -8,7 +8,7 @@
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
                         <ul class="meta list list-unstyled" *ngFor="let h of hospital">
-                            <li class="name">{{h.hospital_name}}</li>
+                            <li class="name" style="font-size:18px ; margin-top: 16px;">{{h.hospital_name}}</li>
                         </ul>
                     </div>
             		<nav class="side-menu">
@@ -27,7 +27,7 @@
                 <div class="content-panel" [hidden]="displays">
                     <fieldset class="fieldset">
                         <div class="row ">
-                            <label *ngIf="isfetching">loading....</label>
+                            <!-- <label *ngIf="isfetching">loading....</label> -->
                             <div class="col col-lg-2">
                         <h3 class="fieldset-title">Personal Info</h3>
                     </div>

@@ -11,10 +11,7 @@ import { User } from '../model/signupinfo';
 
 export class loginHospitalService{
 
-  API: string = 'http://localhost:5000';
-  userAPI: string        ='http://localhost:5000/user';
   hospitalAPI:string     ='http://localhost:7000/hospital/'; 
-  orgnizationAPI:string  ='http://localhost:8000/org';
 
   constructor(private http: HttpClient, private router: Router){}
 
@@ -24,15 +21,11 @@ export class loginHospitalService{
     return this.loggedIn.asObservable();
   }
 
-  userlogin(userlogindata: any){
-    return this.http.post<any>('http://localhost:5000/login', userlogindata);
-  }
+
   hospitallogin(hospitllogindata: any){
     return this.http.post<any>('http://localhost:7000/login', hospitllogindata);
   }
-  orglogin(orglogindata: any){
-    return this.http.post<any>('http://localhost:8000/login', orglogindata);
-  }
+
 
   logout() {
     this.loggedIn.next(false);

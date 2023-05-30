@@ -28,35 +28,35 @@ export class SignInComponent{
   uDisplay:boolean =true;
   hDisplay:boolean =true;
   oDisplay:boolean =true;
-  aDisplay:boolean =true;
+  // aDisplay:boolean =true;
   userdata: any;
 
   hospitalDisplay(){
     this.hDisplay =false
     this.uDisplay=true 
     this.oDisplay =true
-    this.aDisplay =true
+    // this.aDisplay =true
   }
 
   userDisplay(){
     this.uDisplay=false
     this.hDisplay =true 
     this.oDisplay =true
-    this.aDisplay =true
+    // this.aDisplay =true
   }
   
   orgnizationDisplay(){
     this.oDisplay =false
     this.uDisplay=true
     this.hDisplay =true 
-    this.aDisplay =true
+    // this.aDisplay =true
   }
-  adminDisplay(){
-    this.aDisplay =false
-    this.uDisplay=true
-    this.hDisplay =true 
-    this.oDisplay =true
-  }
+  // adminDisplay(){
+  //   this.aDisplay =false
+  //   this.uDisplay=true
+  //   this.hDisplay =true 
+  //   this.oDisplay =true
+  // }
     
   userloginform=this.builder.group({
     user_national_ID: this.builder.control('', Validators.required),
@@ -73,10 +73,10 @@ export class SignInComponent{
     organization_password: this.builder.control('', Validators.required)
   })
 
-  adminloginform=this.builder.group({
-    admin_email: this.builder.control('', Validators.required),
-    admin_password: this.builder.control('', Validators.required)
-  })
+  // adminloginform=this.builder.group({
+  //   admin_email: this.builder.control('', Validators.required),
+  //   admin_password: this.builder.control('', Validators.required)
+  // })
 
   navigateToLogin(id: number) {
     this.router.navigate(['/user/', id]); 

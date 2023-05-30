@@ -7,8 +7,8 @@
                     <div class="user-info">
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
-                        <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{hospital.name}}</li> -->
+                        <ul class="meta list list-unstyled" *ngFor="let u of org">
+                            <li class="name" style="font-size:18px ; margin-top: 16px;"><b>{{u.organization_name}}</b></li>
                         </ul>
                     </div>
             		<nav class="side-menu">
