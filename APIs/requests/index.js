@@ -53,7 +53,8 @@ app.get("/all-requests", function (req, res) {
 
 //filter request
 app.get("/search-requests/:value", function (req, res) {
-    const param = req.params.value;
+  const param = req.params.value;
+  const wildcard = `%${param.split('').join('%')}%`;
   
     let sql = `SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name 
                 from request AS r join blood AS b on r.blood_type = b.blood_id 
@@ -63,7 +64,7 @@ app.get("/search-requests/:value", function (req, res) {
   
     dbConn.query(
       sql,
-      [param, param],
+      [wildcard, wildcard],
       function (error, results, fields) {
         if (error) {
           console.error(error);
@@ -157,18 +158,17 @@ app.post("/add-request", function (req, res) {
 //update request
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!! which coloumns to update !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.put("/update-request", function (req, res) {
-    user_ssn = req.body.user_ssn;
-    hospital_id = req.body.hospital_id;
+    //user_ssn = req.body.user_ssn;
+    //hospital_id = req.body.hospital_id;
     request_status = req.body.request_status;
-    request_date = req.body.request_date; 
+    //request_date = req.body.request_date; 
     request_quantity = req.body.request_quantity ;
     request_case = req.body.request_case;
-    blood_type = req.body.blood_type;
+    //blood_type = req.body.blood_type;
     request_id = req.body.request_id;
 
-    dbConn.query(`UPDATE request SET user_ssn = ?, hospital_id = ? , request_status = ? , request_date = ? ,
-                    request_quantity = ? , request_case = ?  , blood_type = ? WHERE request_id = ? ` ,
-        [user_ssn, hospital_id, request_status, request_date, request_quantity, request_case, blood_type, request_id] 
+    dbConn.query(`UPDATE request SET request_status = ? , request_quantity = ? , request_case = ?  , WHERE request_id = ? ` ,
+        [request_status, request_quantity, request_case, request_id] 
     , function (error, results, fields) {
       if (error) throw error;
       return res.send(

@@ -117,13 +117,21 @@ app.delete("/hospital-stock", function (req, res) {
 //   });
 app.get("/stocksearch/:value", function (req, res) {
   const param = req.params.value;
+  const wildcard = `%${param.split('').join('%')}%`;
 
-  let sql = "SELECT hospital_name, blood_type, blood_quantity FROM hospital_blood_stock AS hs JOIN blood AS bld ON hs.blood_id = bld.blood_id JOIN hospital AS h ON hs.hospital_id = h.hospital_id WHERE hospital_name = ? OR bld.blood_type = ?";
+
+  let sql = `SELECT hospital_name, blood_type, blood_quantity FROM hospital_blood_stock AS hs 
+              JOIN blood AS bld ON hs.blood_id = bld.blood_id 
+              JOIN hospital AS h ON hs.hospital_id = h.hospital_id 
+              WHERE hospital_name LIKE ? OR bld.blood_type LIKE ?`;
 
   dbConn.query(
     sql,
-    [param, param],
+    [wildcard, wildcard],
     function (error, results, fields) {
+      console.log(sql)
+      console.log(wildcard)
+
       if (error) {
         console.error(error);
         return res.status(500).json({
@@ -145,7 +153,9 @@ app.get("/stocksearch/:value", function (req, res) {
 
 //first get all blood types in drop down list 
 app.get("/blood-types", function (req, res) {
-    dbConn.query("SELECT * FROM blood" , function (error, results, fields) {
+    hospital_id = req.body.hospital_id;
+    dbConn.query(`select blood_type , blood_id from blood where blood_id not in 
+                  ( Select blood_id from hospital_blood_stock where hospital_id = ? `, hospital_id , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "blood types list." });
     });
