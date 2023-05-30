@@ -36,17 +36,16 @@ export class OrgnizationProfileComponent implements OnInit{
     ngOnInit(){ 
       this.id = this.route.snapshot.params['organization_id'];
       this.getorg();
+      
+      this.id = this.org[0].organization_id
       this.org = JSON.parse(localStorage.getItem('organizationdata'));
-      localStorage.setItem('organization_id', JSON.stringify(this.id));
-      JSON.parse(localStorage.getItem('organization_id'));
-      this.updateservice.find(this.id).subscribe((data:Organization)=>{
+      // this.updateservice.find(this.id).subscribe((data:Organization)=>{
         
-        console.log(this.org[0]); 
-        this.orgE.name  = this.org[0].organization_name
-        this.orgE.email = this.org[0].organization_email 
-        this.id = this.org[0].organization_id
+      //   console.log(this.org[0]); 
+        
+        
          
-        });
+      //   });
     }  
     
     addOrgForm =  new FormGroup({
@@ -67,6 +66,8 @@ export class OrgnizationProfileComponent implements OnInit{
           }
           console.log(res);
           this.isfetching = false;
+          this.orgE.name  = res[0].organization_name
+          this.orgE.email = res[0].organization_email
   
       });
         }
@@ -74,7 +75,8 @@ export class OrgnizationProfileComponent implements OnInit{
         
 //functions for deleting account with code verification
 sendEmail() {
-  this.http.post<any>('http://localhost:3000/sendemail', this.orgE)
+  console.log(this.orgE)
+  this.http.post<any>('http://localhost:8081/sendemail', this.orgE)
     .subscribe(
       (response) => {
         if (response.success) {
@@ -97,7 +99,7 @@ verifyCode() {
       verificationCode: this.verificationCode
     };
     
-    this.http.post<any>('http://localhost:3000/verify-code', data)
+    this.http.post<any>('http://localhost:8081/verify-code', data)
       .subscribe(
         (response) => {
           if (response.success) {

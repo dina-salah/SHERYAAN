@@ -58,12 +58,12 @@ app.get("/org/:id", function (req, res) {
     "SELECT * FROM organization where organization_id=?",
     organization_id,
     function (error, results, fields) {
-      if (error) throw error;
-      return res.send({
-        error: false,
-        data: results,
-        message: "Organization: ",
-      });
+      if (error) {
+        return res.status(500).send({ error: true, message: "Internal server error" });
+      } else {
+        console.log("Api is fired ");
+        return res.send(results);
+      }
     }
   );
 });
