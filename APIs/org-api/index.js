@@ -32,7 +32,7 @@ var dbConn = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
-  password: "menna182000",
+  password: "dina",
   database: "blooddb2",
 });
 // connect to database
@@ -61,6 +61,7 @@ app.get("/org/:id", function (req, res) {
       if (error) {
         return res.status(500).send({ error: true, message: "Internal server error" });
       } else {
+        console.log("Api is fired ");
         return res.send(results);
       }
     }
@@ -75,7 +76,7 @@ app.post("/org", function (req, res) {
   let phoneNo = req.body.organization_phoneNo;
   let email = req.body.organization_email;
   let password = req.body.organization_password;
-  let city = req.body.organization_city;
+  let city = req.body.orgaization_city;
 
   /*if (!org) {
     return res
@@ -91,7 +92,7 @@ app.post("/org", function (req, res) {
       organization_password: password,
       organization_phoneNo: phoneNo,
       organization_email: email,
-      organization_city: city
+      orgaization_city: city
     },
     function (error, results, fields) {
       if (error) throw error;

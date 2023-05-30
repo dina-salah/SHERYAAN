@@ -10,7 +10,7 @@
               <label class="rad-label" ><input type="radio" name="filter" (input)="userDisplay()" class="rad-input"><p class="rad-text">User</p> </label><pre></pre>
               <label class="rad-label" ><input type="radio" name="filter" (input)="hospitalDisplay()" class="rad-input"><p class="rad-text">Hospital</p></label><pre></pre>
               <label class="rad-label" ><input type="radio" name="filter" (input)="orgnizationDisplay()" class="rad-input"><p class="rad-text">Orgnization</p></label>
-              <label class="rad-label" ><input type="radio" name="filter" (input)="adminDisplay()" class="rad-input"><p class="rad-text">Admin</p></label>
+              <!-- <label class="rad-label" ><input type="radio" name="filter" (input)="adminDisplay()" class="rad-input"><p class="rad-text">Admin</p></label> -->
                
           </div>
           <form [formGroup]="userloginform" [hidden]="uDisplay">
@@ -52,7 +52,7 @@
          
         </form>
           <!-- admin login -->
-          <form [formGroup]="adminloginform" [hidden]="aDisplay">
+          <!-- <form [formGroup]="adminloginform" [hidden]="aDisplay">
             <div class="mb-3">
               <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="email" formControlName="admin_email">
             </div>
@@ -60,7 +60,7 @@
               <input type="password" class="form-control" placeholder="password" formControlName="admin_password">
             </div>
             <div class="text-center"><button type="submit" class="btn btn-danger px-5 mb-5 w-100">Login</button></div>
-          </form>
+          </form> -->
 
 
             <div id="emailHelp" class="form-text text-center mb-5 text-dark">Not

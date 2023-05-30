@@ -7,17 +7,17 @@
                     <div class="user-info">
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
-                        <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{hospital.name}}</li> -->
+                        <ul class="meta list list-unstyled" *ngFor="let h of hospital">
+                            <li class="name" style="font-size:18px ; margin-top: 16px;">{{h.hospital_name}}</li>
                         </ul>
                     </div>
             		<nav class="side-menu">
-        				<ul class="nav">
-        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        				<ul class="nav" *ngFor="let h of hospital">
+        					<li class="active"><a href="#" [routerLink]="['/hospital/', h.hospital_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
-                            <li><a href="#" routerLink="/hospital-stock" routerLinkActive="active"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
+                            <li><a href="#" [routerLink]="['/hospital-stock/', h.hospital_id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
     
         				</ul>
         			</nav>
@@ -27,7 +27,7 @@
                 <div class="content-panel" [hidden]="displays">
                     <fieldset class="fieldset">
                         <div class="row ">
-                            <label *ngIf="isfetching">loading....</label>
+                            <!-- <label *ngIf="isfetching">loading....</label> -->
                             <div class="col col-lg-2">
                         <h3 class="fieldset-title">Personal Info</h3>
                     </div>
@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
                             <div class="d-flex" *ngFor="let h of hospital">
-                            <a href="#" [routerLink]="['/hospital-profile/', h.hospital_id, 'update']" class="btn btn-danger m-1">Update</a>    
+                            <a href="#" [routerLink]="['/hospital-profile/', h.hospital_id, 'update']" class="btn btn-primary m-1">Update</a>    
                             <!-- <button class="btn btn-primary m-1" type="submit" >Update</button> -->
                             <button class="btn btn-danger m-1" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" >Delete account</button>
                             </div>

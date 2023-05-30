@@ -35,8 +35,8 @@ app.post('/sendemail', (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'hotmail',
       auth: {
-        user: 'abdelrahmanali.testing@outlook.com',
-        pass: 'abdoali123Ali@#'
+        user: 'SHERYAAN.Donations@outlook.com',
+        pass: 'SHERYAAN8'
       }
     });
   
@@ -49,21 +49,13 @@ app.post('/sendemail', (req, res) => {
   
 
     const mailOptions = {
-      from: 'abdelrahmanali.testing@outlook.com',
+      from: 'SHERYAAN.Donations@outlook.com',
       to: orgemail.email,
       subject: 'Email Verification',
       text: `Your verification code is: ${verificationCode}`
     };
   
-    // transporter.sendMail(mailOptions, function(error, info) {
-    //   if (error) {
-    //     console.log(error);
-    //     res.status(500).send('Error sending email');
-    //   } else {
-    //     console.log('Email sent: ' + info.response);
-    //     res.status(200).send('Email sent successfully');
-    //   }
-    // });
+   
 
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {

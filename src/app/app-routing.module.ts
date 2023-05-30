@@ -37,9 +37,11 @@ import { UserProfileUpdateComponent } from './user-profile-update/user-profile-u
 import { Organization } from './model/signupinfo';
 import { HospitalProfileUpdateComponent } from './hospital-profile-update/hospital-profile-update.component';
 import { OrganizationProfileUpdateComponent } from './organization-profile-update/organization-profile-update.component';
+import { DonationPowerComponent } from './donation-power/donation-power.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
+  {path: 'donation-power', component:DonationPowerComponent},
   {path: 'hospital-stock-form', component:HospitalStockFormComponent},
   {path: 'hospital-stock', component:HospitalStockComponent},
   {path: 'hospital-profile', component:HospitalProfileComponent},
@@ -77,7 +79,9 @@ const routes: Routes = [
   {path: 'user', redirectTo: 'user-profile', pathMatch: 'full'},
   {path: 'user/:user_id', component: UserProfileComponent},
   {path: 'hospital/:hospital_id', component: HospitalProfileComponent},
-  {path: 'organization/:organization_id', component: OrgnizationProfileComponent}
+  {path: 'organization/:organization_id', component: OrgnizationProfileComponent},
+  {path: 'hospital-stock/:hospital_id', component: HospitalStockComponent},
+  {path: 'hospital-stock-form/:hospital_id', component: HospitalStockFormComponent}
   // {path:'++',component:ErrorComponent}
 ];
 

@@ -240,7 +240,7 @@
 
     <div  class="mb-3"> 
     
-        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="organization_phoneNo" [minLength]="11" [maxlength]="11" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_phoneNo')?.invalid">
+        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="organization_phoneNo" [minLength]="4" [maxlength]="11" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_phoneNo')?.invalid">
         <div class="invalid-feedback">
             Organization phone number is required
         </div>
@@ -257,7 +257,7 @@
     
     <div>
         <label  style="margin-right: 7px;">City:</label>
-        <select class="drop" formControlName="organization_city">
+        <select class="drop" formControlName="orgaization_city">
         <option value="6 October"   >6 October</option>
         <option value="Dokki" >Dokki</option>
         <option value="New Cairo"  >New Cairo</option>

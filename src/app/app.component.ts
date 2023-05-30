@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { addRequestService } from './services/addRequest.service';
 import { loginService } from './services/login.service';
 import {Router} from '@angular/router';
@@ -25,6 +25,8 @@ export class AppComponent implements OnInit{
   isLoggedIn$: Observable<boolean>; 
   isLoggedInHospital: Observable<boolean>; 
   isLoggedInOrg: Observable<boolean>; 
+  hide:boolean = true;
+  
   
   ngOnInit() {
     this.isLoggedIn$ = this.service.isLoggedIn;
@@ -37,4 +39,5 @@ export class AppComponent implements OnInit{
   onLogout() {
     this.service.logout();                      
   };
+
 }

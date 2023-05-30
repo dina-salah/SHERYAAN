@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { loginService } from '../services/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -10,10 +10,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoggedInBarComponent implements OnInit{
   constructor(public service: loginService, private route: ActivatedRoute, private router: Router){}
 
-  id!: number;
+  id!: any;
 
   ngOnInit(){
     this.id = this.route.snapshot.params['user_id'];
+    this.id = JSON.parse(localStorage.getItem('user_id'));
   }
 
   @Output() displaynavbar = new EventEmitter<boolean>();
@@ -26,7 +27,7 @@ export class LoggedInBarComponent implements OnInit{
     this.service.logout();                      
   };
 
-  displayprofile(){
-    this.router.navigate(['/user/', this.id]);
-  }
+  // displayprofile(){
+  //   this.router.navigate(['/user/', this.id]); 
+  // }
 }

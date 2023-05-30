@@ -24,27 +24,32 @@
 
 <!--editable profile info-->
 <div class="content-panel" >
-    <form class="form-horizontal" [formGroup]="form">
+    <form class="form-horizontal" #OlocalForm="ngForm" [formGroup]="form">
         <fieldset class="fieldset">
             <h3 class="fieldset-title">Personal Info</h3>
 
             <div  class="mb-3">
-                <input required placeholder="organization name" type="text" class="form-control" formControlName="organization_name" value="organization_name">
-                <div *ngIf="f['organization_name'].touched && f['organization_name'].invalid" >
-                    <div *ngIf="f['organization_name'].errors && f['organization_name'].errors['required']">organization name is required.</div>
-                  </div>
-            </div><pre></pre>
+                <input  placeholder="Name" class="form-control"  formControlName="organization_name" [minLength]="8" [maxlength]="30" [class.is-invalid]="OlocalForm.submitted && form.get('organization_name')?.invalid">
+                <div class="invalid-feedback">
+                    Organization name is required
+                </div>
+            </div>
+            <pre></pre>
             
 
             <div >
-                <label for="City" style="margin-right: 7px;">City:  </label>
-                <select class="drop" name="city"  formControlName="orgaization_city" value="orgaization_city">
-                <option value="6 October" name="city" >6 October</option>
-                <option value="Dokki" name="city" >Dokki</option>
-                <option value="New Cairo" name="city" >New Cairo</option>
-                <option value="Nasr city" name="city" >Nasr city</option>
-                <option value="Madinty" name="city" >Madinty</option>
-                </select>
+                <div>
+                    <label  style="margin-right: 7px;">City:</label>
+                    <select class="drop" formControlName="orgaization_city">
+                    <option value="6 October"   >6 October</option>
+                    <option value="Dokki" >Dokki</option>
+                    <option value="New Cairo"  >New Cairo</option>
+                    <option value="Nasr city" >Nasr city</option>
+                    <option value="Madinty"   >Madinty</option>
+                    </select>
+                    <!-- <input type="text" class="custom-control-input"  formControlName="city" > -->
+                </div>
+            <br>
                 <div *ngIf="f['orgaization_city'].touched && f['orgaization_city'].invalid" >
                     <div *ngIf="f['orgaization_city'].errors && f['orgaization_city'].errors['required']"> city is required.</div>
                   </div>
@@ -59,12 +64,15 @@
                 </div>
             </div><pre></pre>
 
-            <div  class="mb-3">
-                <input required placeholder="password" type="text" class="form-control" formControlName="organization_password" value="organization_password">
-                <div *ngIf="f['organization_password'].touched && f['organization_password'].invalid" >
-                    <div *ngIf="f['organization_password'].errors && f['organization_password'].errors['required']">password is required.</div>
-                  </div>
-            </div><pre></pre>
+            <div  class="mb-3"> 
+                <input type="password" placeholder="Password" class="form-control" formControlName="organization_password">
+                <div class="warning" *ngIf="organization_password && (organization_password.invalid && (organization_password.dirty || organization_password.touched))">
+                    <div *ngIf="organization_password.errors?.['required']">Password is required.</div>
+                    <div class="warning" *ngIf="organization_password.errors?.['pattern']">Password must contain at least 8 characters in length, but no more than 32, at least one capital letter, one number, and one special character.</div>
+                    </div>
+               
+                </div>
+                <pre></pre>
 
             <br>
         </fieldset> 
@@ -72,27 +80,35 @@
         <fieldset class="fieldset">
             <h3 class="fieldset-title">Contact Info</h3><br>
 
-            <div  class="mb-3">
-                <input required placeholder="phone number" type="text" class="form-control" formControlName="organization_phoneNo" value="organization_phoneNo">
-                <div *ngIf="f['organization_phoneNo'].touched && f['organization_phoneNo'].invalid" >
-                    <div *ngIf="f['organization_phoneNo'].errors && f['organization_phoneNo'].errors['required']">phone number is required.</div>
-                  </div>
-            </div><pre></pre>
+            <div  class="mb-3"> 
+                <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="organization_phoneNo" [minLength]="4" [maxlength]="11" [class.is-invalid]="OlocalForm.submitted && form.get('organization_phoneNo')?.invalid">
+                <div class="invalid-feedback">
+                    Organization phone number is required
+                </div>
+            </div>
+            <pre></pre>
 
             <div  class="mb-3">
-                <input required placeholder="Email" type="text" class="form-control" formControlName="organization_email" value="organization_email">
-                <div *ngIf="f['organization_email'].touched && f['organization_email'].invalid" >
-                    <div *ngIf="f['organization_email'].errors && f['organization_email'].errors['required']">Email is required.</div>
-                  </div>
-            </div><pre></pre>
+                <input type="email" placeholder="Email" class="form-control"  formControlName="organization_email" [minLength]="11" [maxlength]="30" [class.is-invalid]="OlocalForm.submitted && form.get('organization_email')?.invalid">
+                <div class="invalid-feedback">
+                    Organization email is required
+                </div>
+            </div>
+            <pre></pre>
         </fieldset>
         
         <hr>
     </form>
 
+    
+
+    
+    
+    
+
     <div class="form-group">
         <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-            <button class="btn btn-danger" (click)="submit()">update</button>
+            <button class="btn btn-success" [disabled]="form.invalid" (click)="submit()">Save</button>
         </div>
     </div>
 </div>

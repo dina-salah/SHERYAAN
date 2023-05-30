@@ -60,7 +60,7 @@ get user_age() {
 
   addOrgnizationForm = new FormGroup({
     organization_name: new FormControl(null, Validators.required),
-    organization_city: new FormControl(null, Validators.required),
+    orgaization_city: new FormControl(null, Validators.required),
     organization_phoneNo: new FormControl(null, Validators.required),
     organization_email: new FormControl(null, Validators.required),
     organization_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),

@@ -7,8 +7,8 @@
                     <div class="user-info">
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
-                        <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{user.fname}} {{user.lname}}</li> -->
+                        <ul class="meta list list-unstyled" *ngFor="let u of user">
+                            <li class="name" style="font-size:18px ; margin-top: 16px;"><b>{{u.user_Fname}} {{u.user_Lname}}</b></li>
                         </ul>
                     </div>
             		<nav class="side-menu">
@@ -17,14 +17,15 @@
         					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
         					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
-        				
+                            
         				</ul>
         			</nav>
                 </div>
 
                 <!--static profile info-->
                 <div class="content-panel" [hidden]="displays">
-        
+                    
+
                             <fieldset class="fieldset">
                                 <div class="row ">
                                     <label *ngIf="isfetching">loading....</label>
@@ -58,8 +59,19 @@
                                 </div>
                                 </div>
                                 </div>
+                            </fieldset> <br>
+                            <fieldset class="fieldset">
+                                <div class="row ">
+                                    <div class="col col-lg-2">
+                                <h3 class="fieldset-title">Your Gifts</h3>
+                                </div>
+                                <div class="col col-lg-2">
+                                <div class="mb-3" >
+                                    <label><b>Points:</b> {{points_Amount}}</label><br>
+                                </div>
+                                </div>
+                                </div>
                             </fieldset> 
-     
                 
                     <hr style="width: 500px; padding: 1px; margin: 2px;"><br>
                     <div class="form-group">

@@ -27,16 +27,12 @@ export class loginService{
   userlogin(userlogindata: any){
     return this.http.post<any>('http://localhost:5000/login', userlogindata);
   }
-  hospitallogin(hospitllogindata: any){
-    return this.http.post<any>('http://localhost:7000/login', hospitllogindata);
-  }
-  orglogin(orglogindata: any){
-    return this.http.post<any>('http://localhost:8000/login', orglogindata);
-  }
+
 
   logout() {
     this.loggedIn.next(false);
-    localStorage.clear();
+    localStorage.removeItem('userdata');
+    localStorage.removeItem('user_id')
     this.router.navigate(['/sign-in']);
   }
 

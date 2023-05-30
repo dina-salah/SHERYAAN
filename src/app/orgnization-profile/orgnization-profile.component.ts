@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { loginOrgService } from '../services/loginOrg.service';
 import { updateService } from '../services/update.service';
+import { deleteService } from '../services/delete.service';
 
 @Component({
   selector: 'app-orgnization-profile',
@@ -16,7 +17,9 @@ import { updateService } from '../services/update.service';
   styleUrls: ['./orgnization-profile.component.css']
 })
 export class OrgnizationProfileComponent implements OnInit{
-
+  orgE = { name: '', email: '' };
+  verificationCode?: string;
+  message = '';
   isfetching: boolean = false; 
   org?: Organization[];
   id!: number;
@@ -26,12 +29,23 @@ export class OrgnizationProfileComponent implements OnInit{
     private service: loginOrgService,
     private updateservice: updateService, 
     private router: Router,
-    private route: ActivatedRoute){}
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private delet: deleteService){}
 
     ngOnInit(){ 
       this.id = this.route.snapshot.params['organization_id'];
       this.getorg();
+      
+      this.id = this.org[0].organization_id
       this.org = JSON.parse(localStorage.getItem('organizationdata'));
+      // this.updateservice.find(this.id).subscribe((data:Organization)=>{
+        
+      //   console.log(this.org[0]); 
+        
+        
+         
+      //   });
     }  
     
     addOrgForm =  new FormGroup({
@@ -52,8 +66,75 @@ export class OrgnizationProfileComponent implements OnInit{
           }
           console.log(res);
           this.isfetching = false;
+          this.orgE.name  = res[0].organization_name
+          this.orgE.email = res[0].organization_email
   
       });
         }
+
+        
+//functions for deleting account with code verification
+sendEmail() {
+  console.log(this.orgE)
+  this.http.post<any>('http://localhost:8081/sendemail', this.orgE)
+    .subscribe(
+      (response) => {
+        if (response.success) {
+          this.message = 'Email sent!';
+        } else {
+          this.message = 'Failed to send email.';
+        }
+      },
+      (error) => {
+        this.message = 'Failed to send email.';
+        console.error(error);
+      }
+    );
+}
+
+verifyCode() {
+  if (this.verificationCode) {
+    const data = {
+      user: this.orgE,
+      verificationCode: this.verificationCode
+    };
+    
+    this.http.post<any>('http://localhost:8081/verify-code', data)
+      .subscribe(
+        (response) => {
+          if (response.success) {
+            
+            this.message = 'Code verification successful!';
+
+            this.delet.deleteorg(this.id)
+            .subscribe(
+              (data) => {
+                // this.router.navigate(['/src/app/home'])
+                console.log('account deleted');
+                },
+               (error) => {
+                  console.log(error)
+                  console.log('could not delete account');
+              });
+          
+
+            
+          } else {
+            this.message = 'Code verification failed. Please enter the correct code.';
+          }
+        },
+        (error) => {
+          this.message = 'Code verification failed. Please enter the correct code.';
+          console.error(error);
+        }
+      );
+  } else {
+    this.message = 'Please enter the verification code.';
+  }
+}
+
+
+      
+
 
 }
