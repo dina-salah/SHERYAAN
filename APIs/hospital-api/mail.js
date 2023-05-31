@@ -8,7 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.listen(8082, () => {
-  console.log("The server started on port 8081 !!!!!!");
+  console.log("The server started on port 8082 !!!!!!");
 });
 
 function generateVerificationCode() {
@@ -35,8 +35,8 @@ app.post('/sendemail', (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'hotmail',
       auth: {
-        user: 'abdelrahmanali.testing@outlook.com',
-        pass: 'abdoali123Ali@#'
+        user: 'SHERYAAN.Donations@outlook.com',
+        pass: 'SHERYAAN8'
       }
     });
   
@@ -49,7 +49,7 @@ app.post('/sendemail', (req, res) => {
   
 
     const mailOptions = {
-      from: 'abdelrahmanali.testing@outlook.com',
+      from: 'SHERYAAN.Donations@outlook.com',
       to: hospitalemail.email,
       subject: 'Email Verification',
       text: `Your verification code is: ${verificationCode}`

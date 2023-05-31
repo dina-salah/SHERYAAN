@@ -111,7 +111,7 @@ export class SignInComponent{
     console.log(this.hospitalloginform.value)
 
   this.hospitalservice.hospitallogin(this.hospitalloginform.value)
-  .subscribe({
+.subscribe({
   next: (data) => {
   console.log(data.data[0].hospital_id);
   this.navigateToLoginh(data.data[0].hospital_id);
