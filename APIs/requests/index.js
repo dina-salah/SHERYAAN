@@ -60,7 +60,7 @@ app.get("/search-requests/:value", function (req, res) {
                 from request AS r join blood AS b on r.blood_type = b.blood_id 
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                 JOIN location AS l ON h.location_code = l.location_code
-                WHERE h.hospital_name = ? OR b.blood_type = ?`;
+                WHERE h.hospital_name LIKE ? OR b.blood_type LIKE ?`;
   
     dbConn.query(
       sql,

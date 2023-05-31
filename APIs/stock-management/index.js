@@ -152,10 +152,9 @@ app.get("/stocksearch/:value", function (req, res) {
 //create a new stock 
 
 //first get all blood types in drop down list 
-app.get("/blood-types", function (req, res) {
+app.post("/blood-types", function (req, res) {
     hospital_id = req.body.hospital_id;
-    dbConn.query(`select blood_type , blood_id from blood where blood_id not in 
-                  ( Select blood_id from hospital_blood_stock where hospital_id = ? `, hospital_id , function (error, results, fields) {
+    dbConn.query(`select blood_type , blood_id from blood where blood_id not in ( Select blood_id from hospital_blood_stock where hospital_id = ? ) `, hospital_id , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "blood types list." });
     });
