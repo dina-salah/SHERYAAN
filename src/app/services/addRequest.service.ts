@@ -14,11 +14,25 @@ providedIn: 'root'
 
 export class addRequestService{
 
+    errorHandler(error:any) {
+        let errorMessage = 'error';
+        if(error.error instanceof ErrorEvent) {
+          errorMessage = error.error.message;
+        } else {
+          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        return throwError(errorMessage);
+      }
+
+   
     constructor(private http: HttpClient, private router: Router){}
     
     
-retriveAllReq(){
+retriveAllReq(): Observable<any>{
     return this.http.get<any>(`${requestAPI}/all-requests`)
+    .pipe(
+        catchError(this.errorHandler)
+      )
 }
 
 
@@ -27,4 +41,5 @@ retriveAllReq(){
     // addR(receiver:string, pname:string, date:any ,bloodtype:string ,quantity:number,pcase:string,address:string) {
     // this.patient.push({receiver:receiver, pname:pname, date:date, bloodtype:bloodtype, quantity:quantity, pcase:pcase, address:address});
     // }
+
 }

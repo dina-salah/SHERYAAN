@@ -13,28 +13,28 @@ export class RequestComponent implements OnInit {
   display:boolean =true;
   donate:boolean =false;
 
-  patients: reqAdd[]=[];
-  constructor(private http : HttpClient){}
+  patients?: reqAdd[];
+  constructor(
+    private http : HttpClient,
+    private addReq:addRequestService){}
 
   ngOnInit(){
   this. fetch();
-  }
 
-  showform(){
-    if(this.display==true){
-      this.display = false;
-    }else{
-      this.display=true;
-    }
-  }
-  // fuc. to hide user when click on donate
-  showreq(){
-    this.donate=true
-  }
 
+  }
   private fetch(){
 
+    this.addReq.retriveAllReq()
+    .subscribe({
+     next: (res)=>{
+      console.log(res)
+      this.patients = res.data;
 
+      },error:(error)=>{
+        console.log(error)
+      }
+    })
     
   //   this.http.get('')
   //   .pipe(map((res: {[key:string]:reqAdd})=>{
@@ -52,5 +52,19 @@ export class RequestComponent implements OnInit {
   //   this.patients=requestTable;
   // })
   }
+
+  showform(){
+    if(this.display==true){
+      this.display = false;
+    }else{
+      this.display=true;
+    }
+  }
+  // fuc. to hide user when click on donate
+  showreq(){
+    this.donate=true
+  }
+
+
 
 }
