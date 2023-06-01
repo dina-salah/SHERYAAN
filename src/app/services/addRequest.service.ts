@@ -35,6 +35,27 @@ retriveAllReq(): Observable<any>{
       )
 }
 
+getblood(): Observable<any>{
+  return this.http.get<any>(`${requestAPI}/blood-types`)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
+gethospital(): Observable<any>{
+  return this.http.get<any>(`${requestAPI}/hospitals`)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
+addrequest(data: any): Observable<any>{
+  return this.http.post(`${requestAPI}/add-request`, data)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 
 // patient =[ {receiver: 'patient', pname:'dina', date:'02/12/2020',bloodtype:'O' ,quantity:9,pcase:'surgery',address:'MUST' }]
 
