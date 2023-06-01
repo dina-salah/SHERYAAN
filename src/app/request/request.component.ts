@@ -3,6 +3,7 @@ import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { reqAdd } from '../model/request';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-request',
@@ -12,20 +13,19 @@ import { reqAdd } from '../model/request';
 export class RequestComponent implements OnInit {
   display:boolean =true;
   donate:boolean =false;
-
+  id:any;
   patients?: reqAdd[];
-  constructor(
-    private http : HttpClient,
-    private addReq:addRequestService){}
+  constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
+  this.id = this.route.snapshot.params['user_id'];
   this. fetch();
 
 
   }
   private fetch(){
 
-    this.addReq.retriveAllReq()
+    this.service.retriveAllReq()
     .subscribe({
      next: (res)=>{
       

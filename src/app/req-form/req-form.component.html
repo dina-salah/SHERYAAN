@@ -1,4 +1,4 @@
- <div class="container">
+ <!-- <div class="container">
    
    
     
@@ -55,7 +55,7 @@
     </select>
 </div>
 <pre></pre>
-<!-- select hospital -->
+ select hospital 
 <div  class="">
     <input class="form-control" type="text" placeholder="hospital"   formControlName="" >
 </div>
@@ -63,6 +63,56 @@
 
 <div  class="">
     <input class="form-control" type="text" placeholder="Case"   formControlName="" >
+</div>
+<pre></pre>
+
+<div  class="">
+    <button class="btn btn-danger" type="submit" value="" style="margin: 10px;" (click)="addrequest()">Add</button>
+</div>
+<pre></pre>
+
+</form>
+</div> -->
+
+<div class="container">
+   
+    <form class="Orgnization"  #localForm="ngForm" [formGroup]="UserForm">  
+        <div class="mb-3" style="font-weight:bolder; margin: 13px; font-size: 20px;">
+            Make sure that all information request is correct to avoid any problem
+        </div>
+
+        <label for="blood_type" style="margin-right: 7px;">Hospital:  </label>
+        <select formControlName="hospital_name">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let h of hospital">  
+                 {{h.hospital_name}}
+            </option>  
+        </select>
+        <br>
+<pre></pre>
+<label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
+        <select formControlName="blood_type">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let b of blood">  
+                {{b.blood_type}}  
+            </option>  
+        </select>
+        <br>
+<pre></pre>
+
+<div class="">
+    <input class="form-control" type="text" placeholder="Quantity"  formControlName="request_quantity">
+
+</div>
+<pre></pre>
+
+<div  class="">
+    <input class="form-control" type="text" placeholder="status"   formControlName="request_status">
+</div>
+<pre></pre>
+
+<div  class="">
+    <input class="form-control" type="text" placeholder="Case"   formControlName="request_case" >
 </div>
 <pre></pre>
 

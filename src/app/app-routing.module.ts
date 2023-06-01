@@ -85,7 +85,9 @@ const routes: Routes = [
   {path: 'hospital-stock/:hospital_id', component: HospitalStockComponent},
   {path: 'hospital-stock-form/:hospital_id', component: HospitalStockFormComponent},
   {path: 'request-hospital/:hospital_id', component: RequestHospitalComponent},
-  {path: 'req-form-hospital/:hospital_id', component: ReqFormHospitalComponent}
+  {path: 'req-form-hospital/:hospital_id', component: ReqFormHospitalComponent},
+  {path: 'request/:user_id', component: RequestComponent},
+  {path: 'req-form/:user_id', component: ReqFormComponent}
   // {path:'++',component:ErrorComponent}
 ];
 
