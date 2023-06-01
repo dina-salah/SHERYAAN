@@ -31,15 +31,15 @@
             <tbody>
               <tr *ngFor="let p of patients; index as i">
                 <td>{{i+1}}</td>
-                <td>{{p[i].user_Fname}}{{p[i].user_Lname}} </td>
-                <td>{{p[i].hospital_name}}</td>
+                <td>{{p.user_Fname}} {{p.user_Lname}} </td>
+                <td>{{p.hospital_name}}</td>
                 <td>{{p.date}}</td>
-                <td>{{p[i].blood_type}}</td>
-                <td>{{p[i].request_quantity}}</td>
-                <td>{{p[i].request_case}}</td>
+                <td>{{p.blood_type}}</td>
+                <td>{{p.request_quantity}}</td>
+                <td>{{p.request_case}}</td>
                 <!-- addr -->
                 <td></td>
-                <td>{{p[i].city}}</td>
+                <td>{{p.city}}</td>
                 <td><button class="btn btn-danger">Donate</button></td>
               </tr>
             </tbody>

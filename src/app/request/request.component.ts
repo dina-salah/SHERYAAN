@@ -31,28 +31,13 @@ export class RequestComponent implements OnInit {
       
       this.patients = res.data;
 
-      console.log(this.patients[0])
+      console.log(this.patients[0].blood_type)
 
       },error:(error)=>{
         console.log(error)
       }
     })
     
-  //   this.http.get('')
-  //   .pipe(map((res: {[key:string]:reqAdd})=>{
-  //     const requestTable =[];
-  //     for(const key in res){
-  //       if(res.hasOwnProperty(key)){
-  //       requestTable.push({...res[key],id:key})}
-  //     }
-    
-  //   return requestTable;
-  // }
-  // )).subscribe((requestTable)=>
-  // {
-  //   console.log(requestTable)
-  //   this.patients=requestTable;
-  // })
   }
 
   showform(){
@@ -67,6 +52,7 @@ export class RequestComponent implements OnInit {
     this.donate=true
   }
 
+  
 
 
 }

@@ -1,10 +1,18 @@
-import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { User } from '../model/signupinfo';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { signupService } from '../services/signup.service';
+import { loginService } from '../services/login.service';
+import { updateService } from '../services/update.service';
+import { deleteService } from '../services/delete.service';
+import { pointsService } from '../services/points.service';
 
 @Component({
   selector: 'app-req-form',
@@ -29,6 +37,20 @@ export class ReqFormComponent implements OnInit {
   
 
   }
+
+  UserForm =  new FormGroup({
+    user_id: new FormControl('', Validators.required),
+    user_Fname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    user_Lname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    // user_gender: new FormControl('', Validators.required),
+    user_address: new FormControl('', Validators.required),
+    user_city: new FormControl('', Validators.required),
+    user_blood_type: new FormControl('', Validators.required),
+    // Case
+   //quntity
+   //hospital
+   //date
+  })
 
 
   addrequest(){
