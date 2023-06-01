@@ -24,7 +24,7 @@ var dbConn = mysql.createConnection({
     host: "localhost",
     port: "3306",
     user: "root",
-    password: "pass",
+    password: "menna182000",
     database: "blooddb2",
   });
 // connect to database
@@ -153,12 +153,12 @@ app.get("/stocksearch/:value", function (req, res) {
 
 //first get all blood types in drop down list 
 app.post("/blood-types", function (req, res) {
-  hospital_id = req.body.hospital_id;
-  dbConn.query(`select blood_type , blood_id from blood where blood_id not in ( Select blood_id from hospital_blood_stock where hospital_id = ? ) `, hospital_id , function (error, results, fields) {
-    if (error) throw error;
-    return res.send({ error: false, data: results, message: "blood types list." });
+    hospital_id = req.body.hospital_id;
+    dbConn.query(`select blood_type , blood_id from blood where blood_id not in ( Select blood_id from hospital_blood_stock where hospital_id = ? ) `, hospital_id , function (error, results, fields) {
+      if (error) throw error;
+      return res.send({ error: false, data: results, message: "blood types list." });
+    });
   });
-});
 //second insert a new record in hospital's stock
 app.post("/add-stock", function (req, res) {
     hid= req.body.hid;
@@ -182,4 +182,4 @@ app.post("/add-stock", function (req, res) {
 app.listen(1000, function () {
     console.log("Node app is running on port 1000");
   });
-  module.exports = app;
+  module.exports = app

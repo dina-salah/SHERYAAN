@@ -35,11 +35,11 @@ app.post('/sendemail', (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'hotmail',
       auth: {
-        user: 'abdelrahmanali.testing@outlook.com',
-        pass: 'abdoali123Ali@#'
+        user: 'SHERYAAN.Donations@outlook.com',
+        pass: 'SHERYAAN8'
       }
     });
-  
+
     const verificationCode = generateVerificationCode();
 
     verificationCodesMap.set(useremail.email, {
@@ -48,7 +48,7 @@ app.post('/sendemail', (req, res) => {
       });
   
     const mailOptions = {
-      from: 'abdelrahmanali.testing@outlook.com',
+      from: 'SHERYAAN.Donations@outlook.com',
       to: useremail.email,
       subject: 'Email Verification',
       text: `Your verification code is: ${verificationCode}`
@@ -105,3 +105,4 @@ app.post('/sendemail', (req, res) => {
         }
       });
   });
+/////////////////////

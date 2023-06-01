@@ -49,7 +49,7 @@ app.get("/users", function (req, res) {
 });
 
 // Retrieve user with id
-pp.get("/user/:id", function (req, res) {
+app.get("/user/:id", function (req, res) {
   let user_id = req.params.id;
   if (!user_id) {
     return res
