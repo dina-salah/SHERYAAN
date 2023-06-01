@@ -32,19 +32,19 @@ export class ReqFormComponent implements OnInit {
 
 
   addrequest(){
-    this.newReq.addR(this.receiver, this.pname, this.date, this.bloodtype,this.quantity, this.pcase, this.address);
-    console.log(this.newReq.patient);
+    // this.newReq.addR(this.receiver, this.pname, this.date, this.bloodtype,this.quantity, this.pcase, this.address);
+    // console.log(this.newReq.patient);
   }
 
   onReqAdd(req:{receiver:string, name:string, date:Date, bloodtype:string, quantity:string, pcase:string, address:string }){
-    this.http.post('https://sheryaanang-default-rtdb.firebaseio.com/products.json',req)
-    .subscribe((res)=>{
-      console.log(res)
-    });
+    // this.http.post('https://sheryaanang-default-rtdb.firebaseio.com/products.json',req)
+    // .subscribe((res)=>{
+    //   console.log(res)
+    // });
 
-    this.toastr.success('Your request has been added!');
+    // this.toastr.success('Your request has been added!');
 
-    this._router.navigate(['/request']);
+    // this._router.navigate(['/request']);
     
   }
 

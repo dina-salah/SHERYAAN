@@ -13,11 +13,46 @@ export class RequestComponent implements OnInit {
   display:boolean =true;
   donate:boolean =false;
 
-  patients: reqAdd[]=[];
-  constructor(private http : HttpClient){}
+  patients?: reqAdd[];
+  constructor(
+    private http : HttpClient,
+    private addReq:addRequestService){}
 
   ngOnInit(){
   this. fetch();
+
+
+  }
+  private fetch(){
+
+    this.addReq.retriveAllReq()
+    .subscribe({
+     next: (res)=>{
+      
+      this.patients = res.data;
+
+      console.log(this.patients[0])
+
+      },error:(error)=>{
+        console.log(error)
+      }
+    })
+    
+  //   this.http.get('')
+  //   .pipe(map((res: {[key:string]:reqAdd})=>{
+  //     const requestTable =[];
+  //     for(const key in res){
+  //       if(res.hasOwnProperty(key)){
+  //       requestTable.push({...res[key],id:key})}
+  //     }
+    
+  //   return requestTable;
+  // }
+  // )).subscribe((requestTable)=>
+  // {
+  //   console.log(requestTable)
+  //   this.patients=requestTable;
+  // })
   }
 
   showform(){
@@ -32,22 +67,6 @@ export class RequestComponent implements OnInit {
     this.donate=true
   }
 
-  private fetch(){
-    this.http.get('https://sheryaanang-default-rtdb.firebaseio.com/products.json')
-    .pipe(map((res: {[key:string]:reqAdd})=>{
-      const requestTable =[];
-      for(const key in res){
-        if(res.hasOwnProperty(key)){
-        requestTable.push({...res[key],id:key})}
-      }
-    
-    return requestTable;
-  }
-  )).subscribe((requestTable)=>
-  {
-    console.log(requestTable)
-    this.patients=requestTable;
-  })
-  }
+
 
 }

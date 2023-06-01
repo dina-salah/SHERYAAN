@@ -62,8 +62,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
         )
       }
 
-      getblood(): Observable<any>{
-        return this.http.get('http://localhost:1000/blood-types')
+      getblood(hid: any): Observable<any>{
+        return this.http.post('http://localhost:1000/blood-types', hid)
       
         .pipe(
           catchError(this.errorHandler)

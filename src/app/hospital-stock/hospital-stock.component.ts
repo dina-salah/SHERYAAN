@@ -33,6 +33,7 @@ export class HospitalStockComponent {
     private route: ActivatedRoute
     ){}
 
+    
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
     this. fetch();
@@ -45,6 +46,7 @@ export class HospitalStockComponent {
     blood_id: new FormControl(null, Validators.required),
     hospital_id: new FormControl(null, Validators.required)
   });
+
 
   stockselected: Stock = {} as Stock;
 
@@ -126,6 +128,5 @@ export class HospitalStockComponent {
     })
   }
 
-  
 
 }

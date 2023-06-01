@@ -182,4 +182,4 @@ app.post("/add-stock", function (req, res) {
 app.listen(1000, function () {
     console.log("Node app is running on port 1000");
   });
-  module.exports = app;
+  module.exports = app
