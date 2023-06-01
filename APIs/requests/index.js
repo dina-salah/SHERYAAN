@@ -39,10 +39,11 @@ app.get("/", function (req, res) {
 
 //Retrieve all requests
 app.get("/all-requests", function (req, res) {
-  dbConn.query(`select r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name 
+  dbConn.query(`SELECT u.user_Fname, u.user_Lname , r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  
                 from request AS r join blood AS b on r.blood_type = b.blood_id 
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
-                JOIN location AS l ON h.location_code = l.location_code`
+                JOIN location AS l ON h.location_code = l.location_code
+                JOIN user AS u ON r.user_id = u.user_id`
   , function (error, results, fields) {
     if (error) throw error;
     return res.send({ error: false, data: results, message: "All Requests" });
@@ -134,16 +135,17 @@ app.get("/hospitals", function (req, res) {
   });
 //third insert a new record in requests
 app.post("/add-request", function (req, res) {
-    user_ssn = req.body.user_ssn;
+    user_id = req.body.user_ssn;
     hospital_id = req.body.hospital_id;
     request_status = req.body.request_status;
-    request_date = req.body.request_date; 
+    //request_date = req.body.request_date; 
     request_quantity = req.body.request_quantity ;
     request_case = req.body.request_case;
     blood_type = req.body.blood_type;
 
-    dbConn.query(`INSERT INTO request SET` ,
-    [user_ssn, hospital_id, request_status, request_date, request_quantity, request_case, blood_type] ,
+    dbConn.query(`INSERT INTO request SET user_id = ? , hospital_id = ? , request_status = ? , request_quantity = ? ,
+                  request_case = ? , blood_type = ? ` ,
+    [user_id, hospital_id, request_status, request_quantity, request_case, blood_type] ,
     function (error, results, fields) {
         if (error) throw error;
         return res.send(
@@ -158,14 +160,14 @@ app.post("/add-request", function (req, res) {
 //update request
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!! which coloumns to update !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.put("/update-request", function (req, res) {
-    //user_ssn = req.body.user_ssn;
-    //hospital_id = req.body.hospital_id;
-    request_status = req.body.request_status;
-    //request_date = req.body.request_date; 
-    request_quantity = req.body.request_quantity ;
-    request_case = req.body.request_case;
-    //blood_type = req.body.blood_type;
-    request_id = req.body.request_id;
+  request_status = req.body.request_status;
+  request_quantity = req.body.request_quantity ;
+  request_case = req.body.request_case;
+  request_id = req.body.request_id;
+  //request_date = req.body.request_date; 
+  //blood_type = req.body.blood_type;
+  //user_ssn = req.body.user_ssn;
+  //hospital_id = req.body.hospital_id;
 
     dbConn.query(`UPDATE request SET request_status = ? , request_quantity = ? , request_case = ?  , WHERE request_id = ? ` ,
         [request_status, request_quantity, request_case, request_id] 
@@ -192,6 +194,61 @@ app.delete("/delete-request/id", function (req, res) {
     });
   });
 
+
+
+//add a user respond
+app.post("/add-respond", function (req, res) {
+  request_id = req.body.request_id;
+  res_user = req.body.user_id;
+  hospital_id = req.body.hospital_id;
+
+  dbConn.query(`INSERT INTO request_donations SET responded_user = ? , hospital_id = ? , request_id = ? ` ,
+  [res_user, hospital_id, request_id] ,
+  function (error, results, fields) {
+      if (error) throw error;
+      return res.send(
+          { error: false,
+            message: "new respond successfully" 
+          });
+    });
+  });
+
+
+
+//count number of responses to a specific request
+app.get("/count/:reqId", function (req, res) {
+    request_id = req.params.reqId;
+    dbConn.query(`SELECT COUNT(*) FROM request_donations where request_id = ? GROUP BY request_id `, request_id
+    , function (error, results, fields) {
+      if (error) throw error;
+      return res.send({ error: false, data: results, message: "All Requests" });
+    });
+  });
+
+
+//calculate respond expire date 
+
+
+
+//get responds form
+app.get("/users-form/:id", function (req, res) {
+  sql = `SELECT us.user_Fname AS "applicant Fname", us.user_Lname AS "applicant Lname", us.user_national_ID AS "applicant ID", 
+          req.request_date, b.blood_type, req.request_quantity , 
+          u.user_national_ID AS "participant ID", u.user_Fname AS "participant Fname", u.user_Lname AS "participant Lname" ,
+          d.respond_date , f.action
+              from request AS req 
+              JOIN hospital_request_form AS f on req.request_id = f.request_id
+              JOIN request_donations AS d ON f.respond_id = d.respond_id
+              JOIN user AS u ON d.responded_user = u.user_id 
+              JOIN user AS us ON req.user_id = us.user_id
+              JOIN blood AS b ON req.blood_type = b.blood_id
+            WHERE req.hospital_id = ? `
+  hospital_id = req.params.id;
+  dbConn.query(sql , hospital_id , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "hospital request form" });
+  });
+});
 
 
 // set port
