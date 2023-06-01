@@ -33,6 +33,7 @@ export class HospitalStockComponent {
     private route: ActivatedRoute
     ){}
 
+    
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
     this. fetch();
