@@ -4,47 +4,38 @@
         <div class="mb-3" style="font-weight:bolder; margin: 13px; font-size: 20px;">
             Make sure that all information request is correct to avoid any problem
         </div>
-        <div  class="">
-            <input placeholder="First Name" class="form-control" [minlength]="3" [maxlength]="20" formControlName="user_Fname" [class.is-invalid]="localForm.submitted && form.get('user_Fname')?.invalid">
+        <!-- <div  class="">
+            <input placeholder="Hospital Name" class="form-control" [minlength]="3" [maxlength]="20" formControlName="hospital_name" [class.is-invalid]="localForm.submitted && form.get('user_Fname')?.invalid">
             <div class="invalid-feedback">
-                First name is required
+                name is required
             </div>
-        </div>
+        </div> -->
 
         <pre></pre>
-        <div  >
-            
-            <input type="text"  placeholder="Last name"class="form-control" [minlength]="3" [maxlength]="20" formControlName="user_Lname" [class.is-invalid]="localForm.submitted && form.get('user_Lname')?.invalid" >
-            <div class="invalid-feedback">
-                Last name is required
-            </div>
-        </div>
-<pre></pre>
 <div class="">
-    <input class="form-control" type="date" placeholder="Date" name="date">
+    <input class="form-control" type="date" placeholder="Date" formControlName="request_date">
 
 </div>
 <pre></pre>
 
-<label  >Blood type:</label>
-<div style="display: inline;" class="">
-<input class="custom-control-input" type="radio"  value="O+"  formControlName="user_blood_type" ><label class="user-bloodType">O+</label>
-<input class="custom-control-input" type="radio"  value="O-"  formControlName="user_blood_type" ><label class="user-bloodType">O-</label>
-<input class="custom-control-input" type="radio"  value="A+"  formControlName="user_blood_type" ><label class="user-bloodType">A+</label>
-<input class="custom-control-input" type="radio"  value="A-"  formControlName="user_blood_type" ><label class="user-bloodType">A-</label>
-<input class="custom-control-input" type="radio"  value="B+"  formControlName="user_blood_type" ><label class="user-bloodType">B+</label>
-<input class="custom-control-input" type="radio"  value="B-"  formControlName="user_blood_type" ><label class="user-bloodType">B-</label>
-<input class="custom-control-input" type="radio"  value="AB+" formControlName="user_blood_type" ><label class="user-bloodType">AB+</label>
-</div>
+<label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
+        <select formControlName="blood_type">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let b of blood">  
+                {{b.blood_type}}  
+            </option>  
+        </select>
+        <br>
 <pre></pre>
+
 <div class="">
-    <input class="form-control" type="text" placeholder="Quantity"   name="quantity"  formControlName="" >
+    <input class="form-control" type="text" placeholder="Quantity"  formControlName="request_quantity">
 
 </div>
 <pre></pre>
-<div  class="">
+<!-- <div  class="">
     <label  style="margin-right: 7px;">City:</label>
-    <select class="drop" formControlName="user_city">
+    <select class="drop" formControlName="city">
     <option value="6 October">  6 October</option>
     <option value="Dokki">      Dokki</option>
     <option value="New Cairo">  New Cairo</option>
@@ -52,15 +43,15 @@
     <option value="Madinty">    Madinty</option>
     </select>
 </div>
-<pre></pre>
+<pre></pre> -->
 <!-- select hospital -->
 <div  class="">
-    <input class="form-control" type="text" placeholder="hospital"   formControlName="" >
+    <input class="form-control" type="text" placeholder="status"   formControlName="hospital_status">
 </div>
 <pre></pre>
 
 <div  class="">
-    <input class="form-control" type="text" placeholder="Case"   formControlName="" >
+    <input class="form-control" type="text" placeholder="Case"   formControlName="request_case" >
 </div>
 <pre></pre>
 
