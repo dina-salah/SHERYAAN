@@ -1,10 +1,10 @@
 .header{
-    background-color: rgb(17, 17, 58);
-    height: 200px;
-    width: 100%;
-    padding: 50px 20px 30px 60px;
-  }
-
+  background-color: rgb(114, 4, 4);
+  height: 200px;
+  width: 100%;
+  padding: 35px 20px 30px 60px;
+  text-shadow: 6px 8px rgba(0, 0, 0, 0.555); 
+}
   b{
     
     background-color: rgba(230, 215, 178, 0.877);

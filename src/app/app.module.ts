@@ -58,6 +58,7 @@ import { OrganizationProfileUpdateComponent } from './organization-profile-updat
 import { DonationPowerComponent } from './donation-power/donation-power.component';
 import { RequestHospitalComponent } from './request-hospital/request-hospital.component';
 import { ReqFormHospitalComponent } from './req-form-hospital/req-form-hospital.component';
+import { MyDonationsUserComponent } from './my-donations-user/my-donations-user.component';
 
 
 @NgModule({
@@ -112,6 +113,7 @@ import { ReqFormHospitalComponent } from './req-form-hospital/req-form-hospital.
     DonationPowerComponent,
     RequestHospitalComponent,
     ReqFormHospitalComponent,
+    MyDonationsUserComponent,
  
   ],
   imports: [
