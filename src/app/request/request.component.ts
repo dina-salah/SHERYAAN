@@ -28,8 +28,10 @@ export class RequestComponent implements OnInit {
     this.addReq.retriveAllReq()
     .subscribe({
      next: (res)=>{
-      console.log(res)
+      
       this.patients = res.data;
+
+      console.log(this.patients[0])
 
       },error:(error)=>{
         console.log(error)

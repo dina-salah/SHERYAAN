@@ -17,26 +17,29 @@
             <thead class="table-dark">
               <tr>
                 <th>#</th>
-                <th>receiver</th>
-                <th>name</th>
+                <th>Receiver</th>
+                <th>Place</th>
                 <th>Date</th>
                 <th>Blood type</th>
                 <th>Quantity</th>
                 <th>Case</th>
                 <th>Address</th>
+                <th>City</th>
                 <th>Respond</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let p of patients; index as i">
                 <td>{{i+1}}</td>
-                <td>{{p.receiver}}</td>
-                <td>{{p.pname}}</td>
+                <td>{{p[i].user_Fname}}{{p[i].user_Lname}} </td>
+                <td>{{p[i].hospital_name}}</td>
                 <td>{{p.date}}</td>
-                <td>{{p.bloodtype}}</td>
-                <td>{{p.quantity}}</td>
-                <td>{{p.pcase}}</td>
-                <td>{{p.address}}</td>
+                <td>{{p[i].blood_type}}</td>
+                <td>{{p[i].request_quantity}}</td>
+                <td>{{p[i].request_case}}</td>
+                <!-- addr -->
+                <td></td>
+                <td>{{p[i].city}}</td>
                 <td><button class="btn btn-danger">Donate</button></td>
               </tr>
             </tbody>
