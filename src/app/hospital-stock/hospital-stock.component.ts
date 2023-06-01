@@ -46,6 +46,7 @@ export class HospitalStockComponent {
     hospital_id: new FormControl(null, Validators.required)
   });
 
+
   stockselected: Stock = {} as Stock;
 
   selectStock(stock: Stock){
@@ -126,6 +127,5 @@ export class HospitalStockComponent {
     })
   }
 
-  
 
 }

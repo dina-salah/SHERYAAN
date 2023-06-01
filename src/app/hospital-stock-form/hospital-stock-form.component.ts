@@ -20,6 +20,7 @@ export class HospitalStockFormComponent {
   blood: Blood[];
   id: any;
   stock = {bid: '', qty: '', hid: ''};
+  hid= {hospital_id: ''};
 
   constructor(private service: stockService, private http : HttpClient,private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
@@ -27,9 +28,11 @@ export class HospitalStockFormComponent {
 
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
-    this.service.getblood().subscribe((res) => {
+    this.hid.hospital_id = this.id;
+    this.service.getblood(this.hid).subscribe((res) => {
       this.blood = res.data;
       console.log(res);
+      
     })
 
   }
