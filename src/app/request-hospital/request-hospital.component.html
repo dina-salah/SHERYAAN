@@ -1,0 +1,48 @@
+<div class="body">
+    <div class="header">
+        <p style="color: whitesmoke; font-size: 60px;">REQUESTS</p>
+    </div>
+    <br><br>
+    <div class="container">
+        <p>In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
+            a message is sent to that hospital or patient to acknowlage that you are a user of the system. after donation you will
+            get points that will be added to your account, later you can use it for gifts.
+        </p>
+        <br>
+        <b><div class="bi bi-plus-lg" routerLink="/req-form" routerLinkActive="active">  Add request </div></b>
+        <br>
+
+      <br>
+        <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th>#</th>
+                <th>receiver</th>
+                <th>name</th>
+                <th>Date</th>
+                <th>Blood type</th>
+                <th>Quantity</th>
+                <th>Case</th>
+                <th>Address</th>
+                <th>Respond</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of patients; index as i">
+                <td>{{i+1}}</td>
+                <td>{{p.receiver}}</td>
+                <td>{{p.pname}}</td>
+                <td>{{p.date}}</td>
+                <td>{{p.bloodtype}}</td>
+                <td>{{p.quantity}}</td>
+                <td>{{p.pcase}}</td>
+                <td>{{p.address}}</td>
+                <td><button class="btn btn-danger">Donate</button></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br><br>
+    </div>
+
+</div>

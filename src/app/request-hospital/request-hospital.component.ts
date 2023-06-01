@@ -5,11 +5,11 @@ import { map } from 'rxjs';
 import { reqAdd } from '../model/request';
 
 @Component({
-  selector: 'app-request',
-  templateUrl: './request.component.html',
-  styleUrls: ['./request.component.css']
+  selector: 'app-request-hospital',
+  templateUrl: './request-hospital.component.html',
+  styleUrls: ['./request-hospital.component.css']
 })
-export class RequestComponent implements OnInit {
+export class RequestHospitalComponent implements OnInit {
   display:boolean =true;
   donate:boolean =false;
 
@@ -33,24 +33,21 @@ export class RequestComponent implements OnInit {
   }
 
   private fetch(){
-
-
+    this.http.get('https://sheryaanang-default-rtdb.firebaseio.com/products.json')
+    .pipe(map((res: {[key:string]:reqAdd})=>{
+      const requestTable =[];
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+        requestTable.push({...res[key],id:key})}
+      }
     
-  //   this.http.get('')
-  //   .pipe(map((res: {[key:string]:reqAdd})=>{
-  //     const requestTable =[];
-  //     for(const key in res){
-  //       if(res.hasOwnProperty(key)){
-  //       requestTable.push({...res[key],id:key})}
-  //     }
-    
-  //   return requestTable;
-  // }
-  // )).subscribe((requestTable)=>
-  // {
-  //   console.log(requestTable)
-  //   this.patients=requestTable;
-  // })
+    return requestTable;
+  }
+  )).subscribe((requestTable)=>
+  {
+    console.log(requestTable)
+    this.patients=requestTable;
+  })
   }
 
 }
