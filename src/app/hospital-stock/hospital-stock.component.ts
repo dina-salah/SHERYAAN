@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
-import {Observable, map } from 'rxjs';
+import {Observable, map} from 'rxjs';
 import { reqAdd } from '../model/request'
 import { Stock } from '../model/hospitalstock';
 import { stockService } from '../services/stock.service';
@@ -14,18 +14,14 @@ import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
   styleUrls: ['./hospital-stock.component.css']
 })
 export class HospitalStockComponent {
-  display:boolean =true;
-  donate:boolean =false;
 
-  enableEdit = false;
-  enableEditIndex = null;
-  stock?: Stock[];
+  stock?: any[];
+  status?: any;
   id!: any;
-  onupdate: boolean = false;
+
   deletedata = {bid: '', hid: ''};
   updatedata = {bid: '', hid: '', qty: ''}
  
-
 
   constructor(private http : HttpClient,
     private service: stockService,
@@ -40,88 +36,49 @@ export class HospitalStockComponent {
     this.stock = JSON.parse(localStorage.getItem('stockdata'));
   }
 
-  form = new FormGroup({
-    blood_type: new FormControl(null, Validators.required),
-    blood_quantity: new FormControl(null, Validators.required),
-    blood_id: new FormControl(null, Validators.required),
-    hospital_id: new FormControl(null, Validators.required)
-  });
-
-
-  stockselected: Stock = {} as Stock;
-
-  selectStock(stock: Stock){
-    if(Object.keys(this.stockselected).length === 0) {
-      this.stockselected = stock;
-      this.form.patchValue({
-        blood_quantity: stock.blood_quantity,
-        blood_type: stock.blood_type,
-        blood_id: stock.blood_id,
-        hospital_id: stock.hospital_id
-      })
-    }
-  }
-
-  enableEditMethod(e, i) {
-    this.enableEdit = true;
-    this.enableEditIndex = i;
-    console.log(i, e);
-  }
-
-
-  onupdatestock(){
-    let index = this.stock.map(s => s.blood_id).indexOf(this.stockselected.blood_id);
-
-    this.stock[index] = {
-      blood_id: this.stockselected.blood_id,
-      blood_type: this.stockselected.blood_type,
-      blood_quantity: this.stockselected.blood_quantity,
-      hospital_id: this.stockselected.hospital_id
-    };
-
-    console.log(this.stock[index]);
-
-    this.service.updatestock(this.stock[index]).subscribe((res: any) => {
-      console.log(res);
-    }) 
-
-    this.stockselected = {} as Stock;
-    this.form.reset();
-
-    this.updatedata.hid = this.id;
-    this.updatedata.bid = this.form.value.blood_id;
-    this.updatedata.qty = this.form.value.blood_quantity;
-
-
-
-    this.enableEdit = false;
-  }
-
-
-  showform(){
-    if(this.display==true){
-      this.display = false;
-    }else{
-      this.display=true;
-    }
-  }
-
 
   fetch(){
     this.service.fetch(this.id).subscribe((res) => {
-      this.stock = res.data;
+      this.stock = res.data.map(item => ({...item, isEditing: false}));
+
       const stockdata = res.data;
       if (stockdata) {
         localStorage.setItem('stockdata', JSON.stringify(stockdata));
       }
       console.log(this.stock);
+  },
+  (error) => {
+    console.error(error); 
   });
-
 }
 
-  delete(d: any){
-    this.deletedata.hid = this.id;
-    this.deletedata.bid = d;
+editItem(item : any) {
+  item.isEditing = !item.isEditing;
+ // console.log(item);
+}
+
+updateItem(item: any) {
+  this.updatedata.hid = item.hospital_id;
+  this.updatedata.bid = item.blood_id;
+  this.updatedata.qty = item.blood_quantity;
+  console.log(this.updatedata);
+  this.service.updatestock(this.updatedata)
+ .subscribe(
+   res => {
+     console.log(res);
+     item.isEditing = false;
+   },
+   error => {
+     console.log('Error occurred while updating item');
+     console.log(error);
+     // Handle the error case as per your requirement
+   }
+ );
+}
+
+  delete(item: any){
+    this.deletedata.hid = item.hospital_id;
+    this.deletedata.bid = item.blood_id;
     console.log(this.deletedata);
     this.service.delete(this.deletedata).subscribe((res) => {
       console.log(res);

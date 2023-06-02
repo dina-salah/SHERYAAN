@@ -1,0 +1,8 @@
+.bqty{
+    display: flex;
+}
+
+#blood_quantity{
+   width: min-content; 
+   height: min-content;
+}

@@ -121,7 +121,7 @@ app.get("/filter-by-blood/:id", function (req, res) {
 
 //first get all blood types in drop down list 
 app.get("/blood-types", function (req, res) {
-    dbConn.query("SELECT blood_type FROM blood" , function (error, results, fields) {
+    dbConn.query("SELECT blood_type, blood_id FROM blood" , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "blood types list." });
     });

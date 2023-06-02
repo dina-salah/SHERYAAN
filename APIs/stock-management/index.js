@@ -51,7 +51,7 @@ app.get("/all-hospitals-stock", function (req, res) {
 //Retrive hospital stock by id
 app.get("/hospital-stock/:id", function (req, res) {
     hospital_id = req.params.id;
-    dbConn.query("select blood_type , blood_quantity  from hospital_blood_stock AS hs join blood as bld on hs.blood_id = bld.blood_id WHERE hs.hospital_id = ? " , hospital_id
+    dbConn.query("select *  from hospital_blood_stock AS hs join blood as bld on hs.blood_id = bld.blood_id WHERE hs.hospital_id = ? " , hospital_id
     , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "hospitals list." });
