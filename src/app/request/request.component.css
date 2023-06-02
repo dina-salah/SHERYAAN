@@ -21,4 +21,10 @@
     background-color: rgb(13, 34, 150);
     color: rgb(255, 255, 255);
   }
+
+  .filter{
+    color: rgb(161, 38, 38);
+    font-weight: bolder;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
   

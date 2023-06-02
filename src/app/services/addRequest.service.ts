@@ -56,6 +56,20 @@ addrequest(data: any): Observable<any>{
   )
 }
 
+filter(value: any): Observable<any>{
+  return this.http.get(`${requestAPI}/search-requests/` + value)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
+filterblood(id: any): Observable<any>{
+  return this.http.get(`${requestAPI}/filter-by-blood/` + id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 
 // patient =[ {receiver: 'patient', pname:'dina', date:'02/12/2020',bloodtype:'O' ,quantity:9,pcase:'surgery',address:'MUST' }]
 

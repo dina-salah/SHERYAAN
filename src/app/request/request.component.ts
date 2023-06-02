@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { reqAdd } from '../model/request';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Blood } from '../model/hospitalstock';
 
 @Component({
   selector: 'app-request',
@@ -15,13 +16,17 @@ export class RequestComponent implements OnInit {
   donate:boolean =false;
   id:any;
   patients?: reqAdd[];
+  blood: Blood[];
+
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
   this.id = this.route.snapshot.params['user_id'];
   this. fetch();
-
-
+  this.service.getblood().subscribe((res) => {
+    this.blood = res.data;
+    console.log(res.data);
+  })
   }
   private fetch(){
 
@@ -40,6 +45,8 @@ export class RequestComponent implements OnInit {
     
   }
 
+
+
   showform(){
     if(this.display==true){
       this.display = false;
@@ -51,6 +58,8 @@ export class RequestComponent implements OnInit {
   showreq(){
     this.donate=true
   }
+
+
 
   
 
