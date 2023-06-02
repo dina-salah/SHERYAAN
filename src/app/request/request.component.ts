@@ -3,6 +3,8 @@ import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
 import { reqAdd } from '../model/request';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Blood } from '../model/hospitalstock';
 
 @Component({
   selector: 'app-request',
@@ -12,48 +14,38 @@ import { reqAdd } from '../model/request';
 export class RequestComponent implements OnInit {
   display:boolean =true;
   donate:boolean =false;
-
+  id:any;
   patients?: reqAdd[];
-  constructor(
-    private http : HttpClient,
-    private addReq:addRequestService){}
+  blood: Blood[];
+
+  constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
+  this.id = this.route.snapshot.params['user_id'];
   this. fetch();
-
-
+  this.service.getblood().subscribe((res) => {
+    this.blood = res.data;
+    console.log(res.data);
+  })
   }
   private fetch(){
 
-    this.addReq.retriveAllReq()
+    this.service.retriveAllReq()
     .subscribe({
      next: (res)=>{
       
       this.patients = res.data;
 
-      console.log(this.patients[0])
+      console.log(this.patients[0].blood_type)
 
       },error:(error)=>{
         console.log(error)
       }
     })
     
-  //   this.http.get('')
-  //   .pipe(map((res: {[key:string]:reqAdd})=>{
-  //     const requestTable =[];
-  //     for(const key in res){
-  //       if(res.hasOwnProperty(key)){
-  //       requestTable.push({...res[key],id:key})}
-  //     }
-    
-  //   return requestTable;
-  // }
-  // )).subscribe((requestTable)=>
-  // {
-  //   console.log(requestTable)
-  //   this.patients=requestTable;
-  // })
   }
+
+
 
   showform(){
     if(this.display==true){
@@ -67,6 +59,9 @@ export class RequestComponent implements OnInit {
     this.donate=true
   }
 
+
+
+  
 
 
 }

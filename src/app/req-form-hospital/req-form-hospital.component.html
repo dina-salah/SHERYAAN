@@ -1,24 +1,78 @@
-<!-- <div class="container">
-    
-    <form #reqForm="ngForm" (ngSubmit)="onReqAdd(reqForm.value)">
-        <div style="font-weight:bolder; margin: 13px; font-size: 20px;">
+<div class="header">
+    <div  class="row">
+        <div class="col">
+            <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">R</span>EQUEST</p>
+        </div>
+        <div class="col">
+            <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
+        </div>
+    </div>
+  
+  </div>
+  <br><br><br><br>
+  <pre></pre>
+
+<div class="container">
+   
+    <form   #localForm="ngForm" [formGroup]="form">  
+        <div class="mb-3" style="font-weight:bolder; margin: 13px; font-size: 20px;">
             Make sure that all information request is correct to avoid any problem
         </div>
-        <label style="margin-right: 7px;">receiver: </label>
-        <div style="display: inline;">
-            <input id="hospital" type="radio" class="custom-control-input" value="hospital" name="receiver" [(ngModel)]="receiver">
-            <label class="custom-control-label" for="hospital">Hospital</label>
-            
-            <input id="patient" type="radio" class="custom-control-input" value="patient" name="receiver" [(ngModel)]="receiver">
-            <label class="custom-control-label" for="patient">Patient</label>
-            
-        </div> 
-        <input class="form-control" type="text" placeholder="Name"       name="pname"  [(ngModel)]="pname">
-        <input class="form-control" type="date" placeholder="Date"       name="date" [(ngModel)]="date">
-        <input class="form-control" type="text" placeholder="Blood type" name="bloodtype" [(ngModel)]="bloodtype">
-        <input class="form-control" type="text" placeholder="Quantity"   name="quantity" [(ngModel)]="quantity">
-        <input class="form-control" type="text" placeholder="Case"       name="pcase" [(ngModel)]="pcase">
-        <input class="form-control" type="text" placeholder="Address"    name="address" [(ngModel)]="address">
-        <button class="btn btn-danger" type="submit" value="" style="margin: 10px;" (click)="addrequest()">Add</button>
-    </form>
-    </div> -->
+        <!-- <div  class="">
+            <input placeholder="Hospital Name" class="form-control" [minlength]="3" [maxlength]="20" formControlName="hospital_name" [class.is-invalid]="localForm.submitted && form.get('user_Fname')?.invalid">
+            <div class="invalid-feedback">
+                name is required
+            </div>
+        </div> -->
+
+        <pre></pre>
+<div class="">
+    <input class="form-control" type="date" placeholder="Date" formControlName="request_date">
+
+</div>
+<pre></pre>
+
+<label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
+        <select formControlName="blood_type">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let b of blood">  
+                {{b.blood_type}}  
+            </option>  
+        </select>
+        <br>
+<pre></pre>
+
+<div class="">
+    <input class="form-control" type="text" placeholder="Quantity"  formControlName="request_quantity">
+
+</div>
+<pre></pre>
+<!-- <div  class="">
+    <label  style="margin-right: 7px;">City:</label>
+    <select class="drop" formControlName="city">
+    <option value="6 October">  6 October</option>
+    <option value="Dokki">      Dokki</option>
+    <option value="New Cairo">  New Cairo</option>
+    <option value="Nasr city">  Nasr city</option>
+    <option value="Madinty">    Madinty</option>
+    </select>
+</div>
+<pre></pre> -->
+<!-- select hospital -->
+<div  class="">
+    <input class="form-control" type="text" placeholder="status"   formControlName="request_status">
+</div>
+<pre></pre>
+
+<div  class="">
+    <input class="form-control" type="text" placeholder="Case"   formControlName="request_case" >
+</div>
+<pre></pre>
+
+<div  class="">
+    <button class="btn btn-danger" type="submit" value="" style="margin: 10px;" (click)="addrequest()">Add</button>
+</div>
+<pre></pre>
+
+</form>
+</div>

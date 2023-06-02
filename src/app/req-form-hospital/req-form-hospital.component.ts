@@ -1,48 +1,58 @@
 import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { reqAdd } from '../model/request';
+import { Blood } from '../model/hospitalstock';
+
+
 @Component({
   selector: 'app-req-form-hospital',
   templateUrl: './req-form-hospital.component.html',
   styleUrls: ['./req-form-hospital.component.css']
 })
 export class ReqFormHospitalComponent  implements OnInit  {
-  // receiver:string = '';
-  // pname:string= '';
-  // date:Date= new Date();
-  // bloodtype:string= '';
-  // quantity:number =0;
-  // pcase:string ='';
-  // address:string= '';
 
-  // constructor(private newReq: addRequestService, private http : HttpClient,private toastr: ToastrService, private _router: Router){
+  id!: any;
+  blood: Blood[];
+  request = {hospital_id: '', blood_type: '', request_quantity: '', request_date: '', request_case: '', request_status: ''};
 
-  // }
-
-  ngOnInit(){
-  
+  constructor(private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
   }
 
+  ngOnInit(){
+    this.id = this.route.snapshot.params['hospital_id'];
+    this.service.getblood().subscribe((res) => {
+      this.blood = res.data;
+      console.log(res.data);
+    })
+  }
 
-  // addrequest(){
-  //   this.newReq.addR(this.receiver, this.pname, this.date, this.bloodtype,this.quantity, this.pcase, this.address);
-  //   console.log(this.newReq.patient);
-  // }
+  form = new FormGroup({
+    blood_type: new FormControl(null, Validators.required),
+    request_quantity: new FormControl(null, Validators.required),
+    // hospital_name: new FormControl(null, Validators.required),
+    request_date: new FormControl(null, Validators.required),
+    request_case: new FormControl(null, Validators.required),
+    // city: new FormControl(null, Validators.required),
+    // hospital_address: new FormControl(null, Validators.required),
+    request_status: new FormControl(null, Validators.required),
+  });
 
-  // onReqAdd(req:{receiver:string, name:string, date:Date, bloodtype:string, quantity:string, pcase:string, address:string }){
-  //   this.http.post('https://sheryaanang-default-rtdb.firebaseio.com/products.json',req)
-  //   .subscribe((res)=>{
-  //     console.log(res)
-  //   });
-
-  //   this.toastr.success('Your request has been added!');
-
-  //   this._router.navigate(['/request']);
-    
-  // }
+  addrequest(){
+    this.request.hospital_id = this.id;
+    this.request.blood_type = this.form.value.blood_type;
+    this.request.request_quantity = this.form.value.request_quantity;
+    this.request.request_date = this.form.value.request_date;
+    this.request.request_case = this.form.value.request_case;
+    this.request.request_status = this.form.value.request_status;
+    this.service.addrequest(this.form.value).subscribe((res) => {
+      console.log(res);
+    })
+  }
 
 }

@@ -1,15 +1,25 @@
+<div class="header">
+  <div  class="row">
+      <div class="col">
+          <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">R</span>EQUEST</p>
+      </div>
+      <div class="col">
+          <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
+      </div>
+  </div>
+
+</div>
+<br><br><br><br>
+<pre></pre>
 <div class="body">
-    <div class="header">
-        <p style="color: whitesmoke; font-size: 60px;">REQUESTS</p>
-    </div>
-    <br><br>
     <div class="container">
-        <p>In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
+        <p style="font-size: 25px; color: rgb(77, 76, 76);">In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
             a message is sent to that hospital or patient to acknowlage that you are a user of the system. after donation you will
             get points that will be added to your account, later you can use it for gifts.
         </p>
         <br>
-        <b><div class="bi bi-plus-lg" routerLink="/req-form" routerLinkActive="active">  Add request </div></b>
+
+        <b><div class="bi bi-plus-lg"  [routerLink]="['/req-form/',id ]">  Add request </div></b>
         <br>
 
       <br>
@@ -31,15 +41,15 @@
             <tbody>
               <tr *ngFor="let p of patients; index as i">
                 <td>{{i+1}}</td>
-                <td>{{p[i].user_Fname}}{{p[i].user_Lname}} </td>
-                <td>{{p[i].hospital_name}}</td>
+                <td>{{p.user_Fname}} {{p.user_Lname}} </td>
+                <td>{{p.hospital_name}}</td>
                 <td>{{p.date}}</td>
-                <td>{{p[i].blood_type}}</td>
-                <td>{{p[i].request_quantity}}</td>
-                <td>{{p[i].request_case}}</td>
+                <td>{{p.blood_type}}</td>
+                <td>{{p.request_quantity}}</td>
+                <td>{{p.request_case}}</td>
                 <!-- addr -->
                 <td></td>
-                <td>{{p[i].city}}</td>
+                <td>{{p.city}}</td>
                 <td><button class="btn btn-danger">Donate</button></td>
               </tr>
             </tbody>

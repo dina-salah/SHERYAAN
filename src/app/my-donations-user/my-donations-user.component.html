@@ -1,0 +1,37 @@
+<div class="header">
+    <div  class="row">
+        <div class="col">
+            <p style="padding-top: 0px; color: whitesmoke; font-size: 52px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">M</span>Y DONATIONS</p>
+        </div>
+        <div class="col">
+            <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
+        </div>
+    </div>
+
+</div>
+<br><br><br><br>
+
+<div class="container">
+
+    <pre></pre><pre></pre>
+    <table class="table " style="font-size: 22px; color: rgb(77, 76, 76);">
+        <thead class="table-active">
+          <tr>
+            <th scope="col">  </th>
+            <th scope="col">Date</th>
+            <th scope="col">Place</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of donations; index as i">
+            <th scope="row">[i +1]</th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            
+          </tr>
+         
+        </tbody>
+      </table>
+<br>
+</div>
