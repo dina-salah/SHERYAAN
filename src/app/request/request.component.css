@@ -21,4 +21,7 @@
     background-color: rgb(13, 34, 150);
     color: rgb(255, 255, 255);
   }
-  
+  span{
+    padding-left: 2px;
+    padding-right: 11px;
+  }
