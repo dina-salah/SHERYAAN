@@ -24,7 +24,7 @@ var dbConn = mysql.createConnection({
     host: "localhost",
     port: "3306",
     user: "root",
-    password: "pass",
+    password: "menna182000",
     database: "blooddb2",
   });
 // connect to database
@@ -135,7 +135,7 @@ app.get("/hospitals", function (req, res) {
   });
 //third insert a new record in requests
 app.post("/add-request", function (req, res) {
-    user_id = req.body.user_ssn;
+    user_id = req.body.user_id;
     hospital_id = req.body.hospital_id;
     request_status = req.body.request_status;
     //request_date = req.body.request_date; 
@@ -196,19 +196,19 @@ app.delete("/delete-request/id", function (req, res) {
 
 
 
-//add a user respond
-app.post("/add-respond", function (req, res) {
+//add a user response
+app.post("/add-response", function (req, res) {
   request_id = req.body.request_id;
   res_user = req.body.user_id;
   hospital_id = req.body.hospital_id;
 
-  dbConn.query(`INSERT INTO request_donations SET responded_user = ? , hospital_id = ? , request_id = ? ` ,
+  dbConn.query(`INSERT INTO request_donations SET responding_user = ? , hospital_id = ? , request_id = ? ` ,
   [res_user, hospital_id, request_id] ,
   function (error, results, fields) {
       if (error) throw error;
       return res.send(
           { error: false,
-            message: "new respond successfully" 
+            message: "new response added successfully" 
           });
     });
   });
@@ -218,7 +218,7 @@ app.post("/add-respond", function (req, res) {
 //count number of responses to a specific request
 app.get("/count/:reqId", function (req, res) {
     request_id = req.params.reqId;
-    dbConn.query(`SELECT COUNT(*) FROM request_donations where request_id = ? GROUP BY request_id `, request_id
+    dbConn.query(`SELECT COUNT(*) AS "Requests Counter" FROM request_donations where request_id = ? GROUP BY request_id `, request_id
     , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "All Requests" });
@@ -226,23 +226,22 @@ app.get("/count/:reqId", function (req, res) {
   });
 
 
-//calculate respond expire date 
+//calculate response expire date 
 
 
 
-//get responds form
+//get responses form
 app.get("/users-form/:id", function (req, res) {
   sql = `SELECT us.user_Fname AS "applicant Fname", us.user_Lname AS "applicant Lname", us.user_national_ID AS "applicant ID", 
-          req.request_date, b.blood_type, req.request_quantity , 
+          req.request_date, b.blood_type, req.request_quantity ,
           u.user_national_ID AS "participant ID", u.user_Fname AS "participant Fname", u.user_Lname AS "participant Lname" ,
-          d.respond_date , f.action
+          d.response_date , d.response_status
               from request AS req 
-              JOIN hospital_request_form AS f on req.request_id = f.request_id
-              JOIN request_donations AS d ON f.respond_id = d.respond_id
-              JOIN user AS u ON d.responded_user = u.user_id 
+              JOIN request_donations AS d ON req.request_id = d.request_id
+              JOIN user AS u ON d.responding_user = u.user_id 
               JOIN user AS us ON req.user_id = us.user_id
               JOIN blood AS b ON req.blood_type = b.blood_id
-            WHERE req.hospital_id = ? `
+            WHERE req.hospital_id = 3 `
   hospital_id = req.params.id;
   dbConn.query(sql , hospital_id , function (error, results, fields) {
     if (error) throw error;

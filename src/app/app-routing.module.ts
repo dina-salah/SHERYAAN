@@ -40,7 +40,7 @@ import { OrganizationProfileUpdateComponent } from './organization-profile-updat
 import { DonationPowerComponent } from './donation-power/donation-power.component';
 import { RequestHospitalComponent } from './request-hospital/request-hospital.component';
 import { ReqFormHospitalComponent } from './req-form-hospital/req-form-hospital.component';
-
+import { MyDonationsUserComponent } from './my-donations-user/my-donations-user.component';
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'donation-power', component:DonationPowerComponent},
@@ -87,7 +87,9 @@ const routes: Routes = [
   {path: 'request-hospital/:hospital_id', component: RequestHospitalComponent},
   {path: 'req-form-hospital/:hospital_id', component: ReqFormHospitalComponent},
   {path: 'request/:user_id', component: RequestComponent},
-  {path: 'req-form/:user_id', component: ReqFormComponent}
+  {path: 'req-form/:user_id', component: ReqFormComponent},
+  {path: 'my-donations-user', component:MyDonationsUserComponent},
+  {path: 'my-donations-user/:user_id', component: MyDonationsUserComponent}
   // {path:'++',component:ErrorComponent}
 ];
 

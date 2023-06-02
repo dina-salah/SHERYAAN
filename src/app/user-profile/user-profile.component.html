@@ -15,7 +15,7 @@
         				<ul class="nav"  *ngFor="let u of user">
         					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
-        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+        					<li><a href="#" [routerLink]="['/my-donations-user/', u.user_id]"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
         					<li><a href="#" [routerLink]="['/request/', u.user_id]"><span class="bi bi-table"></span> REQUEST</a></li>
                             
         				</ul>
