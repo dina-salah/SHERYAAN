@@ -5,6 +5,8 @@ import { map } from 'rxjs';
 import { reqAdd } from '../model/request';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Blood } from '../model/hospitalstock';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-request',
@@ -17,6 +19,7 @@ export class RequestComponent implements OnInit {
   id:any;
   patients?: reqAdd[];
   blood: Blood[];
+  bloodfilter: Blood[]
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -24,10 +27,17 @@ export class RequestComponent implements OnInit {
   this.id = this.route.snapshot.params['user_id'];
   this. fetch();
   this.service.getblood().subscribe((res) => {
+    this.bloodfilter= res.data;
     this.blood = res.data;
     console.log(res.data);
   })
   }
+
+  bloodform = new FormGroup({
+    // blood_type: new FormControl(null, Validators.required),
+    blood_id:new FormControl(null, Validators.required),
+  });
+
   private fetch(){
 
     this.service.retriveAllReq()
@@ -45,7 +55,21 @@ export class RequestComponent implements OnInit {
     
   }
 
-  // filteredReqByBlood(){
+  // addstock(){
+  //   // this.stock.bid = this.form.value.blood_type;
+  //   // this.stock.qty = this.form.value.blood_quantity;
+  //   // this.stock.hid = this.id;
+  //   // console.log(this.stock);
+  //   // this.service.addstock(this.stock).subscribe(res => {
+  //   //   console.log(res);
+  //   // })
+
+  // }
+  
+
+  filteredReqByBlood(id:any){
+    // console.log(this.bloodform.value.blood_id)
+    console.log(id)
   //   this.service.filterblood()
   //   .subscribe({
   //     next: (res)=>{
@@ -58,7 +82,7 @@ export class RequestComponent implements OnInit {
   //         console.log(error)
   //       }
   //   })
-  // }
+  }
 
 
   // showform(){

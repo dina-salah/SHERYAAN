@@ -19,28 +19,27 @@
         </p>
         <br>
 
-        <b><div class="bi bi-plus-lg"  [routerLink]="['/req-form/',id ]">  Add request </div></b>
+        <b><div class="bi bi-plus-lg" style="font-size: 18px;"  [routerLink]="['/req-form/',id ]">  Add request </div></b>
         <br>
         <br>
 
       <br>
-      <div   style="font-size: 22px; margin-bottom: 5px;">
-        <label >Filter by blood type:</label> &nbsp;
+      <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;">
+        <!-- <label >Filter by blood type:</label> &nbsp;
         <select formControlName="blood_type">
           <option value="0">--Select--</option>  
           <option *ngFor="let b of blood">  
               {{b.blood_type}}  
           </option>  
-      </select>
-      <!-- <input class="form-check-input" type="checkbox" value="O+" ><span> O+   </span>
-      <input class="form-check-input" type="checkbox" value="O-" ><span> O-   </span>
-      <input class="form-check-input" type="checkbox" value="A+" ><span> A+   </span>
-      <input class="form-check-input" type="checkbox" value="A-" ><span> A-   </span>
-      <input class="form-check-input" type="checkbox" value="B+" ><span> B+   </span>
-      <input class="form-check-input" type="checkbox" value="B-" ><span> B-   </span>
-      <input class="form-check-input" type="checkbox" value="AB+" ><span> AB+   </span>
-      <input class="form-check-input" type="checkbox" value="AB-" ><span> AB-   </span>
-      </div> -->
+      </select> -->
+      <label style="font-size: 24px; font-weight: bolder;" > Filter by blood type:</label> &nbsp;
+
+      <form [formGroup]="bloodform">
+      <span *ngFor="let b of bloodfilter, index as i">
+      <input class="form-check-input" type="radio" [value]="i" formControlName="blood_id" (click)="filteredReqByBlood(b)"><span> {{b.blood_type}}</span>
+    </span>
+  </form>
+      </div>
         <table class="table">
             <thead class="table-dark">
               <tr>
