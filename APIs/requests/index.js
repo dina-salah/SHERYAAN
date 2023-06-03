@@ -247,7 +247,14 @@ app.get("/count/:reqId", function (req, res) {
 
 
 //calculate response expire date 
-
+app.get("/calculate-expire-date/:id", function (req, res) {
+  hospital_id = req.params.id;
+  dbConn.query(`CALL UpdateRowsBasedOnDateDiff(${hospital_id});`, hospital_id
+  , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "All Requests" });
+  });
+});
 
 
 //get responses form
