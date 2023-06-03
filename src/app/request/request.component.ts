@@ -55,33 +55,20 @@ export class RequestComponent implements OnInit {
     
   }
 
-  // addstock(){
-  //   // this.stock.bid = this.form.value.blood_type;
-  //   // this.stock.qty = this.form.value.blood_quantity;
-  //   // this.stock.hid = this.id;
-  //   // console.log(this.stock);
-  //   // this.service.addstock(this.stock).subscribe(res => {
-  //   //   console.log(res);
-  //   // })
-
-  // }
   
 
   filteredReqByBlood(id:any){
-    // console.log(this.bloodform.value.blood_id)
-    console.log(id)
-  //   this.service.filterblood()
-  //   .subscribe({
-  //     next: (res)=>{
-      
-  //       this.patients = res.data;
+    console.log(id.blood_id)
+    this.service.filterblood(id.blood_id)
+    .subscribe({
+      next: (res)=>{
   
-  //       console.log(this.patients[0].blood_type)
+        console.log(this.patients[0].blood_type)
   
-  //       },error:(error)=>{
-  //         console.log(error)
-  //       }
-  //   })
+        },error:(error)=>{
+          console.log(error)
+        }
+    })
   }
 
 
