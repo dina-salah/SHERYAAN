@@ -24,6 +24,7 @@ export class ReqFormComponent implements OnInit {
   blood:Blood[];
   hospital:Hospital[];
   id:any;
+  request = {user_id:'',hospital_id: '', blood_type: '', request_quantity: '', request_date: '', request_case: '', request_status: ''};
 
   constructor(private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
@@ -31,15 +32,16 @@ export class ReqFormComponent implements OnInit {
 
   ngOnInit(){
     this.id = this.route.snapshot.params['user_id'];
-    this.service.getblood()
-    .subscribe((res) => {
-      this.blood = res.data;
-      console.log(res.data);
-    })
 
     this.service.gethospital()
     .subscribe((res) => {
-      this.hospital = res.data;
+      this.hospital= res.data;
+      console.log(res.data);
+    })
+  
+    this.service.getblood()
+    .subscribe((res) => {
+      this.blood = res.data;
       console.log(res.data);
     })
 
@@ -47,29 +49,28 @@ export class ReqFormComponent implements OnInit {
 
   UserForm =  new FormGroup({
     request_status: new FormControl('', Validators.required),
-    user_blood_type: new FormControl('', Validators.required),
+    blood_type: new FormControl('', Validators.required),
     request_case: new FormControl('', Validators.required),
     request_quantity:new FormControl('', Validators.required),
-    hospital_name:new FormControl('', Validators.required),
-   //date
+    hospital_id:new FormControl('', Validators.required),
   })
 
 
   addrequest(){
-    // this.newReq.addR(this.receiver, this.pname, this.date, this.bloodtype,this.quantity, this.pcase, this.address);
-    // console.log(this.newReq.patient);
+    this.request.user_id = this.id;
+    this.request.hospital_id = this.UserForm.value.hospital_id
+    this.request.blood_type = this.UserForm.value.blood_type;
+    this.request.request_quantity = this.UserForm.value.request_quantity;
+    this.request.request_case = this.UserForm.value.request_case;
+    this.request.request_status = this.UserForm.value.request_status;
+    this.service.addrequest(this.request)
+    .subscribe((res) => {
+      console.log(res);
+      this.toastr.success('request added!');
+      this._router.navigate(['/request/', this.id]);
+    })
   }
 
-  onReqAdd(req:{receiver:string, name:string, date:Date, bloodtype:string, quantity:string, pcase:string, address:string }){
-    // this.http.post('https://sheryaanang-default-rtdb.firebaseio.com/products.json',req)
-    // .subscribe((res)=>{
-    //   console.log(res)
-    // });
-
-    // this.toastr.success('Your request has been added!');
-
-    // this._router.navigate(['/request']);
-    
-  }
+  
 
 }

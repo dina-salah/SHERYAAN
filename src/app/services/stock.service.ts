@@ -55,7 +55,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
       }
 
       delete(data: any){
-        return this.http.delete('http://localhost:1000/hospital-stock', data)
+        return this.http.post('http://localhost:1000/hospital-stock', data)
       
         .pipe(
           catchError(this.errorHandler)

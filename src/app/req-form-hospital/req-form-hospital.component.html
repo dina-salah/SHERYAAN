@@ -11,31 +11,20 @@
   </div>
   <br><br><br><br>
   <pre></pre>
-
+ 
 <div class="container">
    
     <form   #localForm="ngForm" [formGroup]="form">  
         <div class="mb-3" style="font-weight:bolder; margin: 13px; font-size: 20px;">
             Make sure that all information request is correct to avoid any problem
         </div>
-        <!-- <div  class="">
-            <input placeholder="Hospital Name" class="form-control" [minlength]="3" [maxlength]="20" formControlName="hospital_name" [class.is-invalid]="localForm.submitted && form.get('user_Fname')?.invalid">
-            <div class="invalid-feedback">
-                name is required
-            </div>
-        </div> -->
 
         <pre></pre>
-<div class="">
-    <input class="form-control" type="date" placeholder="Date" formControlName="request_date">
-
-</div>
-<pre></pre>
 
 <label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
-        <select formControlName="blood_type">
+        <select formControlName="blood_id">
             <option value="0">--Select--</option>  
-            <option *ngFor="let b of blood">  
+            <option *ngFor="let b of blood" value={{b.blood_id}}>  
                 {{b.blood_type}}  
             </option>  
         </select>
