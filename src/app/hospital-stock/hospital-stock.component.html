@@ -9,7 +9,6 @@
         <b><div class="bi bi-plus-lg" [routerLink]="['/hospital-stock-form/', id]">  Add </div></b>
 
       <br>
-      <form [formGroup]="form">
         <table class="table">
             <thead class="table-dark">
               <tr>
@@ -20,27 +19,25 @@
               </tr>
             </thead>
             <tbody>
-              <ng-container *ngFor="let s of stock; index as i"> 
-              <tr *ngIf="stockselected != s" (click)="selectStock(s)">
+                <tr *ngFor="let item of stock; index as i">
                 <td>{{i+1}}</td>
-                <td>{{s.blood_type}} </td>
-                <td>{{s.blood_quantity}}</td>
+                <td>{{item.blood_type}} </td>
                 <td>
-                  <button class="btn btn-primary" [hidden]="enableEdit" (click)="enableEditMethod($event, i)"><i class="bi bi-pencil-fill"></i></button>
+                  <input name="blood_quantity" type="text" [(ngModel)]="stock[i].blood_quantity" [disabled]="!item.isEditing" />
+                </td>
+  
+                <td>
+                  <button class="btn btn-primary" (click)="editItem(item)" ><i class="bi bi-pencil-fill"></i>
+                    {{ item.isEditing ? 'Cancel' : 'Edit' }}
+                  </button>
                   &nbsp;
-                  <button [hidden]="enableEdit" class="btn btn-danger" value={{s.blood_id}} (click)="delete(s.blood_id)"><i class="bi bi-trash-fill"></i></button></td>
-              </tr>
+                  <button class="btn btn-danger" *ngIf="!item.isEditing" (click)="delete(item)"><i class="bi bi-trash-fill"></i></button>
+                  <button class="btn btn-primary" *ngIf="item.isEditing" (click)="updateItem(item)">Update</button></td>
+              
+                </tr>
 
-              <tr *ngIf="stockselected == s">
-                <td>{{i+1}}</td>
-                <td>{{s.blood_type}}</td>
-                <td><input type="text" formControlName="blood_quantity" [value]="s.blood_quantity"></td>
-                <td><button  class="btn btn-primary btn-sm" *ngIf="enableEdit && enableEditIndex == i" type="submit" (click)="onupdatestock()">save</button></td>
-              </tr>
-              </ng-container>
             </tbody>
           </table>
-        </form>
           <br><br>
     </div>
 

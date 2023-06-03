@@ -16,9 +16,11 @@
         </select>
         <br><br>
 
-        <label for="blood_quantity" >Blood quantity:  </label>
+        <div class="bqty">
+        <label for="blood_quantity" >Blood quantity:  </label> &nbsp;
         <input class="form-control" id="blood_quantity" type="text"  formControlName="blood_quantity">
-        
+        </div>
+
         <br>
         <button class="btn btn-danger" type="submit" value="" style="margin: 10px;" (click)="addstock()" [routerLink]="['/hospital-stock/', this.id]">Add</button>
     </form>
