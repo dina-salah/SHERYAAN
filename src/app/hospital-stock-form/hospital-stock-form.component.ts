@@ -52,6 +52,8 @@ export class HospitalStockFormComponent {
     console.log(this.stock);
     this.service.addstock(this.stock).subscribe(res => {
       console.log(res);
+      this.toastr.success('new stock added!');
+      this._router.navigate(['/hospital-stock/', this.id]);
     })
 
   }

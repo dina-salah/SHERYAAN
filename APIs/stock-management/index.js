@@ -79,7 +79,7 @@ app.put("/hospital-stock", function (req, res) {
 
 
 //delete hospital stock
-app.delete("/hospital-stock", function (req, res) {
+app.post("/hospital-stock", function (req, res) {
     hid= req.body.hid;
     bid = req.body.bid;
 

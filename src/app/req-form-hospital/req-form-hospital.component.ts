@@ -18,7 +18,7 @@ export class ReqFormHospitalComponent  implements OnInit  {
 
   id!: any;
   blood: Blood[];
-  request = {hospital_id: '', blood_type: '', request_quantity: '', request_date: '', request_case: '', request_status: ''};
+  request = {hospital_id: '', blood_type: '', request_quantity: '', request_case: '', request_status: ''};
 
   constructor(private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
@@ -30,28 +30,25 @@ export class ReqFormHospitalComponent  implements OnInit  {
       this.blood = res.data;
       console.log(res.data);
     })
-  }
+  } 
 
   form = new FormGroup({
-    blood_type: new FormControl(null, Validators.required),
+    blood_id: new FormControl(null, Validators.required),
     request_quantity: new FormControl(null, Validators.required),
-    // hospital_name: new FormControl(null, Validators.required),
-    request_date: new FormControl(null, Validators.required),
     request_case: new FormControl(null, Validators.required),
-    // city: new FormControl(null, Validators.required),
-    // hospital_address: new FormControl(null, Validators.required),
     request_status: new FormControl(null, Validators.required),
   });
 
   addrequest(){
     this.request.hospital_id = this.id;
-    this.request.blood_type = this.form.value.blood_type;
+    this.request.blood_type = this.form.value.blood_id;
     this.request.request_quantity = this.form.value.request_quantity;
-    this.request.request_date = this.form.value.request_date;
     this.request.request_case = this.form.value.request_case;
     this.request.request_status = this.form.value.request_status;
-    this.service.addrequest(this.form.value).subscribe((res) => {
+    this.service.addrequest(this.request).subscribe((res) => {
       console.log(res);
+      this.toastr.success('request added!');
+      this._router.navigate(['/request-hospital/', this.id]);
     })
   }
 

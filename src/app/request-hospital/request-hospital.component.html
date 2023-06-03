@@ -11,24 +11,69 @@
 </div>
 <br><br><br><br>
 <pre></pre>
-
-<div class="body">
+<div class="body" style="font-size: 22px; color: rgb(77, 76, 76);">
     <div class="container">
-        <p  style="font-size: 25px; color: rgb(77, 76, 76);">In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
+        <p style="font-size: 25px; color: rgb(77, 76, 76);">In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
             a message is sent to that hospital or patient to acknowlage that you are a user of the system. after donation you will
             get points that will be added to your account, later you can use it for gifts.
         </p>
         <br>
-        <b><div class="bi bi-plus-lg" [routerLink]="['/req-form-hospital', id]">  Add request </div></b>
-        <br>
 
+        <b><div class="bi bi-plus-lg" style="font-size: 18px;"  [routerLink]="['/req-form-hospital/',id ]">  Add request </div></b>
+        <br>
+        <br>
       <br>
-        <table class="table"  style="font-size: 22px; color: rgb(77, 76, 76);">
+      <label>Select filter</label>
+      <!-- <form [formGroup]="Filters">
+      <select>
+        <option (onclick)="displayCityfilter()" value="1"  formControlName="filterC"> Filter by city </option>
+        <option (onclick)="displayBloodfilter()"value="2" formControlName="filterB">Filter by blood type</option>
+        <option (onclick)="displayHositalfilter()" value="3" formControlName="filterH">Filter by hospital</option>
+      </select>
+    </form> -->
+      <!-- <select id="selectid" class="form-control-mb-12" (ngModelChange)="filter($event)">
+        <option value="1">Filter by city</option>
+        <option value="2">Filter by blood type</option>
+        <option value="3">Filter by hospital</option>
+     </select> -->
+     <form>
+     <span>
+        <input type="radio"  (click)="displayCityfilter()" value="1" name="filter" class="form-check-input" > <span>Filter by city</span>
+        <input type="radio"  (click)="displayBloodfilter()" value="2" name="filter"  class="form-check-input" ><span>Filter by blood type</span>
+        <input type="radio" (click)="displayHositalfilter()" value="3" name="filter" class="form-check-input" ><span>Filter by hospital</span>
+      </span>
+    </form> 
+      <!-- filters -->
+      <!-- filter by blood -->
+      <div [hidden]="displayBloodFilter">
+      <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
+      <label style="font-size: 24px; font-weight: bolder;" > Filter by blood type:</label> &nbsp;
+      <form [formGroup]="bloodform">
+      <span *ngFor="let b of bloodfilter, index as i">
+      <input class="form-check-input" type="radio" [value]="i" formControlName="blood_id" (click)="filteredReqByBlood(b)"><span> {{b.blood_type}}</span>
+    </span>
+  </form>
+</div>
+ </div>
+      <!--filter by hospital  -->
+      <div [hidden]="displayHospitalFilter">
+        <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
+        <label style="font-size: 24px; font-weight: bolder;" > Filter by hospital:</label> &nbsp;
+        <form [formGroup]="hospitalform">
+        <span *ngFor="let h of hospitalfilter, index as i">
+        <input class="form-check-input" type="radio" [value]="i" formControlName="hospital_name" (click)="filteredReqByHospital(h)"><span> {{h.hospital_name}}</span>
+      </span>
+      <br>
+    </form>
+  </div>
+   </div>
+      <!-- retrive all -->
+        <table class="table">
             <thead class="table-dark">
               <tr>
                 <th>#</th>
                 <th>Receiver</th>
-                <th>place</th>
+                <th>Place</th>
                 <th>Date</th>
                 <th>Blood type</th>
                 <th>Quantity</th>
@@ -39,16 +84,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let r of requests; index as i">
+              <tr *ngFor="let p of patients; index as i">
                 <td>{{i+1}}</td>
-                <td>{{r.user_Fname}} {{r.user_Lname}}</td>
-                <td>{{r.hospital_name}}</td>
-                <td>{{r.date}}</td>
-                <td>{{r.blood_type}}</td>
-                <td>{{r.request_quantity}}</td>
-                <td>{{r.request_case}}</td>
-                <td>{{r.hospital_address}}</td>
-                <td>{{r.city}}</td>
+                <td>{{p.user_Fname}} {{p.user_Lname}} </td>
+                <td>{{p.hospital_name}}</td>
+                <td>{{p.date}}</td>
+                <td>{{p.blood_type}}</td>
+                <td>{{p.request_quantity}}</td>
+                <td>{{p.request_case}}</td>
+                <!-- addr -->
+                <td></td>
+                <td>{{p.city}}</td>
                 <td><button class="btn btn-danger">Donate</button></td>
               </tr>
             </tbody>
