@@ -70,6 +70,12 @@ filterblood(id: any): Observable<any>{
   )
 }
 
+filterhospital(id:any): Observable<any>{
+  return this.http.get(`${requestAPI}/filter-by-hospital/` + id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
 
 
 }

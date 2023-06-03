@@ -128,7 +128,7 @@ app.get("/blood-types", function (req, res) {
   });
 //second get all hospitals in drop down list 
 app.get("/hospitals", function (req, res) {
-    dbConn.query("SELECT hospital_name FROM hospital" , function (error, results, fields) {
+    dbConn.query("SELECT hospital_name,hospital_id  FROM hospital" , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "hospitals" });
     });

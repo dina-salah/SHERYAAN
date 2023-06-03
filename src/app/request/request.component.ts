@@ -6,6 +6,7 @@ import { reqAdd } from '../model/request';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Blood } from '../model/hospitalstock';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Hospital } from '../model/signupinfo';
 
 
 @Component({
@@ -14,19 +15,29 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit {
-  display:boolean =true;
-  donate:boolean =false;
+  displayCityFilter:boolean =true;
+  displayBloodFilter:boolean =true;
+  displayHospitalFilter:boolean =true;
   id:any;
   patients?: reqAdd[];
   blood: Blood[];
   bloodfilter: Blood[]
+  hospitalfilter: Hospital[]
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
   this.id = this.route.snapshot.params['user_id'];
   this. fetch();
-  this.service.getblood().subscribe((res) => {
+
+  this.service.gethospital()
+  .subscribe((res) => {
+    this.hospitalfilter= res.data;
+    console.log(res.data);
+  })
+
+  this.service.getblood()
+  .subscribe((res) => {
     this.bloodfilter= res.data;
     this.blood = res.data;
     console.log(res.data);
@@ -43,28 +54,75 @@ export class RequestComponent implements OnInit {
     this.service.retriveAllReq()
     .subscribe({
      next: (res)=>{
-      
       this.patients = res.data;
-
       console.log(this.patients[0].blood_type)
-
       },error:(error)=>{
         console.log(error)
       }
-    })
-    
+    })   
   }
+//display filter
+displayBloodfilter(){
+  this.displayCityFilter=true;
+  this.displayBloodFilter =false;
+  this.displayHospitalFilter=true;
+}
+displayCityfilter(){
+  this.displayCityFilter=false;
+  this.displayBloodFilter =true;
+  this.displayHospitalFilter=true;
+} 
 
-  
+displayHositalfilter(){
+  this.displayCityFilter=true;
+  this.displayBloodFilter =true;
+  this.displayHospitalFilter=false;
+} 
 
+//switch
+filter(value: any){
+ let  v= value.target.value;
+  switch(v) {
+    case "1":
+      this.displayCityFilter=false;
+      this.displayBloodFilter =true;
+      this.displayHospitalFilter=true;
+       break;
+    case "2":
+      this.displayCityFilter=true;
+      this.displayBloodFilter =false;
+      this.displayHospitalFilter=true;
+       break;
+    case "3":
+      this.displayCityFilter=true;
+      this.displayBloodFilter =true;
+      this.displayHospitalFilter=false;
+      break;
+    default:
+        this.displayCityFilter=true;
+        this.displayBloodFilter =true;
+        this.displayHospitalFilter=true;
+  }
+}
+
+//filter func  
   filteredReqByBlood(id:any){
-    console.log(id.blood_id)
     this.service.filterblood(id.blood_id)
     .subscribe({
       next: (res)=>{
-  
-        console.log(this.patients[0].blood_type)
-  
+        this.patients = res.data;
+        },error:(error)=>{
+          console.log(error)
+        }
+    })
+  }
+
+  filteredReqByHospital(id:any){
+    console.log(id.hospital_id)
+    this.service.filterhospital(id.hospital_id)
+    .subscribe({
+      next: (res)=>{
+        this.patients = res.data;
         },error:(error)=>{
           console.log(error)
         }
