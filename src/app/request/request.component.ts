@@ -45,8 +45,17 @@ export class RequestComponent implements OnInit {
   }
 
   bloodform = new FormGroup({
-    // blood_type: new FormControl(null, Validators.required),
     blood_id:new FormControl(null, Validators.required),
+  });
+  
+  hospitalform = new FormGroup({
+    hospital_name:new FormControl(null, Validators.required)
+  });
+
+  Filters = new FormGroup({
+    filterC :new FormControl(null, Validators.required),
+    filterB :new FormControl(null, Validators.required),
+    filterH :new FormControl(null, Validators.required),
   });
 
   private fetch(){
@@ -80,30 +89,30 @@ displayHositalfilter(){
 } 
 
 //switch
-filter(value: any){
- let  v= value.target.value;
-  switch(v) {
-    case "1":
-      this.displayCityFilter=false;
-      this.displayBloodFilter =true;
-      this.displayHospitalFilter=true;
-       break;
-    case "2":
-      this.displayCityFilter=true;
-      this.displayBloodFilter =false;
-      this.displayHospitalFilter=true;
-       break;
-    case "3":
-      this.displayCityFilter=true;
-      this.displayBloodFilter =true;
-      this.displayHospitalFilter=false;
-      break;
-    default:
-        this.displayCityFilter=true;
-        this.displayBloodFilter =true;
-        this.displayHospitalFilter=true;
-  }
-}
+// filter(value: any){
+//  let  v= value.target.value;
+//   switch(v) {
+//     case "1":
+//       this.displayCityFilter=false;
+//       this.displayBloodFilter =true;
+//       this.displayHospitalFilter=true;
+//        break;
+//     case "2":
+//       this.displayCityFilter=true;
+//       this.displayBloodFilter =false;
+//       this.displayHospitalFilter=true;
+//        break;
+//     case "3":
+//       this.displayCityFilter=true;
+//       this.displayBloodFilter =true;
+//       this.displayHospitalFilter=false;
+//       break;
+//     default:
+//         this.displayCityFilter=true;
+//         this.displayBloodFilter =true;
+//         this.displayHospitalFilter=true;
+//   }
+// }
 
 //filter func  
   filteredReqByBlood(id:any){

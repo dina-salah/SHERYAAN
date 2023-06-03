@@ -24,23 +24,25 @@
         <br>
       <br>
       <label>Select filter</label>
-      <!-- <select>
-
-        <option onselect="displayCityfilter()"> Filter by city </option>
-        <option onselect="displayBloodfilter()">Filter by blood type</option>
-        <option onselect="displayHositalfilter()">Filter by hospital</option>
-      </select> -->
+      <!-- <form [formGroup]="Filters">
+      <select>
+        <option (onclick)="displayCityfilter()" value="1"  formControlName="filterC"> Filter by city </option>
+        <option (onclick)="displayBloodfilter()"value="2" formControlName="filterB">Filter by blood type</option>
+        <option (onclick)="displayHositalfilter()" value="3" formControlName="filterH">Filter by hospital</option>
+      </select>
+    </form> -->
       <!-- <select id="selectid" class="form-control-mb-12" (ngModelChange)="filter($event)">
         <option value="1">Filter by city</option>
         <option value="2">Filter by blood type</option>
         <option value="3">Filter by hospital</option>
      </select> -->
-      <span>
-        <input type="radio"  (click)="displayCityfilter()" value="1" name="city" class="form-check-input"> <span>Filter by city</span>
-        <input type="radio"  (click)="displayBloodfilter()"   value="2" name="blood"  class="form-check-input"><span>Filter by blood type</span>
-        <input type="radio" (click)="displayHositalfilter()"  value="3" name="hospital" class="form-check-input"><span>Filter by hospital</span>
+     <form>
+     <span>
+        <input type="radio"  (click)="displayCityfilter()" value="1" name="filter" class="form-check-input" > <span>Filter by city</span>
+        <input type="radio"  (click)="displayBloodfilter()" value="2" name="filter"  class="form-check-input" ><span>Filter by blood type</span>
+        <input type="radio" (click)="displayHositalfilter()" value="3" name="filter" class="form-check-input" ><span>Filter by hospital</span>
       </span>
-
+    </form> 
       <!-- filters -->
       <!-- filter by blood -->
       <div [hidden]="displayBloodFilter">
@@ -56,17 +58,17 @@
       <!--filter by hospital  -->
       <div [hidden]="displayHospitalFilter">
         <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
-        <label style="font-size: 24px; font-weight: bolder;" > Filter by blood type:</label> &nbsp;
-        <form>
+        <label style="font-size: 24px; font-weight: bolder;" > Filter by hospital:</label> &nbsp;
+        <form [formGroup]="hospitalform">
         <span *ngFor="let h of hospitalfilter, index as i">
-        <input class="form-check-input" type="radio" [value]="i"  (click)="filteredReqByHospital(h)"><span> {{h.hospital_name}}</span>
+        <input class="form-check-input" type="radio" [value]="i" formControlName="hospital_name" (click)="filteredReqByHospital(h)"><span> {{h.hospital_name}}</span>
       </span>
       <br>
     </form>
   </div>
    </div>
       <!-- retrive all -->
-        <table class="table" [hidden]=>
+        <table class="table">
             <thead class="table-dark">
               <tr>
                 <th>#</th>
