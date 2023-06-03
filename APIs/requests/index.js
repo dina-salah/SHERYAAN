@@ -40,7 +40,7 @@ app.get("/", function (req, res) {
 //Retrieve all requests
 app.get("/all-requests", function (req, res) {
   dbConn.query(`SELECT u.user_Fname, u.user_Lname , r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  
-                from request AS r join blood AS b on r.blood_type = b.blood_id 
+                from request AS r join blood AS b on r.blood_type = b.blood_id
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                 JOIN location AS l ON h.location_code = l.location_code
                 JOIN user AS u ON r.user_id = u.user_id`
@@ -52,7 +52,7 @@ app.get("/all-requests", function (req, res) {
 
 
 
-//filter request
+//search requests
 app.get("/search-requests/:value", function (req, res) {
   const param = req.params.value;
   const wildcard = `%${param.split('').join('%')}%`;
@@ -85,14 +85,16 @@ app.get("/search-requests/:value", function (req, res) {
 
 
 
-//Retrive request by hospital id
+//Filter requests by hospital 
 app.get("/filter-by-hospital/:id", function (req, res) {
     hospital_id = req.params.id;
-    dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name 
+    dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
+                    u.user_Fname , u.user_Lname , h.hospital_address				
                     from request AS r join blood AS b on r.blood_type = b.blood_id 
                     JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                     JOIN location AS l ON h.location_code = l.location_code
-                    WHERE r.hospital_id = ?` , hospital_id
+                    JOIN user AS u ON u.user_id = r.user_id
+                  WHERE r.hospital_id = ?` , hospital_id
     , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "Requests list." });
@@ -101,19 +103,37 @@ app.get("/filter-by-hospital/:id", function (req, res) {
 
 
 
-//Retrive request by blood id
+//Filter requests by blood type
 app.get("/filter-by-blood/:id", function (req, res) {
     blood_id = req.params.id;
-    dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name 
-                    from request AS r join blood AS b on r.blood_type = b.blood_id 
-                    JOIN hospital AS h ON h.hospital_id = r.hospital_id 
-                    JOIN location AS l ON h.location_code = l.location_code
-                    WHERE r.blood_type = ?` , blood_id
+    dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
+                  u.user_Fname , u.user_Lname , h.hospital_address				
+                  from request AS r join blood AS b on r.blood_type = b.blood_id 
+                  JOIN hospital AS h ON h.hospital_id = r.hospital_id 
+                  JOIN location AS l ON h.location_code = l.location_code
+                  JOIN user AS u ON u.user_id = r.user_id
+                  WHERE r.blood_type = ? ` , blood_id
     , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "Requests list." });
     });
   });
+
+//Filter requests by city
+app.get("/filter-by-blood/:id", function (req, res) {
+  location_code = req.params.id;
+  dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
+                  u.user_Fname , u.user_Lname , h.hospital_address				
+                  from request AS r join blood AS b on r.blood_type = b.blood_id 
+                  JOIN hospital AS h ON h.hospital_id = r.hospital_id 
+                  JOIN location AS l ON h.location_code = l.location_code
+                  JOIN user AS u ON u.user_id = r.user_id
+                WHERE l.location_code = ? ` , location_code
+  , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "Requests list." });
+  });
+});
 
   
 

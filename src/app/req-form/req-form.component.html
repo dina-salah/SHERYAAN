@@ -20,10 +20,18 @@
         </div>
 
         <label for="blood_type" style="margin-right: 7px;">Hospital:  </label>
-        <select formControlName="hospital_name">
+        <!-- <select formControlName="hospital_name">
             <option value="0">--Select--</option>  
             <option *ngFor="let h of hospital">  
                  {{h.hospital_name}}
+            </option>  
+        </select> -->
+        <!--  -->
+        <select formControlName="hospital_id">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let h of hospital"  
+                    value={{h.hospital_id}}>  
+                    {{h.hospital_name}}  
             </option>  
         </select>
         <br>
@@ -31,7 +39,8 @@
 <label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
         <select formControlName="blood_type">
             <option value="0">--Select--</option>  
-            <option *ngFor="let b of blood">  
+            <option *ngFor="let b of blood"
+            value={{b.blood_id}}>  
                 {{b.blood_type}}  
             </option>  
         </select>
