@@ -81,7 +81,7 @@
     <span>
     <select formControlName="location_code" (change)="filteredReqByCity()">
       <!-- <option value="0">--Select--</option>   -->
-      <option   value="0"><div (onclick)="All()">All</div></option>
+      <option   value="0"><button (click)="All()">All</button></option>
       <option *ngFor="let c of city, index as i" value={{c.location_code}} >  
               {{c.city}}
       </option>  
