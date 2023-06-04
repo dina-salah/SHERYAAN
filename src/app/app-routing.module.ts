@@ -91,7 +91,8 @@ const routes: Routes = [
   {path: 'req-form/:user_id', component: ReqFormComponent},
   {path: 'my-donations-user', component:MyDonationsUserComponent},
   {path: 'my-donations-user/:user_id', component: MyDonationsUserComponent},
-  {path: 'myrequest-hospital/:hospital_id', component: MyrequestHospitalComponent}
+  {path: 'myrequest-hospital/:hospital_id', component: MyrequestHospitalComponent},
+  {path: 'myrequest-user/:user_id', component: MyrequestUserComponent}
   // {path:'++',component:ErrorComponent}
 ];
 
