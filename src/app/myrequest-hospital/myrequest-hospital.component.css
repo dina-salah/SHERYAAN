@@ -159,7 +159,7 @@
  .add-req{
   color: #40bbbda0;
   font-weight: bolder;
-  
+  height: 30px;
  }
  .add-req:hover{
   color: #000000;
