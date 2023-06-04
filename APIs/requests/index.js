@@ -119,8 +119,19 @@ app.get("/filter-by-blood/:id", function (req, res) {
     });
   });
 
+
+
+app.get("/cities", function (req, res) {
+    dbConn.query("SELECT * FROM location" , function (error, results, fields) {
+      if (error) throw error;
+      return res.send({ error: false, data: results, message: "bcities list" });
+    });
+  });
+
+
+
 //Filter requests by city
-app.get("/filter-by-blood/:id", function (req, res) {
+app.get("/filter-by-city/:id", function (req, res) {
   location_code = req.params.id;
   dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
                   u.user_Fname , u.user_Lname , h.hospital_address				
