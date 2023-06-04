@@ -85,6 +85,24 @@ app.get("/search-requests/:value", function (req, res) {
 
 
 
+//Filter my requests (user)
+app.get("/filter-by-user/:id", function (req, res) {
+  user_id = req.params.id;
+  dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
+                  u.user_Fname , u.user_Lname , h.hospital_address				
+                  from request AS r join blood AS b on r.blood_type = b.blood_id 
+                  JOIN hospital AS h ON h.hospital_id = r.hospital_id 
+                  JOIN location AS l ON h.location_code = l.location_code
+                  LEFT JOIN user AS u ON r.user_id = u.user_id 
+                WHERE r.user_id = ?` , user_id
+  , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "Requests list." });
+  });
+});
+
+
+
 //Filter requests by hospital 
 app.get("/filter-by-hospital/:id", function (req, res) {
     hospital_id = req.params.id;
@@ -93,7 +111,7 @@ app.get("/filter-by-hospital/:id", function (req, res) {
                     from request AS r join blood AS b on r.blood_type = b.blood_id 
                     JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                     JOIN location AS l ON h.location_code = l.location_code
-                    JOIN user AS u ON u.user_id = r.user_id
+                    LEFT JOIN user AS u ON r.user_id = u.user_id 
                   WHERE r.hospital_id = ?` , hospital_id
     , function (error, results, fields) {
       if (error) throw error;
@@ -111,7 +129,7 @@ app.get("/filter-by-blood/:id", function (req, res) {
                   from request AS r join blood AS b on r.blood_type = b.blood_id 
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                   JOIN location AS l ON h.location_code = l.location_code
-                  JOIN user AS u ON u.user_id = r.user_id
+                  LEFT JOIN user AS u ON r.user_id = u.user_id 
                   WHERE r.blood_type = ? ` , blood_id
     , function (error, results, fields) {
       if (error) throw error;
@@ -138,7 +156,7 @@ app.get("/filter-by-city/:id", function (req, res) {
                   from request AS r join blood AS b on r.blood_type = b.blood_id 
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                   JOIN location AS l ON h.location_code = l.location_code
-                  JOIN user AS u ON u.user_id = r.user_id
+                  LEFT JOIN user AS u ON r.user_id = u.user_id 
                 WHERE l.location_code = ? ` , location_code
   , function (error, results, fields) {
     if (error) throw error;
@@ -277,9 +295,9 @@ app.get("/users-form/:id", function (req, res) {
               from request AS req 
               JOIN request_donations AS d ON req.request_id = d.request_id
               JOIN user AS u ON d.responding_user = u.user_id 
-              JOIN user AS us ON req.user_id = us.user_id
+              LEFT JOIN user AS us ON req.user_id = us.user_id
               JOIN blood AS b ON req.blood_type = b.blood_id
-            WHERE req.hospital_id = 3 `
+            WHERE req.hospital_id = ? ` 
   hospital_id = req.params.id;
   dbConn.query(sql , hospital_id , function (error, results, fields) {
     if (error) throw error;
