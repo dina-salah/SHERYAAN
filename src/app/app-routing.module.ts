@@ -41,6 +41,7 @@ import { DonationPowerComponent } from './donation-power/donation-power.componen
 import { RequestHospitalComponent } from './request-hospital/request-hospital.component';
 import { ReqFormHospitalComponent } from './req-form-hospital/req-form-hospital.component';
 import { MyDonationsUserComponent } from './my-donations-user/my-donations-user.component';
+import { MyrequestHospitalComponent } from './myrequest-hospital/myrequest-hospital.component';
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'donation-power', component:DonationPowerComponent},
@@ -89,7 +90,8 @@ const routes: Routes = [
   {path: 'request/:user_id', component: RequestComponent},
   {path: 'req-form/:user_id', component: ReqFormComponent},
   {path: 'my-donations-user', component:MyDonationsUserComponent},
-  {path: 'my-donations-user/:user_id', component: MyDonationsUserComponent}
+  {path: 'my-donations-user/:user_id', component: MyDonationsUserComponent},
+  {path: 'myrequest-hospital/:hospital_id', component: MyrequestHospitalComponent}
   // {path:'++',component:ErrorComponent}
 ];
 
