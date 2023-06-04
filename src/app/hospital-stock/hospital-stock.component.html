@@ -1,9 +1,18 @@
 <body ng-app="myapp" ng-controller="tableController">
 <div class="body">
-    <div class="header">
-        <p style="color: whitesmoke; font-size: 60px;">MY STOCK</p>
+  <div class="header">
+    <div  class="row">
+        <div class="col">
+            <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">S</span>TOCK</p>
+        </div>
+        <div class="col">
+            <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
+        </div>
     </div>
-    <br><br>
+  
+  </div>
+  
+    <br><br><br>
     <div class="container">
         <!-- <h1>MY STOCK</h1> -->
         <b><div class="bi bi-plus-lg" [routerLink]="['/hospital-stock-form/', id]">  Add </div></b>
