@@ -39,7 +39,8 @@ app.get("/", function (req, res) {
 
 //Retrieve all requests (for users)
 app.get("/all-requests", function (req, res) {
-  dbConn.query(`SELECT r.request_id , u.user_Fname, u.user_Lname , r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
+  dbConn.query(`SELECT r.request_id , u.user_Fname, u.user_Lname , r.request_status,  r.hospital_id, 
+                r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
                 from request AS r join blood AS b on r.blood_type = b.blood_id
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                 JOIN location AS l ON h.location_code = l.location_code
@@ -53,9 +54,8 @@ app.get("/all-requests", function (req, res) {
 
 
 //Retrieve all requests (for hospitals)
-app.get("/all-requests", function (req, res) {
-  dbConn.query(`SELECT r.request_id , r.request_status, r.request_quantity, 
-                r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
+app.get("/all-requests-hospitals", function (req, res) {
+  dbConn.query(`SELECT  r.request_status, r.request_quantity r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
                   from request AS r join blood AS b on r.blood_type = b.blood_id
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                   JOIN location AS l ON h.location_code = l.location_code
@@ -105,7 +105,7 @@ app.get("/search-requests/:value", function (req, res) {
 app.get("/filter-by-user/:id", function (req, res) {
   user_id = req.params.id;
   dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
-                  u.user_Fname , u.user_Lname , h.hospital_address				
+                  u.user_Fname , u.user_Lname , h.hospital_address 
                   from request AS r join blood AS b on r.blood_type = b.blood_id 
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                   JOIN location AS l ON h.location_code = l.location_code
@@ -123,7 +123,7 @@ app.get("/filter-by-user/:id", function (req, res) {
 app.get("/filter-by-hospital/:id", function (req, res) {
     hospital_id = req.params.id;
     dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
-                    u.user_Fname , u.user_Lname , h.hospital_address				
+                    u.user_Fname , u.user_Lname , h.hospital_address		
                     from request AS r join blood AS b on r.blood_type = b.blood_id 
                     JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                     JOIN location AS l ON h.location_code = l.location_code
