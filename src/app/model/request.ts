@@ -10,3 +10,8 @@ export class reqAdd{
     city:string;
     hospital_address:string;
 }
+
+export class City{
+    location_code:any;
+    city:string;
+}

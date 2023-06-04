@@ -49,6 +49,12 @@ gethospital(): Observable<any>{
   )
 }
 
+getcity(): Observable<any>{
+  return this.http.get<any>(`${requestAPI}/cities`)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
 addrequest(data: any): Observable<any>{
   return this.http.post(`${requestAPI}/add-request`, data)
   .pipe(
@@ -77,5 +83,10 @@ filterhospital(id:any): Observable<any>{
   )
 }
 
-
+filtercity(id:any): Observable<any>{
+  return this.http.get(`${requestAPI}/filter-by-city/` + id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
 }
