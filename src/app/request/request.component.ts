@@ -24,7 +24,7 @@ export class RequestComponent implements OnInit {
   bloodfilter: Blood[]
   hospitalfilter: Hospital[]
   city: City[];
-  hospital_id:any;
+  
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -43,7 +43,7 @@ export class RequestComponent implements OnInit {
   });
 
   cityform = new FormGroup({
-    locatio_code:new FormControl(null, Validators.required),
+    location_code:new FormControl(null, Validators.required),
     city:new FormControl(null, Validators.required)
   });
 
@@ -142,8 +142,8 @@ displayHositalfilter(){
 
   filteredReqByHospital(){
     let id = this.hospitalform.value.hospital_id
-    // console.log(this.hospitalform.hospital_id)
-
+    // console.log('hi')
+    // console.log(this.hospitalform.value.hospital_id)
     this.service.filterhospital(id)
     .subscribe({
       next: (res)=>{
@@ -154,9 +154,10 @@ displayHositalfilter(){
     })
   }
 
-  filteredReqByCity(c){
-  console.log(c.location_code)
-    this.service.filtercity(c.location_code)
+  filteredReqByCity(){
+    let id =this.cityform.value.location_code
+  // console.log(c.location_code)
+    this.service.filtercity(id)
     .subscribe({
       next: (res)=>{
         this.patients = res.data;

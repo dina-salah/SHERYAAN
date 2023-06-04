@@ -60,16 +60,15 @@
         <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
         <label style="font-size: 24px; font-weight: bolder;" > Filter by hospital:</label> &nbsp;
         <form [formGroup]="hospitalform">
-        <span  *ngFor="let h of hospitalfilter, index as i">
-        <input class="form-check-input" type="radio" [value]="i" formControlName="hospital_id" (click)="filteredReqByHospital()"><span> {{h.hospital_name}}</span>
-        <!-- <select name="hospital_id" [(ngModel)]="hospital_id">
+        <span>
+        <select  formControlName="hospital_id" (change)="filteredReqByHospital()">
           <option value="0">--Select--</option>  
           <option *ngFor="let h of hospitalfilter, index as i"  
-                  [value]="h.hospital_id" (change)="filteredReqByHospital()">  
+                  value={{h.hospital_id}}>  
                   {{h.hospital_name}}  
           </option>  
       </select>
-      <br> -->
+      <br>
       </span>
       <br>
     </form>
@@ -80,15 +79,14 @@
     <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
     <label style="font-size: 24px; font-weight: bolder;" > Filter by city:</label> &nbsp;
     <form [formGroup]="cityform">
-    <span *ngFor="let c of city, index as i">
-    <input class="form-check-input" type="radio" [value]="i" formControlName="locatio_code" (click)="filteredReqByCity(c)"><span> {{c.city}}</span>
-    <!-- <select formControlName="hospital_id">
+    <span>
+    <select formControlName="location_code" (change)="filteredReqByCity()">
       <option value="0">--Select--</option>  
-      <option *ngFor="let c of city, index as i" (change)="filteredReqByCity(c)">  
+      <option *ngFor="let c of city, index as i" value={{c.location_code}} >  
               {{c.city}}
       </option>  
   </select>
-  <br>  -->
+  <br> 
   </span>
 </form>
 </div>
