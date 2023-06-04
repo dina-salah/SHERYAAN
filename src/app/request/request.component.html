@@ -49,8 +49,9 @@
       <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
       <label style="font-size: 24px; font-weight: bolder;" > Filter by blood type:</label> &nbsp;
       <form [formGroup]="bloodform">
+        <input class="form-check-input" type="radio"  value="0" formControlName="blood_id" (click)="All()"><span> All</span>
       <span *ngFor="let b of bloodfilter, index as i">
-      <input class="form-check-input" type="radio" [value]="i" formControlName="blood_id" (click)="filteredReqByBlood(b)"><span> {{b.blood_type}}</span>
+      <input class="form-check-input" type="radio" [value]="i+1" formControlName="blood_id" (click)="filteredReqByBlood(b)"><span> {{b.blood_type}}</span>
     </span>
   </form>
 </div>
@@ -62,7 +63,8 @@
         <form [formGroup]="hospitalform">
         <span>
         <select  formControlName="hospital_id" (change)="filteredReqByHospital()">
-          <option value="0">--Select--</option>  
+          <!-- <option value="0">--Select--</option> -->
+          <option   value="0"><div (onclick)="All()">All</div></option> 
           <option *ngFor="let h of hospitalfilter, index as i"  
                   value={{h.hospital_id}}>  
                   {{h.hospital_name}}  
@@ -81,7 +83,7 @@
     <form [formGroup]="cityform">
     <span>
     <select formControlName="location_code" (change)="filteredReqByCity()">
-      <option value="0">--Select--</option>  
+      <option   value="0"><div (onclick)="All()">All</div></option>
       <option *ngFor="let c of city, index as i" value={{c.location_code}} >  
               {{c.city}}
       </option>  
@@ -96,8 +98,8 @@
             <thead class="table-dark">
               <tr>
                 <th>#</th>
-                <th>Receiver</th>
                 <th>Place</th>
+                <th>Receiver</th>
                 <th>Date</th>
                 <th>Blood type</th>
                 <th>Quantity</th>
@@ -111,9 +113,9 @@
             <tbody>
               <tr *ngFor="let p of patients; index as i">
                 <td>{{i+1}}</td>
-                <td>{{p.user_Fname}} {{p.user_Lname}} </td>
                 <td>{{p.hospital_name}}</td>
-                <td>{{p.date}}</td>
+                <td>{{p.user_Fname}} {{p.user_Lname}} </td>
+                <td>{{p.request_date}}</td>
                 <td>{{p.blood_type}}</td>
                 <td>{{p.request_quantity}}</td>
                 <td>{{p.request_case}}</td>
