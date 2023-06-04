@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
 import { map, Subscription } from 'rxjs';
-import { reqAdd } from '../model/request';
+import { City, reqAdd } from '../model/request';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Blood } from '../model/hospitalstock';
@@ -22,25 +22,15 @@ export class RequestHospitalComponent implements OnInit {
   blood: Blood[];
   bloodfilter: Blood[]
   hospitalfilter: Hospital[]
-
+  city: City[];
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
   this.id = this.route.snapshot.params['hospital_id'];
   this. fetch();
 
-  this.service.gethospital()
-  .subscribe((res) => {
-    this.hospitalfilter= res.data;
-    console.log(res.data);
-  })
-
-  this.service.getblood()
-  .subscribe((res) => {
-    this.bloodfilter= res.data;
-    this.blood = res.data;
-    console.log(res.data);
-  })
+ 
+  
   }
 
   bloodform = new FormGroup({
@@ -48,7 +38,13 @@ export class RequestHospitalComponent implements OnInit {
   });
   
   hospitalform = new FormGroup({
-    hospital_name:new FormControl(null, Validators.required)
+    hospital_name:new FormControl(null, Validators.required),
+    hospital_id:new FormControl(null, Validators.required)
+  });
+
+  cityform = new FormGroup({
+    location_code:new FormControl(null, Validators.required),
+    city:new FormControl(null, Validators.required)
   });
 
   Filters = new FormGroup({
@@ -63,11 +59,30 @@ export class RequestHospitalComponent implements OnInit {
     .subscribe({
      next: (res)=>{
       this.patients = res.data;
-      console.log(this.patients);
+      console.log(this.patients[0].blood_type)
       },error:(error)=>{
         console.log(error)
       }
-    })   
+    })
+    //fetch hospital for filter
+    this.service.gethospital()
+  .subscribe((res) => {
+    this.hospitalfilter= res.data;
+    console.log(res.data);
+  })
+  //fetch blood for filter
+  this.service.getblood()
+  .subscribe((res) => {
+    this.bloodfilter= res.data;
+    this.blood = res.data;
+    console.log(res.data);
+  })
+  //fetch city for filter
+  this.service.getcity()
+  .subscribe((res) => {
+   this.city =res.data
+    console.log(res.data);
+  })   
   }
 //display filter
 displayBloodfilter(){
@@ -100,9 +115,11 @@ displayHositalfilter(){
     })
   }
 
-  filteredReqByHospital(id:any){
-    console.log(id.hospital_id)
-    this.service.filterhospital(id.hospital_id)
+  filteredReqByHospital(){
+    let id = this.hospitalform.value.hospital_id
+    // console.log('hi')
+    // console.log(this.hospitalform.value.hospital_id)
+    this.service.filterhospital(id)
     .subscribe({
       next: (res)=>{
         this.patients = res.data;
@@ -112,6 +129,30 @@ displayHositalfilter(){
     })
   }
 
+  filteredReqByCity(){
+    let id =this.cityform.value.location_code
+  // console.log(c.location_code)
+    this.service.filtercity(id)
+    .subscribe({
+      next: (res)=>{
+        this.patients = res.data;
+        },error:(error)=>{
+          console.log(error)
+        }
+    })
+  }
+
+  All(){
+    this.service.retriveAllReq()
+    .subscribe({
+     next: (res)=>{
+      this.patients = res.data;
+      console.log(this.patients[0].blood_type)
+      },error:(error)=>{
+        console.log(error)
+      }
+    })
+  }
 
 
 

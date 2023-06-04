@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { addRequestService } from '../services/addRequest.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
-import { City, reqAdd } from '../model/request';
+import { City,reqAdd } from '../model/request';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Blood } from '../model/hospitalstock';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -19,7 +19,7 @@ export class RequestComponent implements OnInit {
   displayBloodFilter:boolean =true;
   displayHospitalFilter:boolean =true;
   id:any;
-  patients?: reqAdd[];
+  patients?: reqAdd[]; 
   blood: Blood[];
   bloodfilter: Blood[]
   hospitalfilter: Hospital[]
@@ -164,6 +164,18 @@ displayHositalfilter(){
         },error:(error)=>{
           console.log(error)
         }
+    })
+  }
+
+  All(){
+    this.service.retriveAllReq()
+    .subscribe({
+     next: (res)=>{
+      this.patients = res.data;
+      console.log(this.patients[0].blood_type)
+      },error:(error)=>{
+        console.log(error)
+      }
     })
   }
 
