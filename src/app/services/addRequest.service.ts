@@ -35,6 +35,13 @@ retriveAllReq(): Observable<any>{
       )
 }
 
+allreqhospital(): Observable<any>{
+  return this.http.get<any>(`${requestAPI}/all-requests-hospitals`)
+    .pipe(
+        catchError(this.errorHandler)
+      )
+}
+
 getblood(): Observable<any>{
   return this.http.get<any>(`${requestAPI}/blood-types`)
   .pipe(
@@ -89,4 +96,12 @@ filtercity(id:any): Observable<any>{
     catchError(this.errorHandler)
   )
 }
+
+donate(res: any): Observable<any>{
+  return this.http.post(`${requestAPI}/add-response`, res)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 }
