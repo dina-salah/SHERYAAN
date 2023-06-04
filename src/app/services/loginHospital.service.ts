@@ -29,9 +29,11 @@ export class loginHospitalService{
 
   logout() {
     this.loggedIn.next(false);
-    localStorage.removeItem('hospitaldata');
-    localStorage.removeItem('stockdata');
-    localStorage.removeItem('hospital_id');
+    // localStorage.removeItem('hospitaldata');
+    // localStorage.removeItem('stockdata');
+    // localStorage.removeItem('hospital_id');
+    // localStorage.removeItem('reqdata');
+    localStorage.clear();
     this.router.navigate(['/sign-in']);
   }
 
