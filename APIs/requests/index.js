@@ -39,11 +39,11 @@ app.get("/", function (req, res) {
 
 //Retrieve all requests
 app.get("/all-requests", function (req, res) {
-  dbConn.query(`SELECT u.user_Fname, u.user_Lname , r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  
+  dbConn.query(`SELECT u.user_Fname, u.user_Lname , r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
                 from request AS r join blood AS b on r.blood_type = b.blood_id
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                 JOIN location AS l ON h.location_code = l.location_code
-                JOIN user AS u ON r.user_id = u.user_id`
+                LEFT JOIN user AS u ON r.user_id = u.user_id`
   , function (error, results, fields) {
     if (error) throw error;
     return res.send({ error: false, data: results, message: "All Requests" });
