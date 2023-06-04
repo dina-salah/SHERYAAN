@@ -279,7 +279,7 @@ app.get("/users-form/:id", function (req, res) {
               JOIN user AS u ON d.responding_user = u.user_id 
               JOIN user AS us ON req.user_id = us.user_id
               JOIN blood AS b ON req.blood_type = b.blood_id
-            WHERE req.hospital_id = 3 `
+            WHERE req.hospital_id = ? ` 
   hospital_id = req.params.id;
   dbConn.query(sql , hospital_id , function (error, results, fields) {
     if (error) throw error;
