@@ -1,37 +1,3 @@
-<!-- <div class="header">
-    <div  class="row">
-        <div class="col">
-            <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">R</span>EQUEST</p>
-        </div>
-        
-    </div> -->
-    <!-- <div class="col">
-            <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
-        </div> -->
-  
-  <!-- </div>
-
-  <br><br><br>
-
-  <div class="container">
-
-    <b><div class="bi bi-plus-lg" style="font-size: 18px;"  [routerLink]="['/req-form-hospital/',id ]">  Add request </div></b>
-    <br>
-    <table class="table table-borderless table-hover">
-        <thead>
-            <tr>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-  </div> -->
-
-  
 <div class="container">
     <div class="view-account">
         <section class="module">
@@ -48,7 +14,7 @@
         				<ul class="nav" *ngFor="let h of hospital">
         					<li><a href="#" [routerLink]="['/hospital/', h.hospital_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li  class="active"><a href="#" [routerLink]="['/myrequest-hospital/', h.hospital_id]"><span class="bi bi-bag-heart-fill"></span> REQUESTS</a></li>
-        					<!-- <li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li> -->
+        					<li><a href="#"  [routerLink]="['/req-form-hospital/',id ]"><span class="bi bi-plus-lg"></span>ADD REQUEST</a></li>
         					<li><a href="#" [routerLink]="['/request-hospital/', h.hospital_id]"><span class="bi bi-table"></span> DONATE</a></li>
                             <li><a href="#" [routerLink]="['/hospital-stock/', h.hospital_id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
     
@@ -86,11 +52,11 @@
                     <fieldset class="fieldset">
                         <div class="row ">
                             <div class="col col-lg-2">
-                        <h3 class="fieldset-title">Add Requests</h3>
+                        <h3 class="fieldset-title">Requests</h3>
                         </div>
                         <div class="col col-lg-2">
                         <p>You can add request in request table hb vihrf h fug jahfeuhfu eg egf</p>
-                     <span><div class="bi bi-plus-lg add-req"  style="font-size: 18px;"  [routerLink]="['/req-form-hospital/',id ]">  Add Request </div>
+                     <span><div class="bi bi-window-stack add-req"  style="font-size: 18px; width: 153px;"  [routerLink]="['//',id ]">  Patient Requests </div>
                      </span>
                         </div>
                         </div>
