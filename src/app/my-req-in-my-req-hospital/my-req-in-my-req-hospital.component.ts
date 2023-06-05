@@ -44,6 +44,7 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
     this.updatedata.request_status = item.request_status;
     this.updatedata.request_case = item.request_case;
     this.updatedata.request_quantity = item.request_quantity;
+    this.updatedata.request_id = item.request_id;
     console.log(this.updatedata);
     this.service.updatehospitalreq(this.updatedata)
    .subscribe(
@@ -59,8 +60,8 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
    );
   }
   
-    delete(){
-      this.service.deletehospitalreq(this.id).subscribe((res) => {
+    delete(h: any){
+      this.service.deletehospitalreq(h.request_id).subscribe((res) => {
         console.log(res);
       })
     }

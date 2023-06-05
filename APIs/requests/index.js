@@ -24,7 +24,7 @@ var dbConn = mysql.createConnection({
     host: "localhost",
     port: "3306",
     user: "root",
-    password: "pass",
+    password: "menna182000",
     database: "blooddb2",
   });
 // connect to database
@@ -55,7 +55,7 @@ app.get("/all-requests", function (req, res) {
 
 //Retrieve all requests (for hospitals)
 app.get("/all-requests-hospitals", function (req, res) {
-  dbConn.query(`SELECT  r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
+  dbConn.query(`SELECT  r.request_status, r.request_quantity r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
                   from request AS r join blood AS b on r.blood_type = b.blood_id
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                   JOIN location AS l ON h.location_code = l.location_code
@@ -122,7 +122,7 @@ app.get("/filter-by-user/:id", function (req, res) {
 //Filter requests by hospital 
 app.get("/filter-by-hospital/:id", function (req, res) {
     hospital_id = req.params.id;
-    dbConn.query(`SELECT r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
+    dbConn.query(`SELECT r.request_id, r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
                     u.user_Fname , u.user_Lname , h.hospital_address		
                     from request AS r join blood AS b on r.blood_type = b.blood_id 
                     JOIN hospital AS h ON h.hospital_id = r.hospital_id 
@@ -265,9 +265,10 @@ app.delete("/delete-request/id", function (req, res) {
 app.post("/add-response", function (req, res) {
   request_id = req.body.request_id;
   res_user = req.body.user_id;
+  hospital_id = req.body.hospital_id;
 
-  dbConn.query(`INSERT INTO request_donations SET responding_user = ? , request_id = ? ` ,
-  [res_user, request_id] ,
+  dbConn.query(`INSERT INTO request_donations SET responding_user = ? , hospital_id = ? , request_id = ? ` ,
+  [res_user, hospital_id, request_id] ,
   function (error, results, fields) {
       if (error) throw error;
       return res.send(
