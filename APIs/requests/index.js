@@ -250,7 +250,7 @@ app.put("/update-request", function (req, res) {
 app.delete("/delete-request/id", function (req, res) {
     id = req.params.id;
     
-    dbConn.query("delete from request where request_id = ?  " , request_id
+    dbConn.query("delete from request where request_id = ?  " , id
     , function (error, results, fields) {
       if (error) throw error;
       return res.send(
