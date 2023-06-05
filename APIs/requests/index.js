@@ -234,7 +234,7 @@ app.put("/update-request", function (req, res) {
   //user_ssn = req.body.user_ssn;
   //hospital_id = req.body.hospital_id;
 
-    dbConn.query(`UPDATE request SET request_status = ? , request_quantity = ? , request_case = ?  , WHERE request_id = ? ` ,
+    dbConn.query(`UPDATE request SET request_status = ? , request_quantity = ? , request_case = ? WHERE request_id = ? ` ,
         [request_status, request_quantity, request_case, request_id] 
     , function (error, results, fields) {
       if (error) throw error;
@@ -250,7 +250,7 @@ app.put("/update-request", function (req, res) {
 app.delete("/delete-request/id", function (req, res) {
     id = req.params.id;
     
-    dbConn.query("delete from request where request_id = ?  " , request_id
+    dbConn.query("delete from request where request_id = ?  " , id
     , function (error, results, fields) {
       if (error) throw error;
       return res.send(
