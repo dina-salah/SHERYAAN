@@ -8,7 +8,7 @@ import { stockService } from '../services/stock.service';
 import { Stock } from '../model/hospitalstock';
 import { Blood } from '../model/hospitalstock';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import {Hospital} from '../model/signupinfo';
 
 @Component({
   selector: 'app-hospital-stock-form',
@@ -21,7 +21,7 @@ export class HospitalStockFormComponent {
   id: any;
   stock = {bid: '', qty: '', hid: ''};
   hid= {hospital_id: ''};
-
+  hospital?: Hospital[];
   constructor(private service: stockService, private http : HttpClient,private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
   }
@@ -29,6 +29,7 @@ export class HospitalStockFormComponent {
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
     this.hid.hospital_id = this.id;
+    this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
     this.service.getblood(this.hid).subscribe((res) => {
       this.blood = res.data;
       console.log(res);

@@ -7,6 +7,7 @@ import { Stock } from '../model/hospitalstock';
 import { stockService } from '../services/stock.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import {Hospital} from '../model/signupinfo';
 
 @Component({
   selector: 'app-hospital-stock',
@@ -18,7 +19,7 @@ export class HospitalStockComponent {
   stock?: any[];
   status?: any;
   id!: any;
-
+  hospital?: Hospital[];
   deletedata = {bid: '', hid: ''};
   updatedata = {bid: '', hid: '', qty: ''}
  
@@ -34,6 +35,8 @@ export class HospitalStockComponent {
     this.id = this.route.snapshot.params['hospital_id'];
     this. fetch();
     this.stock = JSON.parse(localStorage.getItem('stockdata'));
+    this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
+
   }
 
 

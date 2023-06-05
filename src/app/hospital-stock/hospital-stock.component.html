@@ -1,54 +1,77 @@
-<body ng-app="myapp" ng-controller="tableController">
-<div class="body">
-  <div class="header">
-    <div  class="row">
-        <div class="col">
-            <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">S</span>TOCK</p>
-        </div>
-        <div class="col">
-            <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
-        </div>
-    </div>
-  
-  </div>
-  
-    <br><br><br>
+
+        <b><div class="" >   </div></b>  
+
     <div class="container">
-        <!-- <h1>MY STOCK</h1> -->
-        <b><div class="bi bi-plus-lg" [routerLink]="['/hospital-stock-form/', id]">  Add </div></b>
-
-      <br>
-        <table class="table">
-            <thead class="table-dark">
-              <tr>
-                <th>#</th>
-                <th>Blood Type</th>
-                <th>Quantity</th>
-                <th>Respond</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of stock; index as i">
-                <td>{{i+1}}</td>
-                <td>{{item.blood_type}} </td>
-                <td>
-                  <input name="blood_quantity" type="text" [(ngModel)]="stock[i].blood_quantity" [disabled]="!item.isEditing" />
-                </td>
+      <div class="view-account">
+          <section class="module">
+              <div class="module-inner">
+                  <div class="side-bar">
+                      <div class="user-info">
+                          <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
+                          
+                          <ul class="meta list list-unstyled" *ngFor="let h of hospital">
+                              <li class="name" style="font-size:18px ; margin-top: 16px;">{{h.hospital_name}}</li>
+                          </ul>
+                      </div>
+                  <nav class="side-menu">
+                  <ul class="nav" *ngFor="let h of hospital">
+                    <li><a href="#" [routerLink]="['/hospital/', h.hospital_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+                    <li><a href="#" [routerLink]="['/myrequest-hospital/', h.hospital_id]"><span class="bi bi-bag-heart-fill"></span> REQUESTS</a></li>
+                    <li><a href="#"  [routerLink]="['/req-form-hospital/',id ]"><span class="bi bi-plus-lg"></span>ADD REQUEST</a></li>
+                    <li><a href="#" [routerLink]="['/request-hospital/', h.hospital_id]"><span class="bi bi-table"></span> DONATE</a></li>
+                    <li  class="active"><a href="#" [routerLink]="['/hospital-stock/', h.hospital_id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
+      
+                  </ul>
+                </nav>
+                  </div>
+                  <div class="content-panel">
+                      <fieldset class="fieldset">
+                          <div class="row ">
+                      <div class="col ">
+                        <p>xdcfvgbhnjkjgghjjjiyrv  hjkjlkjhfd dfghjkliuy ddfghj fghjk</p>
+                        <span><div class="bi bi-plus-lg add-req"  style="font-size: 18px; width: 110px;"  [routerLink]="['/hospital-stock-form/', id]"> Add Stock</div>
+                        </span>
+                        <br>
+                        <table class="table">
+                            <thead class="table-dark">
+                              <tr>
+                                <th>#</th>
+                                <th>Blood Type</th>
+                                <th>Quantity</th>
+                                <th>Respond</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of stock; index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{item.blood_type}} </td>
+                                <td>
+                                  <input name="blood_quantity" type="text" [(ngModel)]="stock[i].blood_quantity" [disabled]="!item.isEditing" />
+                                </td>
+                  
+                                <td>
+                                  <button class="btn btn-primary" (click)="editItem(item)" ><i class="bi bi-pencil-fill"></i>
+                                    {{ item.isEditing ? 'Cancel' : 'Edit' }}
+                                  </button>
+                                  &nbsp;
+                                  <button class="btn btn-danger" *ngIf="!item.isEditing" (click)="delete(item)"><i class="bi bi-trash-fill"></i></button>
+                                  <button class="btn btn-primary" *ngIf="item.isEditing" (click)="updateItem(item)">Update</button></td>
+                              
+                                </tr>
+                
+                            </tbody>
+                          </table>
+                          <br><br>
+                      </div>
+                      </div>
+                      </fieldset>
+                      <br>
+                      <br>
+                      <hr>
   
-                <td>
-                  <button class="btn btn-primary" (click)="editItem(item)" ><i class="bi bi-pencil-fill"></i>
-                    {{ item.isEditing ? 'Cancel' : 'Edit' }}
-                  </button>
-                  &nbsp;
-                  <button class="btn btn-danger" *ngIf="!item.isEditing" (click)="delete(item)"><i class="bi bi-trash-fill"></i></button>
-                  <button class="btn btn-primary" *ngIf="item.isEditing" (click)="updateItem(item)">Update</button></td>
-              
-                </tr>
-
-            </tbody>
-          </table>
-          <br><br>
-    </div>
-
-</div>
-</body>
+                      
+                  </div>
+                  
+                
+  
+                  
