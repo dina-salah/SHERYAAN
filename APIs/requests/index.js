@@ -247,7 +247,7 @@ app.put("/update-request", function (req, res) {
 
 
 //delete hospital stock
-app.delete("/delete-request/id", function (req, res) {
+app.delete("/delete-request/:id", function (req, res) {
     id = req.params.id;
     
     dbConn.query("delete from request where request_id = ?  " , id
