@@ -61,7 +61,9 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
   }
   
     delete(h: any){
-      this.service.deletehospitalreq(h.request_id).subscribe((res) => {
+      let id = h.request_id;
+      console.log(id);
+      this.service.deletehospitalreq(id).subscribe((res) => {
         console.log(res);
       })
     }
