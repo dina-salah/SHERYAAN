@@ -15,7 +15,7 @@
         				<ul class="nav" *ngFor="let h of hospital">
         					<li class="active"><a href="#" [routerLink]="['/hospital/', h.hospital_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li><a href="#" [routerLink]="['/myrequest-hospital/', h.hospital_id]"><span class="bi bi-bag-heart-fill"></span> REQUESTS</a></li>
-        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+        					<li ><a href="#"  [routerLink]="['/req-form-hospital/',id ]"><span class="bi bi-plus-lg"></span>ADD REQUEST</a></li>
         					<li><a href="#" [routerLink]="['/request-hospital/', h.hospital_id]"><span class="bi bi-table"></span> DONATE</a></li>
                             <li><a href="#" [routerLink]="['/hospital-stock/', h.hospital_id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
     

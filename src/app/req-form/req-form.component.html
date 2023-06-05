@@ -1,32 +1,37 @@
-<div class="header">
-    <div  class="row">
-        <div class="col">
-            <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">R</span>EQUEST</p>
-        </div>
-        <div class="col">
-            <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
-        </div>
-    </div>
-  
-  </div>
-  <br><br><br><br>
-  <pre></pre>
-
 <div class="container">
-   
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
+                        
+                        <ul class="meta list list-unstyled" *ngFor="let u of user" >
+                          <li class="name" style="font-size:18px ; margin-top: 16px;"><b>{{u.user_Fname}} {{u.user_Lname}}</b></li>
+                         
+                      </ul>
+                    </div>
+                <nav class="side-menu">
+                  <ul class="nav"  *ngFor="let u of user">
+                              <li><a href="#" [routerLink]="['/user/', u.user_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+                              <li><a href="#" [routerLink]="['/myrequest-user/', u.user_id]"><span class="bi bi-bag-heart-fill"></span> MY REQUEST</a></li>
+                              <li class="active" ><a href="#"[routerLink]="['/req-form/',u.user_id]"><span class="bi bi-plus-lg"></span> ADD REQUEST</a></li>
+                              <li><a href="#" [routerLink]="['/my-donations-user/', id]"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+                              <li><a href="#" [routerLink]="['/request/', u.user_id]"><span class="bi bi-table"></span> DONATE</a></li>        
+                          </ul>
+              </nav>
+                </div>
+                <div class="content-panel">
+                    <fieldset class="fieldset">
+                        <div class="row ">
+                    <div class="col ">
+                                
     <form class="Orgnization"  #localForm="ngForm" [formGroup]="UserForm">  
         <div class="mb-3" style="font-weight:bolder; margin: 13px; font-size: 20px;">
             Make sure that all information request is correct to avoid any problem
         </div>
 
         <label for="blood_type" style="margin-right: 7px;">Hospital:  </label>
-        <!-- <select formControlName="hospital_name">
-            <option value="0">--Select--</option>  
-            <option *ngFor="let h of hospital">  
-                 {{h.hospital_name}}
-            </option>  
-        </select> -->
-        <!--  -->
         <select formControlName="hospital_id">
             <option value="0">--Select--</option>  
             <option *ngFor="let h of hospital"  
@@ -34,7 +39,7 @@
                     {{h.hospital_name}}  
             </option>  
         </select>
-        <br>
+        <br> 
 <pre></pre>
 <label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
         <select formControlName="blood_type">
@@ -68,5 +73,14 @@
 </div>
 <pre></pre>
 
-</form>
-</div>
+</form>    
+                    </div>
+                    </div>
+                    </fieldset><br>
+                    <hr>
+                </div>
+                
+              
+  
+                
+      

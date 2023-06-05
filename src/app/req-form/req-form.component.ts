@@ -25,14 +25,14 @@ export class ReqFormComponent implements OnInit {
   hospital:Hospital[];
   id:any;
   request = {user_id:'',hospital_id: '', blood_type: '', request_quantity: '', request_date: '', request_case: '', request_status: ''};
-
-  constructor(private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
+  user?: User[];
+  constructor(private loginService: loginService,private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
   }
 
   ngOnInit(){
     this.id = this.route.snapshot.params['user_id'];
-
+    this. getuser();
     this.service.gethospital()
     .subscribe((res) => {
       this.hospital= res.data;
@@ -46,6 +46,17 @@ export class ReqFormComponent implements OnInit {
     })
 
   }
+
+  getuser(){
+    this.loginService.getUser(this.id).subscribe((res) => {
+        this.user = res;
+        const userdata = res.data;
+        if (userdata) {
+          localStorage.setItem('userdata', JSON.stringify(userdata));
+        }
+        console.log(res);
+    });
+      }  
 
   UserForm =  new FormGroup({
     request_status: new FormControl('', Validators.required),

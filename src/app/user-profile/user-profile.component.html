@@ -13,10 +13,11 @@
                     </div>
             		<nav class="side-menu">
         				<ul class="nav"  *ngFor="let u of user">
-        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
-        					<li><a href="#" >[routerLink]="['/myrequest-user/', u.user_id]"<span class="bi bi-bag-heart-fill"></span>REQUEST</a></li>
-        					<li><a href="#" [routerLink]="['/my-donations-user/', u.user_id]"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
-        					<li><a href="#" [routerLink]="['/request/', u.user_id]"><span class="bi bi-table"></span>Donate</a></li>
+        					<li class="active"><a href="#" [routerLink]="['/user/', u.user_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li><a href="#" [routerLink]="['/myrequest-user/', u.user_id]"><span class="bi bi-bag-heart-fill"></span> MY REQUEST</a></li>
+                            <li ><a href="#"   [routerLink]="['/req-form/',u.user_id]"><span class="bi bi-plus-lg"></span> ADD REQUEST</a></li>
+        					<li><a href="#" [routerLink]="['/my-donations-user/', id]"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+        					<li><a href="#" [routerLink]="['/request/', u.user_id]"><span class="bi bi-table"></span> DONATE</a></li>
                             
         				</ul>
         			</nav>

@@ -1,26 +1,7 @@
-<div class="header">
-    <div  class="row">
-        <div class="col">
-            <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">R</span>EQUEST</p>
-        </div>
-        <!-- <div class="col">
-            <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 250px;">
-        </div><br> -->
-    </div>
-  
-  </div>
-  <br>
-  <pre></pre>
- 
-<div class="container">
+
+<!-- <div class="container">
    
     <form   #localForm="ngForm" [formGroup]="form">  
-        <div class="mb-3" style="font-weight:bolder; margin: 13px; font-size: 20px;">
-            Make sure that all information request is correct to avoid any problem
-        </div>
-
-        <pre></pre>
-
 <label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
         <select formControlName="blood_id">
             <option value="0">--Select--</option>  
@@ -36,18 +17,7 @@
 
 </div>
 <pre></pre>
-<!-- <div  class="">
-    <label  style="margin-right: 7px;">City:</label>
-    <select class="drop" formControlName="city">
-    <option value="6 October">  6 October</option>
-    <option value="Dokki">      Dokki</option>
-    <option value="New Cairo">  New Cairo</option>
-    <option value="Nasr city">  Nasr city</option>
-    <option value="Madinty">    Madinty</option>
-    </select>
-</div>
-<pre></pre> -->
-<!-- select hospital -->
+
 <div  class="">
     <input class="form-control" type="text" placeholder="status"   formControlName="request_status">
 </div>
@@ -64,4 +34,107 @@
 <pre></pre>
 
 </form>
-</div>
+</div> -->
+
+
+  
+  <div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
+                        
+                        <ul class="meta list list-unstyled" *ngFor="let h of hospital">
+                            <li class="name" style="font-size:18px ; margin-top: 16px;">{{h.hospital_name}}</li>
+                        </ul>
+                    </div>
+            		<nav class="side-menu">
+        				<ul class="nav" *ngFor="let h of hospital">
+        					<li><a href="#" [routerLink]="['/hospital/', h.hospital_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li ><a href="#" [routerLink]="['/myrequest-hospital/', h.hospital_id]"><span class="bi bi-bag-heart-fill"></span> REQUESTS</a></li>
+        					<li class="active"><a href="#"  [routerLink]="['/req-form-hospital/',id ]"><span class="bi bi-plus-lg"></span>ADD REQUEST</a></li>
+        					<li><a href="#" [routerLink]="['/request-hospital/', h.hospital_id]"><span class="bi bi-table"></span> DONATE</a></li>
+                            <li><a href="#" [routerLink]="['/hospital-stock/', h.hospital_id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
+    
+        				</ul>
+        			</nav>
+                </div>
+
+              
+                <div class="content-panel" >
+                    <div style="margin-left: 50px;">
+                    <fieldset class="fieldset" >
+                        <div class="row ">
+                    <div class="col ">
+
+                        <h5> Make sure that all information request is correct to avoid any problem</h5>
+                        <pre></pre>
+                        <span> 
+                            <form   #localForm="ngForm" [formGroup]="form">  
+                                <label for="blood_type" style="margin-right: 7px;">Blood type:  </label>
+                                        <select formControlName="blood_id">
+                                            <option value="0">--Select--</option>  
+                                            <option *ngFor="let b of blood" value={{b.blood_id}}>  
+                                                {{b.blood_type}}  
+                                            </option>  
+                                        </select>
+                                        <br>
+                                <pre></pre>
+                                
+                                <div class="">
+                                    <input class="form-control" type="text" placeholder="Quantity"  formControlName="request_quantity">
+                                
+                                </div>
+                                <pre></pre>
+                                
+                                <div  class="">
+                                    <input class="form-control" type="text" placeholder="status"   formControlName="request_status">
+                                </div>
+                                <pre></pre>
+                                
+                                <div  class="">
+                                    <input class="form-control" type="text" placeholder="Case"   formControlName="request_case" >
+                                </div>
+                                <pre></pre>
+                                
+                                <div  class="">
+                                    <button class="btn btn-danger" type="submit" value="" style="margin: 10px;" (click)="addrequest()">Add</button>
+                                </div>
+                                <pre></pre>
+                                
+                                </form>
+                     </span>
+                    </div>
+                    </div>
+                    </fieldset>
+                    <br>
+                    <!-- <fieldset class="fieldset">
+                        <div class="row ">
+                        <div class="col col-lg-2">
+                            <p>You can veiw all doners responds that has commited by them to requests that where located in your hospital hb vihrf h fug jahfeuhfu eg egf</p>
+                            <span><div class="bi bi-clipboard-data add-req"  style="font-size: 18px; width: 138px;"  [routerLink]="['/my-req-in-my-req-hospital/',id ]"> View Requests</div>
+                            </span>
+                        </div>
+                        </div>
+                    </fieldset><br> -->
+                    <!-- <fieldset class="fieldset">
+                        <div class="row ">
+                        <div class="col col-lg-2">
+                        <p>You can add request in request table hb vihrf h fug jahfeuhfu eg egf</p>
+                     <span><div class="bi bi-window-stack add-req"  style="font-size: 18px; width: 153px;"  [routerLink]="['//',id ]">  Patient Requests </div>
+                     </span>
+                        </div>
+                        </div>
+                    </fieldset> -->
+                    <br>
+                </div>
+                    <hr>
+
+                    
+                </div>
+                
+              
+
+                

@@ -55,11 +55,11 @@ export class RequestHospitalComponent implements OnInit {
 
   private fetch(){
 
-    this.service.retriveAllReq()
+    this.service.allreqhospital()
     .subscribe({
      next: (res)=>{
       this.patients = res.data;
-      console.log(this.patients[0].blood_type)
+      console.log(this.patients)
       },error:(error)=>{
         console.log(error)
       }

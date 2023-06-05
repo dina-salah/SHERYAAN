@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { reqAdd } from '../model/request';
 import { Blood } from '../model/hospitalstock';
-
+import { Hospital } from '../model/signupinfo';
 
 @Component({
   selector: 'app-req-form-hospital',
@@ -19,14 +19,16 @@ export class ReqFormHospitalComponent  implements OnInit  {
   id!: any;
   blood: Blood[];
   request = {hospital_id: '', blood_type: '', request_quantity: '', request_case: '', request_status: ''};
-
+  hospital?: Hospital[];
   constructor(private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
   }
 
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
-    this.service.getblood().subscribe((res) => {
+    this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
+    this.service.getblood()
+    .subscribe((res) => {
       this.blood = res.data;
       console.log(res.data);
     })

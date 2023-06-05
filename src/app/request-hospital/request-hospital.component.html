@@ -90,20 +90,19 @@
   </span>
 </form>
 </div>
-</div>
+</div><br>
       <!-- retrive all -->
         <table class="table">
             <thead class="table-dark">
               <tr>
                 <th>#</th>
                 <th>Place</th>
-                <th>Receiver</th>
+                <!-- <th>Receiver</th> -->
                 <th>Date</th>
                 <th>Blood type</th>
                 <th>Quantity</th>
                 <th>Case</th>
                 <th>Status</th>
-                <th>Address</th>
                 <th>City</th>
                 <th>Respond</th>
               </tr>
@@ -112,7 +111,7 @@
               <tr *ngFor="let p of patients; index as i">
                 <td>{{i+1}}</td>
                 <td>{{p.hospital_name}}</td>
-                <td>{{p.user_Fname}} {{p.user_Lname}} </td>
+                <!-- <td>{{p.user_Fname}} {{p.user_Lname}} </td> -->
                 <td>{{p.request_date}}</td>
                 <td>{{p.blood_type}}</td>
                 <td>{{p.request_quantity}}</td>
@@ -120,7 +119,7 @@
                 <td>{{p.request_status}}</td>
                 <!-- addr -->
                 <td>{{p.city}}</td>
-                <td><button class="btn btn-danger">Donate</button></td>
+                <td><button class="btn btn-danger">Contact</button></td>
               </tr>
             </tbody>
           </table>

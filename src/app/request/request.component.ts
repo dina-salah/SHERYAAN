@@ -24,6 +24,7 @@ export class RequestComponent implements OnInit {
   bloodfilter: Blood[]
   hospitalfilter: Hospital[]
   city: City[];
+  donatedata = {request_id: '', user_id: ''};
   
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
@@ -59,7 +60,7 @@ export class RequestComponent implements OnInit {
     .subscribe({
      next: (res)=>{
       this.patients = res.data;
-      console.log(this.patients[0].blood_type)
+      console.log(this.patients);
       },error:(error)=>{
         console.log(error)
       }
@@ -179,6 +180,15 @@ displayHositalfilter(){
     })
   }
 
+  onDonate(p: any){
+    this.donatedata.request_id = p.request_id;
+    this.donatedata.user_id = JSON.parse(this.id);
+    console.log(this.donatedata)
+    this.service.donate(this.donatedata).subscribe((res) => {
+      console.log(res);
+    })
+  }
+
   // showform(){
   //   if(this.display==true){
   //     this.display = false;
@@ -191,9 +201,6 @@ displayHositalfilter(){
   //   this.donate=true
   // }
 
-
-
-  
 
 
 }

@@ -1,0 +1,27 @@
+.header{
+    background-color: rgb(114, 4, 4);
+    height: 200px;
+    width: 100%;
+    padding: 35px 20px 30px 60px;
+    text-shadow: 6px 8px rgba(0, 0, 0, 0.555); 
+  }
+  b{
+    
+    background-color: rgba(230, 215, 178, 0.877);
+    /* font-weight:bolder;  */
+    border-radius: 4px;
+    padding:4px; 
+    margin:15px; 
+    width:125px;
+    height:39px;
+    float: right; 
+    text-align: center;
+  }
+  b:hover{
+    background-color: rgb(13, 34, 150);
+    color: rgb(255, 255, 255);
+  }
+  span{
+    padding-left: 2px;
+    padding-right: 11px;
+  }

@@ -122,7 +122,7 @@ app.get("/filter-by-user/:id", function (req, res) {
 //Filter requests by hospital 
 app.get("/filter-by-hospital/:id", function (req, res) {
     hospital_id = req.params.id;
-    dbConn.query(`SELECT r.request_id , r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
+    dbConn.query(`SELECT r.request_id, r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
                     u.user_Fname , u.user_Lname , h.hospital_address		
                     from request AS r join blood AS b on r.blood_type = b.blood_id 
                     JOIN hospital AS h ON h.hospital_id = r.hospital_id 

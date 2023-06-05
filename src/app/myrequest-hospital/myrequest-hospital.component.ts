@@ -14,11 +14,13 @@ import {Hospital} from '../model/signupinfo'
 export class MyrequestHospitalComponent implements OnInit{
 
   id!: any;
+  hospital?: Hospital[];
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['hospital_id'];
+    this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
   }
 
 }
