@@ -104,4 +104,18 @@ donate(res: any): Observable<any>{
   )
 }
 
+updatehospitalreq(res: any){
+  return this.http.put(`${requestAPI}/update-request`, res)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
+deletehospitalreq(id: any){
+  return this.http.delete(`${requestAPI}/delete-request/` + id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 }

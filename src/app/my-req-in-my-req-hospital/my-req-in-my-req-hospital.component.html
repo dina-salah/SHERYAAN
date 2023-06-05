@@ -1,1 +1,39 @@
-<p>my-req-in-my-req-hospital works!</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Blood type</th>
+            <th>Quantity</th>
+            <th>Case</th>
+            <th>Status</th>
+            <th>City</th>
+            <th>update/delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let h of hospitalreq; index as i">
+            <td>{{i+1}}</td>
+                <td>{{h.request_date}}</td>
+                <td>{{h.blood_type}}</td>
+                <td >
+                    <input name="request_quantity" type="text" [(ngModel)]="hospitalreq[i].request_quantity" [disabled]="!h.isEditing" />
+                </td>
+                <td >
+                    <input name="request_case" type="text" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" />
+                </td>
+                <td >
+                    <input name="request_status" type="text" [(ngModel)]="hospitalreq[i].request_status" [disabled]="!h.isEditing" />
+                </td>
+                <td>{{h.city}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="editItem(h)" ><i class="bi bi-pencil-fill"></i>
+                        {{ h.isEditing ? 'Cancel' : 'Edit' }}
+                    </button>
+                    &nbsp;
+                    <button class="btn btn-danger" *ngIf="!h.isEditing" (click)="delete()"><i class="bi bi-trash-fill"></i></button>
+                    <button class="btn btn-primary" *ngIf="h.isEditing" (click)="updateItem(h)">Update</button>
+                </td>
+        </tr>
+    </tbody>
+</table>
