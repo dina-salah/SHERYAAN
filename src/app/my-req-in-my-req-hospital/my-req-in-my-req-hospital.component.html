@@ -1,39 +1,84 @@
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Date</th>
-            <th>Blood type</th>
-            <th>Quantity</th>
-            <th>Case</th>
-            <th>Status</th>
-            <th>City</th>
-            <th>update/delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let h of hospitalreq; index as i">
-            <td>{{i+1}}</td>
-                <td>{{h.request_date}}</td>
-                <td>{{h.blood_type}}</td>
-                <td >
-                    <input name="request_quantity" type="text" [(ngModel)]="hospitalreq[i].request_quantity" [disabled]="!h.isEditing" />
-                </td>
-                <td >
-                    <input name="request_case" type="text" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" />
-                </td>
-                <td >
-                    <input name="request_status" type="text" [(ngModel)]="hospitalreq[i].request_status" [disabled]="!h.isEditing" />
-                </td>
-                <td>{{h.city}}</td>
-                <td>
-                    <button class="btn btn-primary" (click)="editItem(h)" ><i class="bi bi-pencil-fill"></i>
-                        {{ h.isEditing ? 'Cancel' : 'Edit' }}
-                    </button>
-                    &nbsp;
-                    <button class="btn btn-danger" *ngIf="!h.isEditing" (click)="delete(h)"><i class="bi bi-trash-fill"></i></button>
-                    <button class="btn btn-primary" *ngIf="h.isEditing" (click)="updateItem(h)">Update</button>
-                </td>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
+                        
+                        <ul class="meta list list-unstyled" *ngFor="let h of hospital">
+                            <li class="name" style="font-size:18px ; margin-top: 16px;">{{h.hospital_name}}</li>
+                        </ul>
+                    </div>
+            		<nav class="side-menu">
+        				<ul class="nav" *ngFor="let h of hospital">
+        					<li><a href="#" [routerLink]="['/hospital/', h.hospital_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li><a href="#" [routerLink]="['/myrequest-hospital/', h.hospital_id]"><span class="bi bi-bag-heart-fill"></span> REQUESTS</a></li>
+        					<li><a href="#"  [routerLink]="['/req-form-hospital/',id ]"><span class="bi bi-plus-lg"></span>ADD REQUEST</a></li>
+        					<li><a href="#" [routerLink]="['/request-hospital/', h.hospital_id]"><span class="bi bi-table"></span> DONATE</a></li>
+                            <li><a href="#" [routerLink]="['/hospital-stock/', h.hospital_id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
+    
+        				</ul>
+        			</nav>
+                </div>
+                <div class="content-panel">
+                    <fieldset class="fieldset">
+                        <div class="row ">
+                            <div class="col col-lg-2">
+                        <!-- <h3 class="fieldset-title">Response</h3> -->
+                    </div>
+                    <div class="col ">
+                        <!-- table -->
+                        <table class="table table-hover">
+                            <thead  class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Blood type</th>
+                                    <th>Quantity</th>
+                                    <th>Case</th>
+                                    <th>Status</th>
+                                    <th>City</th>
+                                    <th>update/delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let h of hospitalreq; index as i">
+                                    <td>{{i+1}}</td>
+                                        <td>{{h.request_date}}</td>
+                                        <td>{{h.blood_type}}</td>
+                                        <td >
+                                            <input name="request_quantity" type="text" [(ngModel)]="hospitalreq[i].request_quantity" [disabled]="!h.isEditing" />
+                                        </td>
+                                        <td >
+                                            <input name="request_case" type="text" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" />
+                                        </td>
+                                        <td >
+                                            <input name="request_status" type="text" [(ngModel)]="hospitalreq[i].request_status" [disabled]="!h.isEditing" />
+                                        </td>
+                                        <td>{{h.city}}</td>
+                                        <td>
+                                            <button class="btn btn-primary" (click)="editItem(h)" ><i class="bi bi-pencil-fill"></i>
+                                                {{ h.isEditing ? 'Cancel' : 'Edit' }}
+                                            </button>
+                                            &nbsp;
+                                            <button class="btn btn-danger" *ngIf="!h.isEditing" (click)="delete(h)"><i class="bi bi-trash-fill"></i></button>
+                                            <button class="btn btn-primary" *ngIf="h.isEditing" (click)="updateItem(h)">Update</button>
+                                        </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    </div>
+                    </fieldset>
+                    <br>
+                    <br>
+                    <hr>
+
+                    
+                </div>
+                
+              
+
+                

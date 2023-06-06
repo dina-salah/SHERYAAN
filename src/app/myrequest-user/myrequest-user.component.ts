@@ -7,6 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Blood } from '../model/hospitalstock';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hospital } from '../model/signupinfo';
+import { User } from '../model/signupinfo';
 
 @Component({
   selector: 'app-myrequest-user',
@@ -14,12 +15,13 @@ import { Hospital } from '../model/signupinfo';
   styleUrls: ['./myrequest-user.component.css']
 })
 export class MyrequestUserComponent implements OnInit{
-
+  user?: User[];
   id!: any;
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
   this.id = this.route.snapshot.params['user_id'];
+  this.user = JSON.parse(localStorage.getItem('userdata'));
   }
 }

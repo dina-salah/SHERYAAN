@@ -62,6 +62,7 @@ import { MyDonationsUserComponent } from './my-donations-user/my-donations-user.
 import { MyrequestHospitalComponent } from './myrequest-hospital/myrequest-hospital.component';
 import { MyReqInMyReqHospitalComponent } from './my-req-in-my-req-hospital/my-req-in-my-req-hospital.component';
 import { HospitalViewResponseComponent } from './hospital-view-response/hospital-view-response.component';
+import { PatientRequestsComponent } from './patient-requests/patient-requests.component';
 
 
 @NgModule({
@@ -120,6 +121,7 @@ import { HospitalViewResponseComponent } from './hospital-view-response/hospital
     MyrequestHospitalComponent,
     MyReqInMyReqHospitalComponent,
     HospitalViewResponseComponent,
+    PatientRequestsComponent,
  
   ],
   imports: [

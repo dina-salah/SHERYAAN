@@ -4,7 +4,7 @@ import { reqAdd } from '../model/request';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Blood } from '../model/hospitalstock';
-import {Hospital} from '../model/signupinfo'
+import {Hospital} from '../model/signupinfo';
 
 @Component({
   selector: 'app-my-req-in-my-req-hospital',
@@ -15,6 +15,8 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
   id!: any;
   hospitalreq: any[];
   status?: any;
+  hospital?: Hospital[];
+
 
   updatedata = {request_status: '', request_quantity: '', request_case: '', request_id: ''}
 
@@ -22,6 +24,7 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
 
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
+    this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
     this.fetch();
   }
 

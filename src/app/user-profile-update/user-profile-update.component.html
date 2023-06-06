@@ -12,12 +12,13 @@
                         </ul>
                     </div>
             		<nav class="side-menu">
-        				<ul class="nav">
-        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
-        					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
-        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
-        					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
-        				
+        				<ul class="nav"  >
+        					<li class="active"><a href="#" [routerLink]="['/user/',id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li><a href="#" [routerLink]="['/myrequest-user/', id]"><span class="bi bi-bag-heart-fill"></span> MY REQUEST</a></li>
+                            <li ><a href="#"   [routerLink]="['/req-form/',id]"><span class="bi bi-plus-lg"></span> ADD REQUEST</a></li>
+        					<li><a href="#" [routerLink]="['/my-donations-user/', id]"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+        					<li><a href="#" [routerLink]="['/request/', id]"><span class="bi bi-table"></span> DONATE</a></li>
+                            
         				</ul>
         			</nav>
                 </div>
