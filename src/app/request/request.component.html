@@ -119,12 +119,33 @@
                 <!-- addr -->
                 <td></td>
                 <td>{{p.city}}</td>
-                <td><button class="btn btn-danger" (click)="onDonate(p)">Donate</button></td>
+                <td><button class="btn btn-danger" type="button" (click)="onDonate(p)"data-bs-toggle="modal" data-bs-target="#donate">Donate</button></td>
               </tr>
             </tbody>
-          </table>
+          </table> 
 
           <br><br>
+          <!-- Modal -->
+          <div class="modal fade" id="donate">
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">DONATION SENT, ONE STEP MORE!</h4>
+                  <button class="btn-close" data-bs-dismiss="modal" ></button>
+                </div>
+                <div class="modal-body">
+                    <!-- <h2>Sure want to delete your account?</h2>  -->
+                    <P>We appreciate your donation! Your contribution will help us change lives literally! Now you should head to the hospital to finish the process, Thank you!</P>
+
+                   
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+
     </div>
 
 </div>
