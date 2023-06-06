@@ -52,7 +52,13 @@
                                     <td>{{r.participant_Fname}} {{r.participant_Lname}}</td>
                                     <td>{{r.participant_ID}}</td>
                                     <td>{{r.response_date}}</td>
-                                    <td>{{r.response_status}}</td>
+                                    <td *ngIf="r.response_status == 0">
+                                        <!-- {{r.response_status}} -->
+                                        <button class="btn btn-secondary" (click)="completed(r.response_status)">Pending</button>
+                                    </td>
+                                    <td *ngIf="r.response_status == 1">
+                                        <button class="btn btn-info" >Completed</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

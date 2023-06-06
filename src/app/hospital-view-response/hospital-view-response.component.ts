@@ -35,4 +35,10 @@ export class HospitalViewResponseComponent implements OnInit{
     })
   }
 
+  completed(data:any){
+    console.log(data)
+    data = 1;
+    // NEED FUNC TO POST VALUECHANGE IN DB
+  }
+
 }
