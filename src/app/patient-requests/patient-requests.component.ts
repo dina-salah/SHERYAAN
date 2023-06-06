@@ -15,7 +15,9 @@ export class PatientRequestsComponent implements OnInit{
   id!: any;
   hospital?: Hospital[];
   req: reqAdd[];
-  res_count: any[];
+  res_count: reqAdd["Requests_Counter"];
+  request_id: number;
+
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -35,13 +37,14 @@ export class PatientRequestsComponent implements OnInit{
           console.log(error)
         }
     })
+
   }
 
   rescount(r: any){
     this.service.countresponses(r)
     .subscribe((r: any) => {
-      // console.log(r);
-      console.log('hiiii')
+      console.log(r.data[0].Requests_Counter);
+      this.res_count
     })
   }
 
