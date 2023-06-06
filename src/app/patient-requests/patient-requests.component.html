@@ -29,7 +29,28 @@
                     </div>
                     <div class="col ">
                         <!-- table -->
-                        
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Patient name</th>
+                                    <th>Blood type</th>
+                                    <th>Request Case</th>
+                                    <th>Quantity</th>
+                                    <th>Responses_count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let r of req; index as i">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{r.user_Fname}} {{r.user_Lname}}</td>
+                                    <td>{{r.blood_type}}</td>
+                                    <td>{{r.request_case}}</td>
+                                    <td>{{r.request_quantity}}</td>
+                                    <td rescount(r.request_id)></td>
+                                </tr>
+                            </tbody>
+                        </table>
                         
                     </div>
                     </div>

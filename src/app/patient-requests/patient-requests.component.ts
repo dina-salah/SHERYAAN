@@ -14,12 +14,27 @@ import {Hospital} from '../model/signupinfo';
 export class PatientRequestsComponent implements OnInit{
   id!: any;
   hospital?: Hospital[];
+  req: reqAdd[];
+  res_count: any[];
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
-    this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
-    
+    this.fetch();
   }
+
+  fetch(){
+    this.service.filterhospital(this.id).subscribe((res: any) => {
+      this.req = res.data;
+      console.log(res);
+    })
+  }
+
+  rescount(r: any){
+    this.service.countresponses(r).subscribe((r: any) => {
+      console.log(r);
+    })
+  }
+
 }

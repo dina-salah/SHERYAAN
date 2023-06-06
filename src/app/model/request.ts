@@ -11,6 +11,7 @@ export class reqAdd{
     request_case:string;
     city:string;
     hospital_address:string;
+    request_id: number;
 }
 export class City{
     location_code:any;
