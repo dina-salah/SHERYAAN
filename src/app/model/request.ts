@@ -1,3 +1,5 @@
+import { AsyncKeyword } from "typescript";
+
 export class reqAdd{
     request_status:string;
     user_Fname:string;
@@ -13,4 +15,18 @@ export class reqAdd{
 export class City{
     location_code:any;
     city:string;
+}
+
+export class Response{
+    applicant_Fname: string;
+    applicant_Lname: string;
+    applicant_ID: number;
+    request_date: Date;
+    blood_type: string;
+    request_quantity: number;
+    response_date: Date;
+    response_status: number;
+    participant_ID: number;
+    participant_Fname: string;
+    participant_Lname: string;
 }

@@ -28,8 +28,36 @@
                         <!-- <h3 class="fieldset-title">Response</h3> -->
                     </div>
                     <div class="col ">
-                        <div>paragraph</div>
+                
                         <!-- table -->
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Patient ID</th>
+                                    <th>Request Date</th>
+                                    <th>Blood type</th>
+                                    <th>Quantity</th>
+                                    <th>Donor Name</th>
+                                    <th>Donor ID</th>
+                                    <th>Response date</th>
+                                    <th>Response status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let r of response">
+                                    <td>{{r.applicant_Fname}} {{r.applicant_Lname}}</td>
+                                    <td>{{r.applicant_ID}}</td>
+                                    <td>{{r.request_date}}</td>
+                                    <td>{{r.blood_type}}</td>
+                                    <td>{{r.request_quantity}}</td>
+                                    <td>{{r.participant_Fname}} {{r.participant_Lname}}</td>
+                                    <td>{{r.participant_ID}}</td>
+                                    <td>{{r.response_date}}</td>
+                                    <td>{{r.response_status}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     </div>
                     </fieldset>
