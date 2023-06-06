@@ -1,6 +1,73 @@
 <div class="container">
-    <div style="float: left; width: 900px;"></div>
-      <app-donate-side-nav style="float: right;"></app-donate-side-nav>
+  <pre>  </pre>
+    <app-donate-side-nav style="float: right;"></app-donate-side-nav>
+    <pre> 
+      
+    </pre>
+    <div style="float: left; width: 900px;">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <!-- <th>#</th> -->
+            <th></th>
+            <th>Place</th>
+            <!-- <th>Receiver</th>
+            <th>Date</th> -->
+            <th>Blood type</th>
+            <th>Quantity</th>
+            <!-- <th>Case</th>
+            <th>status</th>
+            <th>Address</th> -->
+            <th>City</th>
+            <!-- <th>Respond</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of patients; index as i">
+            <!-- <td>{{i+1}}</td> -->
+            <td></td>
+            <td>{{p.hospital_name}}</td>
+            <!-- <td>{{p.user_Fname}} {{p.user_Lname}} </td>
+            <td>{{p.request_date}}</td> -->
+            <td>{{p.blood_type}}</td>
+            <td>{{p.request_quantity}}</td>
+            <!-- <td>{{p.request_case}}</td>
+            <td>{{p.request_status}}</td> -->
+            <!-- addr -->
+            <!-- <td></td> -->
+            <td>{{p.city}}</td>
+            <!-- <td><button class="btn btn-danger" type="button" (click)="onDonate(p)"data-bs-toggle="modal" data-bs-target="#donate">Donate</button></td> -->
+          </tr>
+        </tbody>
+      </table> 
+    
+    </div>
+     
+      <br><br>
+      <!-- Modal -->
+      <div class="modal fade" id="donate">
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">DONATION SENT, ONE STEP MORE!</h4>
+              <button class="btn-close" data-bs-dismiss="modal" ></button>
+            </div>
+            <div class="modal-body">
+               
+                <P>We appreciate your donation! Your contribution will help us change lives literally! Now you should head to the hospital to finish the process, Thank you!</P>
+
+               
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <pre> 
+      
+      </pre>
 </div>
 <br>
 <br>
