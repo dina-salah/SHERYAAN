@@ -125,4 +125,19 @@ getresponse(id: any){
   )
 }
 
+countresponses(reqId: any){
+  return this.http.get(`${requestAPI}/count/` + reqId)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
+responseExpire(id: any){
+  return this.http.get(`${requestAPI}/calculate-expire-date/` + id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
+
 }
