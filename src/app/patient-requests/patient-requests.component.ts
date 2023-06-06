@@ -25,15 +25,23 @@ export class PatientRequestsComponent implements OnInit{
   }
 
   fetch(){
-    this.service.filterhospital(this.id).subscribe((res: any) => {
-      this.req = res.data;
-      console.log(res);
+    
+    this.service.filterhospital(this.id)
+    .subscribe({
+      next: (res)=>{
+        this.req = res.data;
+        // console.log(this.req);
+        },error:(error)=>{
+          console.log(error)
+        }
     })
   }
 
   rescount(r: any){
-    this.service.countresponses(r).subscribe((r: any) => {
-      console.log(r);
+    this.service.countresponses(r)
+    .subscribe((r: any) => {
+      // console.log(r);
+      console.log('hiiii')
     })
   }
 
