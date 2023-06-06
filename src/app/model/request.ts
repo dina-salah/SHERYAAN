@@ -12,6 +12,7 @@ export class reqAdd{
     city:string;
     hospital_address:string;
     request_id: number;
+    Requests_Counter: number;
 }
 export class City{
     location_code:any;
