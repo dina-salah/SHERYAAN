@@ -118,4 +118,11 @@ deletehospitalreq(id: any){
   )
 }
 
+getresponse(id: any){
+  return this.http.get(`${requestAPI}/users-form/` + id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 }
