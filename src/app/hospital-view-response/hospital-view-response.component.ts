@@ -21,6 +21,8 @@ export class HospitalViewResponseComponent implements OnInit{
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(): void {
+    
+    this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
     this.id = this.route.snapshot.params['hospital_id'];
     this.fetch();
 
