@@ -38,7 +38,7 @@
                                     <th>Blood type</th>
                                     <th>Quantity</th>
                                     <th>Case</th>
-                                    <th>Status</th>
+                                    <!-- <th>Status</th> -->
                                     <th>City</th>
                                     <th>update/delete</th>
                                 </tr>
@@ -54,17 +54,18 @@
                                         <td >
                                             <input name="request_case" type="text" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" />
                                         </td>
-                                        <td >
+                                        <!-- <td >
                                             <input name="request_status" type="text" [(ngModel)]="hospitalreq[i].request_status" [disabled]="!h.isEditing" />
-                                        </td>
+                                        </td> -->
                                         <td>{{h.city}}</td>
-                                        <td>
+                                        <td><span style="display: flex;">
                                             <button class="btn btn-primary" (click)="editItem(h)" ><i class="bi bi-pencil-fill"></i>
                                                 {{ h.isEditing ? 'Cancel' : 'Edit' }}
                                             </button>
-                                            
+                                            &nbsp;
                                             <button class="btn btn-danger" *ngIf="!h.isEditing" (click)="delete(h)"><i class="bi bi-trash-fill"></i></button>
-                                            <button class="btn btn-primary" *ngIf="h.isEditing" (click)="updateItem(h)">Update</button>
+                                            <button class="btn btn-warning" *ngIf="h.isEditing" (click)="updateItem(h)">Update</button>
+                                            </span>
                                         </td>
                                 </tr>
                             </tbody>

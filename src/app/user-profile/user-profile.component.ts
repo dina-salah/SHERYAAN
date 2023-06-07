@@ -32,6 +32,7 @@ export class UserProfileComponent implements OnInit{
   message = '';
   points_Amount:any;
   user_name: string;
+  user_Lname: string;
 
   constructor(private toastr: ToastrService,
     private service: loginService,
@@ -115,8 +116,9 @@ export class UserProfileComponent implements OnInit{
           console.log(res);
           this.isfetching = false;
           this.user_name = res[0].user_Fname;
+          this.user_Lname = res[0].user_Lname;
           localStorage.setItem('username', JSON.stringify(this.user_name));
-
+          localStorage.setItem('userlname', JSON.stringify(this.user_Lname));
       });
         }     
 

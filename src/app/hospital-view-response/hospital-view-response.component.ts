@@ -35,8 +35,8 @@ export class HospitalViewResponseComponent implements OnInit{
     })
   }
 // couldnt solve it
-  completed(id){
-    this.service.updateDonarStatus(id)
+  completed(r: any){
+    this.service.updateDonarStatus(r)
     .subscribe((res)=>{
       // this.response = res.data[0];
       // console.log(res);
