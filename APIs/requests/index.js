@@ -40,7 +40,7 @@ app.get("/", function (req, res) {
 
 
 
-/* ---------------------------------   Requests Retrieving   ---------------------------------- */
+/* ---------------------------------   Requests - Responses Retrieving   ---------------------------------- */
 
 
 //Retrieve all requests (for users)
@@ -88,6 +88,24 @@ app.get("/my-requests/:id", function (req, res) {
     return res.send({ error: false, data: results, message: "All Requests" });
   });
 });
+
+
+
+//Retrieve my responses (for users)
+app.get("/my-responses/:id", function (req, res) {
+  user_id = req.params.id
+  dbConn.query(`SELECT d.response_status , DATE(d.response_date) , u.user_id , h.hospital_name , h.hospital_city 
+                  FROM request_donations AS d 
+                  JOIN request AS r ON d.request_id = r.request_id 
+                  JOIN user AS u ON d.responding_user = u.user_id  
+                  JOIN hospital AS h ON h.hospital_id = r.hospital_id 
+                WHERE d.responding_user = ? ` , user_id
+  , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "All Requests" });
+  });
+});
+
 
 
 /* ---------------------------------   Requests Filtering   ---------------------------------- */
