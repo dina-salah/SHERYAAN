@@ -18,7 +18,7 @@ export class ReqFormHospitalComponent  implements OnInit  {
 
   id!: any;
   blood: Blood[];
-  request = {hospital_id: '', blood_type: '', request_quantity: '', request_case: '', request_status: ''};
+  request = {hospital_id: '', blood_type: '', request_quantity: '', request_case: ''};
   hospital?: Hospital[];
   constructor(private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
@@ -38,7 +38,7 @@ export class ReqFormHospitalComponent  implements OnInit  {
     blood_id: new FormControl(null, Validators.required),
     request_quantity: new FormControl(null, Validators.required),
     request_case: new FormControl(null, Validators.required),
-    request_status: new FormControl(null, Validators.required),
+    // request_status: new FormControl(null, Validators.required),
   });
 
   addrequest(){
@@ -46,7 +46,7 @@ export class ReqFormHospitalComponent  implements OnInit  {
     this.request.blood_type = this.form.value.blood_id;
     this.request.request_quantity = this.form.value.request_quantity;
     this.request.request_case = this.form.value.request_case;
-    this.request.request_status = this.form.value.request_status;
+    // this.request.request_status = this.form.value.request_status;
     this.service.addrequest(this.request).subscribe((res) => {
       console.log(res);
       this.toastr.success('request added!');
