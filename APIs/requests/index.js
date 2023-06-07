@@ -303,10 +303,10 @@ app.get("/calculate-expire-date/:id", function (req, res) {
 
 
 //get responses form
-app.get("/users-form/:id", function (req, res) {
-  sql = `SELECT us.user_Fname AS "applicant Fname", us.user_Lname AS "applicant Lname", us.user_national_ID AS "applicant ID", 
+app.get("/users-form/:id", function (req, res) { 
+  sql = `SELECT us.user_Fname AS "applicant_Fname", us.user_Lname AS "applicant_Lname", us.user_national_ID AS "applicant_ID", 
           req.request_date, b.blood_type, req.request_quantity ,
-          u.user_national_ID AS "participant ID", u.user_Fname AS "participant Fname", u.user_Lname AS "participant Lname" ,
+          u.user_national_ID AS "participant_ID", u.user_Fname AS "participant_Fname", u.user_Lname AS "participant_Lname" ,
           d.response_date , d.response_status
               from request AS req 
               JOIN request_donations AS d ON req.request_id = d.request_id
@@ -322,6 +322,27 @@ app.get("/users-form/:id", function (req, res) {
 });
 
 
+
+//add points when user donating
+app.post("/add-points-after-donation", function (req, res) {
+  response_id = req.body.response_id;
+  user_id = req.body.user_id;
+  hospital_id = req.body.hospital_id;
+
+  sql = `SELECT InsertPointsAfterResponseChange( ${response_id} , ${user_id}, ${hospital_id})`
+
+  dbConn.query(`SELECT InsertPointsAfterResponseChange( ${response_id} , ${user_id}, ${hospital_id})` ,
+  function (error, results, fields) {
+      if (error) throw error;
+      return res.send(
+          { error: false,
+            message: "points added successfully" 
+          });
+    });
+  });
+
+
+  
 // set port
 app.listen(9000, function () {
     console.log("Node app is running on port 9000");
