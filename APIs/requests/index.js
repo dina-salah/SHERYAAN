@@ -78,7 +78,7 @@ app.get("/all-requests-hospitals", function (req, res) {
 app.get("/my-requests/:id", function (req, res) {
   user_id = req.params.id
   dbConn.query(`SELECT r.request_id , r.request_status,  r.hospital_id, 
-                  r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
+                  r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) AS "request_date"
                   from request AS r join blood AS b on r.blood_type = b.blood_id
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                   JOIN location AS l ON h.location_code = l.location_code
@@ -102,7 +102,7 @@ app.get("/search-requests/:value", function (req, res) {
                 from request AS r join blood AS b on r.blood_type = b.blood_id 
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                 JOIN location AS l ON h.location_code = l.location_code
-                WHERE h.hospital_name LIKE ? OR b.blood_type LIKE ?`;
+                WHERE h.hospital_name LIKE ? OR b.blood_type LIKE ? `;
   
     dbConn.query(
       sql,
@@ -148,7 +148,7 @@ app.get("/filter-by-user/:id", function (req, res) {
 app.get("/filter-by-hospital/:id", function (req, res) {
     hospital_id = req.params.id;
     dbConn.query(`SELECT r.request_id, r.request_status, r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name ,
-                    u.user_Fname , u.user_Lname , h.hospital_address		
+                    u.user_Fname , u.user_Lname , h.hospital_address , r.request_date		
                     from request AS r join blood AS b on r.blood_type = b.blood_id 
                     JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                     JOIN location AS l ON h.location_code = l.location_code
@@ -230,15 +230,15 @@ app.get("/hospitals", function (req, res) {
 app.post("/add-request", function (req, res) {
     user_id = req.body.user_id;
     hospital_id = req.body.hospital_id;
-    request_status = req.body.request_status;
+    //request_status = req.body.request_status;
     //request_date = req.body.request_date; 
     request_quantity = req.body.request_quantity ;
     request_case = req.body.request_case;
     blood_type = req.body.blood_type;
 
-    dbConn.query(`INSERT INTO request SET user_id = ? , hospital_id = ? , request_status = ? , request_quantity = ? ,
+    dbConn.query(`INSERT INTO request SET user_id = ? , hospital_id = ? , request_quantity = ? ,
                   request_case = ? , blood_type = ? ` ,
-    [user_id, hospital_id, request_status, request_quantity, request_case, blood_type] ,
+    [user_id, hospital_id, request_quantity, request_case, blood_type] ,
     function (error, results, fields) {
         if (error) throw error;
         return res.send(
@@ -252,14 +252,14 @@ app.post("/add-request", function (req, res) {
 
 //update request
 app.put("/update-request", function (req, res) {
-  request_status = req.body.request_status;
+  //request_status = req.body.request_status;
   request_quantity = req.body.request_quantity ;
   request_case = req.body.request_case;
   request_id = req.body.request_id;
   
 
-    dbConn.query(`UPDATE request SET request_status = ? , request_quantity = ? , request_case = ? WHERE request_id = ? ` ,
-        [request_status, request_quantity, request_case, request_id] 
+    dbConn.query(`UPDATE request SET request_quantity = ? , request_case = ? WHERE request_id = ? ` ,
+        [ request_quantity, request_case, request_id] 
     , function (error, results, fields) {
       if (error) throw error;
       return res.send(
@@ -306,9 +306,12 @@ app.post("/add-response", function (req, res) {
 
 
 //count number of responses to a specific request
-app.get("/count/:reqId", function (req, res) {
-    request_id = req.params.reqId;
-    dbConn.query(`SELECT COUNT(*) AS "Requests Counter" FROM request_donations where request_id = ? GROUP BY request_id `, request_id
+app.get("/count", function (req, res) {
+    dbConn.query(`SELECT  r.request_id , u.user_Fname , u.user_Lname , r.blood_type , COUNT(*) AS "Requests Counter" ,
+                    r.request_case , r.request_quantity FROM request_donations AS d 
+                    JOIN request AS r ON d.request_id = r.request_id 
+                    JOIN user AS u ON r.user_id = u.user_id
+                    GROUP BY request_id  `
     , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "All Requests" });
@@ -373,7 +376,7 @@ app.post("/add-points-after-donation", function (req, res) {
 
 //Fulfilled Request 
 app.put("/fulfilled-request/:id", function (req, res) {
-  request_id = req.params.id
+  request_id = req.body.request_id
   
     dbConn.query(`UPDATE request SET request_status = 1 WHERE request_id = ? ` , request_id  
     , function (error, results, fields) {
