@@ -325,13 +325,13 @@ app.post("/add-response", function (req, res) {
 
 //count number of responses to a specific request
 app.get("/count", function (req, res) {
-    dbConn.query(`SELECT  r.request_id , u.user_Fname , u.user_Lname , r.blood_type , COUNT(*) AS "Requests Counter" ,
-                  DATE(r.request_date) , r.request_case , r.request_quantity , h.hospital_name , h.hospital_city , h.hospital_id 
+    dbConn.query(`SELECT  r.request_id , u.user_Fname , u.user_Lname , r.blood_type , COUNT(*) AS "Requests_Counter" ,
+                  DATE(r.request_date) AS "request_date" , r.request_case , r.request_quantity , h.hospital_name , h.hospital_city , h.hospital_id 
                   FROM request_donations AS d 
                   JOIN request AS r ON d.request_id = r.request_id 
                   JOIN user AS u ON r.user_id = u.user_id
                   JOIN hospital AS h ON r.hospital_id = h.hospital_id
-                  GROUP BY request_id  `
+                  GROUP BY request_id `
     , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "All Requests" });
