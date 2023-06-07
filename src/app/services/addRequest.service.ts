@@ -141,7 +141,7 @@ responseExpire(id: any){
 
 // /fulfilled-request/
 updateDonarStatus(id: any){
-  return this.http.put(`${requestAPI}/fulfilled-request/`,id)
+  return this.http.put(`${requestAPI}/fulfilled-request/` + id, id)
   .pipe(
     catchError(this.errorHandler)
   )

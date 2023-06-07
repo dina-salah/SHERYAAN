@@ -32,7 +32,7 @@ export class UserProfileUpdateComponent implements OnInit{
   ngOnInit(): void {
     this.id = this.route.snapshot.params['user_id'];
     this.username = JSON.parse(localStorage.getItem('username'));
-    this.Lastname = JSON.parse(localStorage.getItem('user_Lname'));
+    this.Lastname = JSON.parse(localStorage.getItem('userlname'));
     this.userService.find(this.id).subscribe((data:User)=>{
       this.user = data;
       console.log(this.user[0]); 
