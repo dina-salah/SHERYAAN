@@ -1,3 +1,4 @@
+/* -----------   API Intialization   ------------ */
 const cors = require('cors'); //added cors
 var express = require("express");
 var app = express();
@@ -37,6 +38,11 @@ app.get("/", function (req, res) {
   return res.send({ error: false, message: "hello" });
 });
 
+
+
+/* ---------------------------------   Requests Retrieving   ---------------------------------- */
+
+
 //Retrieve all requests (for users)
 app.get("/all-requests", function (req, res) {
   dbConn.query(`SELECT r.request_id , u.user_Fname, u.user_Lname , r.request_status,  r.hospital_id, 
@@ -55,7 +61,7 @@ app.get("/all-requests", function (req, res) {
 
 //Retrieve all requests (for hospitals)
 app.get("/all-requests-hospitals", function (req, res) {
-  dbConn.query(`SELECT  r.request_status, r.request_quantity r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
+  dbConn.query(`SELECT  r.request_status, r.request_quantity , r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
                   from request AS r join blood AS b on r.blood_type = b.blood_id
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                   JOIN location AS l ON h.location_code = l.location_code
@@ -66,6 +72,25 @@ app.get("/all-requests-hospitals", function (req, res) {
   });
 });
 
+
+
+//Retrieve my requests (for users)
+app.get("/my-requests/:id", function (req, res) {
+  user_id = req.params.id
+  dbConn.query(`SELECT r.request_id , r.request_status,  r.hospital_id, 
+                  r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
+                  from request AS r join blood AS b on r.blood_type = b.blood_id
+                  JOIN hospital AS h ON h.hospital_id = r.hospital_id 
+                  JOIN location AS l ON h.location_code = l.location_code
+                WHERE r.user_id = ? ` , user_id
+  , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "All Requests" });
+  });
+});
+
+
+/* ---------------------------------   Requests Filtering   ---------------------------------- */
 
 
 //search requests
@@ -180,7 +205,10 @@ app.get("/filter-by-city/:id", function (req, res) {
   });
 });
 
-  
+
+
+/* ---------------------------------   Requests CRUD Operations   ---------------------------------- */
+
 
 //create new request 
 
@@ -223,16 +251,12 @@ app.post("/add-request", function (req, res) {
 
 
 //update request
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!! which coloumns to update !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 app.put("/update-request", function (req, res) {
   request_status = req.body.request_status;
   request_quantity = req.body.request_quantity ;
   request_case = req.body.request_case;
   request_id = req.body.request_id;
-  //request_date = req.body.request_date; 
-  //blood_type = req.body.blood_type;
-  //user_ssn = req.body.user_ssn;
-  //hospital_id = req.body.hospital_id;
+  
 
     dbConn.query(`UPDATE request SET request_status = ? , request_quantity = ? , request_case = ? WHERE request_id = ? ` ,
         [request_status, request_quantity, request_case, request_id] 
@@ -246,7 +270,7 @@ app.put("/update-request", function (req, res) {
 
 
 
-//delete hospital stock
+//delete request
 app.delete("/delete-request/:id", function (req, res) {
     id = req.params.id;
     
@@ -260,6 +284,7 @@ app.delete("/delete-request/:id", function (req, res) {
   });
 
 
+/* ---------------------------------   Responses Operations (add, count, calculate expiry)  ---------------------------------- */
 
 //add a user response
 app.post("/add-response", function (req, res) {
@@ -302,6 +327,9 @@ app.get("/calculate-expire-date/:id", function (req, res) {
 });
 
 
+/* ---------------------------------   Hospital Forms and Operations   ---------------------------------- */
+
+
 //get responses form
 app.get("/users-form/:id", function (req, res) { 
   sql = `SELECT us.user_Fname AS "applicant_Fname", us.user_Lname AS "applicant_Lname", us.user_national_ID AS "applicant_ID", 
@@ -341,6 +369,20 @@ app.post("/add-points-after-donation", function (req, res) {
     });
   });
 
+
+
+//Fulfilled Request 
+app.put("/fulfilled-request/:id", function (req, res) {
+  request_id = req.params.id
+  
+    dbConn.query(`UPDATE request SET request_status = 1 WHERE request_id = ? ` , request_id  
+    , function (error, results, fields) {
+      if (error) throw error;
+      return res.send(
+        { error: false,
+          message: "Request is fulfilled!" });
+    });
+  });
 
   
 // set port
