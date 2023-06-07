@@ -25,7 +25,7 @@ export class HospitalViewResponseComponent implements OnInit{
     this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
     this.id = this.route.snapshot.params['hospital_id'];
     this.fetch();
-
+    
   }
 
   fetch(){
@@ -34,10 +34,19 @@ export class HospitalViewResponseComponent implements OnInit{
       console.log(res.data);
     })
   }
+// couldnt solve it
+  completed(id){
+    this.service.updateDonarStatus(id)
+    .subscribe((res)=>{
+      // this.response = res.data[0];
+      // console.log(res);
+      // console.log(this.response)
+    },(error)=>{
+      console.log(error)
+  })
 
-  completed(data:any){
-    console.log(data)
-    data = 1;
+    // console.log(data)
+    // data = 1;
     // NEED FUNC TO POST VALUECHANGE IN DB
   }
 
