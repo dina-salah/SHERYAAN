@@ -16,8 +16,6 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
   hospitalreq: any[];
   status?: any;
   hospital?: Hospital[];
-
-
   updatedata = {request_status: '', request_quantity: '', request_case: '', request_id: ''}
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}

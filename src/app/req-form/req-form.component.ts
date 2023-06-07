@@ -78,7 +78,7 @@ export class ReqFormComponent implements OnInit {
     .subscribe((res) => {
       console.log(res);
       this.toastr.success('request added!');
-      this._router.navigate(['/request/', this.id]);
+      this._router.navigate(['/myrequest-user/', this.id]);
     })
   }
 

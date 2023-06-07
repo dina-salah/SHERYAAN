@@ -147,4 +147,11 @@ updateDonarStatus(id: any){
   )
 }
 
+myrequestUser(id: any){
+  return this.http.get(`${requestAPI}/my-requests/` + id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 }
