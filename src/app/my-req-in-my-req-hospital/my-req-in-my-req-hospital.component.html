@@ -62,7 +62,7 @@
                                             <button class="btn btn-primary" (click)="editItem(h)" ><i class="bi bi-pencil-fill"></i>
                                                 {{ h.isEditing ? 'Cancel' : 'Edit' }}
                                             </button>
-                                            &nbsp;
+                                            
                                             <button class="btn btn-danger" *ngIf="!h.isEditing" (click)="delete(h)"><i class="bi bi-trash-fill"></i></button>
                                             <button class="btn btn-primary" *ngIf="h.isEditing" (click)="updateItem(h)">Update</button>
                                         </td>

@@ -1,3 +1,9 @@
+p{
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  color: rgb(46, 46, 46);
+}
   b{
     
     background-color: rgba(230, 215, 178, 0.877);
