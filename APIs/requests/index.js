@@ -326,10 +326,12 @@ app.post("/add-response", function (req, res) {
 //count number of responses to a specific request
 app.get("/count", function (req, res) {
     dbConn.query(`SELECT  r.request_id , u.user_Fname , u.user_Lname , r.blood_type , COUNT(*) AS "Requests Counter" ,
-                    r.request_case , r.request_quantity FROM request_donations AS d 
-                    JOIN request AS r ON d.request_id = r.request_id 
-                    JOIN user AS u ON r.user_id = u.user_id
-                    GROUP BY request_id  `
+                  DATE(r.request_date) , r.request_case , r.request_quantity , h.hospital_name , h.hospital_city , h.hospital_id 
+                  FROM request_donations AS d 
+                  JOIN request AS r ON d.request_id = r.request_id 
+                  JOIN user AS u ON r.user_id = u.user_id
+                  JOIN hospital AS h ON r.hospital_id = h.hospital_id
+                  GROUP BY request_id  `
     , function (error, results, fields) {
       if (error) throw error;
       return res.send({ error: false, data: results, message: "All Requests" });
@@ -357,11 +359,11 @@ app.get("/users-form/:id", function (req, res) {
           req.request_date, b.blood_type, req.request_quantity ,
           u.user_national_ID AS "participant_ID", u.user_Fname AS "participant_Fname", u.user_Lname AS "participant_Lname" ,
           d.response_date , d.response_status
-              from request AS req 
-              JOIN request_donations AS d ON req.request_id = d.request_id
-              JOIN user AS u ON d.responding_user = u.user_id 
-              LEFT JOIN user AS us ON req.user_id = us.user_id
-              JOIN blood AS b ON req.blood_type = b.blood_id
+          from request AS req 
+          JOIN request_donations AS d ON req.request_id = d.request_id
+          JOIN user AS u ON d.responding_user = u.user_id 
+          LEFT JOIN user AS us ON req.user_id = us.user_id
+          JOIN blood AS b ON req.blood_type = b.blood_id
             WHERE req.hospital_id = ? ` 
   hospital_id = req.params.id;
   dbConn.query(sql , hospital_id , function (error, results, fields) {
@@ -393,7 +395,7 @@ app.post("/add-points-after-donation", function (req, res) {
 
 
 //Fulfilled Request 
-app.put("/fulfilled-request/:id", function (req, res) {
+app.put("/fulfilled-request", function (req, res) {
   request_id = req.body.request_id
   
     dbConn.query(`UPDATE request SET request_status = 1 WHERE request_id = ? ` , request_id  
