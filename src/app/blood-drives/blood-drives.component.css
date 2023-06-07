@@ -1,0 +1,15 @@
+.header{
+    background-color: black;
+    height: 200px;
+    width: 100%;
+    padding: 50px 20px 30px 60px;
+    text-shadow: 4px 6px rgba(110, 110, 110, 0.555); 
+    color: aliceblue;
+  }
+
+.para{
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: rgb(46, 46, 46);
+}
