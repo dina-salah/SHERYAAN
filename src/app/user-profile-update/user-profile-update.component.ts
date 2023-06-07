@@ -20,6 +20,7 @@ export class UserProfileUpdateComponent implements OnInit{
   id!: number;
   user!: User;
   form!: FormGroup;
+  username: string;
 
   constructor(
     public userService: updateService,
@@ -30,6 +31,7 @@ export class UserProfileUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['user_id'];
+    this.username = JSON.parse(localStorage.getItem('username'));
     this.userService.find(this.id).subscribe((data:User)=>{
       this.user = data;
       console.log(this.user[0]); 

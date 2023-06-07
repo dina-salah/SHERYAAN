@@ -5,18 +5,18 @@
                 <div class="side-bar">
                     <div class="user-info">
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
-                        
+                        <br>
                         <ul class="meta list list-unstyled">
-                            <!-- <li class="name">{{hospital.name}}</li> --> 
+                            <li class="name">{{hname}}</li> 
                         </ul>
                     </div>
             		<nav class="side-menu">
         				<ul class="nav">
-        					<li class="active"><a href="#" routerLink="/user-profile" routerLinkActive="active"><span class="bi bi-person-fill"></span> PROFILE</a></li>
-        					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
-        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
-        					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
-                            <li><a href="#" routerLink="/hospital-stock" routerLinkActive="active"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
+        					<li class="active"><a href="#" [routerLink]="['/hospital/', id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li><a href="#" [routerLink]="['/myrequest-hospital/', id]"><span class="bi bi-bag-heart-fill"></span> REQUESTS</a></li>
+        					<li ><a href="#"  [routerLink]="['/req-form-hospital/',id ]"><span class="bi bi-plus-lg"></span>ADD REQUEST</a></li>
+        					<li><a href="#" [routerLink]="['/request-hospital/', id]"><span class="bi bi-table"></span> DONATE</a></li>
+                            <li><a href="#" [routerLink]="['/hospital-stock/', id]"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
     
         				</ul>
         			</nav>

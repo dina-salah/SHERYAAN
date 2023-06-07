@@ -26,6 +26,7 @@
                         <div class="row">
                     <div class="col ">
                         <!-- table -->
+                        <h3>P A T I E N T S &nbsp; R E Q U E S T S</h3><br>
                         <table class="table table-hover">
                             <thead class="table-dark">
                                 <tr>
@@ -38,7 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let r of req; index as i; ">
+                                <tr *ngFor="let r of req; index as i;">
                                     <td>{{i + 1}}</td>
                                     <td>{{r.user_Fname}} {{r.user_Lname}}</td>
                                     <td>{{r.blood_type}}</td>

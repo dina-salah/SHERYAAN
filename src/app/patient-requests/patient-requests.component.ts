@@ -44,7 +44,7 @@ export class PatientRequestsComponent implements OnInit{
     this.service.countresponses(r)
     .subscribe((r: any) => {
       console.log(r.data[0].Requests_Counter);
-      this.res_count
+      this.req["Requests_Counter"] = r.data[0].Requests_Counter;
     })
   }
 

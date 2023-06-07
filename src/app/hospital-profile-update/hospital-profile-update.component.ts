@@ -20,6 +20,7 @@ export class HospitalProfileUpdateComponent implements OnInit{
   id!: number;
   hospital!: Hospital;
   form!: FormGroup;
+  hname: any;
 
   constructor(
     public hospitalService: updateService,
@@ -31,6 +32,7 @@ export class HospitalProfileUpdateComponent implements OnInit{
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['hospital_id'];
+    this.hname = JSON.parse(localStorage.getItem('hospitalname'));
     this.hospitalService.findhos(this.id).subscribe((data:Hospital)=>{
       this.hospital = data;
       console.log(this.hospital[0]); 

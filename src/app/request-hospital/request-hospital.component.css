@@ -21,3 +21,10 @@
     padding: 35px 20px 30px 60px;
     text-shadow: 6px 8px rgba(0, 0, 0, 0.555); 
   }
+  .r{
+    font-weight: bold;
+    color: rgb(114, 4, 4);
+  }
+  .r:hover{
+    background-color: whitesmoke;
+  }

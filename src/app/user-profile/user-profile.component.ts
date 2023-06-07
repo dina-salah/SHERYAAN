@@ -31,6 +31,7 @@ export class UserProfileComponent implements OnInit{
   verificationCode?: string;
   message = '';
   points_Amount:any;
+  user_name: string;
 
   constructor(private toastr: ToastrService,
     private service: loginService,
@@ -113,6 +114,8 @@ export class UserProfileComponent implements OnInit{
           }
           console.log(res);
           this.isfetching = false;
+          this.user_name = res[0].user_Fname;
+          localStorage.setItem('username', JSON.stringify(this.user_name));
 
       });
         }     
