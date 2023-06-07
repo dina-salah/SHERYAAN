@@ -29,7 +29,7 @@ export class addRequestService{
     
     
 retriveAllReq(): Observable<any>{
-    return this.http.get<any>(`${requestAPI}/all-requests`)
+    return this.http.get<any>(`${requestAPI}/count`)
     .pipe(
         catchError(this.errorHandler)
       )
@@ -141,7 +141,7 @@ responseExpire(id: any){
 
 // /fulfilled-request/
 updateDonarStatus(id: any){
-  return this.http.put(`${requestAPI}/fulfilled-request/` + id, id)
+  return this.http.put(`${requestAPI}/fulfilled-request/`, id)
   .pipe(
     catchError(this.errorHandler)
   )

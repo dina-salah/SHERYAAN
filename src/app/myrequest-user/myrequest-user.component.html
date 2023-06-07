@@ -46,7 +46,7 @@
                             <th>Blood type</th>
                             <th>Quantity</th>
                             <th>Case</th>
-                            <th>Status</th>
+                            <!-- <th>Status</th> -->
                             <th>city</th>
                             <th>respond</th>
                           </tr>
@@ -63,17 +63,19 @@
                             <td>
                               <input name="request_case" type="text" [(ngModel)]="myrequest[i].request_case" [disabled]="!m.isEditing" />
                             </td>
-                            <td>
+                            <!-- <td>
                               <input name="request_status" type="text" [(ngModel)]="myrequest[i].request_status" [disabled]="!m.isEditing" />
-                            </td>
+                            </td> -->
                             <td>{{m.city}}</td>
                             <td>
+                              <span style="display: flex;">
                               <button class="btn btn-primary" (click)="editItem(m)" ><i class="bi bi-pencil-fill"></i>
                                 {{ m.isEditing ? 'Cancel' : 'Edit' }}
                               </button>
-                            
+                              &nbsp;
                               <button class="btn btn-danger" *ngIf="!m.isEditing" (click)="delete(m)"><i class="bi bi-trash-fill"></i></button>
-                              <button class="btn btn-primary" *ngIf="m.isEditing" (click)="updateItem(m)">Update</button>
+                              <button class="btn btn-warning" *ngIf="m.isEditing" (click)="updateItem(m)">Update</button>
+                              </span>
                             </td>
                           </tr>
                         </tbody>

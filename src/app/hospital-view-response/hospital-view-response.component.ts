@@ -17,6 +17,7 @@ export class HospitalViewResponseComponent implements OnInit{
   id!: any;
   response?: Response[];
   hospital: Hospital[];
+  req_id = {request_id: ''};
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -36,10 +37,11 @@ export class HospitalViewResponseComponent implements OnInit{
   }
 // couldnt solve it
   completed(r: any){
-    this.service.updateDonarStatus(r)
+    this.req_id.request_id = r;
+    this.service.updateDonarStatus(this.req_id)
     .subscribe((res)=>{
       // this.response = res.data[0];
-      // console.log(res);
+      console.log(res);
       // console.log(this.response)
     },(error)=>{
       console.log(error)

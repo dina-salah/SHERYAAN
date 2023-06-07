@@ -100,9 +100,8 @@
                 <th>Blood type</th>
                 <th>Quantity</th>
                 <th>Case</th>
-                <th>status</th>
-                <th>Address</th>
                 <th>City</th>
+                <th>response_count</th>
                 <th>Respond</th>
               </tr>
             </thead>
@@ -115,10 +114,8 @@
                 <td>{{p.blood_type}}</td>
                 <td>{{p.request_quantity}}</td>
                 <td>{{p.request_case}}</td>
-                <td>{{p.request_status}}</td>
-                <!-- addr -->
-                <td></td>
                 <td>{{p.city}}</td>
+                <td>{{p.Requests_Counter}}</td>
                 <td><button class="btn btn-danger" type="button" (click)="onDonate(p)"data-bs-toggle="modal" data-bs-target="#donate">Donate</button></td>
               </tr>
             </tbody>

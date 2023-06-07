@@ -29,7 +29,7 @@ var dbConn = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
-  password: "menna182000",
+  password: "pass",
   database: "blooddb2",
 });
 // connect to database
@@ -45,25 +45,44 @@ app.get("/hospitals", function (req, res) {
 
 // Retrieve hospital with id
 app.get("/hospital/:id", function (req, res) {
-  let hospital_id = req.params.id;
+  let hospital_id = req.params.id; 
   if (!hospital_id) {
     return res
       .status(400)
-      .send({ error: true, message: "Please provide user_id" });
+      .send({ error: true, message: "Please provide hospital_id" });
   }
   dbConn.query(
     "SELECT * FROM hospital where hospital_id=?",
     hospital_id,
     function (error, results, fields) {
-      if (error) throw error;
-      return res.send({
-        error: false,
-        data: results,
-        message: "hospital data.",
-      });
+      if (error) {
+        return res.status(500).send({ error: true, message: "Internal server error" });
+      } else {
+        return res.send(results);
+      }
     }
   );
 });
+// app.get("/hospital/:id", function (req, res) {
+//   let hospital_id = req.params.id;
+//   if (!hospital_id) {
+//     return res
+//       .status(400)
+//       .send({ error: true, message: "Please provide user_id" });
+//   }
+//   dbConn.query(
+//     "SELECT * FROM hospital where hospital_id=?",
+//     hospital_id,
+//     function (error, results, fields) {
+//       if (error) throw error;
+//       return res.send({
+//         error: false,
+//         data: results,
+//         message: "hospital data.",
+//       });
+//     }
+//   );
+// });
 
 // Add a new hospital
 app.post("/hospital", function (req, res) {
