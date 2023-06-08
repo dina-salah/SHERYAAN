@@ -17,7 +17,8 @@ import { reqAdd } from '../model/request';
 export class MyrequestUserComponent implements OnInit{
   user?: User[];
   id!: any;
-  username: string;
+  userFname:string;
+  userLname:string;
   myrequest: reqAdd[];
   updatedata = {request_quantity: '', request_case: '', request_id: ''}
 
@@ -26,7 +27,8 @@ export class MyrequestUserComponent implements OnInit{
   ngOnInit(){
   this.id = this.route.snapshot.params['user_id'];
   this.user = JSON.parse(localStorage.getItem('userdata'));
-  this.username = JSON.parse(localStorage.getItem('username'));
+  this.userFname = JSON.parse(localStorage.getItem('username'));
+  this.userLname = JSON.parse(localStorage.getItem('userlname'));
   this.fetch();
   }
 

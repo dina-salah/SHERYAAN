@@ -29,7 +29,7 @@ export class addRequestService{
     
     
 retriveAllReq(): Observable<any>{
-    return this.http.get<any>(`${requestAPI}/count`)
+    return this.http.get<any>(`${requestAPI}/all-requests`)
     .pipe(
         catchError(this.errorHandler)
       )

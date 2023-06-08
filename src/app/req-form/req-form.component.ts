@@ -26,6 +26,8 @@ export class ReqFormComponent implements OnInit {
   id:any;
   request = {user_id:'',hospital_id: '', blood_type: '', request_quantity: '', request_date: '', request_case: ''}
   user?: User[];
+  userFname:string;
+  userLname:string;
   constructor(private loginService: loginService,private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
   }
@@ -33,6 +35,8 @@ export class ReqFormComponent implements OnInit {
   ngOnInit(){
     this.id = this.route.snapshot.params['user_id'];
     this. getuser();
+    this.userFname = JSON.parse(localStorage.getItem('username'));
+    this.userLname = JSON.parse(localStorage.getItem('userlname'));
     this.service.gethospital()
     .subscribe((res) => {
       this.hospital= res.data;
