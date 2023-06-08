@@ -16,7 +16,9 @@ export class MyDonationsUserComponent implements OnInit {
   info: reqAdd[];
   id!:number
   user: User[];
- 
+  userFname:string;
+  userLname:string;
+
   constructor(private router: Router,
     private service: addRequestService,
     private route: ActivatedRoute){
@@ -26,6 +28,8 @@ export class MyDonationsUserComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params['user_id'];
     this.fetch();
+    this.userFname = JSON.parse(localStorage.getItem('username'));
+    this.userLname = JSON.parse(localStorage.getItem('userlname'));
     this.user = JSON.parse(localStorage.getItem('userdata'));
     localStorage.setItem('user_id', JSON.stringify(this.id));
     JSON.parse(localStorage.getItem('user_id'));
