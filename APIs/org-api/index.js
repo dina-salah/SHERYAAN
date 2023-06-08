@@ -190,3 +190,191 @@ app.listen(8000, function () {
   console.log("Node app is running on port 8000");
 });
 module.exports = app;
+
+
+
+// -----------------------------------------------   Eevets   ----------------------------------------------- //
+
+
+
+// Retrieve all events
+app.get("/events", function (req, res) {
+  dbConn.query(`SELECT o.organization_name , e.* , l.city FROM event AS e 
+                JOIN organization AS o ON e.org_id = o.organization_id 
+                JOIN location AS l ON l.location_code = e.location_code `, function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "Organizations list." });
+  });
+});
+
+// Retrieve event with id
+app.get("/event/:id", function (req, res) {
+  let event_id = req.params.id;
+  if (!event_id) {
+    return res
+      .status(400)
+      .send({ error: true, message: "Please provide your organization id" });
+  }
+  dbConn.query(` SELECT o.organization_name , e.* , l.city FROM event AS e 
+                  JOIN organization AS o ON e.org_id = o.organization_id 
+                  JOIN location AS l ON l.location_code = e.location_code WHERE e.event_id = ? `, event_id ,
+    function (error, results, fields) {
+      if (error) {
+        return res.status(500).send({ error: true, message: "Internal server error" });
+      } else {
+        console.log("Api is fired ");
+        return res.send(results);
+      }
+    }
+  );
+});
+
+
+
+// Retrieve event with organization
+app.get("/event/:id", function (req, res) {
+  let org_id = req.params.id;
+  if (!org_id) {
+    return res
+      .status(400)
+      .send({ error: true, message: "Please provide your organization id" });
+  }
+  dbConn.query(`SELECT o.organization_name , e.* , l.city FROM event AS e 
+                JOIN organization AS o ON e.org_id = o.organization_id 
+                JOIN location AS l ON l.location_code = e.location_code WHERE o.organization_id = ? `, org_id ,
+    function (error, results, fields) {
+      if (error) {
+        return res.status(500).send({ error: true, message: "Internal server error" });
+      } else {
+        console.log("Api is fired ");
+        return res.send(results);
+      }
+    }
+  );
+});
+
+
+
+
+// Retrieve all organizations
+app.get("/orgs", function (req, res) {
+  dbConn.query("SELECT oragization_id , organization_name FROM organization", function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "Organizations list." });
+  });
+});
+
+
+
+// Retrieve all locations
+app.get("/locs", function (req, res) {
+  dbConn.query("SELECT * FROM location", function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "Organizations list." });
+  });
+});
+
+
+
+
+// Add a new event
+app.post("/org", function (req, res) {
+  let start = req.body.event_startDate;
+  let end = req.body.event_endDate;
+  let address = req.body.event_address;
+
+  dbConn.query(
+    "INSERT INTO organization SET ? ",
+    {
+      event_startDate: start,
+      event_endDate: end ,
+      event_address: address,
+
+    },
+    function (error, results, fields) {
+      if (error) throw error;
+      return res.send({
+        error: false,
+        data: results[0],
+        message: "New event has been created successfully.",
+      });
+    }
+  );
+});
+
+
+
+//  Update organization data with id
+app.put(`/event/:id`, function (req, res) {
+  let id = req.params.id;
+  let start = req.body.event_startDate;
+  let end = req.body.event_endDate;
+  let address = req.body.event_address;
+  let loc = req.body.location_code;
+
+  if (!id) {
+    return res
+      .status(400)
+      .send({ error: true, message: "Please provide the user ssn" });
+  }
+  dbConn.query(
+    `UPDATE event SET event_startDate = ? , event_endDate = ? , event_address = ? , location_code = ? WHERE organization_id = ${id} ;`,
+    [start, end, address, loc],
+    function (error, results, fields) {
+      if (error) throw error;
+      return res.send({
+        error: false,
+        data: results,
+        message: "Event data has been updated successfully.",
+      });
+    }
+  );
+});
+
+
+
+//  Update organization data with id
+app.put(`/event-closed/:id`, function (req, res) {
+  let id = req.params.id;
+
+  if (!id) {
+    return res
+      .status(400)
+      .send({ error: true, message: "Please provide the user ssn" });
+  }
+  dbConn.query(
+    `UPDATE event SET event_status = 1 WHERE event_id = ${id} ;`,
+    function (error, results, fields) {
+      if (error) throw error;
+      return res.send({
+        error: false,
+        data: results,
+        message: "Event data has been closed.",
+      });
+    }
+  );
+});
+
+
+
+//  Delete user
+app.delete("/org/:id", function (req, res) {
+  let id = req.params.id;
+  if (!id) {
+    return res
+      .status(400)
+      .send({ error: true, message: "Please provide organization_id" });
+  }
+  dbConn.query(
+    `DELETE FROM event WHERE event_id=${id} ; `,
+    function (error, results, fields) {
+      if (error) throw error;
+      return res.send({
+        error: false,
+        data: results,
+        message: "event has been deleted successfully.",
+      });
+    }
+  );
+});
+z
