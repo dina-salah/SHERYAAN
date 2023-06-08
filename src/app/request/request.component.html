@@ -27,27 +27,27 @@
                   <div class="col ">
 
                     
-                      <div class="body" style=" color: rgb(77, 76, 76);">
+                      <div class="body" style=" color: rgb(77, 76, 76);"> 
                       <div class="container">
+                        <h3 style="text-align: center;">R E Q U E S T S</h3>
                           <p style=" color: rgb(77, 76, 76);">In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
                               a message is sent to that hospital or patient to acknowlage that you are a user of the system. after donation you will
                               get points that will be added to your account, later you can use it for gifts.
                           </p>
-                          <br>
                   
-                        <label>Select filter</label>
+                        <!-- <label>Select filter</label> -->
                        <form>
                        <span>
-                          <input type="radio"  (click)="displayCityfilter()" value="1" name="filter" class="form-check-input" > <span>Filter by city</span>
-                          <input type="radio"  (click)="displayBloodfilter()" value="2" name="filter"  class="form-check-input" ><span>Filter by blood type</span>
-                          <input type="radio" (click)="displayHositalfilter()" value="3" name="filter" class="form-check-input" ><span>Filter by hospital</span>
+                          <input type="radio"  (click)="displayCityfilter()" value="1" name="filter" class="form-check-input" > <span class="x">Filter by city</span> &nbsp;
+                          <input type="radio"  (click)="displayBloodfilter()" value="2" name="filter"  class="form-check-input" ><span class="x">Filter by blood type</span> &nbsp;
+                          <input type="radio" (click)="displayHositalfilter()" value="3" name="filter" class="form-check-input" ><span class="x">Filter by hospital</span>
                         </span>
                       </form> 
                         <!-- filters -->
                         <!-- filter by blood -->
                         <div [hidden]="displayBloodFilter">
-                        <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
-                        <label style="font-size: 24px; font-weight: bolder;" > Filter by blood type:</label> &nbsp;
+                        <div  class="d-flex justify-content-center" style="margin-bottom: 5px;" >
+                        <label class="y" > Filter by blood type:</label> &nbsp;
                         <form [formGroup]="bloodform">
                           <input class="form-check-input" type="radio"  value="0" formControlName="blood_id" (click)="All()"><span> All</span>
                         <span *ngFor="let b of bloodfilter, index as i">
@@ -58,8 +58,8 @@
                    </div>
                         <!--filter by hospital  -->
                         <div [hidden]="displayHospitalFilter">
-                          <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
-                          <label style="font-size: 24px; font-weight: bolder;" > Filter by hospital:</label> &nbsp;
+                          <div  class="d-flex justify-content-center" style="margin-bottom: 5px;" >
+                          <label class="y" > Filter by hospital:</label> &nbsp;
                           <form [formGroup]="hospitalform">
                           <span>
                           <select  formControlName="hospital_id" (change)="filteredReqByHospital()">
@@ -72,14 +72,14 @@
                         </select>
                         <br>
                         </span>
-                        <br>
+                        
                       </form>
                     </div>
                      </div>
                      <!-- filter by city -->
                      <div [hidden]="displayCityFilter">
-                      <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
-                      <label style="font-size: 24px; font-weight: bolder;" > Filter by city:</label> &nbsp;
+                      <div  class="d-flex justify-content-center" style="margin-bottom: 5px;" >
+                      <label class="y" > Filter by city:</label> &nbsp;
                       <form [formGroup]="cityform">
                       <span>
                       <select formControlName="location_code" (change)="filteredReqByCity()">
