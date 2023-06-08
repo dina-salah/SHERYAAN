@@ -23,11 +23,13 @@ export class RequestHospitalComponent implements OnInit {
   bloodfilter: Blood[]
   hospitalfilter: Hospital[]
   city: City[];
+  hospital_name:string;
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
   this.id = this.route.snapshot.params['hospital_id'];
   this. fetch();
+  this.hospital_name= JSON.parse(localStorage.getItem('hospitalname'))
 
  
   

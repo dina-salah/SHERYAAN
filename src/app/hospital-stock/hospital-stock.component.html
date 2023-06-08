@@ -32,10 +32,11 @@
                         <span><div class="bi bi-plus-lg add-req"  style="font-size: 18px; width: 110px;"  [routerLink]="['/hospital-stock-form/', id]"> Add Stock</div>
                         </span>
                         <br>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <table class="table">
                             <thead class="table-dark">
                               <tr>
-                                <th>#</th>
+                                <th></th>
                                 <th>Blood Type</th>
                                 <th>Quantity</th>
                                 <th>Respond</th>
@@ -43,10 +44,10 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of stock; index as i">
-                                <td>{{i+1}}</td>
+                                <td></td>
                                 <td>{{item.blood_type}} </td>
-                                <td>
-                                  <input name="blood_quantity" type="text" [(ngModel)]="stock[i].blood_quantity" [disabled]="!item.isEditing" />
+                                <td class="d-flex justify-content-center">
+                                  <input name="blood_quantity" class="form-control" style="width: 200px;" type="text" [(ngModel)]="stock[i].blood_quantity" [disabled]="!item.isEditing" />
                                 </td>
                   
                                 <td>
@@ -61,6 +62,7 @@
                 
                             </tbody>
                           </table>
+                        </div>
                           <br><br>
                       </div>
                       </div>

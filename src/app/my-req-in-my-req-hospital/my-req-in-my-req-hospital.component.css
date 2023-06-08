@@ -1,7 +1,33 @@
-h3{
-    text-align: center;
+p{
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: rgb(46, 46, 46);
 }
-/* b{
+/* .header{
+  background-color: rgb(114, 4, 4);
+  height: 200px;
+  width: 100%;
+  padding: 35px 20px 30px 60px;
+  text-shadow: 6px 8px rgba(0, 0, 0, 0.555); 
+}
+
+  b{
+    
+    background-color: rgba(230, 215, 178, 0.877);
+    border-radius: 4px;
+    padding:4px; 
+    margin:15px; 
+    width:125px;
+    height:39px;
+    float: right; 
+    text-align: center;
+  }
+  b:hover{
+    background-color: rgb(13, 34, 150);
+    color: rgb(255, 255, 255);
+  } */
+  /* b{
     
     background-color: rgba(230, 215, 178, 0.877);
     border-radius: 4px;
@@ -155,24 +181,49 @@ h3{
     a{
         text-decoration: none;
     }
- p{
-  width: 400px;
+
+
+ .add-req{
+  color: #40bbbda0;
+  font-weight: bolder;
+  height: 30px;
+ }
+ .add-req:hover{
+  color: #000000;
+  background-color:  #a1dadba0;
+  width: 125px;
+  height: 30px;
+  border-radius: 5px;
+  font-weight: bolder;
+ 
  }
  form{
-    width: 500px;
-    font-size: 15px;
+  width: 500px;
+  font-size: 15px;
+ }
+ .add-req{
+    color: #40bbbda0;
+    font-weight: bolder;
+    height: 30px;
    }
-   .add-req{
-      color: #40bbbda0;
-      font-weight: bolder;
-      height: 30px;
-     }
-     .add-req:hover{
-      color: #000000;
-      background-color:  #a1dadba0;
-      width: 125px;
-      height: 30px;
-      border-radius: 5px;
-      font-weight: bolder;
-     
-     }
+   .add-req:hover{
+    color: #000000;
+    background-color:  #a1dadba0;
+    width: 125px;
+    height: 30px;
+    border-radius: 5px;
+    font-weight: bolder;
+   
+   }
+   .my-custom-scrollbar {
+    position: relative;
+    height: 300px;
+    width: fit-content;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+    table{
+        text-align: center;
+    }

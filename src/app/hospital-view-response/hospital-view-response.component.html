@@ -28,7 +28,9 @@
                     <div class="col ">
                 
                         <!-- table -->
-                        <h3>R E S P O N S E S</h3><br>
+                        <h3>R E S P O N S E S</h3>
+                        <br>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <table class="table table-hover">
                             <thead class="table-dark">
                                 <tr>
@@ -70,14 +72,15 @@
 
                                     <td *ngIf="r.request_status == 0">
                                         <!-- check the request_id i/p -->
-                                        <button class="btn btn-secondary" style="width: 95px; font-weight: bold;" (click)="fullfill(r.request_id)">Ongoing</button>
+                                        <button class="btn btn-success" style="width: 95px; font-weight: bold;" (click)="fullfill(r.request_id)">Ongoing</button>
                                     </td>
                                     <td *ngIf="r.request_status == 1">
-                                        <button class="btn btn-info" disabled style="width: 95px; font-weight: bold;" >Fullfilled</button>
+                                        <button class="btn btn-warning" disabled style="width: 95px; font-weight: bold;" >Fullfilled</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                     </div>
                     </fieldset>

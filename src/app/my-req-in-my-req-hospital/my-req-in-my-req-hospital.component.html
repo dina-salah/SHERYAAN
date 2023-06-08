@@ -26,7 +26,9 @@
                         <div class="row ">
                     <div class="col ">
                         <!-- table -->
-                        <h3>M Y &nbsp; R E Q U E S T S</h3><br>
+                        <h3>M Y &nbsp; R E Q U E S T S</h3>
+                        <br>
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <table class="table table-hover">
                             <thead  class="table-dark">
                                 <tr>
@@ -46,10 +48,10 @@
                                         <td>{{h.request_date}}</td>
                                         <td>{{h.blood_type}}</td>
                                         <td >
-                                            <input name="request_quantity" type="text" [(ngModel)]="hospitalreq[i].request_quantity" [disabled]="!h.isEditing" />
+                                            <input name="request_quantity" type="text" class="form-control" style="width: 150px;" [(ngModel)]="hospitalreq[i].request_quantity" [disabled]="!h.isEditing" />
                                         </td>
                                         <td >
-                                            <input name="request_case" type="text" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" />
+                                            <input name="request_case" type="text" class="form-control" style="width: 150px;" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" />
                                         </td>
                                         <!-- <td >
                                             <input name="request_status" type="text" [(ngModel)]="hospitalreq[i].request_status" [disabled]="!h.isEditing" />
@@ -67,7 +69,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+                        </div>
                     </div>
                     </div>
                     </fieldset>
