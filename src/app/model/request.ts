@@ -36,4 +36,5 @@ export class Response{
     participant_Fname: string;
     participant_Lname: string;
     request_id:string;
+    request_status: number;
 }

@@ -1,4 +1,14 @@
 
+  .x{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .x:hover{
+    color: #40babd;
+  }
+  .y{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+  }
   /* b{
     
     background-color: rgba(230, 215, 178, 0.877);
@@ -190,7 +200,7 @@
  }
  .my-custom-scrollbar {
   position: relative;
-  height: 200px;
+  height: 300px;
   overflow: auto;
   }
   .table-wrapper-scroll-y {

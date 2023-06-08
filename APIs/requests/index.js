@@ -95,7 +95,7 @@ app.get("/my-requests/:id", function (req, res) {
 //Retrieve my responses (for users)
 app.get("/my-responses/:id", function (req, res) {
   user_id = req.params.id
-  dbConn.query(`SELECT d.response_status , DATE(d.response_date) , u.user_id , h.hospital_name , h.hospital_city 
+  dbConn.query(`SELECT d.response_status , DATE(d.response_date) AS "res_date" , u.user_id , h.hospital_name , h.hospital_city 
                   FROM request_donations AS d 
                   JOIN request AS r ON d.request_id = r.request_id 
                   JOIN user AS u ON d.responding_user = u.user_id  
@@ -357,14 +357,14 @@ app.get("/calculate-expire-date/:id", function (req, res) {
 //get responses form
 app.get("/users-form/:id", function (req, res) { 
   sql = `SELECT us.user_Fname AS "applicant_Fname", us.user_Lname AS "applicant_Lname", us.user_national_ID AS "applicant_ID", 
-          req.request_date, b.blood_type, req.request_quantity ,
+          req.request_date, b.blood_type, req.request_quantity , req.request_status , req.request_id , req.user_id , 
           u.user_national_ID AS "participant_ID", u.user_Fname AS "participant_Fname", u.user_Lname AS "participant_Lname" ,
-          d.response_date , d.response_status
-          from request AS req 
-          JOIN request_donations AS d ON req.request_id = d.request_id
-          JOIN user AS u ON d.responding_user = u.user_id 
-          LEFT JOIN user AS us ON req.user_id = us.user_id
-          JOIN blood AS b ON req.blood_type = b.blood_id
+          d.response_date , d.response_status , d.response_id
+              from request AS req 
+              JOIN request_donations AS d ON req.request_id = d.request_id
+              JOIN user AS u ON d.responding_user = u.user_id 
+              LEFT JOIN user AS us ON req.user_id = us.user_id
+              JOIN blood AS b ON req.blood_type = b.blood_id
             WHERE req.hospital_id = ? ` 
   hospital_id = req.params.id;
   dbConn.query(sql , hospital_id , function (error, results, fields) {

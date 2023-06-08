@@ -6,18 +6,18 @@
                     <div class="user-info">
                         <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
                         
-                        <ul class="meta list list-unstyled" *ngFor="let u of user" >
-                          <li class="name" style="font-size:18px ; margin-top: 16px;"><b>{{u.user_Fname}} {{u.user_Lname}}</b></li>
+                        <ul class="meta list list-unstyled" >
+                          <li class="name" style="font-size:18px ; margin-top: 16px;"><b>{{userFname}} {{userLname}}</b></li>
                          
                       </ul>
                     </div>
                 <nav class="side-menu">
-                  <ul class="nav"  *ngFor="let u of user">
-                              <li><a href="#" [routerLink]="['/user/', u.user_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
-                              <li><a href="#" [routerLink]="['/myrequest-user/', u.user_id]"><span class="bi bi-bag-heart-fill"></span> MY REQUEST</a></li>
-                              <li class="active" ><a href="#"[routerLink]="['/req-form/',u.user_id]"><span class="bi bi-plus-lg"></span> ADD REQUEST</a></li>
+                  <ul class="nav"  >
+                              <li><a href="#" [routerLink]="['/user/', id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+                              <li><a href="#" [routerLink]="['/myrequest-user/', id]"><span class="bi bi-bag-heart-fill"></span> MY REQUEST</a></li>
+                              <li class="active" ><a href="#"[routerLink]="['/req-form/',id]"><span class="bi bi-plus-lg"></span> ADD REQUEST</a></li>
                               <li><a href="#" [routerLink]="['/my-donations-user/', id]"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
-                              <li><a href="#" [routerLink]="['/request/', u.user_id]"><span class="bi bi-table"></span> DONATE</a></li>        
+                              <li><a href="#" [routerLink]="['/request/',id]"><span class="bi bi-table"></span> DONATE</a></li>        
                           </ul>
               </nav>
                 </div>

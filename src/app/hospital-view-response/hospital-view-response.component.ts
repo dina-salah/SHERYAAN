@@ -18,6 +18,7 @@ export class HospitalViewResponseComponent implements OnInit{
   response?: Response[];
   hospital: Hospital[];
   req_id = {request_id: ''};
+  addpoints = {response_id: '', user_id: '', hospital_id: ''};
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -35,21 +36,25 @@ export class HospitalViewResponseComponent implements OnInit{
       console.log(res.data);
     })
   }
-// couldnt solve it
-  completed(r: any){
+
+  fullfill(r: any){
     this.req_id.request_id = r;
     this.service.updateDonarStatus(this.req_id)
     .subscribe((res)=>{
-      // this.response = res.data[0];
       console.log(res);
-      // console.log(this.response)
     },(error)=>{
       console.log(error)
   })
 
-    // console.log(data)
-    // data = 1;
-    // NEED FUNC TO POST VALUECHANGE IN DB
+  }
+
+  complete(r: any){
+    this.addpoints.hospital_id = this.id;
+    this.addpoints.response_id = r.response_id;
+    this.addpoints.user_id = r.user_id;
+    this.service.addpoints(this.addpoints).subscribe((res) => {
+      console.log(res);
+    })
   }
 
 }

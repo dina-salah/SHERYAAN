@@ -29,7 +29,7 @@ export class addRequestService{
     
     
 retriveAllReq(): Observable<any>{
-    return this.http.get<any>(`${requestAPI}/count`)
+    return this.http.get<any>(`${requestAPI}/all-requests`)
     .pipe(
         catchError(this.errorHandler)
       )
@@ -156,6 +156,13 @@ myrequestUser(id: any){
 
 mydonation(id: any){
 return this.http.get(`${requestAPI}/my-responses/` + id)
+.pipe(
+  catchError(this.errorHandler)
+)
+}
+
+addpoints(data: any){
+  return this.http.post(`${requestAPI}/add-points-after-donation`, data)
 .pipe(
   catchError(this.errorHandler)
 )
