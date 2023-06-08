@@ -24,7 +24,7 @@ export class ReqFormComponent implements OnInit {
   blood:Blood[];
   hospital:Hospital[];
   id:any;
-  request = {user_id:'',hospital_id: '', blood_type: '', request_quantity: '', request_date: '', request_case: '', request_status: ''};
+  request = {user_id:'',hospital_id: '', blood_type: '', request_quantity: '', request_date: '', request_case: ''}
   user?: User[];
   constructor(private loginService: loginService,private service: addRequestService, private toastr: ToastrService, private _router: Router, private route: ActivatedRoute){
 
@@ -59,7 +59,7 @@ export class ReqFormComponent implements OnInit {
       }  
 
   UserForm =  new FormGroup({
-    request_status: new FormControl('', Validators.required),
+    // request_status: new FormControl('', Validators.required),
     blood_type: new FormControl('', Validators.required),
     request_case: new FormControl('', Validators.required),
     request_quantity:new FormControl('', Validators.required),
@@ -73,7 +73,7 @@ export class ReqFormComponent implements OnInit {
     this.request.blood_type = this.UserForm.value.blood_type;
     this.request.request_quantity = this.UserForm.value.request_quantity;
     this.request.request_case = this.UserForm.value.request_case;
-    this.request.request_status = this.UserForm.value.request_status;
+    // this.request.request_status = this.UserForm.value.request_status;
     this.service.addrequest(this.request)
     .subscribe((res) => {
       console.log(res);
