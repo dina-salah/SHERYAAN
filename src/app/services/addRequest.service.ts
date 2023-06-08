@@ -154,4 +154,11 @@ myrequestUser(id: any){
   )
 }
 
+mydonation(id: any){
+return this.http.get(`${requestAPI}/my-responses/` + id)
+.pipe(
+  catchError(this.errorHandler)
+)
+}
+
 }
