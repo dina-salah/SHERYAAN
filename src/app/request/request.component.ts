@@ -25,12 +25,16 @@ export class RequestComponent implements OnInit {
   hospitalfilter: Hospital[]
   city: City[];
   donatedata = {request_id: '', user_id: ''};
+  userFname:string;
+  userLname:string;
   
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
   this.id = this.route.snapshot.params['user_id'];
+  this.userFname = JSON.parse(localStorage.getItem('username'));
+  this.userLname = JSON.parse(localStorage.getItem('userlname'));
   this. fetch();
   }
   //forms

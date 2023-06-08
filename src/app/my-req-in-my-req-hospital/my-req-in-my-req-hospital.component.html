@@ -24,16 +24,13 @@
                 <div class="content-panel">
                     <fieldset class="fieldset">
                         <div class="row ">
-                            <div class="col col-lg-2">
-                        <!-- <h3 class="fieldset-title">Response</h3> -->
-                    </div>
                     <div class="col ">
                         <!-- table -->
                         <h3>M Y &nbsp; R E Q U E S T S</h3><br>
                         <table class="table table-hover">
                             <thead  class="table-dark">
                                 <tr>
-                                    <th>#</th>
+                                    <th></th>
                                     <th>Date</th>
                                     <th>Blood type</th>
                                     <th>Quantity</th>
@@ -45,7 +42,7 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let h of hospitalreq; index as i">
-                                    <td>{{i+1}}</td>
+                                    <td></td>
                                         <td>{{h.request_date}}</td>
                                         <td>{{h.blood_type}}</td>
                                         <td >

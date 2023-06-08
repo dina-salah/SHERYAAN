@@ -40,20 +40,20 @@
                       <table class="table table-hover">
                         <thead class="table-dark">
                           <tr>
-                            <th>#</th>
+                            <th></th>
                             <th>Date</th>
                             <th>Place</th>
                             <th>Blood type</th>
                             <th>Quantity</th>
                             <th>Case</th>
-                            <th>Status</th>
+                            <!-- <th>Status</th> -->
                             <th>city</th>
                             <th>respond</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let m of myrequest; index as i">
-                            <td>{{i + 1}}</td>
+                            <td></td>
                             <td>{{m.request_date}}</td>
                             <td>{{m.hospital_name}}</td>
                             <td>{{m.blood_type}}</td>
@@ -63,17 +63,19 @@
                             <td>
                               <input name="request_case" type="text" [(ngModel)]="myrequest[i].request_case" [disabled]="!m.isEditing" />
                             </td>
-                            <td>
+                            <!-- <td>
                               <input name="request_status" type="text" [(ngModel)]="myrequest[i].request_status" [disabled]="!m.isEditing" />
-                            </td>
+                            </td> -->
                             <td>{{m.city}}</td>
                             <td>
+                              <span style="display: flex;">
                               <button class="btn btn-primary" (click)="editItem(m)" ><i class="bi bi-pencil-fill"></i>
                                 {{ m.isEditing ? 'Cancel' : 'Edit' }}
                               </button>
-                            
+                              &nbsp;
                               <button class="btn btn-danger" *ngIf="!m.isEditing" (click)="delete(m)"><i class="bi bi-trash-fill"></i></button>
-                              <button class="btn btn-primary" *ngIf="m.isEditing" (click)="updateItem(m)">Update</button>
+                              <button class="btn btn-warning" *ngIf="m.isEditing" (click)="updateItem(m)">Update</button>
+                              </span>
                             </td>
                           </tr>
                         </tbody>

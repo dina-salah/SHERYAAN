@@ -1,151 +1,159 @@
-<div class="header">
-  <div  class="row">
-      <div class="col">
-          <p style="padding-top: 0px; color: whitesmoke; font-size: 72px;"><span style="color: rgb(255, 208, 0); font-size: 75px;">D</span>ONATE</p>
-      </div>
-      <div class="col">
-          <img src="assets/Heartbeat.png" style="padding:0px; margin: 0px; width: 930px; height: 260px;">
-      </div>
-  </div>
-
-</div>
-<br><br><br><br>
-<pre></pre>
-<div class="body" style="font-size: 22px; color: rgb(77, 76, 76);">
-    <div class="container">
-        <p style="font-size: 25px; color: rgb(77, 76, 76);">In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
-            a message is sent to that hospital or patient to acknowlage that you are a user of the system. after donation you will
-            get points that will be added to your account, later you can use it for gifts.
-        </p>
-        <br>
-
-      <label>Select filter</label>
-      <!-- <form [formGroup]="Filters">
-      <select>
-        <option (onclick)="displayCityfilter()" value="1"  formControlName="filterC"> Filter by city </option>
-        <option (onclick)="displayBloodfilter()"value="2" formControlName="filterB">Filter by blood type</option>
-        <option (onclick)="displayHositalfilter()" value="3" formControlName="filterH">Filter by hospital</option>
-      </select>
-    </form> -->
-      <!-- <select id="selectid" class="form-control-mb-12" (ngModelChange)="filter($event)">
-        <option value="1">Filter by city</option>
-        <option value="2">Filter by blood type</option>
-        <option value="3">Filter by hospital</option>
-     </select> -->
-     <form>
-     <span>
-        <input type="radio"  (click)="displayCityfilter()" value="1" name="filter" class="form-check-input" > <span>Filter by city</span>
-        <input type="radio"  (click)="displayBloodfilter()" value="2" name="filter"  class="form-check-input" ><span>Filter by blood type</span>
-        <input type="radio" (click)="displayHositalfilter()" value="3" name="filter" class="form-check-input" ><span>Filter by hospital</span>
-      </span>
-    </form> 
-      <!-- filters -->
-      <!-- filter by blood -->
-      <div [hidden]="displayBloodFilter">
-      <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
-      <label style="font-size: 24px; font-weight: bolder;" > Filter by blood type:</label> &nbsp;
-      <form [formGroup]="bloodform">
-        <input class="form-check-input" type="radio"  value="0" formControlName="blood_id" (click)="All()"><span> All</span>
-      <span *ngFor="let b of bloodfilter, index as i">
-      <input class="form-check-input" type="radio" [value]="i+1" formControlName="blood_id" (click)="filteredReqByBlood(b)"><span> {{b.blood_type}}</span>
-    </span>
-  </form>
-</div>
- </div>
-      <!--filter by hospital  -->
-      <div [hidden]="displayHospitalFilter">
-        <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
-        <label style="font-size: 24px; font-weight: bolder;" > Filter by hospital:</label> &nbsp;
-        <form [formGroup]="hospitalform">
-        <span>
-        <select  formControlName="hospital_id" (change)="filteredReqByHospital()">
-          <!-- <option value="0">--Select--</option> -->
-          <option   value="0"><div (onclick)="All()">All</div></option> 
-          <option *ngFor="let h of hospitalfilter, index as i"  
-                  value={{h.hospital_id}}>  
-                  {{h.hospital_name}}  
-          </option>  
-      </select>
-      <br>
-      </span>
-      <br>
-    </form>
-  </div>
-   </div>
-   <!-- filter by city -->
-   <div [hidden]="displayCityFilter">
-    <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
-    <label style="font-size: 24px; font-weight: bolder;" > Filter by city:</label> &nbsp;
-    <form [formGroup]="cityform">
-    <span>
-    <select formControlName="location_code" (change)="filteredReqByCity()">
-      <option   value="0"><div (onclick)="All()">All</div></option>
-      <option *ngFor="let c of city, index as i" value={{c.location_code}} >  
-              {{c.city}}
-      </option>  
-  </select>
-  <br> 
-  </span>
-</form>
-</div>
-</div><br>
-      <!-- retrive all -->
-        <table class="table">
-            <thead class="table-dark">
-              <tr>
-                <th>#</th>
-                <th>Place</th>
-                <th>Receiver</th>
-                <th>Date</th>
-                <th>Blood type</th>
-                <th>Quantity</th>
-                <th>Case</th>
-                <th>status</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Respond</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let p of patients; index as i">
-                <td>{{i+1}}</td>
-                <td>{{p.hospital_name}}</td>
-                <td>{{p.user_Fname}} {{p.user_Lname}} </td>
-                <td>{{p.request_date}}</td>
-                <td>{{p.blood_type}}</td>
-                <td>{{p.request_quantity}}</td>
-                <td>{{p.request_case}}</td>
-                <td>{{p.request_status}}</td>
-                <!-- addr -->
-                <td></td>
-                <td>{{p.city}}</td>
-                <td><button class="btn btn-danger" type="button" (click)="onDonate(p)"data-bs-toggle="modal" data-bs-target="#donate">Donate</button></td>
-              </tr>
-            </tbody>
-          </table> 
-
-          <br><br>
-          <!-- Modal -->
-          <div class="modal fade" id="donate">
-            <div class="modal-dialog" >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">DONATION SENT, ONE STEP MORE!</h4>
-                  <button class="btn-close" data-bs-dismiss="modal" ></button>
-                </div>
-                <div class="modal-body">
-                    <!-- <h2>Sure want to delete your account?</h2>  -->
-                    <P>We appreciate your donation! Your contribution will help us change lives literally! Now you should head to the hospital to finish the process, Thank you!</P>
-
-                   
-                </div>
-                <!-- <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div> -->
+<div class="container">
+  <div class="view-account">
+      <section class="module">
+          <div class="module-inner">
+              <div class="side-bar">
+                  <div class="user-info">
+                      <img class="img-profile img-circle img-responsive center-block "  src="" alt="">
+                      
+                      <ul class="meta list list-unstyled"  >
+                        <li class="name" style="font-size:18px ; margin-top: 16px;"><b>{{userFname}} {{userLname}}</b></li>
+                       
+                    </ul>
+                  </div>
+              <nav class="side-menu">
+                <ul class="nav"  >
+        					<li><a href="#" [routerLink]="['/user/', id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li><a href="#" [routerLink]="['/myrequest-user/', id]"><span class="bi bi-bag-heart-fill"></span> MY REQUEST</a></li>
+                  <li ><a href="#"   [routerLink]="['/req-form/',id]"><span class="bi bi-plus-lg"></span> ADD REQUEST</a></li>
+        					<li class="active"><a href="#" [routerLink]="['/my-donations-user/', id]"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
+        					<li><a href="#" [routerLink]="['/request/', id]"><span class="bi bi-table"></span> DONATE</a></li>        
+        				</ul>
+            </nav>
               </div>
-            </div>
-          </div>
+              <div class="content-panel">
+                  <fieldset class="fieldset">
+                      <div class="row ">
+                  <div class="col ">
 
-    </div>
+                    
+                      <div class="body" style=" color: rgb(77, 76, 76);">
+                      <div class="container">
+                          <p style="font-size: 25px; color: rgb(77, 76, 76);">In this request table you can donate to the hospitals and patients that need blood. by clicking "donate" on the request
+                              a message is sent to that hospital or patient to acknowlage that you are a user of the system. after donation you will
+                              get points that will be added to your account, later you can use it for gifts.
+                          </p>
+                          <br>
+                  
+                        <label>Select filter</label>
+                       <form>
+                       <span>
+                          <input type="radio"  (click)="displayCityfilter()" value="1" name="filter" class="form-check-input" > <span>Filter by city</span>
+                          <input type="radio"  (click)="displayBloodfilter()" value="2" name="filter"  class="form-check-input" ><span>Filter by blood type</span>
+                          <input type="radio" (click)="displayHositalfilter()" value="3" name="filter" class="form-check-input" ><span>Filter by hospital</span>
+                        </span>
+                      </form> 
+                        <!-- filters -->
+                        <!-- filter by blood -->
+                        <div [hidden]="displayBloodFilter">
+                        <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
+                        <label style="font-size: 24px; font-weight: bolder;" > Filter by blood type:</label> &nbsp;
+                        <form [formGroup]="bloodform">
+                          <input class="form-check-input" type="radio"  value="0" formControlName="blood_id" (click)="All()"><span> All</span>
+                        <span *ngFor="let b of bloodfilter, index as i">
+                        <input class="form-check-input" type="radio" [value]="i+1" formControlName="blood_id" (click)="filteredReqByBlood(b)"><span> {{b.blood_type}}</span>
+                      </span>
+                    </form>
+                  </div>
+                   </div>
+                        <!--filter by hospital  -->
+                        <div [hidden]="displayHospitalFilter">
+                          <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
+                          <label style="font-size: 24px; font-weight: bolder;" > Filter by hospital:</label> &nbsp;
+                          <form [formGroup]="hospitalform">
+                          <span>
+                          <select  formControlName="hospital_id" (change)="filteredReqByHospital()">
+                            <!-- <option value="0">--Select--</option> -->
+                            <option   value="0"><div (onclick)="All()">All</div></option> 
+                            <option *ngFor="let h of hospitalfilter, index as i"  
+                                    value={{h.hospital_id}}>  
+                                    {{h.hospital_name}}  
+                            </option>  
+                        </select>
+                        <br>
+                        </span>
+                        <br>
+                      </form>
+                    </div>
+                     </div>
+                     <!-- filter by city -->
+                     <div [hidden]="displayCityFilter">
+                      <div  class="d-flex justify-content-center" style="font-size: 20px; margin-bottom: 5px;" >
+                      <label style="font-size: 24px; font-weight: bolder;" > Filter by city:</label> &nbsp;
+                      <form [formGroup]="cityform">
+                      <span>
+                      <select formControlName="location_code" (change)="filteredReqByCity()">
+                        <option   value="0"><div (onclick)="All()">All</div></option>
+                        <option *ngFor="let c of city, index as i" value={{c.location_code}} >  
+                                {{c.city}}
+                        </option>  
+                    </select>
+                    <br> 
+                    </span>
+                  </form>
+                  </div>
+                  </div><br>
+                        <!-- retrive all -->
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                          <table class="table ">
+                              <thead class="table-dark">
+                                <tr>
+                                  <th></th>
+                                  <th>Place</th>
+                                  <th>Receiver</th>
+                                  <th>Date</th>
+                                  <th>Blood type</th>
+                                  <th>Quantity</th>
+                                  <th>Case</th>
+                                  <th>City</th>
+                                  <th>response_count</th>
+                                  <th>Respond</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let p of patients; index as i">
+                                  <td></td>
+                                  <td>{{p.hospital_name}}</td>
+                                  <td>{{p.user_Fname}} {{p.user_Lname}} </td>
+                                  <td>{{p.request_date}}</td>
+                                  <td>{{p.blood_type}}</td>
+                                  <td>{{p.request_quantity}}</td>
+                                  <td>{{p.request_case}}</td>
+                                  <td>{{p.hospital_city}}</td>
+                                  <td>{{p.Requests_Counter}}</td>
+                                  <td><button class="btn btn-danger" type="button" (click)="onDonate(p)"data-bs-toggle="modal" data-bs-target="#donate">Donate</button></td>
+                                </tr>
+                              </tbody>
+                            </table> 
+                          </div>
+                            <br><br>
+                            <!-- Modal -->
+                            <div class="modal fade" id="donate">
+                              <div class="modal-dialog" >
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">DONATION SENT, ONE STEP MORE!</h4>
+                                    <button class="btn-close" data-bs-dismiss="modal" ></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <P>We appreciate your donation! Your contribution will help us change lives literally! Now you should head to the hospital to finish the process, Thank you!</P>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                  
+                      </div>
+                  
+                  </div>
 
-</div>
+                    
+                  </div>
+                  </div>
+                  </fieldset><br>
+                  <hr>
+              </div>
+              
+            
+
+              
+    
