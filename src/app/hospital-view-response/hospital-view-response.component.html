@@ -42,6 +42,7 @@
                                     <th>Donor ID</th>
                                     <th>Response date</th>
                                     <th>Response status</th>
+                                    <th>Request status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,15 +56,24 @@
                                     <td>{{r.participant_Fname}} {{r.participant_Lname}}</td>
                                     <td>{{r.participant_ID}}</td>
                                     <td>{{r.response_date}}</td>
+
                                     <td *ngIf="r.response_status == 0">
                                         <!-- check the request_id i/p -->
-                                        <button class="btn btn-secondary" style="width: 95px; font-weight: bold;" (click)="completed(r.request_id)">Pending</button>
+                                        <button class="btn btn-secondary" style="width: 95px; font-weight: bold;" (click)="complete(r)">Pending</button>
                                     </td>
                                     <td *ngIf="r.response_status == 1">
-                                        <button class="btn btn-danger" disabled style="width: 95px; font-weight: bold;" >Expire</button>
+                                        <button class="btn btn-danger" disabled style="width: 95px; font-weight: bold;" >Expired</button>
                                     </td>
                                     <td *ngIf="r.response_status == 2">
                                         <button class="btn btn-info" disabled style="width: 95px; font-weight: bold;">Completed</button>
+                                    </td>
+
+                                    <td *ngIf="r.request_status == 0">
+                                        <!-- check the request_id i/p -->
+                                        <button class="btn btn-secondary" style="width: 95px; font-weight: bold;" (click)="fullfill(r.request_id)">Ongoing</button>
+                                    </td>
+                                    <td *ngIf="r.request_status == 1">
+                                        <button class="btn btn-info" disabled style="width: 95px; font-weight: bold;" >Fullfilled</button>
                                     </td>
                                 </tr>
                             </tbody>
