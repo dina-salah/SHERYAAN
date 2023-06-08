@@ -10,6 +10,7 @@ export class reqAdd{
     request_quantity:string;
     request_case:string;
     city:string;
+    hospital_city: string;
     hospital_address:string;
     request_id: number;
     Requests_Counter: number;
