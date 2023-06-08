@@ -1,11 +1,13 @@
 import { AsyncKeyword } from "typescript";
 
 export class reqAdd{
-    request_status:string;
+    request_status:number;
+    response_status:number;
     user_Fname:string;
     user_Lname:string;
     hospital_name:string;
     request_date:Date;
+    res_date:Date;
     blood_type:string;
     request_quantity:string;
     request_case:string;

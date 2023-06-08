@@ -25,20 +25,21 @@
                   <fieldset class="fieldset">
                       <div class="row ">
                   <div class="col ">
-  <table class="table " style="font-size: 15px; color: rgb(77, 76, 76);">
-  <thead class="table-active">
+  <table class="table table-hover">
+  <thead class="table-dark">
     <tr>
       <th scope="col">  </th>
       <th scope="col">Date</th>
       <th scope="col">Place</th>
-      <th scope="col">Action</th>
+      <th scope="col">response status</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of donations; index as i">
-      <th scope="row">[i +1]</th>
-      <th scope="row"></th>
-      <th scope="row"></th>
+    <tr *ngFor="let n of info; index as i">
+      <td scope="row">  </td>
+      <td scope="row">{{n.res_date}}</td>
+      <td scope="row">{{n.hospital_name}}</td>
+      <td scope="row">{{n.response_status}}</td>
       
     </tr>
    
