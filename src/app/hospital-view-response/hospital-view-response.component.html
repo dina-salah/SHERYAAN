@@ -62,7 +62,7 @@
                                         <button class="btn btn-secondary" style="width: 95px; font-weight: bold;" (click)="complete(r)">Pending</button>
                                     </td>
                                     <td *ngIf="r.response_status == 1">
-                                        <button class="btn btn-danger" disabled style="width: 95px; font-weight: bold;" >Expired</button>
+                                        <button class="btn btn-danger" style="width: 95px; font-weight: bold;" (click)="complete(r)">Expired</button>
                                     </td>
                                     <td *ngIf="r.response_status == 2">
                                         <button class="btn btn-info" disabled style="width: 95px; font-weight: bold;">Completed</button>
