@@ -222,7 +222,6 @@ app.get("/event/:id", function (req, res) {
       if (error) {
         return res.status(500).send({ error: true, message: "Internal server error" });
       } else {
-        console.log(results);
         return res.send(results);
       }
     }
