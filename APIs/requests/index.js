@@ -411,7 +411,7 @@ app.put("/fulfilled-request", function (req, res) {
 
 
 //Confirmed Response 
-app.put("/confirmed response", function (req, res) {
+app.put("/confirmed-response", function (req, res) {
   response_id = req.body.response_id
   
     dbConn.query(`UPDATE request_donations SET response_status = 2 WHERE response_id = ? ` , response_id  

@@ -234,6 +234,20 @@ app.post("/login", function (req, res) {
   );
 });
 
+
+
+//Retrive user points
+app.get("/user-points/:id", function (req, res) {
+  user = req.params.id;
+  dbConn.query("SELECT SUM(no_of_points) AS TotalPoints FROM points WHERE user_id = ?" , user
+  , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "User Total Points" });
+  });
+});
+
+
+
 // set port
 app.listen(5000, function () {
   console.log("Node app is running on port 5000");
@@ -268,20 +282,3 @@ module.exports = app;
 
 
 
-
-/*
-{
-  "user_national_ID": "user_national_ID",
-  "user_Fname": "user_Fname",
-  "user_Lname": "user_Lname",
-  "user_age": "age",
-  "user_gender": "gender",
-  "user_Email": "email",
-  "user_phoneNo": "user_phoneNo",
-  "user_password": "password",
-  "location_code": "lcode",
-  "user_address": "user_address",
-  "user_city": "city",
-  "user_health_status": "healthsts",
-  "user_blood_type": "bloodt"
-}*/

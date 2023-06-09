@@ -32,7 +32,7 @@ var dbConn = mysql.createConnection({
 
 
 //update user points after donation by hospitals 
-app.post("/points", function (req, res) {
+/*app.post("/points", function (req, res) {
   hospital = req.body.hospital_id;
   user = req.body.user_id;
   
@@ -46,7 +46,7 @@ app.post("/points", function (req, res) {
             message: "points has been updated successfully" 
           });
     });
-  });
+  });*/
 
 
 

@@ -276,7 +276,7 @@ app.get("/locs", function (req, res) {
 
 
 // Add a new event
-app.post("/org", function (req, res) {
+app.post("/event", function (req, res) {
   let start = req.body.event_startDate;
   let end = req.body.event_endDate;
   let address = req.body.event_address;
@@ -302,8 +302,8 @@ app.post("/org", function (req, res) {
 
 
 
-//  Update organization data with id
-app.put(`/event/:id`, function (req, res) {
+//  Update event data with id
+app.put(`/update-event/:id`, function (req, res) {
   let id = req.params.id;
   let start = req.body.event_startDate;
   let end = req.body.event_endDate;
@@ -355,8 +355,8 @@ app.put(`/event-closed`, function (req, res) {
 
 
 
-//  Delete user
-app.delete("/org/:id", function (req, res) {
+//  Delete event
+app.delete("/delete-event/:id", function (req, res) {
   let id = req.params.id;
   if (!id) {
     return res
