@@ -45,6 +45,8 @@ import { MyrequestHospitalComponent } from './myrequest-hospital/myrequest-hospi
 import { MyReqInMyReqHospitalComponent } from './my-req-in-my-req-hospital/my-req-in-my-req-hospital.component';
 import { HospitalViewResponseComponent } from './hospital-view-response/hospital-view-response.component';
 import { PatientRequestsComponent } from './patient-requests/patient-requests.component';
+import { MyEventComponent } from './my-event/my-event.component';
+import { AddEventComponent } from './add-event/add-event.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -99,7 +101,9 @@ const routes: Routes = [
   {path: 'myrequest-user/:user_id', component: MyrequestUserComponent},
   {path: 'my-req-in-my-req-hospital/:hospital_id', component: MyReqInMyReqHospitalComponent},
   {path: 'hospital-view-response/:hospital_id', component: HospitalViewResponseComponent},
-  {path: 'patient-requests/:hospital_id', component:PatientRequestsComponent}
+  {path: 'patient-requests/:hospital_id', component:PatientRequestsComponent},
+  {path: 'my-event/:organization_id', component:MyEventComponent},
+  {path: 'add-event/:organization_id', component:AddEventComponent}
   // {path:'++',component:ErrorComponent}
 ];
 

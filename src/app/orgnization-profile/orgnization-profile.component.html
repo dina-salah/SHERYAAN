@@ -13,12 +13,9 @@
                     </div>
             		<nav class="side-menu">
         				<ul class="nav"*ngFor="let o of org">
-        					<li class="active"><a href="#" [routerLink]="['/organization/', o.organization_id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
-        					<li><a href="#" routerLink="/myrequest-user" routerLinkActive="active"><span class="bi bi-bag-heart-fill"></span>  MY REQUESTS</a></li>
-        					<li><a href="#" routerLink="" routerLinkActive="active"><span class="bi bi-droplet-fill"></span> MY DONATIONS</a></li>
-        					<li><a href="#" routerLink="/request" routerLinkActive="active"><span class="bi bi-table"></span> REQUEST</a></li>
-                            <li><a href="#" routerLink="/hospital-stock" routerLinkActive="active"><span class="bi bi-cart-plus-fill"></span> MY STOCK</a></li>
-    
+        					<li class="active"><a href="#" [routerLink]="['/organization/', id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
+        					<li ><a href="#" [routerLink]="['/my-event/', id]"><span class="bi bi-bag-heart-fill"></span>  MY EVENTS</a></li>
+                            <li ><a href="#" [routerLink]="['/add-event/', id]"><span class="bi bi-bag-heart-fill"></span>  ADD EVENT</a></li>
         				</ul>
         			</nav>
                 </div>
