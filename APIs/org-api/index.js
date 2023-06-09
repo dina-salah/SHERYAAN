@@ -32,7 +32,7 @@ var dbConn = mysql.createConnection({
   host: "localhost",
   port: "3306",
   user: "root",
-  password: "dina",
+  password: "menna182000",
   database: "blooddb2",
 });
 // connect to database
@@ -217,12 +217,12 @@ app.get("/event/:id", function (req, res) {
   }
   dbConn.query(` SELECT o.organization_name , e.* , l.city FROM event AS e 
                   JOIN organization AS o ON e.org_id = o.organization_id 
-                  JOIN location AS l ON l.location_code = e.location_code WHERE e.event_id = ? `, event_id ,
+                  JOIN location AS l ON l.location_code = e.location_code WHERE e.org_id  = ? `, event_id ,
     function (error, results, fields) {
       if (error) {
         return res.status(500).send({ error: true, message: "Internal server error" });
       } else {
-        console.log("Api is fired ");
+        console.log(results);
         return res.send(results);
       }
     }
@@ -246,7 +246,7 @@ app.get("/event/:id", function (req, res) {
       if (error) {
         return res.status(500).send({ error: true, message: "Internal server error" });
       } else {
-        console.log("Api is fired ");
+        console.log(results);
         return res.send(results);
       }
     }
@@ -377,4 +377,3 @@ app.delete("/org/:id", function (req, res) {
     }
   );
 });
-z
