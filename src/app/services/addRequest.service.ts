@@ -168,4 +168,11 @@ addpoints(data: any){
 )
 }
 
+// /confirmed response
+pendingToConfermied(response_id: any){
+  return this.http.put(`${requestAPI}/confirmed-response/`, response_id)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
 }

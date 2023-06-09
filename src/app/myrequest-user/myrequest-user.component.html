@@ -48,7 +48,7 @@
                             <th>Blood type</th>
                             <th>Quantity</th>
                             <th>Case</th>
-                            <!-- <th>Status</th> -->
+                            <th>Status</th>
                             <th>city</th>
                             <th>respond</th>
                           </tr>
@@ -65,9 +65,7 @@
                             <td>
                               <input name="request_case" class="form-control" style="width:75px ; height: min-content;" type="text" [(ngModel)]="myrequest[i].request_case" [disabled]="!m.isEditing"/>
                             </td>
-                            <!-- <td>
-                              <input name="request_status" type="text" [(ngModel)]="myrequest[i].request_status" [disabled]="!m.isEditing" />
-                            </td> -->
+                            <td> {{m.request_status }} </td>
                             <td>{{m.city}}</td>
                             <td>
                               <span style="display: flex;">

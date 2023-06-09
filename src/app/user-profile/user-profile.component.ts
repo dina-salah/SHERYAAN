@@ -64,7 +64,7 @@ export class UserProfileComponent implements OnInit{
   .subscribe(
     (res)=>{
         this.points_Amount = res.data[0].TotalPoints
-        console.log( res.data[0].TotalPoints)
+        console.log( res)
     },(error)=>{
         console.log(error)
     }

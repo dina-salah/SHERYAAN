@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Blood } from '../model/hospitalstock';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hospital } from '../model/signupinfo';
+import {ToastrService} from 'ngx-toastr';
+
 
 
 @Component({
@@ -29,7 +31,7 @@ export class RequestComponent implements OnInit {
   userLname:string;
   
 
-  constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
+  constructor(private toastr: ToastrService, private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
   this.id = this.route.snapshot.params['user_id'];
@@ -107,31 +109,7 @@ displayHositalfilter(){
   this.displayHospitalFilter=false;
 } 
 
-//switch
-// filter(value: any){
-//  let  v= value.target.value;
-//   switch(v) {
-//     case "1":
-//       this.displayCityFilter=false;
-//       this.displayBloodFilter =true;
-//       this.displayHospitalFilter=true;
-//        break;
-//     case "2":
-//       this.displayCityFilter=true;
-//       this.displayBloodFilter =false;
-//       this.displayHospitalFilter=true;
-//        break;
-//     case "3":
-//       this.displayCityFilter=true;
-//       this.displayBloodFilter =true;
-//       this.displayHospitalFilter=false;
-//       break;
-//     default:
-//         this.displayCityFilter=true;
-//         this.displayBloodFilter =true;
-//         this.displayHospitalFilter=true;
-//   }
-// }
+
 
 //filter func  
   filteredReqByBlood(id:any){
@@ -147,8 +125,6 @@ displayHositalfilter(){
 
   filteredReqByHospital(){
     let id = this.hospitalform.value.hospital_id
-    // console.log('hi')
-    // console.log(this.hospitalform.value.hospital_id)
     this.service.filterhospital(id)
     .subscribe({
       next: (res)=>{
@@ -183,14 +159,21 @@ displayHositalfilter(){
       }
     })
   }
+  onclose(){
+    window.location.reload();
+  }
 
   onDonate(p: any){
     this.donatedata.request_id = p.request_id;
     this.donatedata.user_id = JSON.parse(this.id);
     console.log(this.donatedata)
-    this.service.donate(this.donatedata).subscribe((res) => {
+    this.service.donate(this.donatedata)
+    .subscribe((res) => {
       console.log(res);
-    })
+    },(error)=>{
+      console.log(error)
+      this.toastr.warning('Your donation request failed')
+  })
   }
 
   // showform(){

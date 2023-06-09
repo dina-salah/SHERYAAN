@@ -19,6 +19,7 @@ export class HospitalViewResponseComponent implements OnInit{
   hospital: Hospital[];
   req_id = {request_id: ''};
   addpoints = {response_id: '', user_id: '', hospital_id: ''};
+  response_id ={response_id: ''}
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -42,6 +43,7 @@ export class HospitalViewResponseComponent implements OnInit{
     this.service.updateDonarStatus(this.req_id)
     .subscribe((res)=>{
       console.log(res);
+      window.location.reload();
     },(error)=>{
       console.log(error)
   })
@@ -52,9 +54,22 @@ export class HospitalViewResponseComponent implements OnInit{
     this.addpoints.hospital_id = this.id;
     this.addpoints.response_id = r.response_id;
     this.addpoints.user_id = r.user_id;
-    this.service.addpoints(this.addpoints).subscribe((res) => {
+    this.response_id.response_id =r.response_id;
+    console.log(this.response_id)
+
+    this.service.addpoints(this.addpoints)
+    .subscribe((res) => {
       console.log(res);
-    })
+    },(error)=>{
+      console.log(error)
+  })
+  this.service.pendingToConfermied(this.response_id)
+  .subscribe((res) => {
+    console.log(res);
+    window.location.reload();
+  },(error)=>{
+    console.log(error)
+})
   }
 
 }

@@ -4,7 +4,7 @@ import { Observable, map, catchError, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-const pointsApi = 'http://localhost:2000/user-points';
+const pointsApi = 'http://localhost:5000/user-points';
 
 @Injectable({
     providedIn: 'root'
