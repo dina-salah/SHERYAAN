@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Blood } from '../model/hospitalstock';
 import {Hospital} from '../model/signupinfo';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-my-req-in-my-req-hospital',
@@ -18,7 +19,7 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
   hospital?: Hospital[];
   updatedata = {request_quantity: '', request_case: '', request_id: ''}
 
-  constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
+  constructor(private service: addRequestService,private toastr: ToastrService, private router: Router, private route: ActivatedRoute){}
 
   ngOnInit(){
     this.id = this.route.snapshot.params['hospital_id'];
@@ -52,10 +53,14 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
      res => {
        console.log(res);
        item.isEditing = false;
+       this.router.navigate(['/my-req-in-my-req-hospital/', this.id]);
+       this.toastr.success('Request updated');
+      
      },
      error => {
        console.log('Error occurred while updating item');
        console.log(error);
+       this.toastr.warning('Error occurred while updating request');
        // Handle the error case as per your requirement
      }
    );
@@ -64,9 +69,17 @@ export class MyReqInMyReqHospitalComponent implements OnInit{
     delete(h: any){
       let id = h.request_id;
       console.log(id);
-      this.service.deletehospitalreq(id).subscribe((res) => {
-        console.log(res);
-      })
+      this.service.deletehospitalreq(id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.toastr.success('Request deleted');
+          window.location.reload();
+        },
+        error => {
+          console.log(error);
+          this.toastr.warning('Error occurred while deleting request');
+        });
     }
 
 

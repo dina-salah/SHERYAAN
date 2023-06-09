@@ -8,6 +8,7 @@ import { stockService } from '../services/stock.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import {Hospital} from '../model/signupinfo';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-hospital-stock',
@@ -24,7 +25,9 @@ export class HospitalStockComponent {
   updatedata = {bid: '', hid: '', qty: ''}
  
 
-  constructor(private http : HttpClient,
+  constructor(
+    private toastr: ToastrService, 
+    private http : HttpClient,
     private service: stockService,
     private router: Router,
     private route: ActivatedRoute
@@ -70,23 +73,35 @@ updateItem(item: any) {
    res => {
      console.log(res);
      item.isEditing = false;
+     this.toastr.success('Update successeded!');
    },
    error => {
      console.log('Error occurred while updating item');
      console.log(error);
+     this.toastr.warning('Error occurred while updating item');
      // Handle the error case as per your requirement
    }
  );
 }
 
+
   delete(item: any){
     this.deletedata.hid = item.hospital_id;
     this.deletedata.bid = item.blood_id;
     console.log(this.deletedata);
-    this.service.delete(this.deletedata).subscribe((res) => {
-      console.log(res);
-    })
+    this.service.delete(this.deletedata)
+    .subscribe(
+      res => {
+        console.log(res);
+        item.isEditing = false;
+        this.toastr.success('Item is deleted');
+      },
+      error => {
+        console.log(error);
+        this.toastr.warning('Error occurred while deleting item');
+        // Handle the error case as per your requirement
+      }
+    );
   }
-
 
 }

@@ -47,11 +47,17 @@ export class ReqFormHospitalComponent  implements OnInit  {
     this.request.request_quantity = this.form.value.request_quantity;
     this.request.request_case = this.form.value.request_case;
     // this.request.request_status = this.form.value.request_status;
-    this.service.addrequest(this.request).subscribe((res) => {
-      console.log(res);
-      this.toastr.success('request added!');
-      this._router.navigate(['/request-hospital/', this.id]);
-    })
+    this.service.addrequest(this.request)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.toastr.success('Request added!');
+        this._router.navigate(['/request-hospital/', this.id]);
+      },
+      error => {
+        console.log(error);
+        this.toastr.warning('Error occurred while adding request');
+      });
   }
 
 }

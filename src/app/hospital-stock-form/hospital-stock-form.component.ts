@@ -51,14 +51,23 @@ export class HospitalStockFormComponent {
     this.stock.qty = this.form.value.blood_quantity;
     this.stock.hid = this.id;
     console.log(this.stock);
-    this.service.addstock(this.stock).subscribe(res => {
-      console.log(res);
-      this.toastr.success('new stock added!');
+    this.service.addstock(this.stock)
+    .subscribe({
+      next: (data) => {
+      console.log(data)
       this._router.navigate(['/hospital-stock/', this.id]);
-    })
+      this.toastr.success('new stock added!');
+      },
+      error: (error) => {
+        console.log(error)
+        this.toastr.warning('check your info!');
+      }
+  });
+  // .subscribe(res => {
+  //   console.log(res);
+  //   this.toastr.success('new stock added!');
+  //   this._router.navigate(['/hospital-stock/', this.id]);
+  // })
 
   }
-  
-
-
 }
