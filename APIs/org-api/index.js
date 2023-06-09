@@ -217,7 +217,7 @@ app.get("/event/:id", function (req, res) {
   }
   dbConn.query(` SELECT o.organization_name , e.* , l.city FROM event AS e 
                   JOIN organization AS o ON e.org_id = o.organization_id 
-                  JOIN location AS l ON l.location_code = e.location_code WHERE e.org_id  = ? `, event_id ,
+                  JOIN location AS l ON l.location_code = e.location_code WHERE e.event_id = ? `, event_id ,
     function (error, results, fields) {
       if (error) {
         return res.status(500).send({ error: true, message: "Internal server error" });
@@ -231,7 +231,7 @@ app.get("/event/:id", function (req, res) {
 
 
 // Retrieve event with organization
-app.get("/event/:id", function (req, res) {
+app.get("/event-by-org/:id", function (req, res) {
   let org_id = req.params.id;
   if (!org_id) {
     return res
@@ -240,12 +240,11 @@ app.get("/event/:id", function (req, res) {
   }
   dbConn.query(`SELECT o.organization_name , e.* , l.city FROM event AS e 
                 JOIN organization AS o ON e.org_id = o.organization_id 
-                JOIN location AS l ON l.location_code = e.location_code WHERE o.organization_id = ? `, org_id ,
+                JOIN location AS l ON l.location_code = e.location_code WHERE e.org_id = ? `, org_id ,
     function (error, results, fields) {
       if (error) {
         return res.status(500).send({ error: true, message: "Internal server error" });
       } else {
-        console.log(results);
         return res.send(results);
       }
     }
