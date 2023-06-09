@@ -334,8 +334,8 @@ app.put(`/event/:id`, function (req, res) {
 
 
 //  Update organization data with id
-app.put(`/event-closed/:id`, function (req, res) {
-  let id = req.params.id;
+app.put(`/event-closed`, function (req, res) {
+  let id = req.body.id;
 
   if (!id) {
     return res

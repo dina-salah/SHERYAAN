@@ -309,10 +309,9 @@ app.delete("/delete-request/:id", function (req, res) {
 app.post("/add-response", function (req, res) {
   request_id = req.body.request_id;
   res_user = req.body.user_id;
-  hospital_id = req.body.hospital_id;
 
-  dbConn.query(`INSERT INTO request_donations SET responding_user = ? , hospital_id = ? , request_id = ? ` ,
-  [res_user, hospital_id, request_id] ,
+  dbConn.query(`INSERT INTO request_donations SET responding_user = ? ,  request_id = ? ` ,
+  [res_user, request_id] ,
   function (error, results, fields) {
       if (error) throw error;
       return res.send(
@@ -407,6 +406,22 @@ app.put("/fulfilled-request", function (req, res) {
           message: "Request is fulfilled!" });
     });
   });
+
+
+
+//Confirmed Response 
+app.put("/confirmed response", function (req, res) {
+  response_id = req.body.response_id
+  
+    dbConn.query(`UPDATE request_donations SET response_status = 2 WHERE response_id = ? ` , response_id  
+    , function (error, results, fields) {
+      if (error) throw error;
+      return res.send(
+        { error: false,
+          message: "Response is Confirmed " });
+    });
+  });
+
 
   
 // set port
