@@ -50,9 +50,9 @@ app.get("/all-requests", function (req, res) {
                 from request AS r join blood AS b on r.blood_type = b.blood_id
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                 JOIN location AS l ON h.location_code = l.location_code
+                LEFT JOIN request_donations AS d ON r.request_id = d.request_id
                 LEFT JOIN user AS u ON r.user_id = u.user_id
-                JOIN request_donations AS d ON d.request_id = r.request_id
-                GROUP BY request_id `
+                GROUP BY r.request_id `
   , function (error, results, fields) {
     if (error) throw error;
     return res.send({ error: false, data: results, message: "All Requests" });
