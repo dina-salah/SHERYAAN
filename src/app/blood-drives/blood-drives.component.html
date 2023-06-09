@@ -24,10 +24,10 @@
             <tbody>
                 <tr *ngFor="let b of blood_drives; index as i">
                     <td>{{i + 1}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{b.event_address}}</td>
+                    <td>{{b.city}}</td>
+                    <td>{{b.event_startDate}}</td>
+                    <td>{{b.event_endDate}}</td>
                 </tr>
             </tbody>
         </table>
