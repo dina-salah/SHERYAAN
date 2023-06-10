@@ -381,8 +381,6 @@ app.post("/add-points-after-donation", function (req, res) {
   user_id = req.body.user_id;
   hospital_id = req.body.hospital_id;
 
-  sql = `SELECT InsertPointsAfterResponseChange( ${response_id} , ${user_id}, ${hospital_id})`
-
   dbConn.query(`SELECT InsertPointsAfterResponseChange( ${response_id} , ${user_id}, ${hospital_id})` ,
   function (error, results, fields) {
       if (error) throw error;
@@ -395,6 +393,23 @@ app.post("/add-points-after-donation", function (req, res) {
 
 
 
+//update quantity after donation
+app.post("/quantity-after-donation", function (req, res) {
+  request_id = req.body.request_id;
+  don_quantity = req.body.don_quantity;
+
+  dbConn.query(`SELECT UpdateQuantityAfterDonation( ${request_id} , ${don_quantity})` ,
+  function (error, results, fields) {
+      if (error) throw error;
+      return res.send(
+          { error: false,
+            message: "quantity updated successfully" 
+          });
+    });
+  });
+  
+
+  
 //Fulfilled Request 
 app.put("/fulfilled-request", function (req, res) {
   request_id = req.body.request_id
