@@ -280,14 +280,15 @@ app.post("/event", function (req, res) {
   let start = req.body.event_startDate;
   let end = req.body.event_endDate;
   let address = req.body.event_address;
+  let lcode = req.body.location_code
 
   dbConn.query(
-    "INSERT INTO organization SET ? ",
+    "INSERT INTO event SET ? ",
     {
       event_startDate: start,
       event_endDate: end ,
       event_address: address,
-
+      location_code: lcode
     },
     function (error, results, fields) {
       if (error) throw error;
