@@ -66,7 +66,7 @@ export class HospitalViewResponseComponent implements OnInit{
   this.service.pendingToConfermied(this.response_id)
   .subscribe((res) => {
     console.log(res);
-    window.location.reload();
+    // window.location.reload();
   },(error)=>{
     console.log(error)
 })

@@ -1,8 +1,21 @@
+.x1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    color: #40babd;
+}
+.x1:hover{
+    color: black;
+}
+.x{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
 .side-bar{
     background-color: whitesmoke;
 }
 .form-control{
     background-color: whitesmoke;
+    width: fit-content;
 }
 
 .warning{
