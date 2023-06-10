@@ -20,6 +20,9 @@
                 </div>
 
 <div class="content-panel" >
+    <fieldset class="fieldset">
+    <div class="row ">
+        <div class="col ">
     <h3 style="text-align: center;">MY &nbsp; E V E N T S</h3>
     <table class="table table-hover">
         <thead class="table-dark">
@@ -34,10 +37,10 @@
         </thead>
         <tbody>
             <tr *ngFor="let e of events;index as i">
-                <td><input name="event_address" class="form-control" style="width: 200px;" type="text" [(ngModel)]="events[i].event_address" [disabled]="!e.isEditing" /></td> 
-                <td><input name="city" class="form-control" style="width: 200px;" type="text" [(ngModel)]="events[i].city" [disabled]="!e.isEditing" /></td>
-                <td><input name="event_startDate" class="form-control" style="width: 200px;" type="date" [(ngModel)]="events[i].event_startDate" [disabled]="!e.isEditing" /></td>
-                <td><input name="event_endDate" class="form-control" style="width: 200px;" type="date" [(ngModel)]="events[i].event_endDate" [disabled]="!e.isEditing" /></td>
+                <td><input name="event_address" class="form-control" style="width: 120px;" type="text" [(ngModel)]="events[i].event_address" [disabled]="!e.isEditing" /></td> 
+                <td><input name="city" class="form-control" style="width: 120px;" type="text" [(ngModel)]="events[i].city" [disabled]="!e.isEditing" /></td>
+                <td><input name="event_startDate" class="form-control" style="width: 120px;" type="date" [(ngModel)]="events[i].event_startDate" [disabled]="!e.isEditing" /></td>
+                <td><input name="event_endDate" class="form-control" style="width: 120px;" type="date" [(ngModel)]="events[i].event_endDate" [disabled]="!e.isEditing" /></td>
                 
                 <td scope="row" *ngIf="e.event_status == 1">
                     <button class="btn btn-danger"  disabled >Closed</button>
@@ -58,8 +61,8 @@
             </tr>
         </tbody>
     </table>
-    
-
+    </div></div>
+</fieldset>
 
 
     
