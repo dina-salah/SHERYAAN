@@ -281,6 +281,7 @@ app.post("/event", function (req, res) {
   let end = req.body.event_endDate;
   let address = req.body.event_address;
   let lcode = req.body.location_code
+  let id = req.body.org_id
 
   dbConn.query(
     "INSERT INTO event SET ? ",
@@ -288,7 +289,8 @@ app.post("/event", function (req, res) {
       event_startDate: start,
       event_endDate: end ,
       event_address: address,
-      location_code: lcode
+      location_code: lcode,
+      org_id: id
     },
     function (error, results, fields) {
       if (error) throw error;
