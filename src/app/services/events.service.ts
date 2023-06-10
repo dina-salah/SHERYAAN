@@ -29,21 +29,28 @@ export class EventService{
       }
 
       myevent(id: any): Observable<any>{
-        return this.http.get('http://localhost:8000/event/' + id)
+        return this.http.get('http://localhost:8000/event-by-org/' + id)
         .pipe(
             catchError(this.errorHandler)
           )
       }
 
       newevent(data: any): Observable<any>{
-        return this.http.post('http://localhost:8000/org' , data)
+        return this.http.post('http://localhost:8000/event' , data)
         .pipe(
             catchError(this.errorHandler)
           )
       }
 
-      updateevent(data: any): Observable<any>{
-        return this.http.put('http://localhost:8000/event' , data)
+      locations(): Observable<any>{
+        return this.http.get('http://localhost:8000/locs')
+        .pipe(
+            catchError(this.errorHandler)
+          )
+      }
+
+      updateevent(id: any, data: any): Observable<any>{
+        return this.http.put('http://localhost:8000/update-event/'+id , data)
         .pipe(
             catchError(this.errorHandler)
           )
@@ -57,12 +64,12 @@ export class EventService{
       }
 
       delete(id: any): Observable<any>{
-        return this.http.delete('http://localhost:8000/org/' + id)
+        return this.http.delete('http://localhost:8000/delete-event/' + id)
         .pipe(
             catchError(this.errorHandler)
           )
       }
 
-      
+
 
 }

@@ -14,13 +14,48 @@
         				<ul class="nav">
         					<li ><a href="#" [routerLink]="['/organization/', id]"><span class="bi bi-person-fill"></span> PROFILE</a></li>
         					<li ><a href="#" [routerLink]="['/my-event/', id]"><span class="bi bi-bag-heart-fill"></span>  MY EVENTS</a></li>
-                            <li class="active"><a href="#" [routerLink]="['/add-event/', id]"><span class="bi bi-bag-heart-fill"></span>  ADD EVENT</a></li>
+                            <li class="active"><a href="#" [routerLink]="['/add-event/', id]"><span class="bi bi-plus-lg"></span>  ADD EVENT</a></li>
         				</ul>
         			</nav>
                 </div>
 
 <div class="content-panel" >
+       <form [formGroup] ="form">
+
+        <p class="x1">Enter information needed to add en event for your organization.
+            make sure all info is correct!
+        </p><br>
+
+        <div>
+            <label style="margin-right: 7px;" class="x">City: &nbsp;</label>
+                                <select formControlName="city">
+                                    <option value="0">--Select--</option>  
+                                    <option *ngFor="let l of locs"  
+                                            value={{l.location_code}}>  
+                                        {{l.city}}  
+                                    </option>  
+                                </select>
+        </div><br>
        
+        <div style="display: flex;">
+            <label class="x">Start date: &nbsp;</label>
+            <input class="form-control" type="date" placeholder="start date"   formControlName="event_startDate" >
+        </div><br>
+        
+        <div style="display: flex;">
+            <label class="x">End date: &nbsp;</label>
+            <input class="form-control" type="date" placeholder="end date"   formControlName="event_endDate" >
+        </div><br>
+        
+        <div style="display: flex;">
+            <label class="x">Event address: &nbsp;</label>
+            <input class="form-control" type="text" placeholder="Address" formControlName="event_address" >
+        </div><br>
+
+        <button class="btn btn-danger" (click)="add()">Add</button>
+        
+
+       </form>
 
     
 </div>
