@@ -45,7 +45,7 @@
                             <tbody>
                                 <tr *ngFor="let h of hospitalreq; index as i">
                                     <td></td>
-                                        <td>{{h.request_date}}</td>
+                                        <td>{{h.request_date | date: 'yyyy-MM-dd'}}</td>
                                         <td>{{h.blood_type}}</td>
                                         <td >
                                             <input name="request_quantity" type="text" class="form-control" style="width: 150px;" [(ngModel)]="hospitalreq[i].request_quantity" [disabled]="!h.isEditing" />

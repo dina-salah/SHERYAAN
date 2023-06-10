@@ -14,6 +14,8 @@ export class MyEventComponent implements OnInit{
   status?: any;
   events: any[];
   updatedata = {event_startDate: '', event_endDate: '', event_address: '', location_code: ''};
+  close = {id: ''};
+  intype = 'text';
 
   constructor(private service:EventService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService){}
 
@@ -30,7 +32,7 @@ export class MyEventComponent implements OnInit{
   }
 
   editItem(item : any) {
-    item.isEditing = !item.isEditing; 
+    item.isEditing = !item.isEditing;
    // console.log(item);
   }
 
@@ -53,6 +55,7 @@ export class MyEventComponent implements OnInit{
       (res) => {
         console.log(res);
         item.isEditing = false;
+        window.location.reload();
         this.toastr.success('Item is deleted');
       },
       error => {
@@ -61,6 +64,14 @@ export class MyEventComponent implements OnInit{
         // Handle the error case as per your requirement
       }
     );
+  }
+
+  closeevent(item: any){
+    this.close.id = item;
+    this.service.closeevent(this.close).subscribe((res) => {
+      console.log(res);
+      window.location.reload();
+    })
   }
   
 }

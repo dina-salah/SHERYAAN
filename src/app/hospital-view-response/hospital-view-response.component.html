@@ -52,12 +52,12 @@
                                     <td></td>
                                     <td>{{r.applicant_Fname}} {{r.applicant_Lname}}</td>
                                     <td>{{r.applicant_ID}}</td>
-                                    <td>{{r.request_date}}</td>
+                                    <td>{{r.request_date | date: 'yyyy-MM-dd'}}</td>
                                     <td>{{r.blood_type}}</td>
                                     <td>{{r.request_quantity}}</td>
                                     <td>{{r.participant_Fname}} {{r.participant_Lname}}</td>
                                     <td>{{r.participant_ID}}</td>
-                                    <td>{{r.response_date}}</td>
+                                    <td>{{r.response_date| date: 'yyyy-MM-dd'}}</td>
 
                                     <td *ngIf="r.response_status == 0">
                                         <!-- check the request_id i/p -->

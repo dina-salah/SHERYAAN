@@ -39,7 +39,7 @@
   <tbody>
     <tr *ngFor="let n of info; index as i">
       <td scope="row">  </td>
-      <td scope="row">{{n.res_date}}</td>
+      <td scope="row">{{n.res_date | date: 'yyyy-MM-dd'}}</td>
       <td scope="row">{{n.hospital_name}}</td>
       <td scope="row" *ngIf="n.response_status == 0">
         <div style="color: dimgray;  font-weight: bold;">Pending</div>

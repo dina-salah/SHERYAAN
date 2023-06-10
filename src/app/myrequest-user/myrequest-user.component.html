@@ -56,7 +56,7 @@
                         <tbody>
                           <tr *ngFor="let m of myrequest; index as i">
                             <td></td>
-                            <td>{{m.request_date}}</td>
+                            <td>{{m.request_date | date: 'yyyy-MM-dd'}}</td>
                             <td>{{m.hospital_name}}</td>
                             <td>{{m.blood_type}}</td>
                             <td>
