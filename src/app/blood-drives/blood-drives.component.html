@@ -26,8 +26,8 @@
                     <td></td>
                     <td>{{b.event_address}}</td>
                     <td>{{b.city}}</td>
-                    <td>{{b.event_startDate}}</td>
-                    <td>{{b.event_endDate}}</td>
+                    <td>{{b.event_startDate | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{b.event_endDate | date: 'yyyy-MM-dd'}}</td>
                 </tr>
             </tbody>
         </table>
