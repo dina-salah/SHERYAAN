@@ -238,7 +238,7 @@ app.get("/event-by-org/:id", function (req, res) {
       .status(400)
       .send({ error: true, message: "Please provide your organization id" });
   }
-  dbConn.query(`SELECT o.organization_name , e.* , l.city FROM event AS e 
+  dbConn.query(`SELECT o.organization_name , e.*, DATE_FORMAT(e.event_startDate, '%Y-%m-%d') AS "event_startDate", DATE_FORMAT(e.event_endDate, '%Y-%m-%d') AS "event_endDate" , l.city FROM event AS e 
                 JOIN organization AS o ON e.org_id = o.organization_id 
                 JOIN location AS l ON l.location_code = e.location_code WHERE e.org_id = ? `, org_id ,
     function (error, results, fields) {
