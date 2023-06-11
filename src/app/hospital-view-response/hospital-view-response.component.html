@@ -48,23 +48,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let r of response">
+                                <tr *ngFor="let r of response; index as i">
                                     <td></td>
                                     <td>{{r.applicant_Fname}} {{r.applicant_Lname}}</td>
                                     <td>{{r.applicant_ID}}</td>
                                     <td>{{r.request_date | date: 'yyyy-MM-dd'}}</td>
                                     <td>{{r.blood_type}}</td>
-                                    <td>{{r.request_quantity}}</td>
+                                    <td>
+                                        <input name="request_quantity" class="form-control" style="width: 60px;" type="text" [(ngModel)]="response[i].request_quantity" [disabled]="!r.isEditing" />
+                                    </td>
                                     <td>{{r.participant_Fname}} {{r.participant_Lname}}</td>
                                     <td>{{r.participant_ID}}</td>
                                     <td>{{r.response_date| date: 'yyyy-MM-dd'}}</td>
 
                                     <td *ngIf="r.response_status == 0">
                                         <!-- check the request_id i/p -->
-                                        <button class="btn btn-secondary" style="width: 95px; font-weight: bold;" (click)="complete(r)">Pending</button>
+                                        <button class="btn btn-secondary" style="width: 95px;  height: fit-content; font-weight: bold;" *ngIf="!r.isEditing" (click)="editItem(r)">Pending</button>
+                                        <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button>
                                     </td>
                                     <td *ngIf="r.response_status == 1">
-                                        <button class="btn btn-danger" style="width: 95px; font-weight: bold;" (click)="complete(r)">Expired</button>
+                                        <button class="btn btn-danger" style="width: 95px; font-weight: bold;" *ngIf="!r.isEditing" (click)="editItem(r)">Expired</button>
+                                        <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button>
                                     </td>
                                     <td *ngIf="r.response_status == 2">
                                         <button class="btn btn-info" disabled style="width: 95px; font-weight: bold;">Completed</button>
@@ -72,10 +76,10 @@
 
                                     <td *ngIf="r.request_status == 0">
                                         <!-- check the request_id i/p -->
-                                        <button class="btn btn-success" style="width: 95px; font-weight: bold;" (click)="fullfill(r.request_id)">Ongoing</button>
+                                        <div style="width: 95px; font-weight: bold; color: #40babd;">Ongoing</div>
                                     </td>
                                     <td *ngIf="r.request_status == 1">
-                                        <button class="btn btn-warning" disabled style="width: 95px; font-weight: bold;" >Fullfilled</button>
+                                        <div style="width: 95px; font-weight: bold; color: grey;" >Fullfilled</div>
                                     </td>
                                 </tr>
                             </tbody>

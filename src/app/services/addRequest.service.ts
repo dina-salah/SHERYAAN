@@ -175,4 +175,12 @@ pendingToConfermied(response_id: any){
     catchError(this.errorHandler)
   )
 }
+
+updatequantity(data: any){
+  return this.http.post(`${requestAPI}/quantity-after-donation`, data)
+  .pipe(
+    catchError(this.errorHandler)
+  )
+}
+
 }

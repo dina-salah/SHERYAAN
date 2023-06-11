@@ -37,4 +37,5 @@ export class Response{
     participant_Lname: string;
     request_id:string;
     request_status: number;
+    isEditing: any;
 }

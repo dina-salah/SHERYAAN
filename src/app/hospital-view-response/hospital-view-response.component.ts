@@ -15,11 +15,13 @@ import { Response } from '../model/request';
 export class HospitalViewResponseComponent implements OnInit{
 
   id!: any;
+  status?: any;
   response?: Response[];
   hospital: Hospital[];
   req_id = {request_id: ''};
-  addpoints = {response_id: '', user_id: '', hospital_id: ''};
-  response_id ={response_id: ''}
+  addpoints = {response_id: '', responding_user: '', hospital_id: ''};
+  response_id ={response_id: ''};
+  quantitydata = {request_id: '', don_quantity: ''};
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -53,9 +55,9 @@ export class HospitalViewResponseComponent implements OnInit{
   complete(r: any){
     this.addpoints.hospital_id = this.id;
     this.addpoints.response_id = r.response_id;
-    this.addpoints.user_id = r.user_id;
+    this.addpoints.responding_user = r.responding_user;
     this.response_id.response_id =r.response_id;
-    console.log(this.response_id)
+    console.log(this.addpoints)
 
     this.service.addpoints(this.addpoints)
     .subscribe((res) => {
@@ -70,6 +72,30 @@ export class HospitalViewResponseComponent implements OnInit{
   },(error)=>{
     console.log(error)
 })
+
+    this.quantitydata.request_id = r.request_id;
+    this.quantitydata.don_quantity = r.request_quantity;
+    console.log(this.quantitydata);
+    this.service.updatequantity(this.quantitydata).subscribe((res) => {
+      console.log(res);
+    })
+    r.isEditing = false;
+    
   }
+
+  editItem(item : any) {
+    item.isEditing = !item.isEditing;
+   // console.log(item);
+  }
+
+  // quantity(r: any){
+  //   this.quantitydata.request_id = r.request_id;
+  //   this.quantitydata.don_quantity = r.request_quantity;
+  //   console.log(this.quantitydata);
+  //   this.service.updatequantity(this.quantitydata).subscribe((res) => {
+  //     console.log(res);
+  //     r.isEditing = false;
+  //   })
+  // }
 
 }
