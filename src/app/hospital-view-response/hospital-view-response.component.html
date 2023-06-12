@@ -54,37 +54,57 @@
                                     <td>{{r.applicant_ID}}</td>
                                     <td>{{r.request_date | date: 'yyyy-MM-dd'}}</td>
                                     <td>{{r.blood_type}}</td>
-                                    <td>
+                                    <td>{{r.request_quantity}}</td>
+                                    <!-- <td>
                                         <input name="request_quantity" class="form-control" style="width: 60px;" type="text" [(ngModel)]="response[i].request_quantity" [disabled]="!r.isEditing" />
-                                    </td>
+                                    </td> -->
                                     <td>{{r.participant_Fname}} {{r.participant_Lname}}</td>
                                     <td>{{r.participant_ID}}</td>
                                     <td>{{r.response_date| date: 'yyyy-MM-dd'}}</td>
 
                                     <td *ngIf="r.response_status == 0">
                                         <!-- check the request_id i/p -->
-                                        <button class="btn btn-secondary" style="width: 95px;  height: fit-content; font-weight: bold;" *ngIf="!r.isEditing" (click)="editItem(r)">Pending</button>
-                                        <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button>
+                                        <button class="btn btn-secondary" style="width: 95px;  height: fit-content; font-weight: bold;"  data-bs-toggle="modal" data-bs-target="#qty">Pending</button>
+                                        <!-- <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button> -->
                                     </td>
                                     <td *ngIf="r.response_status == 1">
-                                        <button class="btn btn-danger" style="width: 95px; font-weight: bold;" *ngIf="!r.isEditing" (click)="editItem(r)">Expired</button>
-                                        <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button>
+                                        <button class="btn btn-danger" style="width: 95px; font-weight: bold;" data-bs-toggle="modal" data-bs-target="#qty" >Expired</button>
+                                        <!-- <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button> -->
                                     </td>
                                     <td *ngIf="r.response_status == 2">
                                         <button class="btn btn-info" disabled style="width: 95px; font-weight: bold;">Completed</button>
                                     </td>
 
                                     <td *ngIf="r.request_status == 0">
-                                        <!-- check the request_id i/p -->
+                                        <!-- check the request_id i/p --> 
                                         <div style="width: 95px; font-weight: bold; color: #40babd;">Ongoing</div>
                                     </td>
                                     <td *ngIf="r.request_status == 1">
                                         <div style="width: 95px; font-weight: bold; color: grey;" >Fullfilled</div>
                                     </td>
+
+                                    <div class="modal fade" id="qty">
+                                        <div class="modal-dialog" >
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">Thank you for your donation!</h4>
+                                              <button class="btn-close" data-bs-dismiss="modal" ></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form [formGroup]="form">
+                                                <label>Enter quantity donated:</label> &nbsp;
+                                                <input type="text" style="background-color: rgb(221, 234, 250);" formControlName="don_quantity"> &nbsp;
+                                                <button class="btn btn-primary" (click)="complete(r)">submit</button></form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    
                                 </tr>
                             </tbody>
                         </table>
-                        </div>
+
+                    </div>    
                     </div>
                     </div>
                     </fieldset>

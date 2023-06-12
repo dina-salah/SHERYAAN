@@ -15,6 +15,7 @@
             <thead class="table-dark">
                 <tr>
                     <th></th>
+                    <th>Organization</th>
                     <th>Event Address</th>
                     <th>Event City</th>
                     <th>Start Date</th>
@@ -24,6 +25,7 @@
             <tbody>
                 <tr *ngFor="let b of blood_drives; index as i">
                     <td></td>
+                    <td>{{b.organization_name}}</td>
                     <td>{{b.event_address}}</td>
                     <td>{{b.city}}</td>
                     <td>{{b.event_startDate | date: 'yyyy-MM-dd'}}</td>

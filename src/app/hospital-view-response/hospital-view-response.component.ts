@@ -33,6 +33,10 @@ export class HospitalViewResponseComponent implements OnInit{
     
   }
 
+  form = new FormGroup({
+    don_quantity: new FormControl('', Validators.required),
+  })
+
   fetch(){
     this.service.getresponse(this.id).subscribe((res: any) => {
       this.response = res.data;
@@ -74,18 +78,21 @@ export class HospitalViewResponseComponent implements OnInit{
 })
 
     this.quantitydata.request_id = r.request_id;
-    this.quantitydata.don_quantity = r.request_quantity;
+    this.quantitydata.don_quantity = this.form.value.don_quantity;
     console.log(this.quantitydata);
     this.service.updatequantity(this.quantitydata).subscribe((res) => {
       console.log(res);
     })
-    r.isEditing = false;
     
   }
 
   editItem(item : any) {
     item.isEditing = !item.isEditing;
    // console.log(item);
+  }
+
+  onclose(){
+    window.location.reload();
   }
 
   // quantity(r: any){
