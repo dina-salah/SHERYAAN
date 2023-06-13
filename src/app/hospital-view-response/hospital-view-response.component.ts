@@ -21,7 +21,8 @@ export class HospitalViewResponseComponent implements OnInit{
   req_id = {request_id: ''};
   addpoints = {response_id: '', responding_user: '', hospital_id: ''};
   response_id ={response_id: ''};
-  quantitydata = {request_id: '', don_quantity: ''};
+  quantitydata = {req_id: '', don_quantity: ''};
+  hide: boolean = false;
 
   constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
 
@@ -77,18 +78,23 @@ export class HospitalViewResponseComponent implements OnInit{
     console.log(error)
 })
 
-    this.quantitydata.request_id = r.request_id;
+    this.quantitydata.req_id = r.request_id;
     this.quantitydata.don_quantity = this.form.value.don_quantity;
     console.log(this.quantitydata);
     this.service.updatequantity(this.quantitydata).subscribe((res) => {
       console.log(res);
     })
+    window.location.reload();
     
   }
 
   editItem(item : any) {
     item.isEditing = !item.isEditing;
    // console.log(item);
+  }
+
+  change(){
+    this.hide = true;
   }
 
   onclose(){

@@ -64,7 +64,13 @@
 
                                     <td *ngIf="r.response_status == 0">
                                         <!-- check the request_id i/p -->
-                                        <button class="btn btn-secondary" style="width: 95px;  height: fit-content; font-weight: bold;"  data-bs-toggle="modal" data-bs-target="#qty">Pending</button>
+                                        <button class="btn btn-secondary" style="width: 95px;  height: fit-content; font-weight: bold;"  data-bs-toggle="modal" data-bs-target="#qty" (click)="change()" [hidden]="hide">Pending</button>
+                                        <form [formGroup]="form" [hidden]="!hide">
+                                            <label>quantity donated:</label> &nbsp;
+                                            <input type="text" style="background-color: rgb(221, 234, 250); width: 30px;" formControlName="don_quantity"> &nbsp;
+                                            <button class="btn btn-primary" (click)="complete(r)">submit</button>
+                                            </form>
+                                        
                                         <!-- <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button> -->
                                     </td>
                                     <td *ngIf="r.response_status == 1">
@@ -82,8 +88,9 @@
                                     <td *ngIf="r.request_status == 1">
                                         <div style="width: 95px; font-weight: bold; color: grey;" >Fullfilled</div>
                                     </td>
+                                    
 
-                                    <div class="modal fade" id="qty">
+                                    <!-- <div class="modal fade" id="qty">
                                         <div class="modal-dialog" >
                                           <div class="modal-content">
                                             <div class="modal-header">
@@ -91,14 +98,11 @@
                                               <button class="btn-close" data-bs-dismiss="modal" ></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form [formGroup]="form">
-                                                <label>Enter quantity donated:</label> &nbsp;
-                                                <input type="text" style="background-color: rgb(221, 234, 250);" formControlName="don_quantity"> &nbsp;
-                                                <button class="btn btn-primary" (click)="complete(r)">submit</button></form>
+                                                
                                             </div>
                                           </div>
                                         </div>
-                                      </div>
+                                    </div> -->
                                     
                                 </tr>
                             </tbody>
