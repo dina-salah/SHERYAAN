@@ -73,7 +73,7 @@
             <pre></pre>
             <div  class="mb-3"> 
                 <!--  min="18" max="60" -->
-                <input type="text"   placeholder="Age"  class="form-control" [minlength]="1" [maxlength]="2" formControlName="user_age" > 
+                <input type="text"   placeholder="Age" required  class="form-control" [minlength]="1" [maxlength]="2" formControlName="user_age" > 
                 
                 <div class="warning" *ngIf="user_age && (user_age.invalid && (user_age.dirty || user_age.touched))">
                     <div *ngIf="user_age.errors?.['required']">Age is required.</div>
@@ -94,7 +94,7 @@
             <pre></pre>
             <div  class="mb-3"> 
             
-                <input type="text" placeholder="PhoneNumber"  class="form-control" [minlength]="11" [maxlength]="11" formControlName="user_phoneNo"  [class.is-invalid]="localForm.submitted && addUserForm.get('user_phoneNo')?.invalid">
+                <input type="text" placeholder="PhoneNumber" required class="form-control" [minlength]="11" [maxlength]="11" formControlName="user_phoneNo"  [class.is-invalid]="localForm.submitted && addUserForm.get('user_phoneNo')?.invalid">
                 <div class="invalid-feedback">
                     phone number is required
                 </div>
@@ -103,7 +103,7 @@
 
             <div  class="mb-3">
                 
-                <input type="email" placeholder="Email" class="form-control"   formControlName="user_Email" [class.is-invalid]="localForm.submitted && addUserForm.get('user_Email')?.invalid">
+                <input type="email" placeholder="Email" required class="form-control"   formControlName="user_Email" [class.is-invalid]="localForm.submitted && addUserForm.get('user_Email')?.invalid">
                 <div class="invalid-feedback">
                     Email is required
                 </div>
@@ -163,7 +163,7 @@
     </div>
 
     <div  class="mb-3">
-        <input  placeholder="Name" class="form-control" formControlName="hospital_name" [minLength]="8" [maxlength]="20" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_name')?.invalid">
+        <input  placeholder="Name" class="form-control" required formControlName="hospital_name" [minLength]="8" [maxlength]="20" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_name')?.invalid">
         <div class="invalid-feedback">
             Hospital name is required
         </div>
@@ -180,7 +180,7 @@
     <pre></pre>
 
     <div  class="mb-3"> 
-        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="hospital_phoneNo"  [minLength]="5" [maxlength]="11" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_phoneNo')?.invalid">
+        <input type="text" placeholder="PhoneNumber" required class="form-control"  formControlName="hospital_phoneNo"  [minLength]="5" [maxlength]="11" [class.is-invalid]="HlocalForm.submitted && addHospitalForm.get('hospital_phoneNo')?.invalid">
         <div class="invalid-feedback">
             Hospital phone number is required
         </div>
@@ -240,7 +240,7 @@
 
     <div  class="mb-3"> 
     
-        <input type="text" placeholder="PhoneNumber"  class="form-control"  formControlName="organization_phoneNo" [minLength]="4" [maxlength]="11" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_phoneNo')?.invalid">
+        <input type="text" placeholder="PhoneNumber" required class="form-control"  formControlName="organization_phoneNo" [minLength]="4" [maxlength]="11" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_phoneNo')?.invalid">
         <div class="invalid-feedback">
             Organization phone number is required
         </div>

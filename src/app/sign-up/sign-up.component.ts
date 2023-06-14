@@ -22,17 +22,17 @@ export class SignUpComponent{
   constructor(private signupservice: signupService, private toastr: ToastrService ){}
 
   addUserForm =  new FormGroup({
-    user_Fname: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-    user_Lname: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-    user_national_ID: new FormControl(null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]),
-    user_gender: new FormControl(null, Validators.required),
-    user_age: new FormControl(null, [Validators.required, Validators.min(18), Validators.max(60), Validators.pattern('^[0-9]+$')]),
-    user_address: new FormControl(null, Validators.required),
-    user_phoneNo: new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
-    user_Email: new FormControl(null, Validators.required),
-    user_city: new FormControl(null, Validators.required),
-    user_blood_type: new FormControl(null, Validators.required),
-    user_health_status: new FormControl(null, Validators.required),
+    user_Fname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    user_Lname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    user_national_ID: new FormControl('', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]),
+    user_gender: new FormControl('', Validators.required),
+    user_age: new FormControl('', [Validators.required, Validators.min(18), Validators.max(60), Validators.pattern('^[0-9]+$')]),
+    user_address: new FormControl('', Validators.required),
+    user_phoneNo: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
+    user_Email: new FormControl('', Validators.required),
+    user_city: new FormControl('', Validators.required),
+    user_blood_type: new FormControl('', Validators.required),
+    user_health_status: new FormControl('', Validators.required),
     user_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 
@@ -45,11 +45,11 @@ get user_age() {
 }
 
   addHospitalForm =  new FormGroup({
-    hospital_name: new FormControl(null, Validators.required),
-    hospital_address: new FormControl(null, Validators.required),
-    hospital_phoneNo: new FormControl(null, Validators.required),
-    hospital_Email: new FormControl(null, Validators.required),
-    hospital_city: new FormControl(null, Validators.required),
+    hospital_name: new FormControl('', Validators.required),
+    hospital_address: new FormControl('', Validators.required),
+    hospital_phoneNo: new FormControl('', Validators.required),
+    hospital_Email: new FormControl('', Validators.required),
+    hospital_city: new FormControl('', Validators.required),
     hospital_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 
@@ -59,10 +59,10 @@ get user_age() {
 
 
   addOrgnizationForm = new FormGroup({
-    organization_name: new FormControl(null, Validators.required),
-    orgaization_city: new FormControl(null, Validators.required),
-    organization_phoneNo: new FormControl(null, Validators.required),
-    organization_email: new FormControl(null, Validators.required),
+    organization_name: new FormControl('', Validators.required),
+    orgaization_city: new FormControl('', Validators.required),
+    organization_phoneNo: new FormControl('', Validators.required),
+    organization_email: new FormControl('', Validators.required),
     organization_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 
