@@ -64,8 +64,8 @@
 
                                     <td *ngIf="r.response_status == 0">
                                         <!-- check the request_id i/p -->
-                                        <button class="btn btn-secondary" style="width: 95px;  height: fit-content; font-weight: bold;"  data-bs-toggle="modal" data-bs-target="#qty" (click)="change()" [hidden]="hide">Pending</button>
-                                        <form [formGroup]="form" [hidden]="!hide">
+                                        <button class="btn btn-secondary" style="width: 95px;  height: fit-content; font-weight: bold;"  data-bs-toggle="modal" data-bs-target="#qty" *ngIf="!r.isEditing" (click)="editItem(r)" >Pending</button>
+                                        <form [formGroup]="form" *ngIf="r.isEditing">
                                             <label>quantity donated:</label> &nbsp;
                                             <input type="text" style="background-color: rgb(221, 234, 250); width: 30px;" formControlName="don_quantity"> &nbsp;
                                             <button class="btn btn-primary" (click)="complete(r)">submit</button>
@@ -74,7 +74,12 @@
                                         <!-- <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button> -->
                                     </td>
                                     <td *ngIf="r.response_status == 1">
-                                        <button class="btn btn-danger" style="width: 95px; font-weight: bold;" data-bs-toggle="modal" data-bs-target="#qty" >Expired</button>
+                                        <button class="btn btn-danger" style="width: 95px; font-weight: bold;" data-bs-toggle="modal" data-bs-target="#qty"  *ngIf="!r.isEditing" (click)="editItem(r)">Expired</button>
+                                        <form [formGroup]="form" *ngIf="r.isEditing">
+                                            <label>quantity donated:</label> &nbsp;
+                                            <input type="text" style="background-color: rgb(221, 234, 250); width: 30px;" formControlName="don_quantity"> &nbsp;
+                                            <button class="btn btn-primary" (click)="complete(r)">submit</button>
+                                            </form>
                                         <!-- <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button> -->
                                     </td>
                                     <td *ngIf="r.response_status == 2">

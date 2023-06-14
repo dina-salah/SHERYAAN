@@ -93,7 +93,7 @@ export class HospitalViewResponseComponent implements OnInit{
    // console.log(item);
   }
 
-  change(){
+  change(r: any){
     this.hide = true;
   }
 
