@@ -85,7 +85,7 @@ export class HospitalViewResponseComponent implements OnInit{
       console.log(res);
     })
     window.location.reload();
-    
+    r.isEditing = false;
   }
 
   editItem(item : any) {
