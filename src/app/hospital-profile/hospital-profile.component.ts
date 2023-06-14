@@ -69,14 +69,14 @@ export class HospitalProfileComponent implements OnInit{
     this.service.getHospital(this.id)
     .subscribe((res) => {
         this.hospital = res;
-        console.log(res);
+        console.log(res[0]);
         const hospitaldata = res;
         if (hospitaldata) {
           localStorage.setItem('hospitaldata', JSON.stringify(hospitaldata));
         }
         this.isfetching = false;
-        // this.hosE.email = res.data[0].hospital_Email
-        // this.hosE.name = res.data[0].hospital_name
+        this.hosE.email = res[0].hospital_Email
+        this.hosE.name = res[0].hospital_name
         this.hospital_name = res[0].hospital_name;
         localStorage.setItem('hospitalname', JSON.stringify(this.hospital_name));
 
@@ -87,7 +87,7 @@ export class HospitalProfileComponent implements OnInit{
 
     //functions for deleting account with code verification
 sendEmail() {
-  
+  console.log(this.hosE)
   this.http.post<any>('http://localhost:8082/sendemail', this.hosE)
     .subscribe(
       (response) => {

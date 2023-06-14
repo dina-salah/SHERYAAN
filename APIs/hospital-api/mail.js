@@ -48,6 +48,8 @@ app.post('/sendemail', (req, res) => {
       });
   
 
+
+      console.log(hospitalemail.email)
     const mailOptions = {
       from: 'SHERYAAN.Donations@outlook.com',
       to: hospitalemail.email,
