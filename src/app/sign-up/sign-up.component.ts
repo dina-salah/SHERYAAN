@@ -36,12 +36,17 @@ export class SignUpComponent{
     user_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 
+
 get user_password() {
   return this.addUserForm.get('user_password');
 }
 
 get user_age() {
   return this.addUserForm.get('user_age');
+}
+
+get user_national_ID() {
+  return this.addUserForm.get('user_national_ID');
 }
 
   addHospitalForm =  new FormGroup({
@@ -89,10 +94,13 @@ get user_age() {
     this.hDisplay =true 
   }
 
+
   userSubmit(){
+
     console.log(this.addUserForm.value)
 
-this.signupservice.createUser(this.addUserForm.value)
+    if(this.addUserForm.valid){
+      this.signupservice.createUser(this.addUserForm.value)
   .subscribe({
   next: (data) => {
   console.log(data)
@@ -103,12 +111,19 @@ this.signupservice.createUser(this.addUserForm.value)
     console.log(error)
     this.toastr.warning('check your info!');
   }
-});
+  });
+    }
+    else{
+      this.addUserForm.markAllAsTouched();
+      this.toastr.warning('check your info!');
+    }
+
   }
 
   HospitalSubmit(){
     console.log(this.addHospitalForm.value)
 
+    if(this.addHospitalForm.valid){
     this.signupservice.createHospital(this.addHospitalForm.value)
       .subscribe({
       next: (data) => {
@@ -120,12 +135,17 @@ this.signupservice.createUser(this.addUserForm.value)
         console.log(error)
         this.toastr.warning('check your info!');
       }
-    });
+    });}
+    else{
+      this.addHospitalForm.markAllAsTouched();
+      this.toastr.warning('check your info!');
+    }
   }
   
   OrgnizationSubmit(){
     console.log(this.addOrgnizationForm.value)
 
+    if(this.addOrgnizationForm.valid){
     this.signupservice.createOrgnization(this.addOrgnizationForm.value)
       .subscribe({
       next: (data) => {
@@ -137,7 +157,12 @@ this.signupservice.createUser(this.addUserForm.value)
         console.log(error)
         this.toastr.warning('check your info!');
       }
-    });
+    });}
+    else{
+      this.addOrgnizationForm.markAllAsTouched();
+      this.toastr.warning('check your info!');
+    }
+
   }
 
   // onsignup() {
