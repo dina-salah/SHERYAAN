@@ -46,7 +46,7 @@ app.get("/", function (req, res) {
 //Retrieve all requests (for users)
 app.get("/all-requests", function (req, res) {
   dbConn.query(`SELECT r.request_id , u.user_Fname, u.user_Lname , r.request_status,  r.hospital_id, COUNT(d.response_id) AS "Requests_Counter", 
-                r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , DATE(r.request_date) 
+                r.request_quantity, r.request_case , b.blood_type , l.city , h.hospital_name  , r.request_date 
                 from request AS r join blood AS b on r.blood_type = b.blood_id
                 JOIN hospital AS h ON h.hospital_id = r.hospital_id 
                 JOIN location AS l ON h.location_code = l.location_code
