@@ -156,7 +156,10 @@ displayHositalfilter(){
     })
   }
 
-
+  sendEmail(email : string) {
+    const mailtoUrl = `mailto:${email}`;
+    window.open(mailtoUrl);
+  }
 
 
 }
