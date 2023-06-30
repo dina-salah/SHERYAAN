@@ -378,36 +378,37 @@ app.get("/users-form/:id", function (req, res) {
 //add points when user donating
 app.post("/add-points-after-donation", function (req, res) {
   response_id = req.body.response_id;
-  user_id = req.body.user_id;
+  responding_user = req.body.responding_user;
   hospital_id = req.body.hospital_id;
-
-  dbConn.query(`SELECT InsertPointsAfterResponseChange( ${response_id} , ${user_id}, ${hospital_id})` ,
+  
+  
+  dbConn.query(`SELECT InsertPointsAfterResponseChange( ${response_id} , ${responding_user}, ${hospital_id})` ,
   function (error, results, fields) {
-      if (error) throw error;
-      return res.send(
-          { error: false,
-            message: "points added successfully" 
-          });
+    if (error) throw error
+    return res.send(
+      { error: false,
+        message: "points added successfully" 
+      });
     });
+    console.log(response_id , responding_user , hospital_id)
   });
 
 
 
 //update quantity after donation
-app.post("/quantity-after-donation", function (req, res) {
-  request_id = req.body.request_id;
-  don_quantity = req.body.don_quantity;
-
-  dbConn.query(`SELECT UpdateQuantityAfterDonation( ${request_id} , ${don_quantity})` ,
-  function (error, results, fields) {
-      if (error) throw error;
-      return res.send(
-          { error: false,
-            message: "quantity updated successfully" 
-          });
+  app.post("/quantity-after-donation", function (req, res) {
+    req_id = req.body.req_id;
+    don_quantity = req.body.don_quantity;
+  console.log(req_id, don_quantity);
+    dbConn.query(`SELECT UpdateQuantityAfterDonation( ${req_id} , ${don_quantity})` ,
+    function (error, results, fields) {
+        if (error) throw error;
+        return res.send(
+            { error: false,
+              message: "quantity updated successfully" 
+            });
+      });
     });
-  });
-  
 
   
 //Fulfilled Request 
