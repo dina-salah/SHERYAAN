@@ -65,7 +65,14 @@
                             <td>
                               <input name="request_case" class="form-control" style="width:75px ; height: min-content;" type="text" [(ngModel)]="myrequest[i].request_case" [disabled]="!m.isEditing"/>
                             </td>
-                            <td> {{m.request_status }} </td>
+                            
+                            <td scope="row" *ngIf="m.request_status == 0">
+                              <div style="color: dimgray;  font-weight: bold;">Pending</div>
+                            </td>
+                
+                            <td scope="row" *ngIf="m.request_status == 1">
+                              <div style="color: rgb(44, 109, 248); font-weight: bold;">Completed</div>
+                            </td>
                             <td>{{m.city}}</td>
                             <td>
                               <span style="display: flex;">
