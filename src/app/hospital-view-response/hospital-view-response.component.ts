@@ -19,7 +19,7 @@ export class HospitalViewResponseComponent implements OnInit{
   response?: Response[];
   hospital: Hospital[];
   req_id = {request_id: ''};
-  addpoints = {response_id: '', responding_user: '', hospital_id: ''};
+  addpoints = {response_id: '', responding_user: '', hospital_id: 0};
   response_id ={response_id: ''};
   quantitydata = {req_id: '', don_quantity: ''};
   hide: boolean = false;
@@ -58,7 +58,7 @@ export class HospitalViewResponseComponent implements OnInit{
   }
 
   complete(r: any){
-    this.addpoints.hospital_id = this.id;
+    this.addpoints.hospital_id = parseInt(this.id);
     this.addpoints.response_id = r.response_id;
     this.addpoints.responding_user = r.responding_user;
     this.response_id.response_id =r.response_id;
@@ -84,8 +84,9 @@ export class HospitalViewResponseComponent implements OnInit{
     this.service.updatequantity(this.quantitydata).subscribe((res) => {
       console.log(res);
     })
-    window.location.reload();
+    //window.location.reload();
     r.isEditing = false;
+    
   }
 
   editItem(item : any) {

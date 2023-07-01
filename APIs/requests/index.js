@@ -374,7 +374,7 @@ app.get("/users-form/:id", function (req, res) {
 });
 
 
-
+/*
 //add points when user donating
 app.post("/add-points-after-donation", function (req, res) {
   response_id = req.body.response_id;
@@ -392,6 +392,41 @@ app.post("/add-points-after-donation", function (req, res) {
     });
     console.log(response_id , responding_user , hospital_id)
   });
+  */
+ 
+ app.post("/add-points-after-donation", function (req, res) {
+   const { response_id, responding_user, hospital_id } = req.body;
+
+   console.log(typeof(response_id));
+   console.log(typeof(responding_user));
+   console.log(typeof(hospital_id));
+
+  const query = 'SELECT InsertPointsAfterResponseChange(?, ?, ?) AS result';
+  const parsedHospitalId = parseInt(hospital_id);
+  const values = [response_id, responding_user, parsedHospitalId];
+
+  dbConn.query(query, values, (error, results) => {
+    if (error) {
+      console.error('Error calling MySQL function:', error);
+      return res.status(500).json({ error: true, message: "An error occurred" });
+    }
+
+    const result = results[0].result;
+    console.log(result)
+    if (result === 1) {
+      return res.json({
+        error: false,
+        message: "Points added successfully"
+      });
+    } else {
+      return res.json({
+        error: true,
+        message: "No points added"
+      });
+    }
+  });
+
+});
 
 
 

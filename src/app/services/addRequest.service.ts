@@ -162,6 +162,7 @@ return this.http.get(`${requestAPI}/my-responses/` + id)
 }
 
 addpoints(data: any){
+  console.log("from angular    " + data) 
   return this.http.post(`${requestAPI}/add-points-after-donation`, data)
 .pipe(
   catchError(this.errorHandler)
