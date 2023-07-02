@@ -89,10 +89,13 @@ export class SignInComponent{
   this.service.userlogin(this.userloginform.value)
   .subscribe({
   next: (data) => {
+    if(data.error){
+      this.toastr.warning('check your password!');
+    } else{
   console.log(data.data[0].user_id);
   this.navigateToLogin(data.data[0].user_id);
   this.service.loggedIn.next(true);
-  this.toastr.success('logged in successfully!');
+  this.toastr.success('logged in successfully!');}
  }, 
   error: (error) => {
     console.log(error)
@@ -101,6 +104,10 @@ export class SignInComponent{
   }
   });
   }
+
+
+
+
 
   navigateToLoginh(id: number) {
     this.router.navigate(['/hospital/', id]); 
@@ -113,12 +120,14 @@ export class SignInComponent{
   this.hospitalservice.hospitallogin(this.hospitalloginform.value)
 .subscribe({
   next: (data) => {
+    if(data.error){
+      this.toastr.warning('check your password!');
+    }else{
   console.log(data.data[0].hospital_id);
   this.navigateToLoginh(data.data[0].hospital_id);
   this.hospitalservice.loggedIn.next(true);
   this.toastr.success('logged in successfully!');
-
-  },
+}},
   error: (error) => {
     console.log(error)
     this.toastr.warning('check your password!');
