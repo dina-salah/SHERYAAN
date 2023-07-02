@@ -52,7 +52,7 @@ export class ReqFormHospitalComponent  implements OnInit  {
       res => {
         console.log(res);
         this.toastr.success('Request added!');
-        this._router.navigate(['/request-hospital/', this.id]);
+        this._router.navigate(['/my-req-in-my-req-hospital/', this.id]);
       },
       error => {
         console.log(error);
