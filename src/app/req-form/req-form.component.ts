@@ -79,11 +79,16 @@ export class ReqFormComponent implements OnInit {
     this.request.request_case = this.UserForm.value.request_case;
     // this.request.request_status = this.UserForm.value.request_status;
     this.service.addrequest(this.request)
-    .subscribe((res) => {
+    .subscribe({
+     next: (res) => {
       console.log(res);
       this.toastr.success('request added!');
       this._router.navigate(['/myrequest-user/', this.id]);
-    })
+    },error: (error) => {
+      console.log(error);
+      this.toastr.warning('Error occurred while adding request');
+    }
+  })
   }
 
   
