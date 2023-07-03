@@ -63,7 +63,12 @@
                               <input name="request_quantity" class="form-control"  style="width:75px ;" type="text" [(ngModel)]="myrequest[i].request_quantity" [disabled]="!m.isEditing" />
                             </td>
                             <td>
-                              <input name="request_case" class="form-control" style="width:75px ; height: min-content;" type="text" [(ngModel)]="myrequest[i].request_case" [disabled]="!m.isEditing"/>
+                              <select [(ngModel)]="myrequest[i].request_case" [disabled]="!m.isEditing" style="width:75px ; height: 40px;">
+                                <option value="1">Urgent</option>
+                                <option value="0">Not urgent</option>
+                              </select>
+                              <!-- <input  name="request_case" class="form-control" style="width:75px ; height: min-content;" type="text" [(ngModel)]="myrequest[i].request_case" [disabled]="!m.isEditing"/> -->
+        
                             </td>
                             
                             <td scope="row" *ngIf="m.request_status == 0">

@@ -22,15 +22,18 @@ export class UserProfileUpdateComponent implements OnInit{
   form!: FormGroup;
   username: string;
   Lastname: string;
+  city: any = [];
   constructor(
     public userService: updateService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private signupservice: signupService
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['user_id'];
+    this.getcities();
     this.username = JSON.parse(localStorage.getItem('username'));
     this.Lastname = JSON.parse(localStorage.getItem('userlname'));
     this.userService.find(this.id).subscribe((data:User)=>{
@@ -67,6 +70,13 @@ export class UserProfileUpdateComponent implements OnInit{
       user_health_status: new FormControl(null, Validators.required),
       user_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
        });
+  }
+
+  getcities(){
+    this.signupservice.getcities().subscribe((res) => {
+      console.log(res);
+      this.city = res.data;
+    })
   }
 
   // get f(){

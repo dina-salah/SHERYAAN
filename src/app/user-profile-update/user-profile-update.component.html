@@ -83,23 +83,23 @@
     <pre></pre>
 
 
-    <label >Gender:</label>
+    <!-- <label >Gender:</label>
     <div style="display: inline;">
     <input type="radio" class="custom-control-input"  value="Male" formControlName="user_gender" >
     <label class="custom-control-label" >Male</label>
     <input  type="radio" class="custom-control-input"  value="Female"   formControlName="user_gender" >
     <label class="custom-control-label" >Female</label>
     </div>
-    <pre></pre>
+    <pre></pre> -->
 
         <div>
         <label  style="margin-right: 7px;">City:</label>
-        <select class="drop" formControlName="user_city">
-        <option value="6 October">  6 October</option>
-        <option value="Dokki">      Dokki</option>
-        <option value="New Cairo">  New Cairo</option>
-        <option value="Nasr city">  Nasr city</option>
-        <option value="Madinty">    Madinty</option>
+        <select formControlName="user_city">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let c of city"  
+                    value={{c.location_code}}>  
+                {{c.city}}  
+            </option>  
         </select>
     </div>
     <pre></pre>

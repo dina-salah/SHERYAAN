@@ -51,11 +51,13 @@
                                             <input name="request_quantity" type="text" class="form-control" style="width: 150px;" [(ngModel)]="hospitalreq[i].request_quantity" [disabled]="!h.isEditing" />
                                         </td>
                                         <td >
-                                            <input name="request_case" type="text" class="form-control" style="width: 150px;" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" />
+                                            <select [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" style="width:75px ; height: 40px;">
+                                                <option value="1">Urgent</option>
+                                                <option value="0">Not urgent</option>
+                                              </select>
+                                            <!-- <input name="request_case" type="text" class="form-control" style="width: 150px;" [(ngModel)]="hospitalreq[i].request_case" [disabled]="!h.isEditing" /> -->
                                         </td>
-                                        <!-- <td >
-                                            <input name="request_status" type="text" [(ngModel)]="hospitalreq[i].request_status" [disabled]="!h.isEditing" />
-                                        </td> -->
+                                        
                                         <td>{{h.city}}</td>
                                         <td><span style="display: flex;">
                                             <button class="btn btn-primary" (click)="editItem(h)" ><i class="bi bi-pencil-fill"></i>
