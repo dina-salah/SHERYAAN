@@ -341,11 +341,34 @@ app.get("/count", function (req, res) {
 
 
 //calculate response expire date 
-app.get("/calculate-expire-date/:id", function (req, res) {
+/*app.get("/calculate-expire-date/:id", function (req, res) {
   hospital_id = req.params.id;
   dbConn.query(`CALL UpdateRowsBasedOnDateDiff(${hospital_id});`, hospital_id
   , function (error, results, fields) {
     if (error) throw error;
+    return res.send({ error: false, data: results, message: "All Requests" });
+  });
+});*/
+
+app.get("/calculate-expire-date", function (req, res) {
+  //retrieve all response_id 
+  var query = "SELECT response_id FROM request_donations";
+  
+  //query
+  dbConn.query(query, function (error, results, fields) {
+    if (error) throw error;
+    
+    // iterate through each response_id
+    results.forEach(function (row) {
+      var current_response_id = row.response_id;
+      
+      // function call 
+      var updateQuery = `CALL UpdateRowsBasedOnDateDiff1(${current_response_id})`;
+      dbConn.query(updateQuery, function (error, results, fields) {
+        if (error) throw error;
+      });
+    });
+    
     return res.send({ error: false, data: results, message: "All Requests" });
   });
 });
@@ -412,7 +435,7 @@ app.post("/add-points-after-donation", function (req, res) {
     }
 
     const result = results[0].result;
-    console.log(result)
+    console.log(results) 
     if (result === 1) {
       return res.json({
         error: false,

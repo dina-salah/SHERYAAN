@@ -69,6 +69,15 @@ app.get("/org/:id", function (req, res) {
 });
 
 // Add a new organization
+//first choose location
+app.get("/locations", function (req, res) {
+  dbConn.query(`select * from location ` , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "locations list." });
+  });
+});
+
+//second add organization data
 app.post("/org", function (req, res) {
   //let org = req.body.organization_id;
   //let event_code = req.body.event_code;
@@ -77,6 +86,7 @@ app.post("/org", function (req, res) {
   let email = req.body.organization_email;
   let password = req.body.organization_password;
   let city = req.body.orgaization_city;
+  let address = req.body.organization_address;
 
   /*if (!org) {
     return res
@@ -92,7 +102,8 @@ app.post("/org", function (req, res) {
       organization_password: password,
       organization_phoneNo: phoneNo,
       organization_email: email,
-      orgaization_city: city
+      orgaization_city: city, 
+      organization_address : address
     },
     function (error, results, fields) {
       if (error) throw error;
