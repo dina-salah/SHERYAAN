@@ -273,7 +273,7 @@
     
     <div>
         <label  style="margin-right: 7px;">City:</label>
-        <select formControlName="user_city">
+        <select formControlName="orgaization_city">
             <option value="0">--Select--</option>  
             <option *ngFor="let c of city"  
                     value={{c.location_code}}>  
@@ -288,6 +288,15 @@
         <option value="Madinty"   >Madinty</option>
         </select> -->
         <!-- <input type="text" class="custom-control-input"  formControlName="city" > -->
+    </div>
+
+    <pre></pre>
+    <div  class="mb-3"> 
+    
+        <input type="text" placeholder="Address" required class="form-control"  formControlName="organization_address" [class.is-invalid]="OlocalForm.submitted && addOrgnizationForm.get('organization_address')?.invalid">
+        <div class="invalid-feedback">
+            Organization address is required
+        </div>
     </div>
 
     <pre></pre>

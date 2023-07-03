@@ -3,6 +3,7 @@ import { EventService } from '../services/events.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { signupService } from '../services/signup.service';
 
 @Component({
   selector: 'app-add-event',
@@ -14,12 +15,20 @@ export class AddEventComponent implements OnInit{
   id: any;
   data= {event_startDate: '', event_endDate: '', event_address: '', org_id: '', location_code: ''};
   locs: any[];
+  city: any[];
 
-  constructor(private service:EventService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService){}
+  constructor(private service:EventService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private signupservice: signupService){}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['organization_id']; 
     this.fetchlocs();
+    this.getcities();
+  }
+  getcities(){
+    this.signupservice.getcities().subscribe((res) => {
+      console.log(res);
+      this.city = res.data;
+    })
   }
 
   fetchlocs(){

@@ -71,6 +71,7 @@ get user_national_ID() {
   addOrgnizationForm = new FormGroup({
     organization_name: new FormControl('', Validators.required),
     orgaization_city: new FormControl('', Validators.required),
+    organization_address: new FormControl('', Validators.required),
     organization_phoneNo: new FormControl('', Validators.required),
     organization_email: new FormControl('', Validators.required),
     organization_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),

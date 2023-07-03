@@ -30,9 +30,9 @@
             <label style="margin-right: 7px;" class="x">City: &nbsp;</label>
                                 <select formControlName="city">
                                     <option value="0">--Select--</option>  
-                                    <option *ngFor="let l of locs"  
-                                            value={{l.location_code}}>  
-                                        {{l.city}}  
+                                    <option *ngFor="let c of city"  
+                                        value={{c.location_code}}>  
+                                        {{c.city}}  
                                     </option>  
                                 </select>
         </div><br>
