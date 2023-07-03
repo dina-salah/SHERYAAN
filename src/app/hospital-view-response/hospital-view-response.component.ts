@@ -33,8 +33,8 @@ export class HospitalViewResponseComponent implements OnInit{
     this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
     this.id = this.route.snapshot.params['hospital_id'];
     this.fetch();
-    // this.expireFunc(this.response);
-    
+    this.expireFunc();
+  
   }
 
   form = new FormGroup({
@@ -57,7 +57,7 @@ export class HospitalViewResponseComponent implements OnInit{
     },(error)=>{
       console.log(error)
   })
-
+ 
   }
 
   complete(r: any){
@@ -95,21 +95,20 @@ export class HospitalViewResponseComponent implements OnInit{
 
   editItem(item : any) {
     item.isEditing = !item.isEditing;
-   // console.log(item);
+  
   }
 
-  // expireFunc(r: any){
-  //   const id = r[0].response_id;
-  //   console.log(id)
-    // this.service.responseExpire(id)
-    // .subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //   },(error)=>{
-    //     console.log(error)
-    // }
-    // )
-  // }
+  expireFunc(){
+   
+    this.service.responseExpire()
+    .subscribe(
+      (res) => {
+        console.log(res);
+      },(error)=>{
+        console.log(error)
+    }
+    )
+  }
 
   change(r: any){
     this.hide = true;

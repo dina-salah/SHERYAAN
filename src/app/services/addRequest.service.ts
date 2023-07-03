@@ -132,8 +132,8 @@ countresponses(reqId: any){
   )
 }
 
-responseExpire(id: any){
-  return this.http.get(`${requestAPI}/calculate-expire-date/` + id)
+responseExpire(){
+  return this.http.get(`${requestAPI}/calculate-expire-date`)
   .pipe(
     catchError(this.errorHandler)
   )
@@ -153,7 +153,7 @@ myrequestUser(id: any){
     catchError(this.errorHandler)
   )
 }
-
+ 
 mydonation(id: any){
 return this.http.get(`${requestAPI}/my-responses/` + id)
 .pipe(
