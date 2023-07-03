@@ -38,4 +38,5 @@ export class Response{
     request_id:string;
     request_status: number;
     isEditing: any;
+    response_id: any;
 }

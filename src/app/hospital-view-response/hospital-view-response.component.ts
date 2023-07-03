@@ -24,13 +24,16 @@ export class HospitalViewResponseComponent implements OnInit{
   quantitydata = {req_id: '', don_quantity: ''};
   hide: boolean = false;
 
-  constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){}
+  constructor(private service: addRequestService, private router: Router, private route: ActivatedRoute){
+    
+  }
 
   ngOnInit(): void {
     
     this.hospital = JSON.parse(localStorage.getItem('hospitaldata'));
     this.id = this.route.snapshot.params['hospital_id'];
     this.fetch();
+    // this.expireFunc(this.response);
     
   }
 
@@ -81,7 +84,8 @@ export class HospitalViewResponseComponent implements OnInit{
     this.quantitydata.req_id = r.request_id;
     this.quantitydata.don_quantity = this.form.value.don_quantity;
     console.log(this.quantitydata);
-    this.service.updatequantity(this.quantitydata).subscribe((res) => {
+    this.service.updatequantity(this.quantitydata)
+    .subscribe((res) => {
       console.log(res);
     })
     //window.location.reload();
@@ -94,6 +98,19 @@ export class HospitalViewResponseComponent implements OnInit{
    // console.log(item);
   }
 
+  // expireFunc(r: any){
+  //   const id = r[0].response_id;
+  //   console.log(id)
+    // this.service.responseExpire(id)
+    // .subscribe(
+    //   (res) => {
+    //     console.log(res);
+    //   },(error)=>{
+    //     console.log(error)
+    // }
+    // )
+  // }
+
   change(r: any){
     this.hide = true;
   }
@@ -102,14 +119,6 @@ export class HospitalViewResponseComponent implements OnInit{
     window.location.reload();
   }
 
-  // quantity(r: any){
-  //   this.quantitydata.request_id = r.request_id;
-  //   this.quantitydata.don_quantity = r.request_quantity;
-  //   console.log(this.quantitydata);
-  //   this.service.updatequantity(this.quantitydata).subscribe((res) => {
-  //     console.log(res);
-  //     r.isEditing = false;
-  //   })
-  // }
+
 
 }
