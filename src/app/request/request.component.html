@@ -38,9 +38,10 @@
                         <!-- <label>Select filter</label> -->
                        <form>
                        <span>
-                          <input type="radio"  (click)="displayCityfilter()" value="1" name="filter" class="form-check-input" > <span class="x">Filter by city</span> &nbsp;
-                          <input type="radio"  (click)="displayBloodfilter()" value="2" name="filter"  class="form-check-input" ><span class="x">Filter by blood type</span> &nbsp;
-                          <input type="radio" (click)="displayHositalfilter()" value="3" name="filter" class="form-check-input" ><span class="x">Filter by hospital</span>
+                          <input type="radio"  (click)="All()" value="1" name="filter" class="form-check-input" > <span class="x">All</span> &nbsp;
+                          <input type="radio"  (click)="displayCityfilter()" value="2" name="filter" class="form-check-input" > <span class="x">Filter by city</span> &nbsp;
+                          <input type="radio"  (click)="displayBloodfilter()" value="3" name="filter"  class="form-check-input" ><span class="x">Filter by blood type</span> &nbsp;
+                          <input type="radio" (click)="displayHositalfilter()" value="4" name="filter" class="form-check-input" ><span class="x">Filter by hospital</span>
                         </span>
                       </form> 
                         <!-- filters -->
@@ -49,7 +50,7 @@
                         <div  class="d-flex justify-content-center" style="margin-bottom: 5px;" >
                         <label class="y" > Filter by blood type:</label> &nbsp;
                         <form [formGroup]="bloodform">
-                          <input class="form-check-input" type="radio"  value="0" formControlName="blood_id" (click)="All()"><span> All</span>
+                          <!-- <input class="form-check-input" type="radio"  value="0" formControlName="blood_id" (click)="All()"><span> All</span> -->
                         <span *ngFor="let b of bloodfilter, index as i">
                         <input class="form-check-input" type="radio" [value]="i+1" formControlName="blood_id" (click)="filteredReqByBlood(b)"><span> {{b.blood_type}}</span>
                       </span>
@@ -64,7 +65,7 @@
                           <span>
                           <select  formControlName="hospital_id" (change)="filteredReqByHospital()">
                             <!-- <option value="0">--Select--</option> -->
-                            <option   value="0"><div (onclick)="All()">All</div></option> 
+                            <!-- <option   value="0"><div (onclick)="All()">All</div></option>  -->
                             <option *ngFor="let h of hospitalfilter, index as i"  
                                     value={{h.hospital_id}}>  
                                     {{h.hospital_name}}  
@@ -83,7 +84,7 @@
                       <form [formGroup]="cityform">
                       <span>
                       <select formControlName="location_code" (change)="filteredReqByCity()">
-                        <option   value="0"><div (onclick)="All()">All</div></option>
+                        <!-- <option   value="0"><div (onclick)="All()">All</div></option> -->
                         <option *ngFor="let c of city, index as i" value={{c.location_code}} >  
                                 {{c.city}}
                         </option>  

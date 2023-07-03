@@ -153,7 +153,7 @@ displayHositalfilter(){
     .subscribe({
      next: (res)=>{
       this.patients = res.data;
-      console.log(this.patients[0].blood_type)
+      console.log(res);
       },error:(error)=>{
         console.log(error)
       }
