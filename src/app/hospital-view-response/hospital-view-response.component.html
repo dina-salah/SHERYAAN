@@ -83,15 +83,15 @@
                                         <!-- <button style="width: 95px; height: fit-content; font-weight: bold;" class="btn btn-warning" *ngIf="r.isEditing" (click)="complete(r)">update</button> -->
                                     </td>
                                     <td *ngIf="r.response_status == 2">
-                                        <button class="btn btn-info" disabled style="width: 95px; font-weight: bold;">Completed</button>
+                                        <button class="btn btn-success" disabled style="width: 95px; font-weight: bold;">Confirmed</button>
                                     </td>
 
                                     <td *ngIf="r.request_status == 0">
                                         <!-- check the request_id i/p --> 
-                                        <div style="width: 95px; font-weight: bold; color: #40babd;">Ongoing</div>
+                                        <div style="width: 95px; font-weight: bold; color: #fde90ce2;">Ongoing</div>
                                     </td>
                                     <td *ngIf="r.request_status == 1">
-                                        <div style="width: 95px; font-weight: bold; color: grey;" >Fullfilled</div>
+                                        <div style="width: 95px; font-weight: bold; color:#5cb85c;" >Fullfilled</div>
                                     </td>
                                     
 
