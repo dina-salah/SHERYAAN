@@ -61,22 +61,11 @@ export class HospitalViewResponseComponent implements OnInit{
   }
 
   complete(r: any){
-    this.addpoints.hospital_id = parseInt(this.id);
-    this.addpoints.response_id = r.response_id;
-    this.addpoints.responding_user = r.responding_user;
     this.response_id.response_id =r.response_id;
-    console.log(this.addpoints)
 
-    this.service.addpoints(this.addpoints)
-    .subscribe((res) => {
-      console.log(res);
-    },(error)=>{
-      console.log(error)
-  })
   this.service.pendingToConfermied(this.response_id)
   .subscribe((res) => {
     console.log(res);
-    window.location.reload();
   },(error)=>{
     console.log(error)
 })
@@ -88,7 +77,17 @@ export class HospitalViewResponseComponent implements OnInit{
     .subscribe((res) => {
       console.log(res);
     })
-    //window.location.reload();
+    this.addpoints.hospital_id = parseInt(this.id);
+    this.addpoints.response_id = r.response_id;
+    this.addpoints.responding_user = r.responding_user;
+    console.log(this.addpoints)
+    this.service.addpoints(this.addpoints)
+    .subscribe((res) => {
+      console.log(res);
+      window.location.reload();
+    },(error)=>{
+      console.log(error)
+  })
     r.isEditing = false;
     
   }
