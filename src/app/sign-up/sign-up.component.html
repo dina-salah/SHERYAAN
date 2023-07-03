@@ -114,13 +114,20 @@
             
             <div  >
                 <label  style="margin-right: 7px;">City:</label>
-                <select class="drop" formControlName="user_city">
+                <select formControlName="user_city">
+                    <option value="0">--Select--</option>  
+                    <option *ngFor="let c of city"  
+                            value={{c.location_code}}>  
+                        {{c.city}}  
+                    </option>  
+                </select>
+                <!-- <select class="drop" formControlName="user_city">
                 <option value="6 October">  6 October</option>
                 <option value="Dokki">      Dokki</option>
                 <option value="New Cairo">  New Cairo</option>
-                <option value="Nasr city">  Nasr city</option>
+                <option value="Nasr city">  Nasr city</option> 
                 <option value="Madinty">    Madinty</option>
-                </select>
+                </select> -->
             </div>
             <pre></pre>
 
@@ -199,13 +206,20 @@
     
     <div  >
         <label  style="margin-right: 7px;">City:</label>
-        <select class="drop" formControlName="hospital_city">
+        <select formControlName="user_city">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let c of city"  
+                    value={{c.location_code}}>  
+                {{c.city}}  
+            </option>  
+        </select>
+        <!-- <select class="drop" formControlName="hospital_city">
         <option value="6 October"   >6 October</option>
         <option value="Dokki" >Dokki</option>
         <option value="New Cairo"  >New Cairo</option>
         <option value="Nasr city" >Nasr city</option>
         <option value="Madinty"   >Madinty</option>
-        </select>
+        </select> -->
         <!-- <input type="text" class="custom-control-input"  formControlName="city" > -->
     </div>
     <pre></pre>
@@ -259,13 +273,20 @@
     
     <div>
         <label  style="margin-right: 7px;">City:</label>
-        <select class="drop" formControlName="orgaization_city">
+        <select formControlName="user_city">
+            <option value="0">--Select--</option>  
+            <option *ngFor="let c of city"  
+                    value={{c.location_code}}>  
+                {{c.city}}  
+            </option>  
+        </select>
+        <!-- <select class="drop" formControlName="orgaization_city">
         <option value="6 October"   >6 October</option>
         <option value="Dokki" >Dokki</option>
         <option value="New Cairo"  >New Cairo</option>
         <option value="Nasr city" >Nasr city</option>
         <option value="Madinty"   >Madinty</option>
-        </select>
+        </select> -->
         <!-- <input type="text" class="custom-control-input"  formControlName="city" > -->
     </div>
 

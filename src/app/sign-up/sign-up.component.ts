@@ -14,12 +14,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent{
+export class SignUpComponent implements OnInit{
   uDisplay:boolean =true;
   hDisplay:boolean =true;
   oDisplay:boolean =true;
+  city: any = [];
 
   constructor(private signupservice: signupService, private toastr: ToastrService ){}
+
+  ngOnInit(): void {
+    this.getcities();
+  }
 
   addUserForm =  new FormGroup({
     user_Fname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
@@ -165,6 +170,12 @@ get user_national_ID() {
 
   }
 
+  getcities(){
+    this.signupservice.getcities().subscribe((res) => {
+      console.log(res);
+      this.city = res.data;
+    })
+  }
   // onsignup() {
   //   this.toastr.success('account created!');
   // }

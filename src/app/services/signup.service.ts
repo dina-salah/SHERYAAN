@@ -29,6 +29,9 @@ export class signupService{
         return this.http.put(this.API+'/:'+id,inputdata);
       }
   
+      getcities(): Observable<any>{
+        return this.http.get('http://localhost:8000/locs');
+      }
 
 
 
