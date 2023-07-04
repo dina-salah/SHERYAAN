@@ -97,7 +97,6 @@ app.post("/user", function (req, res) {
   let user_address = req.body.user_address;
   let lcode = req.body.location_code;
   let age = req.body.user_age;
-  let city = req.body.user_city;
   let bloodt = req.body.user_blood_type;
   let email = req.body.user_Email;
   let healthsts = req.body.user_health_status;
@@ -123,7 +122,6 @@ app.post("/user", function (req, res) {
       user_password: password,
       location_code: lcode,
       user_address: user_address,
-      user_city: city,
       user_health_status: healthsts,
       user_blood_type: bloodt
     },
@@ -142,10 +140,9 @@ app.post("/user", function (req, res) {
 app.put(`/user/:id`, function (req, res) {
   let user_id = req.params.id;
   let lcode = req.body.location_code;
-  let Fname = req.body.user_Fname;
+  let Fname = req.body.user_Fname;ئ
   let Lname = req.body.user_Lname;
   let age = req.body.user_age;
-  let city = req.body.user_city;
   let bloodt = req.body.user_blood_type;
   let email = req.body.user_Email;
   let healthsts = req.body.user_health_status;
@@ -159,8 +156,8 @@ app.put(`/user/:id`, function (req, res) {
       .send({ error: true, message: "Please provide the user ssn" });
   }
   dbConn.query(
-    `UPDATE user SET user_Fname = ? , user_Lname= ?, user_age = ? , user_city = ? , user_blood_type = ? , user_Email = ?, user_health_status = ?  ,user_gender = ?  ,user_password = ? , location_code = ? , user_phoneNo = ? , user_address = ?  WHERE user_id = ${user_id} ;`,
-    [Fname, Lname, age, city, bloodt, email, healthsts, gender, password, lcode, phoneNo, address],
+    `UPDATE user SET user_Fname = ? , user_Lname= ?, user_age = ? , user_blood_type = ? , user_Email = ?, user_health_status = ?  ,user_gender = ?  ,user_password = ? , location_code = ? , user_phoneNo = ? , user_address = ?  WHERE user_id = ${user_id} ;`,
+    [Fname, Lname, age, bloodt, email, healthsts, gender, password, lcode, phoneNo, address],
     function (error, results, fields) {
       if (error) throw error;
       if (results.affectedRows == 0){

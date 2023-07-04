@@ -85,12 +85,19 @@ app.get("/hospital/:id", function (req, res) {
 // });
 
 // Add a new hospital
+//first choose location
+app.get("/locations", function (req, res) {
+  dbConn.query(`select * from location ` , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "locations list." });
+  });
+});
+
+//add hospital
 app.post("/hospital", function (req, res) {
   //let id = req.body.hospital_id;
   let lcode = req.body.location_code;
-  let stock = req.body.stock_id;
   let name = req.body.hospital_name;
-  let city = req.body.hospital_city;
   let password = req.body.hospital_password;
   let phoneNo = req.body.hospital_phoneNo;
   let address = req.body.hospital_address;
@@ -107,10 +114,8 @@ app.post("/hospital", function (req, res) {
     {
       //hospital_id: id,
       location_code: lcode,
-      stock_id: stock,
-      hospital_name:name ,
-      hospital_city: city,
-      hospital_password:password,
+      hospital_name: name ,
+      hospital_password: password,
       hospital_phoneNo: phoneNo,
       hospital_address:address, 
       hospital_Email: email,
@@ -131,9 +136,7 @@ app.post("/hospital", function (req, res) {
 app.put(`/hospital/:id`, function (req, res) {
   let id = req.params.id;
   let lcode = req.body.location_code;
-  let stock = req.body.stock_id;
   let name = req.body.hospital_name;
-  let city = req.body.hospital_city;
   let password = req.body.hospital_password;
   let phoneNo = req.body.hospital_phoneNo;
   let address = req.body.hospital_address;
@@ -145,8 +148,8 @@ app.put(`/hospital/:id`, function (req, res) {
       .send({ error: true, message: "Please provide the hospital id" });
   }
   dbConn.query(
-    `UPDATE hospital SET location_code = ? , stock_id = ? , hospital_name = ? , hospital_city = ? , hospital_password = ?, hospital_phoneNo = ?  , hospital_address = ?  , hospital_Email = ? , donation = ?  WHERE hospital_id = ${id} ;`,
-    [lcode, stock, name, city, password, phoneNo, address, email, don],
+    `UPDATE hospital SET location_code = ?, hospital_name = ? , hospital_city = ? , hospital_password = ?, hospital_phoneNo = ?  , hospital_address = ?  , hospital_Email = ? , donation = ?  WHERE hospital_id = ${id} ;`,
+    [lcode, name, password, phoneNo, address, email, don],
     function (error, results, fields) {
       if (error) throw error;
       return res.send({
