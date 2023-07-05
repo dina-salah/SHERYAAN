@@ -64,7 +64,7 @@ export class RequestComponent implements OnInit {
 
     this.service.retriveAllReq()
     .subscribe({
-     next: (res)=>{
+      next: (res)=>{
       this.patients = res.data;
       console.log(this.patients);
       },error:(error)=>{
@@ -87,7 +87,7 @@ export class RequestComponent implements OnInit {
   //fetch city for filter
   this.service.getcity()
   .subscribe((res) => {
-   this.city =res.data
+    this.city =res.data
     console.log(res.data);
   })   
   }
@@ -137,7 +137,6 @@ displayHositalfilter(){
 
   filteredReqByCity(){
     let id =this.cityform.value.location_code
-  // console.log(c.location_code)
     this.service.filtercity(id)
     .subscribe({
       next: (res)=>{
@@ -151,7 +150,7 @@ displayHositalfilter(){
   All(){
     this.service.retriveAllReq()
     .subscribe({
-     next: (res)=>{
+      next: (res)=>{
       this.patients = res.data;
       console.log(res);
       },error:(error)=>{
@@ -172,22 +171,8 @@ displayHositalfilter(){
       console.log(res);
     },(error)=>{
       console.log(error)
-      this.toastr.warning('Your donation request failed')
+      this.toastr.warning('you can not donate twice to the same patient')
   })
   }
-
-  // showform(){
-  //   if(this.display==true){
-  //     this.display = false;
-  //   }else{
-  //     this.display=true;
-  //   }
-  // }
-  // fuc. to hide user when click on donate
-  // showreq(){
-  //   this.donate=true
-  // }
-
-
 
 }

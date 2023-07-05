@@ -149,7 +149,7 @@ app.post("/user", function (req, res) {
 app.put(`/user/:id`, function (req, res) {
   let user_id = req.params.id;
   let lcode = req.body.location_code;
-  let Fname = req.body.user_Fname;ئ
+  let Fname = req.body.user_Fname;
   let Lname = req.body.user_Lname;
   let age = req.body.user_age;
   let bloodt = req.body.user_blood_type;
