@@ -260,7 +260,12 @@ app.post("/add-request", function (req, res) {
                   request_case = ? , blood_type = ? ` ,
     [user_id, hospital_id, request_quantity, request_case, blood_type] ,
     function (error, results, fields) {
-        if (error) throw error;
+        if (error)  {
+          return res
+            .status(400)
+            .send({ error: true, message: "Please provide user" });
+        }   
+        else
         return res.send(
             { error: false,
               message: "new request added successfully" 
@@ -423,6 +428,7 @@ app.post("/add-points-after-donation", function (req, res) {
    console.log(typeof(response_id));
    console.log(typeof(responding_user));
    console.log(typeof(hospital_id));
+   console.log(response_id , responding_user , hospital_id);
 
   const query = 'SELECT InsertPointsAfterResponseChange(?, ?, ?) AS result';
   const parsedHospitalId = parseInt(hospital_id);
