@@ -90,6 +90,15 @@ app.get("/user/:id", function (req, res) {
 // });
 
 // Add a new user
+//first choose location
+app.get("/locations", function (req, res) {
+  dbConn.query(`select * from location ` , function (error, results, fields) {
+    if (error) throw error;
+    return res.send({ error: false, data: results, message: "locations list." });
+  });
+});
+
+//second create user
 app.post("/user", function (req, res) {
   let user_national_ID = req.body.user_national_ID;
   let user_Lname = req.body.user_Lname;
