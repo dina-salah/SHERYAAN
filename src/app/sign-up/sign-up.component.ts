@@ -63,7 +63,7 @@ get user_national_ID() {
     hospital_address: new FormControl('', Validators.required),
     hospital_phoneNo: new FormControl('', Validators.required),
     hospital_Email: new FormControl('', Validators.required),
-    hospital_city: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
     hospital_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
   })
 

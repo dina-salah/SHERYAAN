@@ -95,6 +95,7 @@ updateItem(item: any) {
         console.log(res);
         item.isEditing = false;
         this.toastr.success('Item is deleted');
+        window.location.reload();
       },
       error => {
         console.log(error);

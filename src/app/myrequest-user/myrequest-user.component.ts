@@ -33,7 +33,8 @@ export class MyrequestUserComponent implements OnInit{
   }
 
   fetch(){
-    this.service.myrequestUser(this.id).subscribe((res: any) => {
+    this.service.myrequestUser(this.id)
+    .subscribe((res: any) => {
       this.myrequest = res.data;
       console.log(this.myrequest);
     })

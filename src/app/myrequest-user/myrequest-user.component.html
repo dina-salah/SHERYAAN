@@ -72,12 +72,13 @@
                             </td>
                             
                             <td scope="row" *ngIf="m.request_status == 0">
-                              <div style="color: dimgray;  font-weight: bold;">Pending</div>
+                              <div style="color: #fde90c;  font-weight: bold;">Ongoing</div>
                             </td>
                 
                             <td scope="row" *ngIf="m.request_status == 1">
-                              <div style="color: rgb(44, 109, 248); font-weight: bold;">Completed</div>
+                              <div style=" color:#5cb85c;  font-weight: bold;">Fullfilled</div>
                             </td>
+
                             <td>{{m.city}}</td>
                             <td>
                               <span style="display: flex;">
