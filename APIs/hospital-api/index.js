@@ -52,7 +52,7 @@ app.get("/hospital/:id", function (req, res) {
       .send({ error: true, message: "Please provide hospital_id" });
   }
   dbConn.query(
-    "SELECT * FROM hospital where hospital_id=?",
+    "SELECT hospital.* , location.city FROM hospital JOIN location ON hospital.location_code = location.location_code  where hospital_id=?",
     hospital_id,
     function (error, results, fields) {
       if (error) {

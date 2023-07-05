@@ -20,7 +20,7 @@ export class Hospital{
     hospital_address!: string;
     hospital_phoneNo!: string;
     hospital_Email!: string;
-    hospital_city!: string;
+    city!: string;
     hospital_password!: string;
     location_code:any;
 }

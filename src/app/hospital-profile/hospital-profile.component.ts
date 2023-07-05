@@ -49,8 +49,9 @@ export class HospitalProfileComponent implements OnInit{
     hospitral_address: new FormControl('', Validators.required),
     hospitral_phoneNo: new FormControl('', Validators.required),
     hospitral_Email: new FormControl('', Validators.required),
-    hospitral_city: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
     hospitral_password: new FormControl('', Validators.required),
+    location_code:new FormControl('', Validators.required)
   })
 
   showform(){
