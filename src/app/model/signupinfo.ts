@@ -7,10 +7,11 @@ export class User{user_Fname: string;
     user_address: string;
     user_phoneNo: string;
     user_Email: string;
-    user_city: string;
+    city: any;
     user_blood_type: string;
     user_health_status: string;
     user_password: string;
+    location_code:any;
 }
 
 export class Hospital{
@@ -21,6 +22,7 @@ export class Hospital{
     hospital_Email!: string;
     hospital_city!: string;
     hospital_password!: string;
+    location_code:any;
 }
 
 export class Organization{
@@ -30,4 +32,5 @@ export class Organization{
     organization_phoneNo!: string;
     organization_email!: string;
     orgaization_city!: string;
+    location_code:any;
 }

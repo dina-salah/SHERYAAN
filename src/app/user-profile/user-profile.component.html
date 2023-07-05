@@ -34,14 +34,15 @@
                                 <h3 class="fieldset-title">Personal Info</h3>
                             </div>
                             <div class="col ">
-                                <div class="mb-3" *ngFor="let u of user"><br>
+                                <!-- value={{u.location_code}} -->
+                                <div class="mb-3" *ngFor="let u of user" ><br>
                                     <label><b>First name:</b> {{u.user_Fname}}</label><br>
                                     <label><b>Last name:</b> {{u.user_Lname}}</label><br>
                                     <label><b>National ID:</b> {{u.user_national_ID}}</label><br>
                                     <label><b>Gender:</b> {{u.user_gender}}</label><br>
                                     <label><b>Age:</b> {{u.user_age}}</label><br>
                                     <label><b>Address:</b> {{u.user_address}}</label><br>
-                                    <label><b>City:</b> {{u.user_city}}</label><br>
+                                    <label><b>City:</b> {{u.city}}</label><br>
                                     <label><b>Blood type:</b> {{u.user_blood_type}}</label><br>
                                     <label><b>Health status:</b> {{u.user_health_status}}</label><br>
                                 </div>

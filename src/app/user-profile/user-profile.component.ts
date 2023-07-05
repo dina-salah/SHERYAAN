@@ -84,7 +84,7 @@ export class UserProfileComponent implements OnInit{
       user_address: new FormControl('', Validators.required),
       user_phoneNo: new FormControl('', [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
       user_Email: new FormControl('', Validators.required),
-      user_city: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
       user_blood_type: new FormControl('', Validators.required),
       user_health_status: new FormControl('', Validators.required),
       user_password: new FormControl('', Validators.required),
