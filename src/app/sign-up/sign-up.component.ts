@@ -18,14 +18,18 @@ export class SignUpComponent implements OnInit{
   uDisplay:boolean =true;
   hDisplay:boolean =true;
   oDisplay:boolean =true;
-  city: any = [];
+  cityForHospital: any = [];
+  cityForOrg : any = [];
+  cityForUser : any = [];
 
   constructor(private signupservice: signupService, private toastr: ToastrService ){}
 
   ngOnInit(): void {
-    this.getcities();
+    this.getcitiesorg();
+    this.getcitiesHospital();
+    this.getcitiesUser();
   }
-
+ 
   addUserForm =  new FormGroup({
     user_Fname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
     user_Lname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
@@ -171,15 +175,26 @@ get user_national_ID() {
 
   }
 
-  getcities(){
-    this.signupservice.getcities().subscribe((res) => {
+  getcitiesorg(){
+    this.signupservice.getcities()
+    .subscribe((res) => {
       console.log(res);
-      this.city = res.data;
+      this.cityForOrg = res.data;
     })
   }
-  // onsignup() {
-  //   this.toastr.success('account created!');
-  // }
-
+  getcitiesUser(){
+    this.signupservice.getcitiesUser()
+    .subscribe((res) => {
+      console.log(res);
+      this.cityForUser = res.data;
+    })
+  }
+  getcitiesHospital(){
+    this.signupservice.getcitiesHospital()
+    .subscribe((res) => {
+      console.log(res);
+      this.cityForHospital = res.data;
+    })
+  }
 
 }

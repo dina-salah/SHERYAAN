@@ -59,7 +59,6 @@ export class UserProfileUpdateComponent implements OnInit{
     this.form = new FormGroup({
       user_Fname: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       user_Lname: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      user_national_ID: new FormControl(null, [Validators.required, Validators.minLength(14), Validators.maxLength(14)]),
       user_gender: new FormControl(null, Validators.required),
       user_age: new FormControl(null, [Validators.required, Validators.min(18), Validators.max(60), Validators.pattern('^[0-9]+$')]),
       user_address: new FormControl(null, Validators.required),
