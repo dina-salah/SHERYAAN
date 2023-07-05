@@ -21,18 +21,21 @@ export class HospitalProfileUpdateComponent implements OnInit{
   hospital!: Hospital;
   form!: FormGroup;
   hname: any;
+  city: any = [];
 
   constructor(
     public hospitalService: updateService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private signupservice: signupService
   ) { }
 
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['hospital_id'];
     this.hname = JSON.parse(localStorage.getItem('hospitalname'));
+    this.getcities();
     this.hospitalService.findhos(this.id).subscribe((data:Hospital)=>{
       this.hospital = data;
       console.log(this.hospital[0]); 
@@ -40,7 +43,8 @@ export class HospitalProfileUpdateComponent implements OnInit{
       this.form.patchValue({
         hospital_name: this.hospital[0].hospital_name,
         hospital_address: this.hospital[0].hospital_address,
-        hospital_city: this.hospital[0].hospital_city,
+        city: this.hospital[0].city,
+        location_code: this.hospital[0].location_code,
         hospital_Email: this.hospital[0].hospital_Email,
         hospital_phoneNo: this.hospital[0].hospital_phoneNo,
         hospital_password: this.hospital[0].hospital_password
@@ -50,7 +54,8 @@ export class HospitalProfileUpdateComponent implements OnInit{
     this.form = new FormGroup({
       hospital_name: new FormControl('', Validators.required),
       hospital_address: new FormControl('', Validators.required),
-      hospital_city: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      location_code: new FormControl('', Validators.required),
       hospital_Email: new FormControl('', Validators.required),
       hospital_phoneNo: new FormControl('', Validators.required),
       hospital_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),
@@ -72,5 +77,12 @@ export class HospitalProfileUpdateComponent implements OnInit{
       console.log(err)
       this.toastr.warning('check your info!');
     }})
+  }
+
+  getcities(){
+    this.signupservice.getcities().subscribe((res) => {
+      console.log(res);
+      this.city = res.data;
+    })
   }
 }
