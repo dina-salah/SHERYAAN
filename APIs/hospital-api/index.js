@@ -141,15 +141,15 @@ app.put(`/hospital/:id`, function (req, res) {
   let phoneNo = req.body.hospital_phoneNo;
   let address = req.body.hospital_address;
   let email = req.body.hospital_Email;
-  let don = req.body.donation;
+  //let don = req.body.donation;
   if (!id) {
     return res
       .status(400)
       .send({ error: true, message: "Please provide the hospital id" });
   }
   dbConn.query(
-    `UPDATE hospital SET location_code = ?, hospital_name = ? , hospital_city = ? , hospital_password = ?, hospital_phoneNo = ?  , hospital_address = ?  , hospital_Email = ? , donation = ?  WHERE hospital_id = ${id} ;`,
-    [lcode, name, password, phoneNo, address, email, don],
+    `UPDATE hospital SET location_code = ?, hospital_name = ? , hospital_city = ? , hospital_password = ?, hospital_phoneNo = ?  , hospital_address = ?  , hospital_Email = ?  WHERE hospital_id = ${id} ;`,
+    [lcode, name, password, phoneNo, address, email],
     function (error, results, fields) {
       if (error) throw error;
       return res.send({
