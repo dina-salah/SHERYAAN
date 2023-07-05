@@ -57,7 +57,7 @@ app.get("/user/:id", function (req, res) {
       .send({ error: true, message: "Please provide user_id" });
   }
   dbConn.query(
-    "SELECT * FROM user where user_id=?",
+    "SELECT user.* , location.city FROM user JOIN location on user.location_code = location.location_code where user.user_id=?",
     user_id,
     function (error, results, fields) {
       if (error) {
@@ -142,7 +142,8 @@ app.post("/user", function (req, res) {
         message: "New user has been created successfully.",
       });
     }
-  );
+    );
+    console.log(res.data)
 });
 
 //  Update user with id
