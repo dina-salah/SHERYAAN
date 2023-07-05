@@ -148,7 +148,7 @@ app.put(`/hospital/:id`, function (req, res) {
       .send({ error: true, message: "Please provide the hospital id" });
   }
   dbConn.query(
-    `UPDATE hospital SET location_code = ?, hospital_name = ? , hospital_city = ? , hospital_password = ?, hospital_phoneNo = ?  , hospital_address = ?  , hospital_Email = ?  WHERE hospital_id = ${id} ;`,
+    `UPDATE hospital SET location_code = ?, hospital_name = ? , hospital_password = ?, hospital_phoneNo = ?  , hospital_address = ?  , hospital_Email = ?  WHERE hospital_id = ${id} ;`,
     [lcode, name, password, phoneNo, address, email],
     function (error, results, fields) {
       if (error) throw error;
