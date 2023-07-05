@@ -65,6 +65,7 @@ export class UserProfileUpdateComponent implements OnInit{
       user_phoneNo: new FormControl(null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]),
       user_Email: new FormControl(null, Validators.required),
       user_city: new FormControl(null, Validators.required),
+      location_code: new FormControl('', Validators.required),
       user_blood_type: new FormControl(null, Validators.required),
       user_health_status: new FormControl(null, Validators.required),
       user_password: new FormControl('', [Validators.required, Validators.pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+.{7,32}$$')]),

@@ -93,7 +93,7 @@ export class SignInComponent{
       this.toastr.warning('check your password!');
     } else{
   console.log(data.data[0].user_id);
-  // this.navigateToLogin(data.data[0].user_id);
+  this.navigateToLogin(data.data[0].user_id);
   this.service.loggedIn.next(true);
   this.toastr.success('logged in successfully!');}
  }, 
