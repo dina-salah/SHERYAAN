@@ -96,11 +96,13 @@ app.get("/my-requests/:id", function (req, res) {
 //Retrieve my responses (for users)
 app.get("/my-responses/:id", function (req, res) {
   user_id = req.params.id
-  dbConn.query(`SELECT d.response_status , DATE(d.response_date) AS "res_date" , u.user_id , h.hospital_name , h.hospital_city 
+  dbConn.query(`SELECT d.response_status , DATE(d.response_date) AS "res_date" , u.user_id , h.hospital_name , l.city
                   FROM request_donations AS d 
                   JOIN request AS r ON d.request_id = r.request_id 
                   JOIN user AS u ON d.responding_user = u.user_id  
                   JOIN hospital AS h ON h.hospital_id = r.hospital_id 
+                  JOIN location AS l ON h.location_code = l.location_code 
+
                 WHERE d.responding_user = ? ` , user_id
   , function (error, results, fields) {
     if (error) throw error;
@@ -319,7 +321,11 @@ app.post("/add-response", function (req, res) {
   dbConn.query(`INSERT INTO request_donations SET responding_user = ? ,  request_id = ? ` ,
   [res_user, request_id] ,
   function (error, results, fields) {
-      if (error) throw error;
+      if (error) { return res
+      .status(400)
+      .send({ error: true, message: "you already responded to this request" });
+  }
+    else
       return res.send(
           { error: false,
             message: "new response added successfully" 
