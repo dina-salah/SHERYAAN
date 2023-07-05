@@ -124,14 +124,16 @@ app.put(`/org/:id`, function (req, res) {
   let phoneNo = req.body.organization_phoneNo;
   let email = req.body.organization_email;
   let password = req.body.organization_password;
+  let address = req.body.organization_address;
+  let city = req.body.organization_city;
   if (!org) {
     return res
       .status(400)
       .send({ error: true, message: "Please provide the user ssn" });
   }
   dbConn.query(
-    `UPDATE organization SET organization_name = ? , organization_phoneNo = ? , organization_email = ? , organization_password = ? WHERE organization_id = ${org} ;`,
-    [name, phoneNo, email, password],
+    `UPDATE organization SET organization_name = ? , organization_phoneNo = ? , organization_email = ? , organization_password = ? , organization_address = ? , orgaization_city = ? WHERE organization_id = ${org} ;`,
+    [name, phoneNo, email, password, address, city],
     function (error, results, fields) {
       if (error) throw error;
       return res.send({
@@ -197,7 +199,7 @@ app.post("/login", function (req, res) {
 });
 
 // set port
-app.listen(8000, function () {
+app.listen(8001, function () {
   console.log("Node app is running on port 8000");
 });
 module.exports = app;
